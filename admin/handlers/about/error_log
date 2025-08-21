@@ -1,0 +1,56 @@
+[31-May-2025 09:02:54 America/Boise] Value updated successfully by admin ID: 1 - Value ID: 6 - Title: Global Perspective
+[31-May-2025 09:03:14 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:03:14 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:07:41 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:07:41 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:11:22 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:11:22 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:11:22 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:11:22 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:12:14 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:12:14 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:12:22 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:12:22 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:29:04 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:29:04 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:54:54 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:54:54 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:55:39 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:55:39 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:57:22 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 09:57:22 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 10:01:37 America/Boise] PHP Warning:  require_once(../ImageManager.php): Failed to open stream: No such file or directory in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25
+[31-May-2025 10:01:37 America/Boise] PHP Fatal error:  Uncaught Error: Failed opening required '../ImageManager.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php:25
+Stack trace:
+#0 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/admin/handlers/about/updateGalleryItemHandler.php on line 25

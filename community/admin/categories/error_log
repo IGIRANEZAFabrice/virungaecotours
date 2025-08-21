@@ -1,0 +1,80 @@
+[14-Jun-2025 09:08:33 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:08:38 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:08:57 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:09:14 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:09:16 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:09:20 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:09:42 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:11:52 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:11:54 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:13:24 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:14:54 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:16:58 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:17:00 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:38:27 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:38:58 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118
+[14-Jun-2025 09:39:01 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'status' in where clause is ambiguous in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php:118
+Stack trace:
+#0 /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php(118): mysqli_query(Object(mysqli), 'SELECT c.*, \n  ...')
+#1 {main}
+  thrown in /home2/dmxewbmy/public_html/website_58827336/community/admin/categories/index.php on line 118

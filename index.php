@@ -1,0 +1,704 @@
+<?php
+require_once 'indexhandler.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Primary Meta Tags -->
+<title>Authentic Virunga Journeys | Rwanda Gorilla Trekking & Community Tourism | Virunga Ecotours</title>
+<meta name="description" content="Experience authentic community tourism in Rwanda's Virunga Massif. Sustainable gorilla trekking, cultural immersion, and spiritual journeys across Rwanda, Uganda, and Congo with local expert guides.">
+<meta name="keywords" content="Rwanda gorilla trekking, community tourism Rwanda, Virunga Massif tours, authentic Rwanda experiences, sustainable ecotourism, mountain gorilla adventures, cultural tourism Rwanda">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Authentic Virunga Journeys | Rwanda Community Tourism">
+<meta property="og:description" content="Discover Rwanda's hidden treasures through community-based tourism. Mountain gorilla trekking, cultural experiences, and spiritual journeys in the Virunga Massif.">
+<meta property="og:image" content="https://yourwebsite.com/images/virunga-gorillas-hero.jpg">
+<meta property="og:url" content="https://yourwebsite.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virunga Ecotours">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Authentic Virunga Journeys | Rwanda Community Tourism">
+<meta name="twitter:description" content="Experience authentic community tourism in Rwanda's Virunga Massif with local expert guides.">
+<meta name="twitter:image" content="https://yourwebsite.com/images/virunga-gorillas-hero.jpg">
+
+<!-- Additional SEO Meta Tags -->
+<meta name="robots" content="index, follow">
+<meta name="author" content="Virunga Ecotours">
+<meta name="geo.region" content="RW">
+<meta name="geo.placename" content="Rwanda, Virunga Massif">
+<meta name="geo.position" content="-1.9403,29.8739">
+<meta name="ICBM" content="-1.9403,29.8739">
+
+    <link
+      rel="shortcut icon"
+      href="./images/logos/icon.png"
+      type="image/x-icon"
+    />
+    <title>Virunga Ecotours || Visit-Conect-Contribute</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/earthy-theme.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/new.css" />
+     <style>
+      .section-subtitle {
+        text-align: justify; max-width: 700px; margin: 0 auto 40px; color: #666; line-height: 1.6;
+      }
+      
+      /* Map Section Styles */
+        .map-section {
+          padding: 60px 0;
+          background-color: #fff;
+        }
+        
+        .map-container {
+          position: relative;
+          max-width: 800px;
+          margin: 40px auto;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+          padding: 20px;
+          background-color: #f8f8f8;
+        }
+        
+        .map-image {
+          width: 100%;
+          height: auto;
+          border-radius: 4px;
+          display: block;
+        }
+        
+        .map-legend {
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          background-color: rgba(255, 255, 255, 0.9);
+          padding: 15px;
+          border-radius: 6px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-legend h4 {
+          margin: 0 0 10px;
+          color: var(--primary-brown);
+          font-size: 16px;
+        }
+        
+        .map-legend ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        
+        .map-legend li {
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px;
+          font-size: 14px;
+          color: #555;
+        }
+        
+        .legend-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          margin-right: 8px;
+          display: inline-block;
+        }
+        
+        .legend-dot.volcano { background-color: #ff4d4d; }
+        .legend-dot.park { background-color: #4CAF50; }
+        .legend-dot.border { background-color: #666; }
+        .legend-dot.gorilla { background-color: #8b4513; }
+        
+        @media (max-width: 768px) {
+          .map-legend {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            margin-top: 20px;
+            background-color: #fff;
+          }
+        }
+    </style>
+  </head>
+  <body>
+  <?php include 'includes/header.php'; ?>
+    <main>
+      <div class="hero-section">
+        <div class="hero-carousel">
+          <div class="carousel-container">
+            <?php foreach ($hero_slides as $index => $slide): ?>
+            <div class="carousel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
+              <div class="slide-content">
+                <h1><?php echo htmlspecialchars($slide['title']); ?></h1>
+                <p style="text-align: left;"><?php echo htmlspecialchars($slide['description']); ?></p>
+              </div>
+              <img src="./admin/<?php echo htmlspecialchars($slide['image_url']); ?>" alt="<?php echo htmlspecialchars($slide['title']); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
+            </div>
+            <?php endforeach; ?>
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-arrow prev-slide" aria-label="Previous slide">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="carousel-indicators">
+              <?php foreach ($hero_slides as $index => $slide): ?>
+              <button class="indicator <?php echo $index === 0 ? 'active' : ''; ?>" data-slide="<?php echo $index; ?>" aria-label="Go to slide <?php echo $index + 1; ?>"></button>
+              <?php endforeach; ?>
+            </div>
+            <button class="carousel-arrow next-slide" aria-label="Next slide">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <section class="tours-section" style="margin-top: -1.5rem;">
+        <div class="container">
+          <div class="section-header">
+            <!--<h1>Authentic Trips Crafted By Experts</h1>-->
+            <p class="section-subtitle">
+              Welcome to Virunga Ecotours, your gateway to an extraordinary
+              eco-adventure! Immerse yourself in nature as you explore stunning
+              landscapes and vibrant wildlife through sustainable tourism. Trek
+              through lush rainforests and observe animals in their natural
+              habitats, all while we prioritize environmental responsibility.
+            </p>
+          </div>
+
+          
+          <div class="destinations-wrapper" style="margin-top: -1.5rem;">
+
+            <section class="destination-container scroll-trigger reverse">
+              <div class="destination-content">
+                <h1 class="title">Exploring the Excitement of the Virunga Massif</h1>
+                
+                <p class="description">
+                    Step into one of Africa’s most awe-inspiring landscapes, the Virunga Massif, a spectacular chain of volcanic mountains spanning Rwanda, Uganda, and the Democratic Republic of Congo (DRC). This region is world-renowned for its thrilling gorilla treks, but what you’ll discover goes far beyond wildlife encounters.<br>
+
+                    Here, misty peaks, ancient rainforests, and untamed wildlife blend seamlessly with the rich culture and resilience of the local communities who have lived in harmony with nature for generations.<br>
+
+                    At the heart of it all is Virunga Ecotours, a woman-led, community based travel company committed to sustainable tourism. We go beyond just guiding trips: we empower local people, support conservation efforts, and ensure your travel has a positive impact. Our guides, drivers, and hosts are locals who share their stories, heritage, and deep connection to the land, giving you an experience that’s personal, authentic, and unforgettable.<br>
+
+                    Travel with us, and you won’t just see the Virunga, you’ll feel its soul. From immersive village visits to heart-pounding jungle treks, every moment is crafted to inspire, educate, and leave a legacy.
+                </p>
+              </div>
+              <div class="destination-image visible">
+                <img
+                  src="./images/hero/7.jpg"
+                  alt="Chimpanzee peering through rainforest foliage"
+                ondragstart="return false;" oncontextmenu="return false;"/>
+              </div>
+            </section>
+          </div>
+          
+          <div class="tours-grid">
+            <div class="section-title">
+              <h2>Choose Your Destination</h2>
+            </div>
+            
+            <div class="features-row" style="margin-top: -1.5rem;">
+              <div class="feature-col">
+                <div class="feature-img">
+                  <img src="./admin/<?php echo htmlspecialchars($dest_img1); ?>" alt="<?php echo htmlspecialchars($country1); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
+                </div>
+                <div class="feature-overlay">
+                  <h3><?php echo htmlspecialchars($country1); ?></h3>
+                  <p><?php echo htmlspecialchars($desc1); ?></p>
+                </div>
+              </div>
+
+              <div class="feature-col">
+                <div class="feature-img">
+                  <img src="./admin/<?php echo htmlspecialchars($dest_img2); ?>" alt="<?php echo htmlspecialchars($country2); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
+                </div>
+                <div class="feature-overlay">
+                  <h3><?php echo htmlspecialchars($country2); ?></h3>
+                  <p><?php echo htmlspecialchars($desc2); ?></p>
+                </div>
+              </div>
+
+              <div class="feature-col">
+                <div class="feature-img">
+                  <img src="./admin/<?php echo htmlspecialchars($dest_img3); ?>" alt="<?php echo htmlspecialchars($country3); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
+                </div>
+                <div class="feature-overlay">
+                  <h3><?php echo htmlspecialchars($country3); ?></h3>
+                  <p><?php echo htmlspecialchars($desc3); ?></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+     
+     <!-- Map Section -->
+      <section class="map-section">
+        <div class="container">
+          <div class="section-title">
+            <h2>Explore the Virunga Massif</h2>
+          </div>
+          <div class="map-container">
+            <img src="./community/assets/images/Virunga-Conservation-Area.png" alt="Virunga Massif Map" class="map-image" ondragstart="return false;" oncontextmenu="return false;"/>
+            <!--<div class="map-legend">-->
+            <!--  <h4>Map Legend</h4>-->
+            <!--  <ul>-->
+            <!--    <li><span class="legend-dot volcano"></span> Active Volcanoes</li>-->
+            <!--    <li><span class="legend-dot park"></span> National Parks</li>-->
+            <!--    <li><span class="legend-dot border"></span> Country Borders</li>-->
+            <!--    <li><span class="legend-dot gorilla"></span> Gorilla Habitats</li>-->
+            <!--  </ul>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </section>
+      
+      <!-- Destinations Section -->
+      <section class="destinations-section" style="margin-bottom: -1.5rem;">
+        <div class="container">
+          <div class="section-title">
+            <h2>Discover Our Top Attractions</h2>
+            
+          </div>
+         
+          <div class="main-destinations-grid">
+            <?php foreach ($attractions as $attraction): ?>
+            <a href="./pages/attraction.php?id=<?php echo htmlspecialchars($attraction['id']); ?>" class="destination-item">
+              <img
+                src="./admin/<?php echo htmlspecialchars($attraction['image_url']); ?>"
+                alt="<?php echo htmlspecialchars($attraction['title']); ?>"
+              ondragstart="return false;" oncontextmenu="return false;"/>
+              <div class="destination-overlay">
+                <h3><?php echo htmlspecialchars($attraction['title']); ?></h3>
+              </div>
+            </a>
+            <?php endforeach; ?>
+          </div>
+
+          <div class="enquiry-banner">
+            <a href="./pages/build.php" class="enquire-btn">
+              ENQUIRE
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Tours Section -->
+      <section class="popular-tours-section" style="margin-top: -2rem;">
+        <div class="container">
+          <div class="section-title">
+            <h2>Example Travel Itineraries</h2>
+            <div class="title-underline"></div>
+          </div>
+          
+
+          <div class="tours-cards">
+            <?php if (empty($tours)): ?>
+              <p class="no-tours">No adventure tours available at the moment.</p>
+            <?php else: ?>
+              <?php foreach ($tours as $tour): ?>
+                <div class="tour-card">
+                  <div class="tour-card-image">
+                    <img
+                      src="<?php echo htmlspecialchars($tour['cover_image_path']); ?>"
+                      alt="<?php echo htmlspecialchars($tour['title']); ?>"
+                    ondragstart="return false;" oncontextmenu="return false;"/>
+                    <div class="tour-badge"><?php echo strtoupper(htmlspecialchars($tour['category'])); ?></div>
+                    <div class="tour-offer">AVAILABLE</div>
+                  </div>
+                  <div class="tour-card-content">
+                    <div class="tour-tags">
+                      <span class="tour-tag">GROUP TOUR</span>
+                      <span class="tour-tag">WILDLIFE</span>
+                    </div>
+                    <div class="tour-tags"></div>
+                    <h3><?php echo htmlspecialchars($tour['title']); ?></h3>
+                    <div class="tour-duration"><?php echo $tour['days_count']; ?> DAY<?php echo $tour['days_count'] > 1 ? 'S' : ''; ?></div>
+                    <p><?php echo htmlspecialchars(substr($tour['short_description'], 0, 200)) . '...'; ?></p>
+                    <a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>" class="read-more-btn">READ MORE</a>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+
+        </div>
+      </section>
+
+      
+
+      <!-- Tailor-made Banner -->
+      <section class="tailor-made-banner">
+        <div class="container">
+          <div class="banner-content">
+            <h2>Personalized Travel Experience:Why Choose a Custom Trip?</h2>
+
+            <p>
+              We are dedicated to listening to your preferences and
+              requirements, crafting a journey that fits your budget while
+              integrating local insights from Rwanda, Uganda, and DR Congo. Our
+              objective is to design a personalized dream trip that matches your
+              vision perfectly. You can participate in the planning process to
+              any extent you desire, and we are excited to take on special
+              requests. Uncover the advantages of traveling with us!
+            </p>
+            <div class="banner-actions">
+              <a href="./pages/build.php" class="enquire-btn"
+                >ENQUIRE</a
+              >
+              <div class="call-us">
+                <span >Call an Ecotours Expert</span>
+                <a href="tel:+250784513435" class="phone-number">
+                  <i class="fas fa-phone-alt"></i>
+                  +(250)784513435
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Tailor-Made Holidays Section -->
+      <section class="tailor-made-holidays">
+        <div class="container">
+          <div class="section-title">
+            <h2>Popular Multi-Day Tours </h2>
+          </div>
+          <p class="section-subtitle">
+            Explore our most popular Multi-Day holidays, designed to
+            inspire your next adventure. Each itinerary is crafted with care,
+            ensuring a unique and unforgettable experience.
+          </p>
+
+          <div class="holiday-cards">
+            <?php if (!empty($random_tours)): ?>
+              <?php foreach ($random_tours as $tour): ?>
+                <div class="holiday-card">
+                  <div class="card-image">
+                    <img src="<?php echo htmlspecialchars($tour['cover_image_path']); ?>" alt="<?php echo htmlspecialchars($tour['title']); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
+                    <div class="tour-offer">AVAILABLE</div>
+                    <div class="card-tag <?php echo strtolower($tour['category']); ?>"><?php echo ucfirst(htmlspecialchars($tour['category'])); ?></div>
+                  </div>
+
+                  <div class="card-content">
+                    <div class="tour-tags">
+                      <span class="tour-tag">TAILOR MADE</span>
+                      <span class="tour-tag">WILDLIFE</span>
+                    </div>
+                    <div class="card-title">
+                      <h3><a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>"><?php echo htmlspecialchars($tour['title']); ?></a></h3>
+                    </div>
+                    <div class="card-details"><?php echo $tour['days_count']; ?> DAYS</div>
+                    <div class="card-price"></div>
+                    <div class="card-description">
+                      <?php echo htmlspecialchars(substr($tour['short_description'], 0, 200)) . '...'; ?>
+                    </div>
+                    <div class="card-button">
+                      <a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>" class="read-more-btn">READ MORE</a>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <p>No tours available at the moment.</p>
+            <?php endif; ?>
+          </div>
+
+          <div class="view-all-blogs" style="text-align: center; margin-top: 40px;">
+            <a href="./pages/blog.php" class="btn btn-secondary" style="padding: 12px 25px; background-color: #555; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease;">View All Tours</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- youtube video -->
+      <section class="middle-about-section fade-in-up">
+        <div class="container">
+          <div class="video-flex-container">
+            <!-- Left side: Video container -->
+            <div class="video-container fade-in-left">
+              <div class="video-wrapper">
+                <video width="560" height="315" controls muted loop>
+                  <source src="images/1.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+
+            <!-- Right side: About Us content -->
+            <div class="video-content-container fade-in-right">
+              <div class="content-wrapper">
+                <div class="content-header">
+                  <h2>Transforming Ideas Into Reality</h2>
+                </div>
+
+                <div class="content-body">
+                  <!--<p><span class="highlight">About Us</span> </p>-->
+                  <p>
+                    Virunga Ecotours transforms your ideas into life-changing journeys. We design meaningful, eco-conscious tours across the Virunga Massif one landscape shared by Rwanda, Uganda, and the Democratic Republic of Congo renowned as one of Africa’s most breathtaking and biologically diverse regions.<br>
+                    
+                    We invite travelers from around the world to experience this extraordinary place, discovering its rich cultural heritage while embracing the power of responsible tourism.<br>
+
+                    Each of our tours is thoughtfully curated to create lasting positive impact. By empowering local communities, safeguarding endangered ecosystems, and fostering authentic connections with the land and its people, your travel becomes a force for good inspiring care, conservation, and global understanding.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Section -->
+      <section class="blog-section" style="padding: 40px 0;">
+        <div class="container">
+            <h2>Blogs And Tips</h2>
+          <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: #666; line-height: 1.6;">
+            Stay updated with the latest travel insights, tips, and stories from
+            the heart of the Virunga Massif. Explore conservation news, cultural
+            highlights, and expert advice for your next eco-adventure.
+          </p>
+
+          <div class="blog-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <?php if (empty($blogs)): ?>
+              <p class="no-blogs" style="grid-column: 1 / -1; text-align: center; color: #777;">No blog posts available at the moment.</p>
+            <?php else: ?>
+              <?php foreach ($blogs as $blog): ?>
+                <div class="blog-card" style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; transition: transform 0.3s ease;">
+                  <div class="blog-card-image" style="position: relative; height: 200px; overflow: hidden;">
+                    <img src="./admin/images/blog/covers/<?php echo htmlspecialchars(stripslashes($blog['cover_image'])); ?>" alt="<?php echo htmlspecialchars(stripslashes($blog['title'])); ?>" style="width: 100%; height: 100%; object-fit: cover; display: block;" ondragstart="return false;" oncontextmenu="return false;"/>
+                    <span class="blog-category" style="position: absolute; top: 10px; left: 10px; background-color: var(--primary-brown); color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold;"><?php echo htmlspecialchars($blog['category_name']); ?></span>
+                  </div>
+                  <div class="blog-card-content" style="padding: 20px;">
+                    <h3 class="blog-title" style="font-size: 1.2em; margin-bottom: 10px; color: #333;">
+                      <a href="./pages/blog-single.php?id=<?php echo $blog['blog_id']; ?>" style="text-decoration: none; color: inherit;"><?php echo htmlspecialchars(stripslashes($blog['title'])); ?></a>
+                    </h3>
+                    <p class="blog-excerpt" style="font-size: 0.9em; color: #666; line-height: 1.5; margin-bottom: 15px;"><?php echo htmlspecialchars(stripslashes($blog['short_intro'])); ?></p>
+                    <div class="blog-meta" style="font-size: 0.8em; color: #888; margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                      <span class="blog-author" style="display: inline-flex; align-items: center;"><i class="fas fa-user" style="margin-right: 5px;"></i> <?php echo htmlspecialchars($blog['author']); ?></span>
+                      <span class="blog-date" style="display: inline-flex; align-items: center;"><i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> <?php echo date('M d, Y', strtotime($blog['created_at'])); ?></span>
+                      <span class="blog-read-time" style="display: inline-flex; align-items: center;"><i class="fas fa-clock" style="margin-right: 5px;"></i> <?php echo htmlspecialchars($blog['read_minutes']); ?> min read</span>
+                    </div>
+                    <a href="./pages/blogopen.php?id=<?php echo $blog['blog_id']; ?>" class="read-more-btn">Read More <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+
+          <div class="view-all-blogs" style="text-align: center; margin-top: 40px;">
+            <a href="./pages/blog.php" class="btn btn-secondary" style="padding: 12px 25px; background-color: #555; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s ease;">View All Blogs</a>
+          </div>
+        </div>
+      </section>
+      <br><br> <br><br> <br><br>
+       <div class="dest-contain">
+      <h1 class="title">Read our month-by-month travel guide</h1>
+      
+      <div class="travel-grid" id="travel-grid">
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=january">
+            <img src="./images/month/1 (1).jpg" alt="January - Tropical Beach" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">January</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=february">
+            <img src="./images/month/1 (2).jpg" alt="February - Rio de Janeiro" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">February</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=march">
+            <img src="./images/month/1 (3).jpg" alt="March - Japan Cherry Blossoms" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">March</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=april">
+            <img src="./images/month/1 (4).jpg" alt="April - Abu Simbel, Egypt">
+            <div class="month-name">April</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=may">
+            <img src="./images/month/1 (5).jpg" alt="May - Porto, Portugal" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">May</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=june">
+            <img src="./images/month/1 (6).jpg" alt="June - Machu Picchu, Peru">
+            <div class="month-name">June</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=july">
+            <img src="./images/month/1 (7).jpg" alt="July - Lake Bled, Slovenia" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">July</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=august">
+            <img src="./images/month/1 (8).jpg" alt="August - Tallinn, Estonia" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">August</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=september">
+            <img src="./images/month/1 (9).jpg" alt="September - Cartagena, Colombia" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">September</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=october">
+            <img src="./images/month/1 (10).jpg" alt="October - Cappadocia, Turkey" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">October</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=november">
+            <img src="./images/month/1 (11).jpg" alt="November - Autumn Forest">
+            <div class="month-name">November</div>
+          </a>
+        </div>
+        
+        <div class="month-card">
+          <a href="./pages/travelmonth.php?month=december">
+            <img src="./images/month/1 (12).jpg" alt="December - Uluru, Australia" ondragstart="return false;" oncontextmenu="return false;">
+            <div class="month-name">December</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="month-indicator" id="month-indicator">January</div>
+      
+      <div class="navigation">
+        <button class="nav-btn" id="prev-btn">←</button>
+        <button class="nav-btn" id="next-btn">→</button>
+      </div>
+  </div>
+   <br><br> <br><br> <br><br>
+   <div class="last-cont">
+
+   <section class="lcta-section">
+      <div class="lcta-content">
+        <h2 class="lcta-title">Ready for Your Next Adventure?</h2>
+        <p class="lcta-text">Let us help you create memories that last a lifetime. Whether you're seeking cultural immersion, natural wonders, or historical journeys, our expert team is ready to craft your perfect travel experience.</p>
+        <div class="lcta-buttons">
+          <a href="./pages/build.php" class="lcta-primary">Make Enquire</a>
+            <a href="./pages/contactus.php" class="lcta-secondary"><i class="fas fa-phone"></i> Reach To Us </a>
+        </div>
+      </div>
+    </section>
+    <!-- last-her Section -->
+    <section class="last-her">
+      <div class="last-her-content">
+        <div class="top-image">
+          <img src="./images/hero/night.jpg" alt="" srcset="" ondragstart="return false;" oncontextmenu="return false;">
+        </div>
+        <br><br><br>
+        <!-- Why Travel With Us Section -->
+    
+        <div class="last-her-image-last-cont">
+          <div class="de-image">
+            <img src="./images/last/last (3).jpg" alt="India destination" ondragstart="return false;" oncontextmenu="return false;">
+          </div>
+          <div class="de-image">
+            <img src="./images/last/l.jpg" alt="Costa Rica destination" ondragstart="return false;" oncontextmenu="return false;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2 class="features-title">Why Travel With Us</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="feature-title">Small Group Travel</h3>
+          <p class="feature-description">We design our experiences with intention, not volume. By limiting group sizes to a maximum of 12 guests, we ensure every journey is personal, flexible, and immersive, allowing for deeper connections with people, places and nature.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3 class="feature-title">Locally Guided Tours</h3>
+          <p class="feature-description">Founded by a group of Rwandan women with a shared vision for responsible travel, we operate from the heart of the Virunga Massif. Our team combines deep regional expertise with global standards of professionalism, delivering journeys that are as insightful as they are seamless. Since 2017, travelers from around the world have trusted us to guide their most meaningful adventures.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="feature-title">Responsible Travel</h3>
+          <p class="feature-description">Every trip is designed to create a positive impact. A portion of each booking directly supports conservation efforts, community-led projects and the protection of cultural heritage. When you travel with us, your experience contributes to a greater purpose, supporting the people and places that make your journey possible.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <h3 class="feature-title">Tailor-Made Experiences</h3>
+          <p class="feature-description">From your first inquiry to your final day, our team is here to support you with care, clarity and professionalism. Whether crafting your itinerary or providing on-the-ground assistance, we ensure you feel fully supported every step of the way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    
+  </div>
+
+      <section class="partners-section">
+        <h2 class="section-title">Our Partners</h2>
+        <div class="partners-slider">
+          <button class="slider-control slider-prev">&#10094;</button>
+          <div class="slider-container" id="sliderContainer">
+            <?php foreach ($partners as $partner): ?>
+              <div class="slider-item">
+                <?php if (!empty($partner['web_url'])): ?>
+                  <a href="<?php echo htmlspecialchars($partner['web_url']); ?>" target="_blank" rel="noopener noreferrer">
+                <?php endif; ?>
+                  <img src="./admin/<?php echo htmlspecialchars($partner['logo_url']); ?>" alt="Partner Logo" ondragstart="return false;" oncontextmenu="return false;"/>
+                <?php if (!empty($partner['web_url'])): ?>
+                  </a>
+                <?php endif; ?>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          <button class="slider-control slider-next">&#10095;</button>
+        </div>
+      </section>
+     
+
+    </main>
+
+  <?php include 'includes/footer.php'; ?>
+  <script src="js/script.js" defer></script>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="js/new.js" defer></script>
+  <script src="js/last.js" defer></script>
+  </body>
+</html>
