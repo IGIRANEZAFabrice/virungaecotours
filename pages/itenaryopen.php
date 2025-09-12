@@ -174,7 +174,7 @@ require_once './itenaryopenhandler.php';
       <div class="contact-container">
         <!-- Contact Form -->
         <div class="contact-form-container">
-          <h4>book: <?php echo htmlspecialchars($tour['title']); ?></h4>
+          <h4>Book: <?php echo htmlspecialchars($tour['title']); ?></h4>
 
           <?php if (isset($_GET['error'])): ?>
             <div class="error-message">
@@ -191,7 +191,7 @@ require_once './itenaryopenhandler.php';
 
           <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
             <div class="success-message">
-              Booking successful! We'll contact you shortly.
+              Booking successful! We'll contact you shortly || <a href="../pages/payments.php">Payment methods</a>
             </div>
           <?php endif; ?>
           <form method="POST" action="./itenaryopenhandler.php" id="contactForm">
@@ -202,7 +202,7 @@ require_once './itenaryopenhandler.php';
                   type="text"
                   id="name"
                   name="name"
-                  placeholder="Your name"
+                  placeholder="Your names "
                   required
                 />
                 <div class="input-icon">
@@ -216,7 +216,7 @@ require_once './itenaryopenhandler.php';
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="your.email@example.com"
+                  placeholder="info@virungaecotours.com"
                   required
                 />
                 <div class="input-icon">
@@ -232,7 +232,7 @@ require_once './itenaryopenhandler.php';
                   type="tel"
                   id="phone"
                   name="phone"
-                  placeholder="+1 234 567 8900"
+                  placeholder="+250784513435"
                   required
                 />
                 <div class="input-icon">
@@ -254,7 +254,7 @@ require_once './itenaryopenhandler.php';
           </form>
 
           <div class="form-footer">
-            We usually respond within <span>24 hours</span>
+            We usually respond within <span>24 hours</span> || <a href="../pages/payments.php" target="_blank">Payment methods</a>
           </div>
         </div>
 

@@ -138,9 +138,135 @@ $cta_data = $cta_result->fetch_assoc();
 
     <!-- Team Section -->
     <section class="team" id="team">
+
         <div class="container">
             <h2><?php echo htmlspecialchars($team_section_data['section_title']); ?></h2>
             <p class="section-intro"><?php echo htmlspecialchars($team_section_data['section_intro']); ?></p>
+
+            <!-- Team Introduction -->
+            <div class="team-introduction">
+                <div class="team-intro-content">
+                    <div class="team-intro-text">
+                        <h3>Introduction to the Team</h3>
+                        <p>Virunga Ecotours is led by a multidisciplinary team that blends tourism expertise, creative communication, and strong local engagement. The group unites professional planners, hospitality specialists, and storytellers who together present the Virunga Massif not only as a destination, but as a living cultural and ecological landscape. Their strength lies in combining academic knowledge, creative media skills, and practical experience to provide travelers with seamless service and meaningful encounters.</p>
+                    </div>
+
+                    <div class="team-composition">
+                        <h4>Composition of the Team</h4>
+                        <div class="team-roles-grid">
+                            <div class="role-item">
+                                <div class="role-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="role-content">
+                                    <h5>Tour Planners and Tour Managers</h5>
+                                    <p>Professionals who design customized itineraries, manage logistics, and ensure that every aspect of the journey—from permits to transport—is well organized.</p>
+                                </div>
+                            </div>
+
+                            <div class="role-item">
+                                <div class="role-icon">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <div class="role-content">
+                                    <h5>Photographers and Content Makers</h5>
+                                    <p>Skilled in capturing both landscapes and community moments, they create high-quality images and stories that preserve travelers' memories and showcase the beauty of the Virunga region.</p>
+                                </div>
+                            </div>
+
+                            <div class="role-item">
+                                <div class="role-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="role-content">
+                                    <h5>Social Media and Website Managers</h5>
+                                    <p>Digital specialists responsible for maintaining Virunga Ecotours' online presence, updating platforms with inspiring content, and ensuring travelers worldwide can connect easily with services.</p>
+                                </div>
+                            </div>
+
+                            <div class="role-item">
+                                <div class="role-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <div class="role-content">
+                                    <h5>Marketing Coordinators and Social Influencers</h5>
+                                    <p>A team that amplifies visibility through both traditional outreach and modern influencer-driven campaigns, making the Virunga Massif a recognizable brand in global tourism.</p>
+                                </div>
+                            </div>
+
+                            <div class="role-item">
+                                <div class="role-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="role-content">
+                                    <h5>Community Hosts and Cultural Ambassadors</h5>
+                                    <p>Residents who welcome visitors into homestays, cultural programs, and daily life, offering authentic interactions rooted in local traditions.</p>
+                                </div>
+                            </div>
+
+                            <div class="role-item">
+                                <div class="role-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div class="role-content">
+                                    <h5>Training and Mentorship Staff</h5>
+                                    <p>Educators and facilitators who prepare youth and aspiring professionals in hospitality, guiding, and tourism management through the Virunga Ecotours Training Institute.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-approach">
+                        <h4>Professionalism and Academic Approach</h4>
+                        <p>Each team member brings a balance of academic background and practical skills. Tour planners and managers often have formal training in tourism and hospitality, while content creators and media managers apply knowledge of digital communication, marketing, and design. Community hosts contribute lived experience and cultural depth, ensuring that both scholarly insight and authentic storytelling are woven into every encounter.</p>
+                    </div>
+
+                    <div class="team-meeting">
+                        <h4>How You Can Meet the Team</h4>
+                        <div class="meeting-ways">
+                            <div class="meeting-item">
+                                <div class="meeting-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="meeting-content">
+                                    <h6>At Virunga Homestays</h6>
+                                    <p>Upon arrival, community hosts and tour managers personally welcome guests and provide orientation.</p>
+                                </div>
+                            </div>
+
+                            <div class="meeting-item">
+                                <div class="meeting-icon">
+                                    <i class="fas fa-hiking"></i>
+                                </div>
+                                <div class="meeting-content">
+                                    <h6>During Organized Activities</h6>
+                                    <p>Tour planners and cultural ambassadors guide guests through community-based experiences, workshops, and excursions.</p>
+                                </div>
+                            </div>
+
+                            <div class="meeting-item">
+                                <div class="meeting-icon">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <div class="meeting-content">
+                                    <h6>Through Digital Platforms</h6>
+                                    <p>Photographers, content makers, and social media managers share stories online, offering travelers a way to connect before and after their visit.</p>
+                                </div>
+                            </div>
+
+                            <div class="meeting-item">
+                                <div class="meeting-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="meeting-content">
+                                    <h6>In Marketing and Public Engagements</h6>
+                                    <p>Guests may also meet marketing staff and influencers during special events, campaigns, or collaborative community projects.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="team-container">
                 <?php foreach ($team_members as $index => $member): ?>

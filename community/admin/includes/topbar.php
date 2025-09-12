@@ -12,6 +12,10 @@
                 'team' => 'Team Members',
                 'messages' => 'Messages',
                 'categories' => 'Categories',
+                'impact' => 'Impact Page',
+                'schools' => 'Schools & Community Programs',
+                'volunteer' => 'Volunteer Management',
+                'inclusive' => 'Inclusive Programs',
                 'settings' => 'Settings'
             ];
             
@@ -123,6 +127,7 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--neutral-beige);
+    margin-left: 280px; /* prevent overlap with fixed sidebar */
 }
 
 .top-bar-left {
@@ -401,6 +406,7 @@
     
     .top-bar {
         padding: 1rem;
+        margin-left: 0; /* sidebar collapses on mobile */
     }
     
     .user-details {

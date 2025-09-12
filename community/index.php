@@ -137,6 +137,92 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
         </div>
     </section>
 
+    <!-- Community-Based Tourism Section -->
+    <section class="cbt-section">
+        <div class="container">
+            <div class="cbt-header">
+                <h2 class="section-title">What is Community-Based Tourism?</h2>
+                <div class="cbt-definition">
+                    <p>Community-based tourism (CBT) ensures that local communities have full ownership and management of the tourism experience, so that the economic benefits of tourism stay within their community. CBT is designed to give travellers an authentic taste of a local community's heritage, their cultural practices and natural resources, and in this way offers an immersive and rich travel experience.</p>
+                </div>
+            </div>
+
+            <div class="cbt-benefits">
+                <h3 class="benefits-title">Benefits of Community-Based Tourism</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card scroll-animate">
+                        <div class="benefit-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Economic</h4>
+                            <p>CBT provides employment opportunities, revenue generation, local procurement of goods and services and limits the funds that leave the community. It also helps diversify the economic activities beyond farming, which reduces risk in years when climate change produces low or no yield.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card scroll-animate">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Shared Value</h4>
+                            <p>Within a CBT, there is a distribution of benefits to all households. For example, though not all families will host homestays some may act as guides or provide meals. Even those not directly involved benefit from the agreed use of the community fund.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card scroll-animate">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Social</h4>
+                            <p>CBT provides people with skills-training, opportunities for community infrastructure development (power, roads, sanitation, water) and health benefits (water and waste management education). It also promotes a more equitable community structure and the association with foreign travellers helps raise confidence and pride among the people.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card scroll-animate">
+                        <div class="benefit-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Environmental</h4>
+                            <p>Conservation of the environment, awareness and wildlife protection are all great benefits of CBT.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card scroll-animate">
+                        <div class="benefit-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Female Empowerment</h4>
+                            <p>One of the greatest outcomes is the empowerment of women in the community, as they are often largely responsible for the management and generation of the experience and therefore income.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-card scroll-animate">
+                        <div class="benefit-icon">
+                            <i class="fas fa-monument"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h4>Preservation of Culture</h4>
+                            <p>Often CBT prevents young people in communities leaving for larger cities, by providing employment opportunities for them locally.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Middle Section - Text Mask -->
+    <section class="middle-section">
+        <div class="mask-container">
+            <div class="background-reveal"></div>
+            <div class="mask-text">
+                VIRUNGA COMMUNITY PROGRAMS
+            </div>
+        </div>
+    </section>
+
     <!-- Programs Section -->
     <section class="programs-section" id="programs">
         <div class="container">
@@ -180,7 +266,7 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
             </div>
             
             <div class="text-center" style="margin-top: var(--spacing-xl);">
-                <a href="#" class="cta-button">View All Programs</a>
+                <a href="./programs.php" class="cta-button">View All Programs</a>
             </div>
         </div>
     </section>
@@ -204,7 +290,7 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
             <div class="activities-grid">
                 <?php if (isset($activities_result) && mysqli_num_rows($activities_result) > 0): ?>
                     <?php while ($activity = mysqli_fetch_assoc($activities_result)): ?>
-                        <?php 
+                        <?php
                             $summary = substr(strip_tags($activity['content']), 0, 150);
                             $hasMore = strlen(strip_tags($activity['content'])) > 150;
                         ?>
@@ -225,7 +311,7 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
             </div>
             
             <div class="text-center" style="margin-top: var(--spacing-xl);">
-                <a href="#" class="cta-button">View All Activities</a>
+                <a href="./activity.php" class="cta-button">View All Activities</a>
             </div>
         </div>
     </section>
@@ -294,6 +380,7 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
      
     <?php include 'includes/footer.php'; ?>
     <script src="assets/js/community.js"></script>
+    <script src="assets/js/scroll.js"></script>
     <script src="assets/js/community-header-footer.js"></script>
 </body>
 </html>

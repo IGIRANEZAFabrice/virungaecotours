@@ -24,38 +24,30 @@
                     <div class="footer-column links-column">
                         <h4 class="footer-title">Quick Links</h4>
                         <ul class="footer-links">
-                            <li><a href="index.php">Home</a></li>
-                            <li><a href="about.php"> About Us</a></li>
+                            
                             <li><a href="programs.php"> Our Programs</a></li>
                             <li><a href="contact.php"> Contact Us</a></li>
                             <li><a href="impact.php">Community Impact</a></li>
+                            <li><a href="../pages/requirements.php">Requirements</a></li>
+                             <li><a href="./school.php">Local Schools</a></li>
+                              <li><a href="questions.php">What is CBT?</a></li>
+                              <li><a href="../pages/animal.php">Animal Welfare Care Awareness</a></li>
+                              <li><a href="./heritage.php">Farms & Culture</a></li>
                         </ul>
                     </div>
-
-                    <!-- Programs by Country -->
-                    <div class="footer-column programs-column">
-                        <h4 class="footer-title">Programs by Region</h4>
+                    <div class="footer-column links-column">
+                        <h4 class="footer-title">Other links </h4>
                         <ul class="footer-links">
-                            <li>
-                                <a href="programs.php?country=rwanda">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    Rwanda Programs
-                                </a>
-                            </li>
-                            <li>
-                                <a href="programs.php?country=uganda">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    Uganda Programs
-                                </a>
-                            </li>
-                            <li>
-                                <a href="programs.php?country=congo">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    DRC Congo Programs
-                                </a>
-                            </li>
+                            <li><a href="activity.php#booking-activity"> How to book the community activities</a></li>
+                            <li><a href="../pages/complaints.php">Common complaints & solutions</a></li>
+                            <li><a href="../pages/faq-page.php">FAQs</a></li>
+                            <li><a href="inclusive.php">Inclusive Tourism</a></li>
+                            <li><a href="philanthropy.php">Philanthropy Tourism</a></li>
+                            <li><a href="voluntourism.php">Voluntourism</a></li>
+                           
                         </ul>
                     </div>
+                    
 
                     <!-- Contact & Get Involved -->
                     <div class="footer-column contact-column">
@@ -113,15 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="partners-section">
-                        <h4>Our Partners</h4>
-                        <div class="partners-logos">
-                            <img src="../images/paterners/5826ffd90d544fbc8a11b429ef2fb87b.png" alt="Partner Organization" class="partner-logo">
-                            <img src="../images/paterners/FoT Master_RGB.png" alt="Partner Organization" class="partner-logo">
-                            <img src="../images/paterners/Mellon_Foundation_logo_2022.svg.png" alt="Partner Organization" class="partner-logo">
-                            <img src="../images/paterners/WEB-LOGO-01.png" alt="Partner Organization" class="partner-logo">
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </div>
@@ -136,8 +120,8 @@
                     </div>
                     
                     <div class="footer-bottom-links">
-                        <a href="../pages/privacy.php" class="footer-link">Privacy Policy</a>
-                        <a href="../pages/faq-page.php" class="footer-link">Terms of Service</a>
+                        <a href="../pages/Privacy.php" class="footer-link">Privacy Policy</a>
+                      
                         <a href="contact.php" class="footer-link">Contact</a>
                         <a href="../index.php" class="footer-link main-site">Main Website</a>
                     </div>

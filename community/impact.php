@@ -1,3 +1,34 @@
+<?php require_once '../admin/config/connection.php';
+// Load main page (first row or create empty defaults)
+$page = null;
+$page_q = mysqli_query($conn, "SELECT id, section_description FROM impact_page ORDER BY id ASC LIMIT 1");
+if ($page_q && mysqli_num_rows($page_q) > 0) {
+    $page = mysqli_fetch_assoc($page_q);
+} else {
+    $page = [ 'id' => null, 'section_description' => '' ];
+}
+
+$page_id = $page['id'];
+
+// Load gallery, cards, teaching programs for this page
+$gallery = [];
+if ($page_id) {
+    $gq = mysqli_query($conn, "SELECT id, image, title, description FROM impact_gallery WHERE page_id = " . (int)$page_id . " ORDER BY id ASC");
+    if ($gq) { while ($r = mysqli_fetch_assoc($gq)) { $gallery[] = $r; } }
+}
+
+$cards = [];
+if ($page_id) {
+    $cq = mysqli_query($conn, "SELECT id, image, title, description FROM impact_cards WHERE page_id = " . (int)$page_id . " ORDER BY id ASC");
+    if ($cq) { while ($r = mysqli_fetch_assoc($cq)) { $cards[] = $r; } }
+}
+
+$programs = [];
+if ($page_id) {
+    $pq = mysqli_query($conn, "SELECT id, image, title, description, features FROM teaching_programs WHERE page_id = " . (int)$page_id . " ORDER BY id ASC");
+    if ($pq) { while ($r = mysqli_fetch_assoc($pq)) { $programs[] = $r; } }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,94 +73,59 @@
         <section class="impact-section">
             <div class="container">
                 <h2 class="section-title">Community Impact</h2>
-                <p class="section-description">We are dedicated to supporting women and local traditional craftspeople in our community, preserving cultural heritage while creating sustainable livelihoods through poetry, painting, sewing, and selling cultural products.</p>
+                <p class="section-description"><?php echo nl2br(htmlspecialchars($page['section_description'] ?? '')); ?></p>
                 
                 <!-- Image Gallery -->
                 <div class="image-gallery">
+                    <?php if (count($gallery) === 0): ?>
+                        <div class="programs-intro">No gallery items yet.</div>
+                    <?php else: ?>
+                        <?php foreach ($gallery as $g): ?>
                     <div class="gallery-item">
-                        <img src="uploads/impact/IMG-20250820-WA0080.jpg" alt="Traditional pottery making workshop" class="gallery-image">
+                            <img src="uploads/impact/<?php echo htmlspecialchars($g['image']); ?>" alt="<?php echo htmlspecialchars($g['title']); ?>" class="gallery-image">
                         <div class="gallery-overlay">
-                            <h3>Traditional Pottery</h3>
-                            <p>Learning ancient clay techniques</p>
-                        </div>
+                                <h3><?php echo htmlspecialchars($g['title']); ?></h3>
+                                <p><?php echo htmlspecialchars($g['description']); ?></p>
                     </div>
-                    <div class="gallery-item">
-                        <img src="uploads/impact/IMG-20250820-WA0098.jpg" alt="Young artist painting" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h3>Artistic Expression</h3>
-                            <p>Nurturing creative talents</p>
                         </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="uploads/impact/123.jpg" alt="Woman sewing traditional crafts" class="gallery-image">
-                        <div class="gallery-overlay">
-                            <h3>Traditional Sewing</h3>
-                            <p>Preserving textile heritage</p>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Impact Cards -->
                 <div class="impact-cards">
+                    <?php if (count($cards) === 0): ?>
+                        <div class="programs-intro">No impact cards yet.</div>
+                    <?php else: ?>
+                        <?php foreach ($cards as $c): ?>
                     <div class="impact-card">
-                        <img src="uploads/impact/2022.01_Malaika02.jpg" alt="Women's cooperative group" class="card-image">
+                            <img src="uploads/impact/<?php echo htmlspecialchars($c['image']); ?>" alt="<?php echo htmlspecialchars($c['title']); ?>" class="card-image">
                         <div class="card-content">
-                            <h3>Women's Empowerment</h3>
-                            <p>Supporting local women through skill development and economic opportunities in traditional crafts and cultural preservation.</p>
-                        </div>
+                                <h3><?php echo htmlspecialchars($c['title']); ?></h3>
+                                <p><?php echo htmlspecialchars($c['description']); ?></p>
                     </div>
-                    <div class="impact-card">
-                        <img src="uploads/impact/IMG-20250820-WA0092.jpg" alt="Traditional baskets display" class="card-image">
-                        <div class="card-content">
-                            <h3>Cultural Products</h3>
-                            <p>Creating and selling authentic cultural products that celebrate our heritage while providing sustainable income.</p>
                         </div>
-                    </div>
-                    <div class="impact-card">
-                        <img src="uploads/impact/IMG-20250814-WA0047.jpg" alt="Traditional art painting" class="card-image">
-                        <div class="card-content">
-                            <h3>Artistic Heritage</h3>
-                            <p>Preserving traditional painting techniques and encouraging contemporary artistic expression rooted in culture.</p>
-                        </div>
-                    </div>
-                    <div class="impact-card">
-                        <img src="uploads/impact/HO2A5298.JPG" alt="Traditional pottery crafting" class="card-image">
-                        <div class="card-content">
-                            <h3>Craft Mastery</h3>
-                            <p>Teaching traditional pottery and ceramic techniques to preserve ancient skills for future generations.</p>
-                        </div>
-                    </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Mobile Carousel -->
                 <div class="mobile-carousel">
                     <div class="carousel-container">
-                        <div class="carousel-slide active">
-                            <img src="uploads/impact/IMG-20250820-WA0009.jpg" alt="Art gallery showcase" class="carousel-image">
+                        <?php $i=0; foreach ($gallery as $g): ?>
+                        <div class="carousel-slide <?php echo $i===0 ? 'active' : ''; ?>">
+                            <img src="uploads/impact/<?php echo htmlspecialchars($g['image']); ?>" alt="<?php echo htmlspecialchars($g['title']); ?>" class="carousel-image">
                             <div class="carousel-content">
-                                <h3>Art Gallery</h3>
-                                <p>Showcasing local talent</p>
+                                <h3><?php echo htmlspecialchars($g['title']); ?></h3>
+                                <p><?php echo htmlspecialchars($g['description']); ?></p>
                             </div>
                         </div>
-                        <div class="carousel-slide">
-                            <img src="uploads/impact/IMG-20250820-WA0093.jpg" alt="Traditional crafts market" class="carousel-image">
-                            <div class="carousel-content">
-                                <h3>Craft Market</h3>
-                                <p>Supporting local artisans</p>
-                            </div>
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="uploads/impact/IMG-20250820-WA0014.jpg" alt="Cultural sculptures" class="carousel-image">
-                            <div class="carousel-content">
-                                <h3>Cultural Art</h3>
-                                <p>Preserving traditions</p>
-                            </div>
-                        </div>
+                        <?php $i++; endforeach; ?>
                     </div>
                     <div class="carousel-dots">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
+                        <?php for ($d = 0; $d < count($gallery); $d++): ?>
+                            <span class="dot <?php echo $d===0 ? 'active' : ''; ?>" data-slide="<?php echo $d; ?>"></span>
+                        <?php endfor; ?>
                     </div>
                 </div>
             </div>
@@ -156,7 +152,7 @@
                 </div>
 
                 <h3 class="subsection-title"><i class="fas fa-hand-holding-heart"></i> <span>What We Do</span></h3>
-                <div class="activities-grid">
+                 <div class="activities-grid">
                     <div class="activity-card">
                         <div class="activity-icon"><i class="fas fa-feather"></i></div>
                         <h4>Poetry</h4>
@@ -199,50 +195,26 @@
                 <p class="section-description">We provide comprehensive training programs that blend traditional knowledge with modern skills, empowering our community members with valuable expertise.</p>
                 
                 <div class="teaching-cards">
+                    <?php foreach ($programs as $p): ?>
                     <div class="teaching-card">
-                        <img src="uploads/impact/IMG-20250814-WA0054.jpg" alt="Cooking class with traditional pots" class="teaching-image">
+                        <img src="uploads/impact/<?php echo htmlspecialchars($p['image']); ?>" alt="<?php echo htmlspecialchars($p['title']); ?>" class="teaching-image">
                         <div class="teaching-content">
-                            <div class="teaching-icon"><i class="fas fa-utensils"></i></div>
-                            <h3>Traditional Cooking</h3>
-                            <p>Learn authentic Rwandan cuisine using traditional cooking methods and clay pots. Our cooking classes preserve culinary heritage while teaching practical skills for hospitality and entrepreneurship.</p>
+                            <div class="teaching-icon"><i class="fas fa-book-open"></i></div>
+                            <h3><?php echo htmlspecialchars($p['title']); ?></h3>
+                            <p><?php echo htmlspecialchars($p['description']); ?></p>
+                            <?php 
+                                $features = array_filter(array_map('trim', explode("\n", (string)($p['features'] ?? ''))));
+                                if (count($features) > 0):
+                            ?>
                             <ul class="teaching-features">
-                                <li>Traditional recipe preservation</li>
-                                <li>Clay pot cooking techniques</li>
-                                <li>Food presentation and service</li>
-                                <li>Culinary entrepreneurship</li>
+                                <?php foreach ($features as $f): ?>
+                                    <li><?php echo htmlspecialchars($f); ?></li>
+                                <?php endforeach; ?>
                             </ul>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    
-                    <div class="teaching-card">
-                        <img src="uploads/impact/IMG-20250820-WA0095.jpg" alt="Tourism guide training" class="teaching-image">
-                        <div class="teaching-content">
-                            <div class="teaching-icon"><i class="fas fa-map"></i></div>
-                            <h3>Tourism & Guiding</h3>
-                            <p>Develop skills in tourism and cultural guiding to share our rich heritage with visitors. Learn storytelling, cultural interpretation, and sustainable tourism practices.</p>
-                            <ul class="teaching-features">
-                                <li>Cultural storytelling techniques</li>
-                                <li>Heritage site interpretation</li>
-                                <li>Sustainable tourism practices</li>
-                                <li>Language and communication skills</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="teaching-card">
-                        <img src="uploads/impact/2022.01_Malaika02.jpg" alt="Handicraft training session" class="teaching-image">
-                        <div class="teaching-content">
-                            <div class="teaching-icon"><i class="fas fa-palette"></i></div>
-                            <h3>Traditional Handicrafts</h3>
-                            <p>Master traditional handicraft techniques including basket weaving, pottery, textile work, and Imigongo art. These skills provide both cultural preservation and economic opportunities.</p>
-                            <ul class="teaching-features">
-                                <li>Basket weaving and pottery</li>
-                                <li>Traditional textile techniques</li>
-                                <li>Imigongo art creation</li>
-                                <li>Product design and marketing</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -252,4 +224,6 @@
     <script src="assets/js/impact.js"></script>
 </body>
 </html>
+
+<?php mysqli_close($conn); ?>
 

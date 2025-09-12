@@ -113,23 +113,7 @@ function formatActivityContent($content) {
                     ?>
                 </div>
                 
-                <?php if (!empty($activity['highlights'])): ?>
-                <div class="activity-highlights">
-                    <h3>Highlights</h3>
-                    <div class="highlights-content">
-                        <?php echo $activity['highlights']; ?>
-                    </div>
-                </div>
-                <?php endif; ?>
                 
-                <?php if (!empty($activity['includes'])): ?>
-                <div class="activity-includes">
-                    <h3>What's Included</h3>
-                    <div class="includes-content">
-                        <?php echo $activity['includes']; ?>
-                    </div>
-                </div>
-                <?php endif; ?>
                 
                 <div class="activity-impact">
                     <h3>Community Impact</h3>
@@ -224,7 +208,7 @@ function formatActivityContent($content) {
                         </div>
                     </div>
                     <div class="activity-content">
-                        <h3 class="activity-title"><?php echo htmlspecialchars($related['title']); ?></h3>
+                        <h3 class="activity-title" style="color:#ffffff;"><?php echo htmlspecialchars($related['title']); ?></h3>
                         <div class="activity-meta">
                            
                             <a href="activity-detail.php?id=<?php echo $related['id']; ?>" class="activity-link">
@@ -385,12 +369,18 @@ function formatActivityContent($content) {
     .activity-main-content {
         background-color: #fff;
         border-radius: 8px;
-        overflow: hidden;
         box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
     
     .activity-description {
         padding: 30px;
+        /* Override the line-clamp from community.css to show full content */
+        display: block !important;
+        -webkit-line-clamp: unset !important;
+        -webkit-box-orient: unset !important;
+        overflow: visible !important;
+        max-height: none !important;
+        height: auto !important;
     }
     
     .activity-description p {

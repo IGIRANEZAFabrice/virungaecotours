@@ -325,13 +325,16 @@ body {
 
 .sidebar {
     width: 280px;
-    background-color: var(--primary-green);
+    background: linear-gradient(180deg, var(--primary-green) 0%, var(--accent-sage) 100%);
     color: white;
     position: fixed;
+    top: 0;
+    left: 0;
     height: 100vh;
     overflow-y: auto;
     z-index: 1000;
     transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-header {
@@ -391,6 +394,23 @@ body {
     margin-left: 280px;
     background-color: var(--neutral-light);
     min-height: 100vh;
+}
+
+/* Admin Container */
+.admin-container {
+    margin-left: 280px;
+    min-height: 100vh;
+    background-color: var(--neutral-light);
+    position: relative;
+    z-index: 1;
+}
+
+/* New pages use admin-main instead of main-content */
+.admin-main {
+    padding: 2rem;
+    margin-top: 0;
+    position: relative;
+    z-index: 2;
 }
 
 .top-bar {
@@ -494,8 +514,17 @@ body {
         transform: translateX(0);
     }
     
+    .admin-container {
+        margin-left: 0;
+    }
+
     .main-content {
         margin-left: 0;
+    }
+
+    .admin-main {
+        margin-left: 0;
+        padding: 1rem;
     }
     
     .top-bar {

@@ -93,7 +93,7 @@ if (ob_get_level() > 0) {
               <p>
                 Connect with Virunga Ecotours on social media for stunning photos, traveler stories, and behind-the-scenes glimpses of our adventures.
               </p>
-              <div class="cta-social-buttons">
+              <div class="cta-buttons">
                 <a href="https://facebook.com/virungaecotours" target="_blank" class="cta-social-button">
                   <i class="fab fa-facebook-f"></i>
                   Facebook
@@ -119,17 +119,25 @@ if (ob_get_level() > 0) {
       <div class="footer-column company-info">
         <h3>MORE FROM Virunga Ecotours</h3>
         <ul class="footer-links">
-          <li><a href="./pages/blogs.php" class="footer-link">Blogs</a></li>
+
+          <li><a href="./pages/training.php" class="footer-link">Training Support</a></li>
+          <li><a href="./community/impact.php" class="footer-link">Community Impact</a></li>
+          <li><a href="./pages/kids.php" class="footer-link">Kids Tourism</a></li>
+          <li><a href="./pages/payments.php" class="footer-link">Authorized Payments Methods</a></li>
+          <li><a href="./pages/lgbtq.php" class="footer-link">Inclusive Tourism(LGBTQ+)</a></li>
           <li><a href="./pages/faq-page.php" class="footer-link">FAQs</a></li>
-          <li><a href="./pages/contact.php" class="footer-link">Contact us</a></li>
-          <li><a href="./community/impact.php">Community Impact</a></li>
+          <li><a href="./pages/complaints.php" class="footer-link">Common complaints & solutions</a></li>
+          <li><a href="./pages/requirements.php" class="footer-link">Requirements</a></li>
+          <li><a href="./community/inclusive.php" class="footer-link">CBT in Inclusive Education</a></li>
+          <li><a href="./pages/animal.php" class="footer-link">Animal Welfare Care Awareness</a></li>
+          <li><a href="./pages/honeymoon.php" class="footer-link">Honeymoon in CBT</a></li>
           
           <li>
             <a href="./pages/styleguide.php" class="footer-link"
               >The Virunga Ecotours differences</a
             >
           </li>
-          <li><a href="./pages/about.php" class="footer-link">About us</a></li>
+          <li><a href="./pages/activity.php" class="footer-link">Beyond The Park Experience</a></li>
         </ul>
       </div>
 

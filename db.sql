@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 20, 2025 at 06:16 AM
--- Server version: 8.0.42-33
--- PHP Version: 8.3.23
+-- Host: 127.0.0.1
+-- Generation Time: Sep 03, 2025 at 12:09 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about_cta` (
-  `cta_id` int NOT NULL,
+  `cta_id` int(11) NOT NULL,
   `section_title` varchar(255) NOT NULL DEFAULT 'Join Our Journey',
   `section_description` text NOT NULL,
   `button_text` varchar(100) NOT NULL DEFAULT 'Plan Your Adventure',
@@ -39,9 +39,9 @@ CREATE TABLE `about_cta` (
   `twitter_url` varchar(255) DEFAULT NULL,
   `youtube_url` varchar(255) DEFAULT NULL,
   `pinterest_url` varchar(255) DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -58,15 +58,15 @@ INSERT INTO `about_cta` (`cta_id`, `section_title`, `section_description`, `butt
 --
 
 CREATE TABLE `about_gallery` (
-  `gallery_id` int NOT NULL,
-  `section_id` int NOT NULL,
+  `gallery_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `alt_text` varchar(255) NOT NULL,
-  `display_order` int NOT NULL DEFAULT '1',
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `display_order` int(11) NOT NULL DEFAULT 1,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -88,12 +88,12 @@ INSERT INTO `about_gallery` (`gallery_id`, `section_id`, `image`, `title`, `alt_
 --
 
 CREATE TABLE `about_gallery_section` (
-  `section_id` int NOT NULL,
+  `section_id` int(11) NOT NULL,
   `section_title` varchar(255) NOT NULL DEFAULT 'Experience Snapshots',
   `section_intro` text NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -110,15 +110,15 @@ INSERT INTO `about_gallery_section` (`section_id`, `section_title`, `section_int
 --
 
 CREATE TABLE `about_hero` (
-  `hero_id` int NOT NULL,
+  `hero_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT 'EcoTours',
   `subtitle` varchar(500) NOT NULL DEFAULT 'Discover Nature, Sustainably',
   `button_text` varchar(100) NOT NULL DEFAULT 'Explore Our Story',
   `button_link` varchar(255) NOT NULL DEFAULT '#our-story',
   `background_image` varchar(255) NOT NULL DEFAULT '1744328168_worship-background-d436nxs98r8bf26n.jpg',
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -135,12 +135,12 @@ INSERT INTO `about_hero` (`hero_id`, `title`, `subtitle`, `button_text`, `button
 --
 
 CREATE TABLE `about_impact` (
-  `impact_id` int NOT NULL,
+  `impact_id` int(11) NOT NULL,
   `section_title` varchar(255) NOT NULL DEFAULT 'Our Impact',
   `section_intro` text NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -157,15 +157,15 @@ INSERT INTO `about_impact` (`impact_id`, `section_title`, `section_intro`, `is_a
 --
 
 CREATE TABLE `about_impact_stats` (
-  `stat_id` int NOT NULL,
-  `impact_id` int NOT NULL,
+  `stat_id` int(11) NOT NULL,
+  `impact_id` int(11) NOT NULL,
   `icon_class` varchar(100) NOT NULL,
-  `stat_count` int NOT NULL,
+  `stat_count` int(11) NOT NULL,
   `stat_title` varchar(255) NOT NULL,
-  `display_order` int NOT NULL DEFAULT '1',
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `display_order` int(11) NOT NULL DEFAULT 1,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -184,7 +184,7 @@ INSERT INTO `about_impact_stats` (`stat_id`, `impact_id`, `icon_class`, `stat_co
 --
 
 CREATE TABLE `about_story` (
-  `story_id` int NOT NULL,
+  `story_id` int(11) NOT NULL,
   `section_title` varchar(255) NOT NULL DEFAULT 'Our Story',
   `paragraph_1` text NOT NULL,
   `paragraph_2` text NOT NULL,
@@ -192,9 +192,9 @@ CREATE TABLE `about_story` (
   `button_text` varchar(100) NOT NULL DEFAULT 'Learn More',
   `button_link` varchar(255) NOT NULL DEFAULT '#',
   `story_image` varchar(255) NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -211,8 +211,8 @@ INSERT INTO `about_story` (`story_id`, `section_title`, `paragraph_1`, `paragrap
 --
 
 CREATE TABLE `about_team_members` (
-  `member_id` int NOT NULL,
-  `section_id` int NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
   `bio` text NOT NULL,
@@ -220,10 +220,10 @@ CREATE TABLE `about_team_members` (
   `linkedin_url` varchar(255) DEFAULT NULL,
   `twitter_url` varchar(255) DEFAULT NULL,
   `instagram_url` varchar(255) DEFAULT NULL,
-  `display_order` int NOT NULL DEFAULT '1',
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `display_order` int(11) NOT NULL DEFAULT 1,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -242,12 +242,12 @@ INSERT INTO `about_team_members` (`member_id`, `section_id`, `name`, `role`, `bi
 --
 
 CREATE TABLE `about_team_section` (
-  `section_id` int NOT NULL,
+  `section_id` int(11) NOT NULL,
   `section_title` varchar(255) NOT NULL DEFAULT 'Meet the Team',
   `section_intro` text NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -264,15 +264,15 @@ INSERT INTO `about_team_section` (`section_id`, `section_title`, `section_intro`
 --
 
 CREATE TABLE `about_values` (
-  `value_id` int NOT NULL,
-  `section_id` int NOT NULL,
+  `value_id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
   `icon_class` varchar(100) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `display_order` int NOT NULL DEFAULT '1',
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `display_order` int(11) NOT NULL DEFAULT 1,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -294,12 +294,12 @@ INSERT INTO `about_values` (`value_id`, `section_id`, `icon_class`, `title`, `de
 --
 
 CREATE TABLE `about_values_section` (
-  `section_id` int NOT NULL,
+  `section_id` int(11) NOT NULL,
   `section_title` varchar(255) NOT NULL DEFAULT 'Why Choose Us',
   `section_intro` text NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -316,18 +316,18 @@ INSERT INTO `about_values_section` (`section_id`, `section_title`, `section_intr
 --
 
 CREATE TABLE `admins` (
-  `admin_id` int NOT NULL,
-  `first_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `profile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'costa-rica.jpg',
+  `admin_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `profile_image` varchar(255) DEFAULT 'costa-rica.jpg',
   `last_login` datetime DEFAULT NULL,
-  `login_attempts` int DEFAULT '0',
-  `account_status` enum('active','suspended','inactive') COLLATE utf8mb4_unicode_ci DEFAULT 'active',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `login_attempts` int(11) DEFAULT 0,
+  `account_status` enum('active','suspended','inactive') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -335,7 +335,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `first_name`, `last_name`, `email`, `password`, `phone`, `profile_image`, `last_login`, `login_attempts`, `account_status`, `created_at`, `updated_at`) VALUES
-(1, 'Virunga', 'Ecotours', 'virungaecotours@gmail.com', '$2y$10$1eBZ7fS/lmyGWgIUCineN.CEY3JSK/vTCDX/UZqM0N6RfAGtRJ6GS', '+(250)784513435', '../images/profile/682347ba5168e_69816a90-0e27-4d22-ba16-125f23191e39.jpg', '2025-08-20 01:30:49', 0, 'active', '2025-04-01 10:32:53', '2025-08-20 07:30:49');
+(1, 'Virunga', 'Ecotours', 'virungaecotours@gmail.com', '$2y$10$1eBZ7fS/lmyGWgIUCineN.CEY3JSK/vTCDX/UZqM0N6RfAGtRJ6GS', '+(250)784513435', '../images/profile/682347ba5168e_69816a90-0e27-4d22-ba16-125f23191e39.jpg', '2025-08-30 22:45:58', 0, 'active', '2025-04-01 10:32:53', '2025-08-30 20:45:58');
 
 -- --------------------------------------------------------
 
@@ -344,12 +344,12 @@ INSERT INTO `admins` (`admin_id`, `first_name`, `last_name`, `email`, `password`
 --
 
 CREATE TABLE `admin_activity_logs` (
-  `log_id` int NOT NULL,
-  `admin_id` int NOT NULL,
-  `action` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `log_id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -684,7 +684,39 @@ INSERT INTO `admin_activity_logs` (`log_id`, `admin_id`, `action`, `description`
 (325, 1, 'login', 'Successful login', '41.186.136.220', '2025-07-31 15:01:35'),
 (326, 1, 'login', 'Successful login', '41.186.136.220', '2025-07-31 17:59:15'),
 (327, 1, 'login', 'Successful login', '41.186.134.251', '2025-08-15 16:09:45'),
-(328, 1, 'login', 'Successful login', '196.12.152.55', '2025-08-20 07:30:49');
+(328, 1, 'login', 'Successful login', '196.12.152.55', '2025-08-20 07:30:49'),
+(329, 1, 'login', 'Successful login', '::1', '2025-08-25 07:47:43'),
+(330, 1, 'login', 'Successful login', '::1', '2025-08-25 08:23:48'),
+(331, 1, 'login', 'Successful login', '::1', '2025-08-25 08:33:19'),
+(332, 1, 'login', 'Successful login', '::1', '2025-08-27 13:36:48'),
+(333, 1, 'login', 'Successful login', '::1', '2025-08-28 10:07:55'),
+(334, 1, 'login', 'Successful login', '::1', '2025-08-30 20:45:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `approach_cards`
+--
+
+CREATE TABLE `approach_cards` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `approach_cards`
+--
+
+INSERT INTO `approach_cards` (`id`, `page_id`, `number`, `image`, `title`, `description`) VALUES
+(1, 1, 1, 'uploads/inclusive/accessible-tourism.jpg', 'Accessible Tourism Experiences', 'We design tourism experiences that are physically and socially accessible, allowing persons with disabilities to enjoy cultural performances, nature walks, and wildlife observation. Trails, accommodations, and community activity centers are adapted to mobility aids, while informational materials are provided in braille, audio, and simplified formats.'),
+(2, 1, 2, 'uploads/inclusive/skills-development.jpg', 'Skills Development & Capacity Building', 'Through targeted vocational training, we empower participants to engage directly in eco-tourism services, including guiding, hospitality, handicraft production, and tour coordination. We offer workshops on communication, entrepreneurship, and community engagement.'),
+(3, 1, 3, 'uploads/inclusive/community-awareness.jpg', 'Community Awareness & Advocacy', 'We organize community awareness programs to reduce stigma around disability and promote equitable participation in tourism and local development. By collaborating with local schools, health centers, and community organizations, we foster supportive environments.'),
+(4, 1, 4, 'uploads/inclusive/economic-empowerment.jpg', 'Economic Empowerment', 'Our initiatives create sustainable income streams for persons with disabilities by enabling their participation in guided tours, homestays, handicraft markets, and other tourism services. We facilitate connections to broader regional and national tourism markets.'),
+(5, 1, 5, 'uploads/inclusive/rural-impact.jpg', 'Impact on Rural Communities', 'By combining inclusivity with community-based tourism, we strengthen social cohesion, promote equal opportunity, and demonstrate that rural development and accessibility are mutually reinforcing, creating a model for sustainable, inclusive development.');
 
 -- --------------------------------------------------------
 
@@ -693,14 +725,14 @@ INSERT INTO `admin_activity_logs` (`log_id`, `admin_id`, `action`, `description`
 --
 
 CREATE TABLE `attraction_details` (
-  `id` int NOT NULL,
-  `attraction_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `attraction_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `location` varchar(255) NOT NULL,
   `activities` text NOT NULL,
   `external_link` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -724,12 +756,12 @@ INSERT INTO `attraction_details` (`id`, `attraction_id`, `description`, `locatio
 --
 
 CREATE TABLE `attraction_gallery` (
-  `id` int NOT NULL,
-  `attraction_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `attraction_id` int(11) NOT NULL,
   `image_url` varchar(255) NOT NULL,
   `caption` varchar(255) DEFAULT NULL,
-  `display_order` int DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `display_order` int(11) DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -755,12 +787,12 @@ INSERT INTO `attraction_gallery` (`id`, `attraction_id`, `image_url`, `caption`,
 --
 
 CREATE TABLE `blog_categories` (
-  `category_id` int NOT NULL,
+  `category_id` int(11) NOT NULL,
   `category_slug` varchar(50) NOT NULL,
   `category_name` varchar(50) NOT NULL,
-  `category_description` text,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `category_description` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -782,14 +814,14 @@ INSERT INTO `blog_categories` (`category_id`, `category_slug`, `category_name`, 
 --
 
 CREATE TABLE `blog_comments` (
-  `comment_id` int NOT NULL,
-  `blog_id` int NOT NULL,
-  `parent_comment_id` int DEFAULT NULL,
-  `commenter_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `commenter_email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `comment_text` text COLLATE utf8mb4_general_ci NOT NULL,
-  `is_approved` tinyint(1) DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `comment_id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `parent_comment_id` int(11) DEFAULT NULL,
+  `commenter_name` varchar(100) NOT NULL,
+  `commenter_email` varchar(100) NOT NULL,
+  `comment_text` text NOT NULL,
+  `is_approved` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -807,12 +839,12 @@ INSERT INTO `blog_comments` (`comment_id`, `blog_id`, `parent_comment_id`, `comm
 --
 
 CREATE TABLE `blog_content_blocks` (
-  `block_id` int NOT NULL,
-  `blog_id` int NOT NULL,
+  `block_id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
   `block_type` enum('text','image','quote','list') NOT NULL,
-  `block_order` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `block_order` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -878,7 +910,17 @@ INSERT INTO `blog_content_blocks` (`block_id`, `blog_id`, `block_type`, `block_o
 (100, 28, 'text', 10, '2025-07-31 18:56:40', '2025-07-31 18:56:40'),
 (101, 28, 'text', 11, '2025-07-31 18:56:40', '2025-07-31 18:56:40'),
 (102, 28, 'image', 12, '2025-07-31 18:56:40', '2025-07-31 18:56:40'),
-(103, 28, 'text', 13, '2025-07-31 18:56:40', '2025-07-31 18:56:40');
+(103, 28, 'text', 13, '2025-07-31 18:56:40', '2025-07-31 18:56:40'),
+(104, 29, 'text', 1, '2025-08-25 07:48:50', '2025-08-25 07:48:50'),
+(105, 30, 'text', 1, '2025-08-25 07:53:29', '2025-08-25 07:53:29'),
+(106, 31, 'text', 1, '2025-08-25 08:13:14', '2025-08-25 08:13:14'),
+(107, 31, 'image', 2, '2025-08-25 08:13:14', '2025-08-25 08:13:14'),
+(108, 32, 'text', 1, '2025-08-25 08:17:26', '2025-08-25 08:17:26'),
+(109, 32, 'text', 2, '2025-08-25 08:17:26', '2025-08-25 08:17:26'),
+(110, 33, 'text', 1, '2025-08-25 08:23:01', '2025-08-25 08:23:01'),
+(111, 34, 'text', 1, '2025-08-25 08:27:14', '2025-08-25 08:27:14'),
+(112, 35, 'text', 1, '2025-08-25 08:35:43', '2025-08-25 08:35:43'),
+(113, 35, 'image', 2, '2025-08-25 08:35:43', '2025-08-25 08:35:43');
 
 -- --------------------------------------------------------
 
@@ -887,11 +929,11 @@ INSERT INTO `blog_content_blocks` (`block_id`, `blog_id`, `block_type`, `block_o
 --
 
 CREATE TABLE `blog_gallery_images` (
-  `gallery_image_id` int NOT NULL,
-  `blog_id` int NOT NULL,
+  `gallery_image_id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
   `image_path` varchar(255) NOT NULL,
-  `image_order` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `image_order` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -925,7 +967,10 @@ INSERT INTO `blog_gallery_images` (`gallery_image_id`, `blog_id`, `image_path`, 
 (68, 28, '1753988200_IMG-20250731-WA0029.jpg', 2, '2025-07-31 18:56:40'),
 (69, 28, '1753988200_IMG-20250731-WA0026.jpg', 3, '2025-07-31 18:56:40'),
 (70, 28, '1753988200_IMG-20250731-WA0023.jpg', 4, '2025-07-31 18:56:40'),
-(71, 28, '1753988200_IMG-20250731-WA0020.jpg', 5, '2025-07-31 18:56:40');
+(71, 28, '1753988200_IMG-20250731-WA0020.jpg', 5, '2025-07-31 18:56:40'),
+(72, 31, '1756109594_WhatsApp Image 2025-08-24 at 17.15.28_3d7856fc.jpg', 0, '2025-08-25 08:13:14'),
+(73, 32, '1756109846_IMG-20250824-WA0004.jpg', 0, '2025-08-25 08:17:26'),
+(74, 35, '1756110943_WhatsApp Image 2025-08-24 at 17.22.54_2733ff38.jpg', 0, '2025-08-25 08:35:43');
 
 -- --------------------------------------------------------
 
@@ -934,8 +979,8 @@ INSERT INTO `blog_gallery_images` (`gallery_image_id`, `blog_id`, `image_path`, 
 --
 
 CREATE TABLE `blog_image_blocks` (
-  `image_block_id` int NOT NULL,
-  `block_id` int NOT NULL,
+  `image_block_id` int(11) NOT NULL,
+  `block_id` int(11) NOT NULL,
   `image_path` varchar(255) NOT NULL,
   `caption` varchar(255) DEFAULT NULL,
   `alignment` enum('left','center','right','full') NOT NULL DEFAULT 'center'
@@ -965,7 +1010,9 @@ INSERT INTO `blog_image_blocks` (`image_block_id`, `block_id`, `image_path`, `ca
 (39, 95, '1753988200_IMG-20250731-WA0030.jpg', 'Volcanoes National Park', 'left'),
 (40, 97, '1753988200_WhatsApp Image 2025-07-31 at 18.58.56_00866a55.jpg', 'gorillas', 'left'),
 (41, 99, '1753988200_IMG-20250731-WA0018.jpg', 'Conservation in the Virunga Massif', 'left'),
-(42, 102, '1753988200_IMG-20250731-WA0025.jpg', 'Communities see its benefits', 'left');
+(42, 102, '1753988200_IMG-20250731-WA0025.jpg', 'Communities see its benefits', 'left'),
+(43, 107, '1756109594_WhatsApp Image 2025-08-24 at 17.15.28_3d7856fc.jpg', 'exploring african community and culture', 'left'),
+(44, 113, '1756110943_IMG-20250824-WA0010.jpg', 'exploring african community and culture', 'center');
 
 -- --------------------------------------------------------
 
@@ -974,8 +1021,8 @@ INSERT INTO `blog_image_blocks` (`image_block_id`, `block_id`, `image_path`, `ca
 --
 
 CREATE TABLE `blog_list_blocks` (
-  `list_block_id` int NOT NULL,
-  `block_id` int NOT NULL,
+  `list_block_id` int(11) NOT NULL,
+  `block_id` int(11) NOT NULL,
   `list_title` varchar(255) DEFAULT NULL,
   `list_type` enum('bullet','numbered','checklist') NOT NULL DEFAULT 'bullet'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -987,11 +1034,11 @@ CREATE TABLE `blog_list_blocks` (
 --
 
 CREATE TABLE `blog_list_items` (
-  `item_id` int NOT NULL,
-  `list_block_id` int NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `list_block_id` int(11) NOT NULL,
   `item_text` text NOT NULL,
-  `item_order` int NOT NULL,
-  `is_checked` tinyint(1) DEFAULT '0'
+  `item_order` int(11) NOT NULL,
+  `is_checked` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1001,20 +1048,20 @@ CREATE TABLE `blog_list_items` (
 --
 
 CREATE TABLE `blog_posts` (
-  `blog_id` int NOT NULL,
+  `blog_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `author` varchar(100) NOT NULL,
-  `read_minutes` int NOT NULL,
-  `category_id` int NOT NULL,
+  `read_minutes` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `cover_image` varchar(255) NOT NULL,
   `main_headline` varchar(255) NOT NULL,
   `introduction` text NOT NULL,
   `status` enum('draft','published','archived') NOT NULL DEFAULT 'draft',
-  `views` int DEFAULT '0',
-  `created_by` int NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `views` int(11) DEFAULT 0,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `published_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1029,7 +1076,14 @@ INSERT INTO `blog_posts` (`blog_id`, `title`, `slug`, `author`, `read_minutes`, 
 (23, 'Hands Behind the Journey: The Human Face of Tourism in the Virunga Massif', 'hands-behind-the-journey-the-human-face-of-tourism-in-the-virunga-massif', 'Virunga Ecotours', 1, 1, '1747237110_IMG_6672 (1).png', 'Guiding More Than the Way: The Role of Local Trekking Staff', '<div>In the towering highlands where Rwanda, Uganda, and the Democratic Republic of Congo converge, the Virunga Massif rises like a green fortress a haven for rare wildlife and a magnet for adventure seekers. Tourists often arrive seeking gorillas and panoramic landscapes, yet beneath the surface of these experiences lies a human story less often told. This is the story of the men and women who walk these trails daily, not as visitors, but as the quiet custodians of both the forest and the tourism industry that depends on it.</div><div><br></div>', 'published', 0, 1, '2025-05-14 15:38:30', '2025-05-14 18:41:34', NULL),
 (24, 'Rising Together: Women’s Role in Conservation Around the Virunga Massif', 'rising-together-womens-role-in-conservation-around-the-virunga-massif-6824e855ce772', 'Virunga Ecotours', 3, 2, '1747249237_WhatsApp Image 2025-05-14 at 7.55.09 PM.jpeg', 'Virunga Massif a land famous for its towering volcanoes', '<div>In the early morning hours, the forest stirs awake. Mist floats over the ridges that connect Rwanda, Uganda, and the Democratic Republic of Congo. This is the Virunga Massif a land famous for its towering volcanoes, deep green valleys, and the endangered mountain gorillas that quietly move through its ancient woods.</div><div>Tourists travel from around the world for a glimpse of these majestic creatures. But few realize that another quiet transformation is taking place one not of animals, but of people. Of women.</div><div>Once confined to the margins of conservation efforts, women across the Virunga region are stepping forward, reshaping the way communities interact with nature. Their work is subtle but powerful. And their stories, once whispered, are now being heard.</div>', 'published', 0, 1, '2025-05-14 19:00:37', '2025-05-14 19:00:37', NULL),
 (27, 'Volcanoes National Park: A Century of Conservation and Transformation', 'volcanoes-national-park-a-century-of-conservation-and-transformation-68530b6f8ca8c', 'Virunga Ecotours', 20, 2, '1750272879_368d3e52-a5bd-45d9-a7a6-aa2d1ff63816.jpg', 'From Colonial Preserve to Community Partnership: How Rwanda’s Premier Wildlife Sanctuary Redefined African Conservation', 'Amid the swirling mists of Rwanda’s Virunga volcanoes, where dense montane forests stretch toward the sky and the iconic mountain gorilla roams, a profound milestone is being marked: the 100th anniversary of Volcanoes National Park. One of Africa’s most storied protected areas, the park’s centenary commemorates a century of complex history of protection and exclusion, crisis and resilience, research and reinvention.', 'published', 0, 1, '2025-06-18 18:54:39', '2025-06-18 18:54:39', NULL),
-(28, 'Honoring Nature’s Guardians: World Ranger Day and 100 Years of Protection in the Virunga Massif', 'honoring-natures-guardians-world-ranger-day-and-100-years-of-protection-in-the-virunga-massif-688bbc68d414e', 'Virunga Ecotours', 8, 1, '1753988200_WhatsApp Image 2025-07-31 at 19.03.58_31da8d51.jpg', 'A Day for the Brave: Why July 31st Matters More Than Ever', 'On July 31st, the world honors the quiet strength of wildlife rangers the individuals who walk unmarked paths, cross into danger zones, and rise before dawn to guard the most vulnerable life on Earth. World Ranger Day is not just a day of remembrance, but a call to recognition of courage, discipline, and the lifelong commitment to nature.\\r\\n\\r\\nIn 2025, this day carries deeper weight across the Virunga Massif, a volcanic chain straddling Rwanda, Uganda, and the Democratic Republic of Congo (DR Congo). It marks 100 years since the creation of both Volcanoes National Park and Virunga National Park, the first formal steps in protecting the mountain gorilla — a species that has come back from the edge of extinction thanks to the resolve of the very people we celebrate today.', 'published', 0, 1, '2025-07-31 18:56:40', '2025-07-31 18:56:40', NULL);
+(28, 'Honoring Nature’s Guardians: World Ranger Day and 100 Years of Protection in the Virunga Massif', 'honoring-natures-guardians-world-ranger-day-and-100-years-of-protection-in-the-virunga-massif-688bbc68d414e', 'Virunga Ecotours', 8, 1, '1753988200_WhatsApp Image 2025-07-31 at 19.03.58_31da8d51.jpg', 'A Day for the Brave: Why July 31st Matters More Than Ever', 'On July 31st, the world honors the quiet strength of wildlife rangers the individuals who walk unmarked paths, cross into danger zones, and rise before dawn to guard the most vulnerable life on Earth. World Ranger Day is not just a day of remembrance, but a call to recognition of courage, discipline, and the lifelong commitment to nature.\\r\\n\\r\\nIn 2025, this day carries deeper weight across the Virunga Massif, a volcanic chain straddling Rwanda, Uganda, and the Democratic Republic of Congo (DR Congo). It marks 100 years since the creation of both Volcanoes National Park and Virunga National Park, the first formal steps in protecting the mountain gorilla — a species that has come back from the edge of extinction thanks to the resolve of the very people we celebrate today.', 'published', 0, 1, '2025-07-31 18:56:40', '2025-07-31 18:56:40', NULL),
+(29, 'Kwita Izina 2025 – Rwanda’s 20th Gorilla Naming Ceremony', 'kwita-izina-2025-rwandas-20th-gorilla-naming-ceremony-68ac15624985b', 'Virunga Ecotours', 12, 2, '1756108130_WhatsApp Image 2025-08-24 at 17.22.54_2733ff38.jpg', 'Experience the magic where culture, community, and gorillas unite', 'Step into a world where the rhythm of drums echoes through misty volcano valleys, dancers swirl in vibrant celebration, and the eyes of the world turn to Rwanda. On September 5, 2025, the Virunga foothills will host the 20th Kwita Izina, the iconic Gorilla Naming Ceremony. More than just a celebration, this milestone honors two decades of conservation triumphs, community empowerment, and Rwanda’s bold vision for sustainable tourism. With 40 baby gorillas awaiting their names, every drumbeat and cheer tells a story of resilience, unity, and the extraordinary bond between people and wildlife. Don’t just witness history, feel it', 'published', 0, 1, '2025-08-25 07:48:50', '2025-08-25 07:48:50', NULL),
+(30, 'eds', 'eds-68ac167995f8c', 'Virunga Ecotours', 23, 2, '1756108409_WhatsApp Image 2025-08-24 at 17.22.05_33d2808a.jpg', 'perience the magic where culture, community, and gorillas unite', 'qwesdxc', 'published', 0, 1, '2025-08-25 07:53:29', '2025-08-25 07:53:29', NULL),
+(31, 'Kwita Izina 2025 – Rwanda’s 20th Gorilla Naming Ceremonys', 'kwita-izina-2025-rwandas-20th-gorilla-naming-ceremonys-68ac1b1a54f6e', 'Virunga Ecotours', 12, 2, '1756109594_IMG-20250824-WA0013.jpg', 'wesd', '<?xml encoding=\\\"UTF-8\\\"><p>wesdxc</p>', 'published', 0, 1, '2025-08-25 08:13:14', '2025-08-25 08:13:14', NULL),
+(32, 'Kwita Izina 2025 – Rwanda’s 20th Gorilla Naming Ceremonyfdx', 'kwita-izina-2025-rwandas-20th-gorilla-naming-ceremonyfdx-68ac1c1696c00', 'edf', 22, 2, '1756109846_IMG-20250824-WA0013.jpg', 'Experience the magic where culture, community, and gorillas unite', 'qwertyuioiuytrewsxdr', 'published', 0, 1, '2025-08-25 08:17:26', '2025-08-25 08:17:26', NULL),
+(33, 'Kwita Izina 2025 – Rwanda’s 20th Gorilla Naming Ceremony', 'kwita-izina-2025-rwandas-20th-gorilla-naming-ceremony-68ac1d657ce99', 'Virunga Ecotours', 2, 2, '1756110181_IMG-20250824-WA0014.jpg', 'Virunga Ecotours Experiences', 'qwesdfcv ', 'published', 0, 1, '2025-08-25 08:23:01', '2025-08-25 08:23:01', NULL),
+(34, 'Mutima w\\\'urugo', 'mutima-wurugo-68ac1e62b46b9', 'Virunga Ecotours', 2, 1, '1756110434_IMG-20250824-WA0014.jpg', 'perience the magic where culture, community, and gorillas unite', 'qwertyui', 'published', 0, 1, '2025-08-25 08:27:14', '2025-08-25 08:27:14', NULL),
+(35, 'Kwita Izina 2025 – Rwanda’s 20th Gorilla Naming Ceremony', 'kwita-izina-2025-rwandas-20th-gorilla-naming-ceremony-68ac205f92383', 'Virunga Ecotours', 21, 2, '1756110943_IMG-20250824-WA0012.jpg', 'perience the magic where culture, community, and gorillas unite', 'Kwita Izina, inspired by Rwanda’s age-old tradition of naming newborns, has become a symbol of hope and cultural pride. The ceremony allows the world to witness the official naming of baby gorillas, each name carrying significance for researchers, conservationists, and local communities. The act is deeply symbolic, as it strengthens the bond between people and wildlife while ensuring that every gorilla is tracked and cared for.\\r\\nBeyond the naming, guests experience the rich cultural heartbeat of Rwanda. Traditional dance, song, and storytelling bring the celebration to life, while conservation talks from rangers and researchers highlight the importance of protecting mountain gorillas. For the communities surrounding Volcanoes National Park, the event is both a celebration and recognition of their essential role in conservation.\\r\\n', 'published', 0, 1, '2025-08-25 08:35:43', '2025-08-25 08:35:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -1038,8 +1092,8 @@ INSERT INTO `blog_posts` (`blog_id`, `title`, `slug`, `author`, `read_minutes`, 
 --
 
 CREATE TABLE `blog_quote_blocks` (
-  `quote_block_id` int NOT NULL,
-  `block_id` int NOT NULL,
+  `quote_block_id` int(11) NOT NULL,
+  `block_id` int(11) NOT NULL,
   `quote_text` text NOT NULL,
   `attribution` varchar(255) DEFAULT NULL,
   `style` enum('standard','pullquote','blockquote') NOT NULL DEFAULT 'standard'
@@ -1059,8 +1113,8 @@ INSERT INTO `blog_quote_blocks` (`quote_block_id`, `block_id`, `quote_text`, `at
 --
 
 CREATE TABLE `blog_text_blocks` (
-  `text_block_id` int NOT NULL,
-  `block_id` int NOT NULL,
+  `text_block_id` int(11) NOT NULL,
+  `block_id` int(11) NOT NULL,
   `section_title` varchar(255) DEFAULT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1103,7 +1157,15 @@ INSERT INTO `blog_text_blocks` (`text_block_id`, `block_id`, `section_title`, `c
 (89, 98, 'The Role of Partnerships and the Future of Protection', '<div>Conservation in the Virunga Massif has succeeded because of collaboration. National park authorities — RDB (Rwanda), ICCN (DR Congo), and UWA (Uganda) work with international NGOs, veterinary teams, scientists, and tourism partners to ensure rangers are supported.</div><div><br></div><div>These partnerships provide:</div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Better equipment and medical care</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Advanced training and technology</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Cross-border patrol systems and intelligence sharing</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Education programs that connect local youth to conservation careers</span></div><div><br></div><div>One shining example is the Greater Virunga Transboundary Collaboration, which promotes coordination across borders for wildlife monitoring, patrols, and even community development.</div>'),
 (90, 100, 'Virunga Ecotours: Elevating Rangers Through Responsible Travel', '<div>At Virunga Ecotours, we believe that tourism can serve a deeper purpose not only by offering unforgettable experiences but by supporting the very people who protect what visitors come to see.</div><div><br></div><div>When travelers trek with rangers, they witness firsthand the complexity of their work the silent tracking, the patience, the quick decision-making, and the emotional connection to each gorilla group. Every visit becomes a contribution — to ranger salaries, equipment, and morale.</div><div><br></div><div>Our team works with ranger-led experiences that are built on respect, authenticity, and long-term benefit for both nature and people.</div>'),
 (91, 101, 'A Century of Sacrifice, a Future of Possibility', '<div>As we mark 100 years of conservation in the Virunga Massif, we also reflect on the costs: lives lost, families affected, and the long nights spent in cold forest stations with only the sound of gorilla calls echoing nearby.</div><div><br></div><div>But through that sacrifice has come progress. Gorillas once counted in the hundreds are now increasing slowly. Communities once skeptical of conservation now see its benefits. And rangers, once under-resourced and under-recognized, are now honored as heroes in green.</div><div><br></div><div>This World Ranger Day, let us not only remember let us recommit. Support their work, share their stories, walk with them when you travel, and keep their mission alive through action.</div>'),
-(92, 103, 'References & Further Reading', '<div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>International Ranger Federation: www.internationalrangers.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Thin Green Line Foundation: www.thingreenline.org.au</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Dian Fossey Gorilla Fund: www.gorillafund.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Greater Virunga Transboundary Collaboration: www.greatervirunga.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Rwanda Development Board: www.rdb.rw</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Uganda Wildlife Authority: www.ugandawildlife.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Institut Congolais pour la Conservation de la Nature: www.iccnrdc.org</span></div>');
+(92, 103, 'References & Further Reading', '<div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>International Ranger Federation: www.internationalrangers.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Thin Green Line Foundation: www.thingreenline.org.au</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Dian Fossey Gorilla Fund: www.gorillafund.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Greater Virunga Transboundary Collaboration: www.greatervirunga.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Rwanda Development Board: www.rdb.rw</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Uganda Wildlife Authority: www.ugandawildlife.org</span></div><div><span style=\\\"white-space: normal;\\\"><span style=\\\"white-space:pre\\\">	</span>•<span style=\\\"white-space:pre\\\">	</span>Institut Congolais pour la Conservation de la Nature: www.iccnrdc.org</span></div>'),
+(93, 104, 'A living tradition of culture and conservation', '<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Kwita\\r\\nIzina, inspired by Rwanda’s age-old tradition of naming newborns, has become a\\r\\nsymbol of hope and cultural pride. The ceremony allows the world to witness the\\r\\nofficial naming of baby gorillas, each name carrying significance for\\r\\nresearchers, conservationists, and local communities. The act is deeply\\r\\nsymbolic, as it strengthens the bond between people and wildlife while ensuring\\r\\nthat every gorilla is tracked and cared for.<o:p></o:p></span></p>\\r\\n\\r\\n<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Beyond\\r\\nthe naming, guests experience the rich cultural heartbeat of Rwanda.\\r\\nTraditional dance, song, and storytelling bring the celebration to life, while\\r\\nconservation talks from rangers and researchers highlight the importance of\\r\\nprotecting mountain gorillas. For the communities surrounding Volcanoes\\r\\nNational Park, the event is both a celebration and recognition of their\\r\\nessential role in conservation.<o:p></o:p></span></p>'),
+(94, 105, 'wesd', '<div>Kwita Izina, inspired by Rwanda’s age-old tradition of naming newborns, has become a symbol of hope and cultural pride. The ceremony allows the world to witness the official naming of baby gorillas, each name carrying significance for researchers, conservationists, and local communities. The act is deeply symbolic, as it strengthens the bond between people and wildlife while ensuring that every gorilla is tracked and cared for.</div><div>Beyond the naming, guests experience the rich cultural heartbeat of Rwanda. Traditional dance, song, and storytelling bring the celebration to life, while conservation talks from rangers and researchers highlight the importance of protecting mountain gorillas. For the communities surrounding Volcanoes National Park, the event is both a celebration and recognition of their essential role in conservation.</div><div><br></div>'),
+(95, 106, 'A living tradition of culture and conservation', '<?xml encoding=\\\"UTF-8\\\"><p>Kwita\\nIzina, inspired by Rwanda&rsquo;s age-old tradition of naming newborns, has become a\\nsymbol of hope and cultural pride. The ceremony allows the world to witness the\\nofficial naming of baby gorillas, each name carrying significance for\\nresearchers, conservationists, and local communities. The act is deeply\\nsymbolic, as it strengthens the bond between people and wildlife while ensuring\\nthat every gorilla is tracked and cared for.</p>\\n<p>Beyond\\nthe naming, guests experience the rich cultural heartbeat of Rwanda.\\nTraditional dance, song, and storytelling bring the celebration to life, while\\nconservation talks from rangers and researchers highlight the importance of\\nprotecting mountain gorillas. For the communities surrounding Volcanoes\\nNational Park, the event is both a celebration and recognition of their\\nessential role in conservation.</p>'),
+(96, 108, 'A living tradition of culture and conservation', 'wesdzxcvsd qwsdcxn doascboas qwcbaks&nbsp;'),
+(97, 109, 'A living tradition of culture and conservationw', '<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Kwita\\r\\nIzina, inspired by Rwanda’s age-old tradition of naming newborns, has become a\\r\\nsymbol of hope and cultural pride. The ceremony allows the world to witness the\\r\\nofficial naming of baby gorillas, each name carrying significance for\\r\\nresearchers, conservationists, and local communities. The act is deeply\\r\\nsymbolic, as it strengthens the bond between people and wildlife while ensuring\\r\\nthat every gorilla is tracked and cared for.<o:p></o:p></span></p>\\r\\n\\r\\n<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Beyond\\r\\nthe naming, guests experience the rich cultural heartbeat of Rwanda.\\r\\nTraditional dance, song, and storytelling bring the celebration to life, while\\r\\nconservation talks from rangers and researchers highlight the importance of\\r\\nprotecting mountain gorillas. For the communities surrounding Volcanoes\\r\\nNational Park, the event is both a celebration and recognition of their\\r\\nessential role in conservation.<o:p></o:p></span></p>'),
+(98, 110, 'A living tradition of culture and conservation', '<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Kwita\\r\\nIzina, inspired by Rwanda’s age-old tradition of naming newborns, has become a\\r\\nsymbol of hope and cultural pride. The ceremony allows the world to witness the\\r\\nofficial naming of baby gorillas, each name carrying significance for\\r\\nresearchers, conservationists, and local communities. The act is deeply\\r\\nsymbolic, as it strengthens the bond between people and wildlife while ensuring\\r\\nthat every gorilla is tracked and cared for.<o:p></o:p></span></p>\\r\\n\\r\\n<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Beyond\\r\\nthe naming, guests experience the rich cultural heartbeat of Rwanda.\\r\\nTraditional dance, song, and storytelling bring the celebration to life, while\\r\\nconservation talks from rangers and researchers highlight the importance of\\r\\nprotecting mountain gorillas. For the communities surrounding Volcanoes\\r\\nNational Park, the event is both a celebration and recognition of their\\r\\nessential role in conservation.<o:p></o:p></span></p>'),
+(99, 111, 'A living tradition of culture and conservation', '<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Kwita\\r\\nIzina, inspired by Rwanda’s age-old tradition of naming newborns, has become a\\r\\nsymbol of hope and cultural pride. The ceremony allows the world to witness the\\r\\nofficial naming of baby gorillas, each name carrying significance for\\r\\nresearchers, conservationists, and local communities. The act is deeply\\r\\nsymbolic, as it strengthens the bond between people and wildlife while ensuring\\r\\nthat every gorilla is tracked and cared for.<o:p></o:p></span></p>\\r\\n\\r\\n<p class=\\\"MsoNormal\\\" style=\\\"text-align:justify;text-justify:inter-ideograph\\\"><span style=\\\"font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif\\\">Beyond\\r\\nthe naming, guests experience the rich cultural heartbeat of Rwanda.\\r\\nTraditional dance, song, and storytelling bring the celebration to life, while\\r\\nconservation talks from rangers and researchers highlight the importance of\\r\\nprotecting mountain gorillas. For the communities surrounding Volcanoes\\r\\nNational Park, the event is both a celebration and recognition of their\\r\\nessential role in conservation.<o:p></o:p></span></p>'),
+(100, 112, 'A living tradition of culture and conservation', 'Kwita Izina, inspired by Rwanda’s age-old tradition of naming newborns, has become a symbol of hope and cultural pride. The ceremony allows the world to witness the official naming of baby gorillas, each name carrying significance for researchers, conservationists, and local communities. The act is deeply symbolic, as it strengthens the bond between people and wildlife while ensuring that every gorilla is tracked and cared for.\\r\\nBeyond the naming, guests experience the rich cultural heartbeat of Rwanda. Traditional dance, song, and storytelling bring the celebration to life, while conservation talks from rangers and researchers highlight the importance of protecting mountain gorillas. For the communities surrounding Volcanoes National Park, the event is both a celebration and recognition of their essential role in conservation.\\r\\n');
 
 -- --------------------------------------------------------
 
@@ -1112,29 +1174,79 @@ INSERT INTO `blog_text_blocks` (`text_block_id`, `block_id`, `section_title`, `c
 --
 
 CREATE TABLE `build_submissions` (
-  `id` int NOT NULL,
-  `names` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `referral_source` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `travelers_info` text COLLATE utf8mb4_general_ci,
-  `trip_days` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `group_size` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `names` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `referral_source` varchar(50) NOT NULL,
+  `travelers_info` text DEFAULT NULL,
+  `trip_days` varchar(20) NOT NULL,
+  `group_size` varchar(20) NOT NULL,
   `travel_date` date NOT NULL,
-  `budget_notes` text COLLATE utf8mb4_general_ci,
-  `newsletter` tinyint(1) DEFAULT '0',
-  `weekly_emails` tinyint(1) DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `budget_notes` text DEFAULT NULL,
+  `newsletter` tinyint(1) DEFAULT 0,
+  `weekly_emails` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `emailed` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `build_submissions`
 --
 
-INSERT INTO `build_submissions` (`id`, `names`, `email`, `phone`, `referral_source`, `travelers_info`, `trip_days`, `group_size`, `travel_date`, `budget_notes`, `newsletter`, `weekly_emails`, `created_at`) VALUES
-(6, 'igiraneza test', 'fabrdaa@gmail.com', '0784444314', 'other', '123', '123', '12', '2025-05-30', 'qaz', 0, 0, '2025-05-20 06:11:12'),
-(7, 'Mazimpaka Aime Claudien', 'virungaecotours@gmail.com', '0789375245', 'facebook', 'adcsdc', '3', '3', '2025-06-19', 'dasasfssf', 0, 0, '2025-06-04 14:30:03'),
-(8, 'Jared cornell', 'thejaredisaac@gmail.com', '15712052450', 'google', '', '2', '1', '2026-08-01', 'Trying to keep it budget friendly. Transfer from Kigali to virunga if possible.', 0, 0, '2025-08-01 16:50:48');
+INSERT INTO `build_submissions` (`id`, `names`, `email`, `phone`, `referral_source`, `travelers_info`, `trip_days`, `group_size`, `travel_date`, `budget_notes`, `newsletter`, `weekly_emails`, `created_at`, `emailed`) VALUES
+(6, 'igiraneza test', 'fabrdaa@gmail.com', '0784444314', 'other', '123', '123', '12', '2025-05-30', 'qaz', 0, 0, '2025-05-20 06:11:12', 0),
+(7, 'Mazimpaka Aime Claudien', 'virungaecotours@gmail.com', '0789375245', 'facebook', 'adcsdc', '3', '3', '2025-06-19', 'dasasfssf', 0, 0, '2025-06-04 14:30:03', 0),
+(8, 'Jared cornell', 'thejaredisaac@gmail.com', '15712052450', 'google', '', '2', '1', '2026-08-01', 'Trying to keep it budget friendly. Transfer from Kigali to virunga if possible.', 0, 0, '2025-08-01 16:50:48', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `community_activities`
+--
+
+CREATE TABLE `community_activities` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `duration` varchar(100) DEFAULT NULL,
+  `image` varchar(500) NOT NULL,
+  `display_order` int(11) DEFAULT 1,
+  `is_active` tinyint(1) DEFAULT 1,
+  `status` enum('active','inactive','draft') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `community_activities`
+--
+
+INSERT INTO `community_activities` (`id`, `title`, `content`, `duration`, `image`, `display_order`, `is_active`, `status`, `created_at`, `updated_at`) VALUES
+(4, 'Half-Day Organic Farming Experience', 'Spend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.Spend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.Spend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.Spend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.\nSpend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.\nSpend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.\nSpend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.\nSpend a half-day in the gardens and experience hands-on organic farming alongside local farmers. Roll up your sleeves and take part in activities such as digging, planting seeds, harvesting vegetables, or preparing soil using natural techniques. No prior experience is needed everything is guided step-by-step in a relaxed and enjoyable way.\n\nThis immersive experience goes beyond farming. Connect with the land, learn traditional techniques, and engage with local farmers while enjoying the beauty and tranquility of the gardens.\n\nExperience Highlights:\n\nGuided walk through the farm to learn about seasonal crops\n\nParticipate in hands-on farm work: planting, harvesting, or soil preparation\n\nLearn traditional methods for maintaining healthy soil using compost and natural materials\n\nHear stories from local farmers and ask questions\n\nTaste fresh produce from the garden, depending on the season\n\nThis half-day organic farming experience is suitable for all ages and offers a meaningful, interactive way to connect with local traditions, nature, and community.\n\nTo join this experience:\nContact us via WhatsApp or call directly to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.', NULL, '1753607875_1192861.jpg', 1, 1, 'active', '2025-06-25 07:12:43', '2025-08-25 09:20:09'),
+(5, 'Rwandan Cuisine Cooking Class – Half-Day Homestay Experience', 'Immerse yourself in Rwanda’s culinary traditions with a hands-on home cooking experience. This half-day class takes place at a local homestay, where you’ll be welcomed into the kitchen like a friend and learn to prepare traditional Rwandan dishes.\r\n\r\nTogether with your host, you’ll cook popular meals such as ibihaza (pumpkin with peanuts) and isombe (cassava leaves with spices). Participate in every step from washing vegetables and grinding ingredients to cooking over charcoal or firewood just as local families do every day.\r\n\r\nNo prior cooking experience is required. This activity is about learning by doing, enjoying the process, and sharing stories and laughter. Once the food is ready, you’ll gather to enjoy the meal, connect with your host, and savor the flavors of Rwanda.\r\n\r\nTour Highlights:\r\n\r\nHands-on preparation of traditional Rwandan dishes\r\n\r\nLearn about local ingredients and cooking techniques\r\n\r\nExperience Rwandan culinary traditions in a real homestay\r\n\r\nEnjoy the meal you helped prepare, shared with your host family\r\n\r\nThis half-day experience is perfect for travelers seeking an authentic Rwanda cooking tour and cultural immersion, offering friendly guidance, fresh local ingredients, and a relaxed, interactive environment.\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time. Experience Rwandan cuisine like a local!', NULL, '1753608007_9184659.jpg', 3, 1, 'active', '2025-06-25 07:15:21', '2025-08-14 10:58:03'),
+(7, 'Morning Mountain Gorilla Trek – Volcanoes National Park', 'Start your morning with a short drive from the homestay to the park entrance, where you’ll attend a briefing to prepare for your gorilla trek. You’ll then be grouped with other visitors and assigned experienced guides who track the movements of the gorilla families.\r\n\r\nThe trek leads you through serene forest landscapes. Depending on the location of the gorillas that day, the walk may take less than an hour or up to three hours. Your guide will point out fresh signs of gorilla activity, such as footprints, feeding sites, or nests.\r\n\r\nUpon reaching the gorilla group, you’ll spend about one hour quietly observing these magnificent primates. Witness young gorillas climbing trees, others resting or eating, and the silverback male keeping watch. It’s a peaceful and unforgettable encounter in the heart of the forest.\r\n\r\nBy late morning or early afternoon, you’ll return to the homestay to rest and reflect on this unique wildlife experience.\r\n\r\nTrek Highlights:\r\n\r\nGuided trek through the lush forests of Volcanoes National Park\r\n\r\nObserve mountain gorillas in their natural habitat\r\n\r\nLearn from expert guides about gorilla behavior and forest ecology\r\n\r\nEnjoy a rare and peaceful wildlife encounter\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to book your morning gorilla trek and ensure an unforgettable encounter.', NULL, '1753608068_8996833.jpg', 3, 1, 'active', '2025-06-25 07:16:56', '2025-08-14 11:05:17'),
+(8, 'Half-Day Virunga Volcano Trek – Eco Adventure in Rwanda', 'Explore the base of Rwanda’s iconic Virunga volcanoes, including Mount Karisimbi, Mount Bisoke, Mount Muhabura, Mount Sabyinyo, and Mount Gahinga, on this half-day eco trekking adventure. Designed for travelers who enjoy walking in nature, this trek offers a taste of the volcanic terrain without the need to reach the summit.\r\n\r\nThe experience begins early in the morning with a briefing at the park headquarters. A trained guide will lead you along forested paths alive with birds, wildlife, and lush vegetation. Along the way, your guide will share insights about the volcanic landscape, local flora, and wildlife signs.\r\n\r\nTrekking at a relaxed pace for 4 to 9 hours, you’ll have time to rest, take photos, and enjoy panoramic views of the surrounding hills and valleys. Depending on the trail, you may pass crater lakes, volcanic ridges, or dense bamboo forests.\r\n\r\nThis half-day trek is ideal for travelers of moderate fitness who want to connect with Rwanda’s volcanoes in a natural and unhurried way. Expect fresh mountain air, peaceful surroundings, and a deeper understanding of the Virunga Massif.\r\n\r\nTrek Highlights:\r\n\r\nExplore the lower slopes of Rwanda’s famous Virunga volcanoes\r\n\r\nWalk through forested paths, bamboo zones, and volcanic landscapes\r\n\r\nObserve wildlife and learn about local plants\r\n\r\nEnjoy breathtaking views and photography opportunities\r\n\r\nExperience the volcanoes in a relaxed, eco-friendly way\r\n\r\nTo join this experience:\r\nContact us on WhatsApp or call directly to arrange your preferred time. We’ll advise on what to bring and ensure your half-day trek is a memorable adventure.', NULL, '1753608097_8451937.jpg', 2, 1, 'active', '2025-06-25 07:17:53', '2025-08-14 10:51:03'),
+(9, 'Rwanda Tea and Coffee Farm Tour', 'Experience Rwanda’s world-famous tea and coffee straight from the source on this immersive farm tour. Take a scenic walk to family-run plantations and meet local farmers who guide you through every step from picking fresh tea leaves or coffee cherries to roasting, grinding, and brewing your own cup.\r\nThis hands-on Rwanda coffee and tea experience goes beyond tasting. Connect with local growers, learn traditional farming techniques, and enjoy the stunning volcanic landscapes that make these crops so unique.\r\n\r\nTour Highlights:\r\n•	Participate in authentic tea and coffee cultivation\r\n•	Walk through lush plantations and see crops grown in volcanic soil\r\n•	Taste freshly brewed tea and coffee on-site\r\n•	Engage with local farmers and hear their stories\r\n\r\nAvailable in morning and afternoon sessions, this half-day Rwanda tea and coffee tour offers a memorable cultural and culinary experience, perfect for travelers seeking authentic farm-to-cup adventures.\r\n\r\nTo join this experience:\r\nContact us on WhatsApp or give us a call to arrange your preferred time. Whether morning or afternoon, we’ll make it a memorable part of your stay.', NULL, '1753608183_5637005.jpg', 1, 1, 'active', '2025-06-25 07:22:48', '2025-08-14 10:28:45'),
+(10, 'Rwanda Art Experience – Live Painting and Nature Inspiration', 'Immerse yourself in the vibrant world of Rwandan art through live painting sessions. Watch talented local artists transform blank canvases into captivating works while sharing the stories and inspirations behind each piece.\r\n\r\nGuests are welcome to try painting themselves under the guidance of the artists, making it an interactive and memorable experience. This activity is especially engaging and enjoyable for children and families.\r\n\r\nExperience Highlights:\r\n\r\nObserve local artists creating nature-inspired paintings\r\n\r\nLearn about the stories and inspirations behind each work\r\n\r\nParticipate in guided painting sessions\r\n\r\nEnjoy a family-friendly and interactive artistic experience\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your visit and enjoy a hands-on art experience in Rwanda.', NULL, '1753350563_8670914.jpg', 1, 1, 'active', '2025-06-25 07:39:12', '2025-08-14 12:16:32'),
+(13, 'Rwandan Countryside Eco-Hike', 'Experience the beauty of the Rwandan countryside on a gentle eco-hike through local hills. This easy to moderate trek takes you through vibrant farmlands and rural villages, offering an intimate view of daily life and traditional farming practices.\r\n\r\nAlong the way, enjoy stunning views of rolling hills and valleys, perfect for photography, reflection, and connecting with nature. This eco-tourism activity is a peaceful and immersive way to explore Rwanda’s scenic landscapes while supporting local communities.\r\n\r\nHike Highlights:\r\n\r\nExplore rural villages and interact with local residents\r\n\r\nWalk through lush farmlands and scenic hills\r\n\r\nCapture breathtaking landscapes and rolling valleys\r\n\r\nEnjoy a relaxing, eco-friendly outdoor experience\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time. Morning and afternoon sessions are available to make your hike a memorable part of your visit.', NULL, '1753608824_3669364.jpg', 2, 1, 'active', '2025-07-27 07:33:44', '2025-08-14 10:44:23'),
+(14, 'Village Wonders – An Eco Walk Through Time and Tradition', 'Immerse yourself in Rwandan culture with a guided eco-walk through a nearby village. This experience offers a unique opportunity to interact with locals, observe daily life, and learn about the customs and traditions that have shaped the community for generations.\r\n\r\nDuring the walk, you’ll explore village pathways, meet artisans, farmers, and families, and gain authentic insights into local life. This eco-tourism activity provides a meaningful connection to the community and a deeper understanding of Rwanda’s cultural heritage.\r\n\r\nWalk Highlights:\r\n\r\nGuided walk through a traditional Rwandan village\r\n\r\nObserve daily life, farming, and local crafts\r\n\r\nInteract with residents and learn about customs and traditions\r\n\r\nExperience an authentic cultural immersion and eco-tourism activity\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy a memorable cultural walk.', NULL, '1753608879_2183306.jpg', 3, 1, 'active', '2025-07-27 07:34:39', '2025-08-14 11:08:22'),
+(15, 'Rwanda Eco Village Biking Adventure – Pedal Through Paradise', 'Explore the stunning Rwandan countryside on two wheels with a guided biking tour through the village and surrounding landscapes. This active eco-tourism experience offers a unique perspective, allowing you to pass by picturesque farmland, local homes, and serene views of the rolling hills and nearby volcanoes.\r\n\r\nEnjoy a leisurely ride at your own pace, stopping to take photos, interact with locals, and fully appreciate the natural and cultural beauty of the region. Biking through the village paths is an engaging way to connect with the land, the people, and the eco-friendly lifestyle of rural Rwanda.\r\n\r\nAdventure Highlights:\r\n\r\nGuided cycling tour through scenic village paths\r\n\r\nPass by farmland, local homes, and natural landscapes\r\n\r\nEnjoy views of the Virunga volcanoes and rolling hills\r\n\r\nExperience an active and immersive eco-tourism adventure\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy a memorable biking adventure in Rwanda.', NULL, '1755177484_3058533.jpg', 4, 1, 'active', '2025-07-27 07:36:36', '2025-08-14 11:18:04'),
+(16, 'Eco-Community Tour – Connect with Local Life', 'Experience the heart of Rwandan culture with a guided community visit near the homestay. This eco-tourism experience provides a meaningful opportunity to understand local values, traditions, and daily life.\r\n\r\nDuring the tour, you’ll meet families, observe traditional craft-making, and learn about the important role the community plays in the region’s development. These visits offer an enriching way to connect with the people and the cultural heritage of Rwanda while supporting local initiatives.\r\n\r\nTour Highlights:\r\n\r\nGuided visit to local families and community spaces\r\n\r\nObserve traditional crafts and daily village life\r\n\r\nLearn about Rwandan customs, values, and traditions\r\n\r\nExperience an immersive and educational eco-tourism activity\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy a memorable community visit in Rwanda.', NULL, '1753609093_4422008.jpg', 5, 1, 'active', '2025-07-27 07:38:14', '2025-08-14 11:22:35'),
+(17, 'Private Eco Walking City Tour in Musanze', 'Discover the vibrant town of Musanze, the gateway to Volcanoes National Park, with a private walking eco city tour. Explore the bustling markets, local eateries, and unique shops, and visit the Mpenge Urban Wetland for a peaceful eco-friendly stroll in the heart of the city.\r\n\r\nFor a deeper cultural experience, take a township tour to witness daily life in Rwandan communities, observing local routines, crafts, and interactions. In the evening, enjoy the lively atmosphere of Musanze nightlife with a tour of its bars, cafes, and entertainment spots, giving you a complete view of the town’s dynamic culture.\r\n\r\nTour Highlights:\r\n\r\nExplore Musanze’s markets, eateries, and shops\r\n\r\nWalk through the Mpenge Urban Wetland and enjoy eco-friendly sightseeing\r\n\r\nExperience township life and local community culture\r\n\r\nDiscover Musanze’s nightlife, bars, cafes, and entertainment\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time for a memorable private walking city tour in Musanze.', NULL, '1753609181_9329020.jpg', 6, 1, 'active', '2025-07-27 07:39:41', '2025-08-14 11:27:08'),
+(18, 'Sip the Tradition – A Taste of Rwanda’s Banana Beer Heritage', 'Discover Rwanda’s traditional banana beer, “urwagwa,” with an immersive cultural experience in a local community. Learn about the centuries-old brewing process, from selecting the bananas to fermentation, and see how this iconic drink has been crafted for generations.\r\n\r\nDuring the visit, you’ll watch the brewing process firsthand and have the opportunity to sample different varieties of banana beer. This hands-on, educational experience offers a unique way to explore Rwandan flavors, traditions, and local culture.\r\n\r\nExperience Highlights:\r\n\r\nVisit a local community and learn the traditional banana beer brewing process\r\n\r\nObserve centuries-old techniques used to craft urwagwa\r\n\r\nTaste different varieties of banana beer\r\n\r\nEngage with local brewers and gain insight into Rwandan cultural heritage\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy a memorable taste of Rwanda’s banana beer heritage.', NULL, '1753609339_7767013.jpg', 7, 1, 'active', '2025-07-27 07:42:19', '2025-08-14 11:31:45'),
+(19, 'Wildlife and Conservation Experience in Rwanda – Protect Endangered Species', 'Discover Rwanda’s world-renowned conservation efforts with an immersive visit to local projects dedicated to protecting wildlife and preserving the environment. Learn about ongoing initiatives aimed at safeguarding endangered species, including the iconic mountain gorilla, and gain a deeper understanding of the region’s rich biodiversity.\r\n\r\nDuring this hands-on experience, you’ll have the opportunity to participate in activities that support conservation efforts, connect with local conservationists, and see firsthand how communities contribute to protecting Rwanda’s natural heritage.\r\n\r\nExperience Highlights:\r\n\r\nVisit local conservation projects and learn about their work\r\n\r\nGain insight into the protection of endangered species, including mountain gorillas\r\n\r\nParticipate in hands-on activities that support conservation\r\n\r\nConnect with local conservationists and learn about Rwanda’s biodiversity\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and take part in this meaningful wildlife and conservation experience in Rwanda.', NULL, '1753609445_1074262.jpg', 8, 1, 'active', '2025-07-27 07:44:05', '2025-08-14 11:35:52'),
+(20, 'Community Eco Art Gallery in Rwanda – Celebrate Local Creativity', 'Explore the vibrant community art gallery, where local artworks are on display, including paintings, sculptures, and traditional crafts. This eco-tourism experience offers a unique opportunity to support local talent while gaining an appreciation for Rwanda’s rich artistic heritage.\r\n\r\nVisitors can browse and purchase one-of-a-kind souvenirs directly from the artists, making it a meaningful way to take home a piece of Rwandan culture. The gallery highlights the creativity and dedication of the community while fostering cultural exchange between visitors and local artists.\r\n\r\nGallery Highlights:\r\n\r\nView paintings, sculptures, and traditional Rwandan crafts\r\n\r\nSupport local artists by purchasing unique souvenirs\r\n\r\nLearn about the inspiration and stories behind the artworks\r\n\r\nExperience an immersive cultural and eco-tourism activity\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your visit and celebrate Rwanda’s community art scene.', NULL, '1753609982_4553703.jpg', 9, 1, 'active', '2025-07-27 07:53:02', '2025-08-14 11:41:38'),
+(21, 'Rwanda Birdwatching Experience – Spot Over 700 Species', 'Rwanda is a birdwatcher’s paradise, home to more than 700 species, and the area around the homestay offers exceptional opportunities to observe a wide variety of birds. Whether you’re an experienced birder or a casual nature enthusiast, the diverse habitats near the homestay are alive with colorful and rare species.\r\n\r\nJoin a guided birdwatching tour to explore forests, wetlands, and farmland, learning about the unique behaviors and habitats of Rwanda’s rich birdlife. This eco-tourism activity provides a peaceful and educational way to connect with nature while supporting local conservation efforts.\r\n\r\nExperience Highlights:\r\n\r\nGuided birdwatching tour in diverse habitats\r\n\r\nSpot rare and colorful bird species\r\n\r\nLearn about the ecology and behavior of local birds\r\n\r\nEnjoy a peaceful and immersive nature experience\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy an unforgettable birdwatching experience in Rwanda.', NULL, '1753610913_8058436.jpg', 10, 1, 'active', '2025-07-27 08:08:33', '2025-08-14 11:44:33'),
+(22, 'Rwanda Twin Lakes Eco Boat Tour – Burera and Ruhondo', 'Discover the serene beauty of Rwanda’s twin lakes, Burera and Ruhondo, with a relaxing eco boat tour. Glide across the calm waters while enjoying stunning views of the surrounding hills and landscapes. This eco-tourism activity is perfect for nature lovers, photographers, and anyone seeking a peaceful outdoor experience.\r\n\r\nExplore the lakeside trails with a short hike, observe local birdlife, or simply relax on the water and take in the tranquility. The twin lakes area offers a perfect combination of adventure, relaxation, and natural beauty.\r\n\r\nTour Highlights:\r\n\r\nGuided boat tour on Lake Burera and Lake Ruhondo\r\n\r\nHike the surrounding hills and explore scenic trails\r\n\r\nSpot birds and enjoy photography opportunities\r\n\r\nRelax in a peaceful, natural setting ideal for picnics or reflection\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy a memorable eco boat tour on Rwanda’s twin lakes.', NULL, '1753611028_7412747.jpg', 11, 1, 'active', '2025-07-27 08:10:28', '2025-08-14 11:48:48'),
+(23, 'Rwanda Umuganda Experience – Participate in Local Community Service', 'Experience the spirit of community in Rwanda by participating in Umuganda, the nationwide day of service where locals come together to work on development projects. This hands-on eco-tourism experience allows you to contribute meaningfully alongside community members, whether by building infrastructure, planting trees, or cleaning and preserving the local environment.\r\n\r\nParticipating in Umuganda provides a unique cultural insight into Rwanda’s values of unity and civic responsibility while giving you a tangible way to support local development.\r\n\r\nExperience Highlights:\r\n\r\nJoin locals in a nationwide community service initiative\r\n\r\nParticipate in projects such as tree planting, infrastructure development, or environmental cleanup\r\n\r\nGain insight into Rwandan culture and community values\r\n\r\nEngage in a rewarding and immersive eco-tourism activity\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred day to take part in this meaningful community service experience in Rwanda.', NULL, '1753611091_8404881.jpg', 12, 1, 'active', '2025-07-27 08:11:31', '2025-08-14 11:52:07'),
+(24, 'Gorilla Conservation Tour at Dian Fossey Fund – Ellen DeGeneres Campus', 'Visit the Ellen DeGeneres Campus of the Dian Fossey Gorilla Fund, a world-class conservation center dedicated to protecting gorillas and other wildlife in Rwanda. This guided tour offers a unique opportunity to learn about Dian Fossey’s pioneering work and the ongoing efforts of the fund in gorilla research, education, and conservation.\r\n\r\nExplore the campus, gain insights into scientific and community programs, and understand how conservation, research, and local engagement come together to protect Rwanda’s iconic mountain gorillas. This experience is both educational and inspiring for wildlife enthusiasts and eco-tourism travelers.\r\n\r\nTour Highlights:\r\n\r\nGuided visit to the Ellen DeGeneres Campus of the Dian Fossey Gorilla Fund\r\n\r\nLearn about Dian Fossey’s groundbreaking work in gorilla conservation\r\n\r\nDiscover ongoing research and education programs for wildlife protection\r\n\r\nEngage with conservationists and understand local efforts to safeguard mountain gorillas\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and take part in this educational and inspiring gorilla conservation tour.', NULL, '1753611133_4194334.jpg', 13, 1, 'active', '2025-07-27 08:12:13', '2025-08-14 11:55:53'),
+(25, 'Experience Rwanda’s Rhythms – Traditional Cultural Performances', 'Experience the vibrant culture of Rwanda with an evening of traditional music, dance, storytelling, and drumming performances. Local elders and performers bring the country’s rich heritage to life, offering an immersive and interactive cultural experience.\r\n\r\nJoin in the dancing, feel the rhythms, and connect with Rwandan traditions in a fun and engaging way. This activity is perfect for travelers seeking a lively introduction to local customs and cultural expression.\r\n\r\nExperience Highlights:\r\n\r\nLive traditional Rwandan music, dance, and drumming\r\n\r\nStorytelling sessions led by local elders\r\n\r\nParticipate in interactive performances and dance along\r\n\r\nGain insight into Rwanda’s cultural heritage and traditions\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time and enjoy a memorable evening of Rwandan cultural performances.', NULL, '1753611198_1055271.jpg', 14, 1, 'active', '2025-07-27 08:13:19', '2025-08-14 11:59:24'),
+(26, 'Rwanda Celebration Experiences – Honeymoons, Birthdays and Anniversaries', 'Make your special occasions unforgettable at the homestay, whether it’s a honeymoon, birthday, anniversary, or any meaningful celebration. Enjoy tailored experiences designed to create lasting memories, including romantic dinners, curated activities, and personalized surprises.\r\n\r\nThis eco-tourism-friendly celebration allows you to connect with the natural beauty of the region while marking life’s important milestones in a unique and memorable way.\r\n\r\nExperience Highlights:\r\n\r\nTailored celebrations for honeymoons, birthdays, anniversaries, and more\r\n\r\nRomantic dinners and customized activities\r\n\r\nPersonalized surprises to make your occasion unforgettable\r\n\r\nCelebrate amidst the scenic beauty of the Virunga region\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your special celebration and make your moments truly memorable.', NULL, '1753611287_8655960.jpg', 15, 1, 'active', '2025-07-27 08:14:47', '2025-08-14 12:03:22'),
+(27, 'Rwanda Beekeeping Experience – Discover Honey Production', 'Discover the fascinating world of honey production with local beekeepers near the homestay. This hands-on eco-tourism experience allows you to learn about bee management, the vital role bees play in the ecosystem, and the process of producing natural honey.\r\n\r\nGet up close with the hives, explore sustainable beekeeping practices, and taste fresh honey straight from the source. It’s an educational and engaging way to connect with local agricultural traditions while supporting the community.\r\n\r\nExperience Highlights:\r\n\r\nHands-on experience with local beekeepers\r\n\r\nLearn about bee ecology and sustainable honey production\r\n\r\nTaste fresh honey directly from the hive\r\n\r\nGain insight into local agricultural practices and eco-tourism initiatives\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your visit and enjoy an immersive beekeeping experience in Rwanda.', NULL, '1753611350_7204885.jpg', 16, 1, 'active', '2025-07-27 08:15:51', '2025-08-14 12:06:02'),
+(28, 'Experience Rwanda’s Heritage – Hands-On Traditional Clothing', 'Immerse yourself in Rwandan culture by trying on traditional clothing such as the kitenge and other colorful garments. Learn about their cultural significance, the occasions they are worn for, and how they reflect Rwanda’s rich heritage.\r\n\r\nThis hands-on experience allows you to connect with local traditions, gain insight into Rwandan society, and create memorable photos of your cultural immersion. It’s a fun and educational way to engage with the country’s vibrant customs.\r\n\r\nExperience Highlights:\r\n\r\nTry on traditional Rwandan clothing, including kitenge\r\n\r\nLearn about the cultural significance of garments in Rwandan society\r\n\r\nParticipate in a hands-on cultural experience\r\n\r\nCapture memorable moments in authentic traditional attire\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your visit and enjoy an interactive cultural clothing experience in Rwanda.', NULL, '1753611474_4352254.jpg', 17, 1, 'active', '2025-07-27 08:17:54', '2025-08-14 12:09:52'),
+(29, 'Relax and Reflect in Rwanda – Conservation and Wildlife Learning Space', 'Unwind in the conservation sitting room, a peaceful space designed to raise awareness about Rwanda’s wildlife and environmental initiatives. Learn from informative displays and materials provided by conservationists and homestay staff, offering insights into local ecosystems and the region’s unique biodiversity.\r\n\r\nThis experience is perfect for relaxing, reflecting on your travels, and deepening your understanding of conservation efforts in Rwanda.\r\n\r\nExperience Highlights:\r\n\r\nRelax in a dedicated conservation-themed space\r\n\r\nExplore informative displays about Rwanda’s wildlife and environment\r\n\r\nLearn from conservationists and homestay staff\r\n\r\nReflect on your eco-tourism experiences and deepen your understanding of local biodiversity\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your visit and enjoy a serene and educational conservation sitting experience.', NULL, '1753611533_7181928.jpg', 18, 1, 'active', '2025-07-27 08:18:54', '2025-08-14 12:13:40'),
+(31, 'Golden Monkey Trek in Volcanoes National Park', 'Venture into the lush bamboo forests of Volcanoes National Park to meet the golden monkeys, one of Rwanda’s most iconic and endangered species. Led by expert guides, embark on a trek to observe these playful primates in their natural habitat.\r\n\r\nThis unforgettable experience allows you to learn about golden monkey behavior and the efforts to protect and conserve them, all while enjoying the stunning scenery of the park.\r\n\r\nTrek Highlights:\r\n\r\nExplore bamboo forests and scenic trails in Volcanoes National Park\r\n\r\nObserve golden monkeys up close in their natural environment\r\n\r\nLearn from expert guides about primate behavior and conservation\r\n\r\nEnjoy a memorable wildlife experience in Rwanda’s iconic park\r\n\r\nTo join this experience:\r\nContact us via WhatsApp or call directly to arrange your preferred time. Morning and afternoon sessions are available.', NULL, '1755191467_4749442.jpg', 20, 1, 'active', '2025-08-14 15:06:14', '2025-08-14 15:11:08');
 
 -- --------------------------------------------------------
 
@@ -1143,17 +1255,17 @@ INSERT INTO `build_submissions` (`id`, `names`, `email`, `phone`, `referral_sour
 --
 
 CREATE TABLE `community_admins` (
-  `id` int NOT NULL,
-  `username` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `full_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `profile_image` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` enum('admin','super_admin') COLLATE utf8mb4_unicode_ci DEFAULT 'admin',
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `profile_image` varchar(200) NOT NULL,
+  `role` enum('admin','super_admin') DEFAULT 'admin',
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active',
   `last_login` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1161,7 +1273,7 @@ CREATE TABLE `community_admins` (
 --
 
 INSERT INTO `community_admins` (`id`, `username`, `password`, `email`, `full_name`, `profile_image`, `role`, `status`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$yvc80O9BF27F6uOrzKQBd.S4xvSOL.U6N8A5vN60HFUgazEulsGmW', 'virungaecotours@gmail.com', 'Community Admin', 'admin_685222d522fd8_Fabrice.png', 'super_admin', 'active', '2025-07-31 12:49:38', '2025-06-11 14:45:30', '2025-07-31 12:49:38'),
+(1, 'admin', '$2y$10$KZ0WhPE4BIS2tGCYdP06HecKMPDLaxY0/nFehekCP.N1F4sKr5zii', 'virungaecotours@gmail.com', 'Community Admin', 'admin_685222d522fd8_Fabrice.png', 'super_admin', 'active', '2025-09-02 19:41:51', '2025-06-11 14:45:30', '2025-09-02 19:41:51'),
 (2, 'manager', '$2y$10$DV2ARV1fgPnnE7gAylH.Y.XT1jYH6CwDy/CQa3/AtKHbJ4jIIkNge', 'manager@virungaecotours.com', 'Program Manager', '', 'admin', 'active', NULL, '2025-06-11 14:45:30', '2025-07-31 12:49:07');
 
 -- --------------------------------------------------------
@@ -1171,14 +1283,14 @@ INSERT INTO `community_admins` (`id`, `username`, `password`, `email`, `full_nam
 --
 
 CREATE TABLE `community_categories` (
-  `id` int NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `icon` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(7) COLLATE utf8mb4_unicode_ci DEFAULT '#2a4858',
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci DEFAULT 'active',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
+  `icon` varchar(100) DEFAULT NULL,
+  `color` varchar(7) DEFAULT '#2a4858',
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1199,22 +1311,23 @@ INSERT INTO `community_categories` (`id`, `name`, `description`, `icon`, `color`
 --
 
 CREATE TABLE `community_messages` (
-  `id` int NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `program_interest` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `volunteer_interest` tinyint(1) DEFAULT '0',
-  `donation_interest` tinyint(1) DEFAULT '0',
-  `status` enum('new','read','replied','archived') COLLATE utf8mb4_unicode_ci DEFAULT 'new',
-  `admin_notes` text COLLATE utf8mb4_unicode_ci,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
-  `sent_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `replied_at` timestamp NULL DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `message` text NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `program_interest` varchar(255) DEFAULT NULL,
+  `volunteer_interest` tinyint(1) DEFAULT 0,
+  `donation_interest` tinyint(1) DEFAULT 0,
+  `status` enum('new','read','replied','archived') DEFAULT 'new',
+  `admin_notes` text DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `sent_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `replied_at` timestamp NULL DEFAULT NULL,
+  `emailed` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1224,27 +1337,27 @@ CREATE TABLE `community_messages` (
 --
 
 CREATE TABLE `community_programs` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `short_description` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` enum('rwanda','uganda','congo') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `category` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `gallery` text COLLATE utf8mb4_unicode_ci COMMENT 'JSON array of image paths',
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `short_description` varchar(500) DEFAULT NULL,
+  `country` enum('rwanda','uganda','congo') NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `gallery` text DEFAULT NULL COMMENT 'JSON array of image paths',
   `date_started` date DEFAULT NULL,
   `date_ended` date DEFAULT NULL,
-  `status` enum('active','completed','planned','cancelled') COLLATE utf8mb4_unicode_ci DEFAULT 'active',
-  `impact_summary` text COLLATE utf8mb4_unicode_ci,
-  `beneficiaries` int DEFAULT '0',
+  `status` enum('active','completed','planned','cancelled') DEFAULT 'active',
+  `impact_summary` text DEFAULT NULL,
+  `beneficiaries` int(11) DEFAULT 0,
   `budget` decimal(10,2) DEFAULT NULL,
-  `featured` tinyint(1) DEFAULT '0',
-  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_description` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `featured` tinyint(1) DEFAULT 0,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(500) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1266,21 +1379,21 @@ INSERT INTO `community_programs` (`id`, `title`, `description`, `short_descripti
 --
 
 CREATE TABLE `community_team` (
-  `id` int NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bio` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `order_position` int DEFAULT '0',
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci DEFAULT 'active',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `title` varchar(150) NOT NULL,
+  `bio` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `linkedin` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `order_position` int(11) DEFAULT 0,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1299,20 +1412,20 @@ INSERT INTO `community_team` (`id`, `name`, `title`, `bio`, `image`, `email`, `p
 --
 
 CREATE TABLE `community_testimonials` (
-  `id` int NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `organization` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rating` tinyint(1) DEFAULT '5',
-  `location` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `program_id` int DEFAULT NULL,
-  `featured` tinyint(1) DEFAULT '0',
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci DEFAULT 'active',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ;
+  `id` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `organization` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rating` tinyint(1) DEFAULT 5,
+  `location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `program_id` int(11) DEFAULT NULL,
+  `featured` tinyint(1) DEFAULT 0,
+  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `community_testimonials`
@@ -1331,126 +1444,127 @@ INSERT INTO `community_testimonials` (`id`, `name`, `role`, `organization`, `mes
 --
 
 CREATE TABLE `contact_submissions` (
-  `id` int NOT NULL,
-  `first_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `message` text COLLATE utf8mb4_general_ci NOT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `submission_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `is_read` tinyint(1) DEFAULT '0',
-  `is_responded` tinyint(1) DEFAULT '0',
-  `response_notes` text COLLATE utf8mb4_general_ci,
-  `response_date` datetime DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_read` tinyint(1) DEFAULT 0,
+  `is_responded` tinyint(1) DEFAULT 0,
+  `response_notes` text DEFAULT NULL,
+  `response_date` datetime DEFAULT NULL,
+  `emailed` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact_submissions`
 --
 
-INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `phone`, `subject`, `message`, `ip_address`, `submission_date`, `is_read`, `is_responded`, `response_notes`, `response_date`) VALUES
-(1, 'test', 'tesr', 'virungaecotours@gmail.com', '12345', '123', 'qwasdx', '41.173.35.86', '2025-04-28 12:54:04', 1, 1, 'k', '2025-04-28 06:57:44'),
-(2, 'ij', 'n', 'ntakirutimanadaniel6@gmail.com', '00', 'n', 'n', '41.173.35.86', '2025-04-28 14:12:18', 1, 0, NULL, NULL),
-(3, 'Aime', 'Mazimpaka', 'aimecol314@gmail.com', '0789375245', 'sumary', 'Wow', '41.186.78.8', '2025-04-28 21:01:19', 0, 0, NULL, NULL),
-(4, 'IsmaelBax', 'IsmaelBaxOQ', 'jisankape@list.ru', '83472326262', 'Пульсовая Диагностика', 'Первое, второе и компот &#8212  https://ayurdara.ru/sredstva_firmy_baidyanath/jogoradzh_guggul_yograj_guggulu_baidyanath/\r\n \r\n- варикозное расширение вен: положительно действует на сосуды, укрепляет их; - избавление от целлюлита и его профилактика; - вялость и дряблость тела: удвартана замедляет процесс старения, , боли в суставах, облегчение боли при растяжениях связок и ушибах; - лишний вес и объем тела; - усталость, нервное напряжение: удвартана расслабляет, восполняет жизненную энергию https://ayurdara.ru/fotoal_bomy/priklyucheniya_ayurdary_v_volshebnoj_mile/26/\r\n \r\nПоказания: Устранение напряжения, стресса, улучшение питания кожи, омоложение, устранение отеков, нормализации сна и эмоционального фона, депрессия, бессонница, хроническая усталость https://ayurdara.ru/vopros-otvet/konsul_tacii_doktora_pravina_v_centrah_ayurdara/\r\n \r\nОСТЕОПАТИЯ https://ayurdara.ru/fotoal_bomy/deli/qutb_minar/\r\n \r\nДа https://ayurdara.ru/nashi_specialisty/ayurvedicheskij_terapevt_santo_tomi/\r\n  На страницах заведений есть раздел , где можно узнать о действующих скидках и спецпредложениях https://ayurdara.ru/nashi_specialisty/ayurvedicheskij_terapevt_santo_tomi/\r\n \r\nГОМЕОПАТИЯ https://ayurdara.ru/fotoal_bomy/priklyucheniya_ayurdary_v_volshebnoj_mile/5/', '83.217.213.120', '2025-06-19 04:51:33', 0, 0, NULL, NULL),
-(5, 'Jamesrit', 'JamesritHK', 'valentin.vinokurov.12.6.1968@mail.ru', '81187747121', 'Жилые Дома Проектирование', 'По шикарному местному кремлю XV века прогуляться нужно обязательно https://balka.studio/dizain-proekt-interiera/\r\n \r\nПоистине сказочное здание – Дом Шамиля, который был построен купцом Апаковым как подарок дочери на свадьбу https://balka.studio/dizain-proekt-kvartiry-cena/\r\n  В 18 лет она вышла замуж за сына знаменитого предводителя кавказских горцев имама Шамиля https://balka.studio/dom-v-stile-raita/\r\n  В советские годы это был жилой дом, а позже – музей национального поэта Тукая https://balka.studio/proekt-doma-cena/\r\n \r\nПАВЛОВСК: ЖЕМЧУЖИНА ДВОРЦОВОГО ОЖЕРЕЛЬЯ https://balka.studio/dizain-proekt-studii-pod-sdachu/\r\n \r\nСАНКТ-ПЕТЕРБУРГ: МАЛОИЗВЕСТНОЕ ОБ ИЗВЕСТНОЙ СЕВЕРНОЙ СТОЛИЦЕ https://balka.studio/musey-serdca-v-spb/\r\n \r\nКремлевский Софийский собор, один из старейших в стране, сохранился даже в годы советского богоборчества, да и во время Великой Отечественной обошелся небольшими повреждениями https://balka.studio/dizain-studii/\r\n \r\nАвторские интерьеры и ремонт под ключ https://balka.studio/dizain-proekt-studii-pod-sdachu/', '83.217.213.120', '2025-06-19 05:14:56', 0, 0, NULL, NULL),
-(6, 'Larryerent', 'LarryerentHX', 'gamenoktr@gmail.com', '89635695156', 'Официальные ссылки зеркало Кракена https://kra34cc.shop https://kra34cc.shop', 'ВСЕ актуальные ссылки тут - https://kra34cc.shop                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Официальные ссылки зеркало Кракена https://kra34cc.shop https://kra34cc.shop \r\n \r\n \r\n \r\nОФИЦИАЛЬНАЯ ССЫЛКА на Кракен сайт здесь: Ссылка на сайт:  https://kra34cc.shop \r\nНе заходите по другим ссылкам - https://kra34cc.shop    kra34cc.shop \r\n \r\n \r\nКлючевые слова: Кракен Даркнет, Кракен ссылка, Кракен сайт, Кракен Онион, kra34cc.shop, kra34cc.shop, Кракен маркетплейс, даркнет Кракен, Кракен зеркало, актуальные ссылки.', '5.137.243.207', '2025-06-19 05:24:04', 0, 0, NULL, NULL),
-(7, 'AlexFap', 'AlexFapUT', 'alexFap@x-mail.my', '88175216475', 'Кракен рабочий сайт найти', 'Несколько советов клиентам \r\nСайт Kraken знают все, кто хочет купить психоактивные вещества и незаконные услуги. Также тому, кто хочет сам заработать. Основная цель площадки – быть гарантом сделок между покупателями и магазинами и разбираться с конфликтами. Однако посетителям Кракена следует знать её особенности. \r\nКак заходить на площадку Kraken Onion \r\nРаспространённая проблема, с которой могут столкнуться посетители <a href=https://kraken-shop-darknet.com/kraken-sajt-darknet-kak-vojti-na-sajt/>кракен вход</a> – проблемы со входом. Это происходит из-за блокировок государством и из-за проблем со стороны посетителя. \r\nСпособы попасть на заблокированные сайты: \r\n• Прокси или ВПН. \r\n• браузер Тор, который обеспечивает высокий уровень конфиденциальности. \r\n• Найти зеркало, которое можно открыть в любом браузере. \r\nСпособ доступа выбирают с учётом особенностей ситуации. С мобилки на Кракен проще зайти через зеркало – для ПК лучше пользоваться Тором. \r\nКак покупать на Кракену \r\nПервая сделка на сайте должна выполняться только на Биткойны. После этого можно использовать все варианты: \r\n• Биткоин. Для этого не обязательно регистрировать криптовалютный кошелёк. Есть возможность получить BTC с банковской карты, Киви и Яндекс. \r\n• SBP. Для перевода по СБП пользуются кошельком или терминалом. \r\n• Пополнение мобильного номера. \r\nЕщё один способ купить товар или заказать услугу – игра в рулетку. При выборе этого варианта открывается игровое поле на 100 клеток – на которые можно ставить фишки. Стоимость поставленной фишки – процент от цены покупки. Можно заплатить меньше более чем вдвое. \r\nКак решать проблемы \r\nС функционалом Кракена разобраться несложно. Поэтому у большинства покупателей не возникает серьёзных проблем. А рейтинговая система сводит к минимуму вероятность стать жертвой мошенников. Продавцы, обманывающие покупателей, банятся. Но проблемы иногда возникают – можно купить некачественный товар или столкнуться с не доставленным заказом. В этом случае нужно открыть спор с продавцом, в котором участвует администрация. \r\nМожно столкнуться и с такой проблемой – блокировка со стороны сервиса. Обычно это связано с неправильными действиями пользователя. Снизить риск бана можно, соблюдая требования администрации. Если заблокировали незаслуженно – обращаться в службу поддержки.', '154.213.202.48', '2025-06-19 11:16:34', 0, 0, NULL, NULL),
-(8, 'LeeRon', 'LeeRonEY', 'dinanikolskaya99@gmail.com', '87116118385', 'Aloha  i am wrote about   the price for reseller', 'Sveiki, es gribēju zināt savu cenu.', '185.39.19.48', '2025-06-20 07:01:50', 0, 0, NULL, NULL),
-(9, 'Timothynob', 'TimothynobQR', 'kikromankopo1.9.93@gmail.com', '86675679267', 'золотая рыбка аквариумная', 'Р°РєРІР°СЂРёСѓРјРЅС‹Рµ СЂС‹Р±РєР° СЃРґРѕС…Р»Р°\r\n – это не просто красивые питомцы, это целый подводный мир, который можно создать у себя дома https://good-torrent.ru/17633-zooaquariumru-vash-gid-v-zagadochnyy-mir-akvariumov-obshirnyy-obzor-i-analiz-kontenta-dlya-nachinayuschih-i-professionalov.html\r\n. Наблюдение за их грациозными движениями и яркими окрасками успокаивает и расслабляет, а уход за аквариумом может стать увлекательным хобби. Но прежде чем обзавестись этими молчаливыми друзьями, необходимо тщательно подготовиться и изучить все нюансы их содержания. \r\n \r\nПервым шагом станет выбор аквариума. Его размер зависит от количества и размеров планируемых обитателей. Важно помнить, что рыбки должны иметь достаточно пространства для комфортной жизни и плавания. Кроме того, форма аквариума также играет роль. Традиционные прямоугольные аквариумы наиболее удобны в обслуживании, а круглые – хоть и выглядят необычно, но могут быть некомфортными для рыбок из-за искажения пространства. \r\n \r\nПосле выбора аквариума необходимо правильно его оборудовать. Обязательными элементами являются фильтр для очистки воды, обогреватель для поддержания оптимальной температуры и компрессор для насыщения воды кислородом. Также важно позаботиться об освещении, которое не только подчеркнет красоту рыбок, но и необходимо для роста живых растений. \r\n \r\nСледующий этап – РѕСЂР°РЅР¶РµРІС‹Рµ Р°РєРІР°СЂРёСѓРјРЅС‹Рµ СЂС‹Р±РєРё С„РѕС‚Рѕ СЃ РЅР°Р·РІР°РЅРёСЏРјРё\r\n. Здесь https://techdesigner.ru/posts/akva-evolyucziya-kak-prevratit-akvarium-v-zhivuyu-ekosistemu\r\nважно учитывать совместимость разных видов. Некоторые рыбки могут быть агрессивными по отношению к другим, а некоторые – требовать схожих условий содержания. Начинающим аквариумистам рекомендуется выбирать неприхотливые виды, такие как гуппи, данио, сомики или неоны. Они достаточно выносливы и прощают небольшие ошибки в уходе. \r\n \r\nПравильное кормление – залог здоровья и долголетия ваших питомцев. Рыбки должны получать сбалансированное питание, включающее сухой корм, живой корм (например, мотыль или артемию) и растительные добавки. Важно не перекармливать рыбок, так как это может привести к загрязнению воды и развитию болезней. \r\n \r\nУход за аквариумом – это регулярная процедура, включающая подмену воды, чистку грунта и стенок аквариума, а также контроль параметров воды (температуры, pH, жесткости). Подмену воды необходимо проводить еженедельно, заменяя около 20-30% объема. Чистку грунта и стенок аквариума проводят по мере необходимости, используя специальные инструменты. \r\n \r\nНаблюдение за поведением рыбок – важная часть ухода https://www.diigo.com/profile/zooaquarium93\r\n . Любые изменения в их активности, внешнем виде или аппетите могут быть признаками болезни. В случае обнаружения каких-либо отклонений необходимо своевременно принять меры, обратившись к ветеринару-ихтиологу. \r\n \r\nСоздание аквариума – это увлекательный процесс, требующий определенных знаний и усилий. Но результат стоит того: у вас появится свой маленький подводный мир, который будет радовать глаз и дарить умиротворение. Не бойтесь экспериментировать, изучайте новую информацию и помните, что забота о ваших питомцах – это ключ к их здоровью и долгой жизни.', '95.31.119.243', '2025-06-22 08:22:36', 0, 0, NULL, NULL),
-(10, 'Mike Jan-Erik Davies', 'Mike Jan-Erik Davies\r\nCV', 'info@digital-x-press.com', '86659787787', 'Add AEO to your SEO strategies today !', 'Hi, \r\nI understand that many businesses struggle recognizing that Answer Engine Optimization (AEO) is a gradual process and a well-planned regular commitment. \r\n \r\nSadly, very few businesses have the patience to recognize the incremental yet impactful improvements that can completely transform their digital visibility. \r\n \r\nWith regular search engine updates, a consistent, continuous SEO strategy including Answer Engine Optimization (AEO) is essential for securing a positive ROI. \r\n \r\nIf you see this as the right method, collaborate with us! \r\n \r\nCheck out Our Monthly SEO Services https://www.digital-x-press.com/unbeatable-seo/ \r\n \r\nTalk to Us on Instant Messaging https://www.digital-x-press.com/whatsapp-us/ \r\n \r\nWe deliver unbeatable results for your budget, and you will value choosing us as your growth partner. \r\n \r\nBest regards, \r\nDigital X SEO Experts \r\nPhone/WhatsApp: +1 (844) 754-1148', '84.17.60.187', '2025-06-22 12:48:37', 0, 0, NULL, NULL),
-(11, 'Mike Oskar Gustafsson', 'Mike Oskar Gustafsson\r\nRD', 'info@strictlydigital.net', '87862284774', 'Semrush links for virungaecotours.com', 'Greetings, \r\n \r\nReceiving some set of links linking to virungaecotours.com could have no value or negative impact for your website. \r\n \r\nIt really makes no difference the number of inbound links you have, what is key is the number of ranking terms those websites rank for. \r\n \r\nThat is the key element. \r\nNot the fake third-party metrics or ahrefs DR score. \r\nThat anyone can do these days. \r\nBUT the volume of high-traffic search terms the websites that link to you contain. \r\nThat’s the bottom line. \r\n \r\nMake sure these backlinks redirect to your site and your site will see real growth! \r\n \r\nWe are offering this special SEO package here: \r\nhttps://www.strictlydigital.net/product/semrush-backlinks/ \r\n \r\nNeed more details, or want clarification, message us here: \r\nhttps://www.strictlydigital.net/whatsapp-us/ \r\n \r\nSincerely, \r\nMike Oskar Gustafsson\r\n \r\nstrictlydigital.net \r\nPhone/WhatsApp: +1 (877) 566-3738', '84.17.60.179', '2025-06-24 12:54:56', 0, 0, NULL, NULL),
-(12, 'Michaelclums', 'MichaelclumsJE', 'densosport@inbox.lv', '82412196648', 'What\'s Your Verdict on 1win Casino? Share Your Honest Experiences!', 'Hey everyone, \r\n \r\nThis thread is for anyone who has played at 1win Casino to share their honest feedback and experiences. With so many online casinos out there, it can be tough to know which ones are worth your time and money. \r\n \r\nI\'m thinking of trying out 1win and I\'m curious to hear from the community. I\'ve seen some mixed reviews online, so I\'m hoping we can create a helpful discussion for new and existing players. \r\n \r\nTo get the conversation started, here are a few questions: \r\n \r\nWhat has been your overall experience with 1win? (e.g., excellent, good, average, poor) \r\nGame Selection: What do you think of their variety of slots, table games, and live dealer options? Any favorite games? \r\nBonuses and Promotions: Are their bonus offers fair and easy to understand? Have you had any success with them? \r\nDeposits and Withdrawals: How smooth is the process for depositing and withdrawing funds? Have you faced any issues with verification or payout times? \r\nCustomer Support: Have you ever needed to contact their support team? How responsive and helpful were they? \r\nWebsite and App: How do you find the user interface and overall usability of their platform? \r\nWhether you\'ve had a big win, a frustrating experience with a withdrawal, or just want to share your general thoughts, please post them here. Let\'s help each other out by creating a transparent and honest resource for everything related to <a href=https://bluebellschool.org/1win-szkolenie-sportowe-oraz-kasyno-internetowego-premia-piec-stow/>1win</a> Casino.', '185.155.97.139', '2025-06-24 23:29:55', 0, 0, NULL, NULL),
-(13, 'Jameshapse', 'JameshapseWZ', 'yandexservises@anonmails.de', '88375638366', 'Специальное предложение: скидка 500 рублей на Яндекс Маркете', 'Уважаемый(ая) партнер, \r\n \r\nИмеем честь уведомить, что на платформе Яндекс Маркет открылась масштабная распродажа с привлекательными предложениями для наших клиентов. \r\n \r\nВоспользуйтесь уникальным промокодом WOW500 или LOOK500, чтобы получить скидку 500 рублей на при оформлении заказа. \r\n \r\nДля участия в акции предлагается: \r\n \r\nПерейти на сайт Яндекс Маркета \r\n \r\nПодобрать необходимые товары \r\n \r\nВвести код WOW500 или LOOK500 для скидки \r\n \r\nОбращаем ваше внимание, что акция действует ограниченное время. \r\n \r\nДля получения дополнительной информации обращайтесь в службу поддержки. \r\n \r\nБлагодарим за выбор и доверие. \r\n \r\nС уважением. \r\nЖдём. \r\n \r\nПереходи по ссылке и получай все скидки Яндекс Маркет - https://t.me/YandexMArket002_bot \r\n<a href=\"https://t.me/YandexMArket002_bot\">Все акции Яндекс Маркет</a>', '188.130.137.229', '2025-06-25 02:35:11', 0, 0, NULL, NULL),
-(14, 'pro-dache', 'pro-dacheXV', '553@gmail.com', '82526877733', 'Gnj 5  Fvti Ngj', '<a href=\"https://prodache.ru\">prodache</a>', '117.250.3.58', '2025-06-27 16:45:39', 0, 0, NULL, NULL),
-(15, 'RobertRon', 'MatthewRonGM', 'LOVEBUGJH@YAHOO.COM', '83912769681', 'Aloha    writing about your the prices', 'Ciao, volevo sapere il tuo prezzo.', '185.39.19.21', '2025-06-28 00:30:19', 0, 0, NULL, NULL),
-(16, 'RobertRon', 'FrankRonGM', '5026645590@vtext.com', '85437147721', 'Hallo, i am write about     price for reseller', 'Hai, saya ingin tahu harga Anda.', '185.39.19.21', '2025-06-28 00:41:56', 0, 0, NULL, NULL),
-(17, 'RobertRon', 'AnthonyRonGM', 'Agoglia1@aol.com', '81328538693', 'Aloha  i wrote about your   prices', 'Xin chào, tôi muốn biết giá của bạn.', '185.39.19.21', '2025-06-28 03:11:23', 0, 0, NULL, NULL),
-(18, 'DJBew', 'DJBew', 'rubbyroyd24@gmail.com', '89954536361', 'Эмоциональные грани музыкального искусства: волшебство в исполнении Андрея Вебера', '<a href=https://www.youtube.com/channel/UCsV2OdpdPv6aq_cQWTmEs-Q>Певец, что приносит умиротворение через свою музыку – Андрей Вебер</a>', '5.183.130.110', '2025-06-28 21:23:33', 0, 0, NULL, NULL),
-(19, 'Craigstymn', 'CraigstymnLM', 'kmetzfwadia6f4@outlook.com', '84117974385', 'https://1.0rb11ta.top/', 'https://msk.0rb11ta.top/ Orb11ta работает! \r\nhttps://orb11ta.lol/  зеркало без  VPN!', '88.210.3.196', '2025-06-29 10:08:02', 0, 0, NULL, NULL),
-(20, 'krelpazy', 'krelpazyIQ', 'whtwearhfdiosnice@gmail.com', '89469664533', 'КРАКЕН!?САЙТ — ОФИЦИАЛЬНЫЙ САЙТ ДАРКНЕТ МАРКЕТПЛЕЙСА КРАКЕН (kraken)', 'Ищете Кракен сайт? Вам нужна официальная ссылка на сайт Кракен? В этом посте собраны все актуальные ссылки на сайт Кракен, которые помогут вам безопасно попасть на Кракен даркнет через Tor. \r\n \r\nРабочие ссылки на Кракен сайт (официальный и зеркала): \r\n \r\n1.	Официальная ссылка на сайт Кракен: <a href=https://https-kra33.shop?c=syf9zl>Кракен официальный сайт</a> \r\n \r\n2.	Кракен сайт зеркало: <a href=https://http-kra33.xyz?c=syf9wq>Кракен зеркало сайта</a> \r\n \r\n3.	Кракен сайт магазин: <a href=https://kra33cc.life?c=syekdh>Кракен магазин</a> \r\n \r\n4.	Ссылка на сайт Кракен через даркнет: <a href=https://https-kra33.shop?c=syf9zl>Кракен сайт даркнет</a> \r\n \r\n5.	Актуальная ссылка на сайт Кракен: <a href=https://kr34.xyz?c=syekao>Кракен актуальная ссылка</a> \r\n \r\n6.	Запасная ссылка на сайт Кракен: <a href=https://krakenmarketing.shop?c=sybtgp>Ссылка на сайт Кракен через VPN</a> \r\n \r\nКак попасть на Кракен сайт через Tor: \r\n \r\nДля того чтобы попасть на Кракен сайт через Tor, следуйте этим шагам: \r\n \r\n1.	Скачайте Tor браузер: Перейдите на официальный сайт Tor и скачайте Tor браузер для Windows, Mac и Linux. Установите браузер, чтобы получить доступ к Кракен даркнет. \r\n \r\n2.	Запустите Tor браузер: Откройте браузер и дождитесь, пока он подключится к сети Tor. \r\n \r\n3.	Перейдите по актуальной ссылке на сайт Кракен: Вставьте одну из актуальных ссылок на сайт Кракен в адресную строку Tor браузера, чтобы попасть на Кракен даркнет сайт. \r\n \r\n4.	Регистрация на сайте Кракен: Зарегистрируйтесь на Кракен официальном сайте. Создайте аккаунт, используя надежный пароль и включите двухфакторную аутентификацию для повышения безопасности. \r\n \r\nМеры безопасности на сайте Кракен даркнет: \r\n \r\nЧтобы ваш опыт использования Кракен сайта был безопасным, следуйте этим рекомендациям: \r\n \r\n•	Используйте актуальные ссылки на сайт Кракен: Даркнет-ресурсы часто меняют свои адреса, поэтому обязательно используйте только проверенные и актуальные ссылки на сайт Кракен. \r\n \r\n•	VPN для дополнительной безопасности: Использование VPN для доступа к Кракен обеспечит вашу анонимность, скрывая ваш реальный IP-адрес. Выбирайте только проверенные VPN-сервисы для доступа к Кракен сайту. \r\n \r\n•	Будьте осторожны с ссылками на Кракен: Важно избегать сомнительных ссылок и проверять их на наличие фишинга. \r\n \r\nПочему Кракен сайт так популярен? \r\n \r\n•	Кракен даркнет — это один из самых известных и популярных даркнет-магазинов. Он предоставляет пользователям безопасный доступ к анонимным покупкам, включая продукты на Кракен сайте, товары и услуги. \r\n \r\n•	Безопасность на сайте Кракен: Все транзакции через Кракен даркнет происходят анонимно, и каждый пользователь может быть уверен в защите своих данных. \r\n \r\n•	Актуальная ссылка на сайт Кракен: Для того чтобы быть в курсе актуальных ссылок, важно регулярно проверять обновления на проверенных форумах и в официальных источниках. \r\n \r\nПостоянно обновляющиеся зеркала сайта Кракен: \r\n \r\nСайт Кракен обновляет свои зеркала для обеспечения безопасности. Поэтому актуальная ссылка на Кракен может изменяться. Используйте только проверенные ссылки, такие как: \r\n \r\n•	Ссылка на сайт Кракен через Тор: <a href=https://krakenmarketing.shop?c=sybtgp>Кракен сайт Тор</a> \r\n \r\n•	Запасная ссылка на сайт Кракен: <a href=https://krakenmarketing.shop?c=sybtgp>Ссылка на сайт Кракен через VPN</a> \r\n \r\n•	Последняя ссылка на сайт Кракен: https://kra33cc.life?c=syekdh \r\n \r\nЗаключение: \r\n \r\nДля безопасного доступа к Кракен сайту, следуйте приведенным рекомендациям и используйте только актуальные ссылки на Кракен. Помните, что Кракен даркнет требует особого подхода в плане безопасности. Используйте Tor, VPN, и проверяйте актуальность ссылок. \r\n \r\nЗарегистрируйтесь на официальном сайте Кракен и получите доступ к всемирно известной даркнет-платформе. \r\n________________________________________ \r\nКлючевые слова: \r\n•	кракен сайт \r\n•	кракен официальный сайт \r\n•	кракен сайт kr2connect co \r\n•	кракен сайт магазин \r\n•	ссылка на сайт кракен \r\n•	кракен зеркало сайта \r\n•	кракен сайт даркнет \r\n•	сайт кракен тор \r\n•	кракен рабочий сайт \r\n•	кракен актуальная ссылка \r\n•	кракен даркнет', '77.246.102.218', '2025-07-03 12:03:40', 0, 0, NULL, NULL),
-(21, 'Philliptoili', 'PhilliptoiliRV', 'temptest543827564@gmail.com', '86797864936', '301 Moved Permanently', '301 Moved Permanently \r\n<a href=https://www.binance.com/activity/referral-entry/CPA/together-v4?hl=en&ref=CPA_007YZN88KF>Show more!..</a>', '5.228.6.144', '2025-07-04 13:05:18', 0, 0, NULL, NULL),
-(22, 'JimmyPouri', 'JimmyPouriSP', 'sir.maxbo@yandex.ru', '85121474184', 'Очиститель сажевого фильтра \"TERMIT DPF CLEANER\"', 'Очиститель сажевого фильтра FLUX \"TERMIT\" \r\nобъемом 5 литров предназначен для эффективной очистки и профилактики выхлопной системы вашего автомобиля. Этот продукт идеально подходит для владельцев дизельных автомобилей, которые хотят поддерживать работоспособность и долговечность своего сажевого фильтра. С его помощью вы сможете предотвратить засорение фильтра, что поможет избежать дорогостоящего ремонта и замены деталей. \r\n<a href=https://radikal.host/i/2s0gRv><img src=\"https://e.radikal.host/2025/03/30/to2.md.png\"></a> \r\nФормула очистителя \r\nразработана с учетом современных требований, обеспечивая высокую эффективность удаления загрязнений, таких как сажа и копоть, что в свою очередь улучшает работу двигателя и снижает выбросы вредных веществ в атмосферу. Регулярное использование этого продукта позволяет поддерживать оптимальную работу системы и способствует продлению срока службы вашего автомобиля. \r\n<a href=https://radikal.host/i/2s09mO><img src=\"https://e.radikal.host/2025/03/30/to1.md.png\"></a> \r\nПрименение очистителя \r\nПрименение очистителя не только безопасно, но и легко. Просто следуйте инструкции на упаковке, и вы сможете быстро и эффективно очистить сажевый фильтр, повышая производительность вашего транспорта. Этот очиститель является отличным выбором для автолюбителей, стремящихся поддерживать свой автомобиль в идеальном состоянии. \r\n<a href=https://radikal.host/i/2s0YuE><img src=\"https://e.radikal.host/2025/03/30/to3.md.png\"></a> \r\nКупить можно \r\nhttps://carteams-shop.ru/magazin/product/magazin/product/ochistitelsajevogofiltrafluxtermit \r\nhttps://www.ozon.ru/product/ochistitel-sazhevogo-filtra-termit-dpf-cleaner-5l-1842332449/ \r\nhttps://www.wildberries.ru/catalog/316931146/detail.aspx?targetUrl=GP \r\n \r\nЖидкость для тестирования, калибровки дизельных форсунок и ТНВД \"Torch DIESEL SRS\" \r\n \r\nСпециальная жидкость \r\nСпециальная жидкость для тестирования, калибровки и консервации топливной аппаратуры дизельных двигателей. Рекомендуется к применению как производителям топливной аппаратуры для ее калибровки и последующей консервации, так и для последующего обслуживания и ремонта на сервисных станциях. Рекомендации по применению SRS Calibration Fluid соответствует ISO-норме 4113 и имеет допуск Daimler-Benz Blatt 133.0. \r\n<a href=https://radikal.host/i/2s04Fd><img src=\"https://e.radikal.host/2025/03/30/d1.md.png\"></a> \r\nDIESEL TORCH \r\nDIESEL TORCH - обладает следующими преимуществами: \r\n \r\n-быстро удаляется с поверхности и не оставляет повреждений \r\n \r\n-низкие потери при испарении, за счет узкого диапазона между исходной и конечной точками кипения \r\n \r\n-стойкость к окислению \r\n \r\n-высокая температура вспышки и высокая диэлектрическая прочность \r\n \r\n-хорошие свойства смачивания и промывки \r\n \r\n-фильтруется при наличии необходимой системы фильтрации \r\n<a href=https://radikal.host/i/2s001I><img src=\"https://e.radikal.host/2025/03/30/d2.md.png\"></a> \r\nКупить можно \r\nhttps://carteams-shop.ru/magazin/product/jidkostdlyatestirovaniyadizelnihforsunok \r\nhttps://www.ozon.ru/product/zhidkost-dlya-testirovaniya-kalibrovki-dizelnyh-forsunok-i-tnvd-torch-diesel-srs-1842654348/ \r\nhttps://www.wildberries.ru/catalog/317636532/detail.aspx?targetUrl=GP', '188.162.6.36', '2025-07-06 01:44:36', 0, 0, NULL, NULL),
-(23, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '81186582425', 'Blood on AIPAC and The Evangelical Church hands', 'It\'s unbelievable \r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer provided Israel with TNT (explosives) for their GENOCIDE.\r\n\r\nGaza has been declared a disaster area and lacks essential resources for living in it, as follows.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed 90% of Gaza, destroying 437,600 homes, and killing one million people, including 50 thousand who are currently under rubble, 80% of whom are women and children. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 330,000 meters of water pipes, resulting in people not being able to drink water. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed more than 655,000 meters of underground sewer lines. Now people have no washrooms to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 2,800,000 two million eight hundred thousand meters of roads, causing people to have no roads to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel have destroyed 3680 km of electric grid, which has caused people to lose electricity. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 48 hospitals and leveled them to the ground. Now, no one will have a hospital to save their lives. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed over 785,000 students\' ability to attend school and learn. Their actions resulted in the complete destruction of 494 schools and universities, many of which were destroyed by bombing. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 981 mosques to prevent homless people from asking God for help. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer have made over 39000 small children orphans and left them without parents or relatives to care for them.\r\n \r\nThere has never been a war in history where 80% of the country has been destroyed, 100% of the population has been displaced, and 50% of the deaths are children. \r\n\r\nDon\'t hesitate to call it what it is\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and The Evangelical Church (America) are creating a GENOCIDE.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nsee why Israel can kill innocent children with American taxpayer money\r\n\r\n1- see Why Israel is in deep trouble \r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2- Because the God of Money of our World is a Jew who supports and lives in Israel. For more details, click on the following link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3- Because what USA president say about AIPAC and  The Evangelical Church (America)\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nSee how innocent children are killed by the most powerful Israeli using American bombs at\r\n\r\nAl Jazeera Arabic Live\r\n\r\nat\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nWatch the real news at\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.168.12', '2025-07-06 08:32:51', 0, 0, NULL, NULL),
-(24, 'Mike Morten Smith', 'Mike Morten Smith\r\nMJ', 'mike@monkeydigital.co', '88723993785', 'Grow Your Website Traffic with Country-Specific Social Ads – Only $10 for 10K Visits!', 'Dear Webmaster, \r\n \r\nI wanted to connect with something that could seriously help your website’s reach. We work with a trusted ad network that allows us to deliver authentic, geo-targeted social ads traffic for just $10 per 10,000 visits. \r\n \r\nThis isn\'t junk clicks—it’s real visitors, tailored to your preferred location and niche. \r\n \r\nWhat you get: \r\n \r\n10,000+ real visitors for just $10 \r\nGeo-targeted traffic for any country \r\nScalability available based on your needs \r\nUsed by marketers—we even use this for our SEO clients! \r\n \r\nReady to scale? Check out the details here: \r\nhttps://www.monkeydigital.co/product/country-targeted-traffic/ \r\n \r\nOr connect instantly on WhatsApp: \r\nhttps://monkeydigital.co/whatsapp-us/ \r\n \r\nLet\'s get started today! \r\n \r\nBest, \r\nMike Morten Smith\r\n \r\nPhone/whatsapp: +1 (775) 314-7914', '31.171.152.133', '2025-07-06 14:59:05', 0, 0, NULL, NULL),
-(25, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '81494774899', 'Blood on the hands of AIPAC and The Evangelical Church lobby', 'It\'s unbelievable\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza. \r\n\r\nThe most devastating genocide in the world is being carried out by AIPAC  ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church, which kill innocent women and children in Gaza.\r\n\r\nAIPAC and The Evangelical Church (America) provided Israel with TNT (explosives) for their GENOCIDE.\r\n\r\nGaza has been declared a disaster area and lacks essential resources for living in it, as follows.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 90% of Gaza, destroying 437,600 homes, and killing one million people, including 50 thousand who are currently under rubble, 80% of whom are women and children. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 330,000 meters of water pipes, resulting in people not being able to drink water. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed more than 655,000 meters of underground sewer lines. Now people have no washrooms to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 2,800,000 two million eight hundred thousand meters of roads, causing people to have no roads to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel have destroyed 3680 km of electric grid, which has caused people to lose electricity. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 48 hospitals and leveled them to the ground. Now, no one will have a hospital to save their lives. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (USA), and Israel destroyed over 785,000 students\' ability to attend school and learn. Their actions resulted in the complete destruction of 494 schools and universities, many of which were destroyed by bombing. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 981 mosques to prevent homless people from asking God for help. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, have made over 39000 small children orphans and left them without parents or relatives to care for them.\r\n \r\nThere has never been a war in history where 80% of the country has been destroyed, 100% of the population has been displaced, and 50% of the deaths are children. \r\n\r\nDon\'t hesitate to call it what it is\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and The Evangelical Church (America) are creating a GENOCIDE.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nsee why Israel can kill innocent children with American taxpayer money\r\n\r\n1- see Why Israel is in deep trouble \r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2- Because the God of Money of our World is a Jew who supports and lives in Israel. For more details, click on the following link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3- Because what USA president say about AIPAC and  The Evangelical Church (America)\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nSee how innocent children are killed by the most powerful Israeli using American bombs at\r\n\r\nAl Jazeera Arabic Live\r\n\r\nat\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nWatch the real news at\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.163.16', '2025-07-07 20:12:23', 0, 0, NULL, NULL),
-(26, 'ClydeSlopy', 'ClydeSlopyMM', 'markelov_a541f@rambler.ru', '86755696445', 'Rates start at €0.75/month.', 'http://vpnuf.mooo.com Fast and reliable VPN service with WireGuard support. Rates start at €0.75/month. Servers are available in Europe and Russia. Secure connection and high speeds up to 1 Gbps.', '130.255.170.164', '2025-07-08 12:14:33', 0, 0, NULL, NULL),
-(27, 'RobertRon', 'EricRonGM', 'BSMITH@BESTINSGRP.COM', '86612469615', 'Hello  i am wrote about   the prices', 'Aloha, makemake wau eʻike i kāu kumukūʻai.', '185.39.19.21', '2025-07-08 20:07:12', 0, 0, NULL, NULL),
-(28, 'RobertRon', 'RussellRonGM', 'adill@nationalselfstorage.com', '82595882899', 'Aloha  i am write about     price', 'Hæ, ég vildi vita verð þitt.', '185.39.19.21', '2025-07-08 20:07:12', 0, 0, NULL, NULL),
-(29, 'Mike Jens Nilsson', 'Mike Jens Nilsson\r\nAH', 'info@professionalseocleanup.com', '85224514943', 'Urgent: Toxic Links Found on virungaecotours.com', 'Hi, \r\nWhile reviewing virungaecotours.com, we spotted toxic backlinks that could put your site at risk of a Google penalty. \r\n \r\nWe can clean up your link profile and protect your rankings — all for just $5. \r\n \r\nFix it now before Google does: \r\nhttps://www.professionalseocleanup.com/ \r\n \r\nNeed help or questions? Chat here: \r\nhttps://www.professionalseocleanup.com/whatsapp/ \r\n \r\nBest, \r\nMike Jens Nilsson\r\n \r\n+1 (855) 221-7591 \r\ninfo@professionalseocleanup.com', '37.19.223.19', '2025-07-11 21:47:15', 0, 0, NULL, NULL),
-(30, 'Mike Sven-Erik Hansen', 'Mike Sven-Erik Hansen\r\nCV', 'info@digital-x-press.com', '81771146472', 'Add AEO to your SEO strategies today !', 'Hi, \r\nI realize that some companies struggle grasping that Answer Engine Optimization (AEO) is a continuous effort and a carefully organized regular commitment. \r\n \r\nThe reality is, very few marketers have the patience to recognize the incremental yet significant improvements that can completely boost their search performance. \r\n \r\nWith constant algorithm changes, a consistent, long-term strategy including Answer Engine Optimization (AEO) is essential for securing a strong return on investment. \r\n \r\nIf you recognize this as the best approach, collaborate with us! \r\n \r\nDiscover Our Monthly SEO Services https://www.digital-x-press.com/unbeatable-seo/ \r\n \r\nChat With Us on Instant Messaging https://www.digital-x-press.com/whatsapp-us/ \r\n \r\nWe deliver remarkable outcomes for your budget, and you will enjoy choosing us as your growth partner. \r\n \r\nBest regards, \r\nDigital X SEO Experts \r\nPhone/WhatsApp: +1 (844) 754-1148', '181.214.218.112', '2025-07-19 19:05:17', 0, 0, NULL, NULL),
-(31, 'IsmaelBax', 'IsmaelBaxOQ', 'jisankape@list.ru', '86371942195', 'Аюрведическая Терапия', 'Как любое лечение, процедурное лечение должно быть назначено специалистом и проводиться курсами, для максимального результата https://ayurdara.ru/fotoal_bomy/yoga_vstrecha/_/\r\n \r\nЗдесь Вы сможете узнать много полезного о науке аюрведы https://ayurdara.ru/fotoal_bomy/priklyucheniya_ayurdary_v_volshebnoj_mile/3/\r\n  Познакомитесь с её терминами и понятиями https://ayurdara.ru/stat_i/zastoj_v_zhizni/\r\n  В разделе  и блоге найдёте интересные статьи о здоровье https://ayurdara.ru/ayurvedicheskaya_kuhnya/chatni/chatni_iz_kinzy/\r\n  Узнаете, что лечит аюрведа, каковы её методы, как проходят консультации аюрведических докторов и аюрведическая диагностика https://ayurdara.ru/fotoal_bomy/simpozium_ayurveda_i_joga_g_spb_24_06_17/2/\r\n  Проникнитесь идеями о ценности аюрведических массажей, процедур и глубинного омоложения организма https://ayurdara.ru/ayurvedicheskaya_kuhnya/uppuma/\r\n  И ещё – здесь Вы найдёте хорошие и полезные рецепты и научитесь питаться так, чтобы еда стала лекарством, а не источником болезней! Читайте, узнавайте, здоровейте! \r\nКонтактная информация https://ayurdara.ru/fotoal_bomy/ayurdara_-_ayurveda_v_sankt-peterburge/5/2/\r\n \r\nПХАЛА – Фруктовый массаж https://ayurdara.ru/fotoal_bomy/jaipur/24/\r\n \r\nНе является лекарственным препаратом и не заменяет традиционного медицинского лечения https://ayurdara.ru/fotoal_bomy/2021/28/\r\n  Перед применением рекомендуется проконсультироваться со специалистом по Аюрведе для индивидуального назначения https://ayurdara.ru/fotoal_bomy/pattadakal_aihole/8/\r\n \r\n…сильные руки хрупкой девушки-массажистки,но! Заявленный массаж лица не делается, фито-чай по завершении процедуры не предлагается https://ayurdara.ru/knigi_i_zhurnaly_ob_ayurvede/ayurveda_i_joga_vypusk_11/\r\n  Осадок остался https://ayurdara.ru/fotoal_bomy/indijskij_tradicionnyj_centr_zdorov_ya_ayurdara/25/\r\n  Советовать…', '83.217.213.120', '2025-07-21 04:38:00', 0, 0, NULL, NULL),
-(32, 'Alfredheede', 'AlfredheedeVS', 'y.kuvayev@mail.ru', '86668451127', 'Грунтовка Глубокого Проникновения 10', '№ 005 Серый темный https://p-parquet.ru/neprozrachnaya-kraska-osmo-landhausfarbe-32\r\n \r\nСредства для реставрации мебели https://p-parquet.ru/magazin/folder/lak-dlya-parketa\r\n \r\nот 2 590 руб https://p-parquet.ru/retush-emalevaya-ritocchi-coprente-122-oranjevii-30ml\r\n \r\nНаш магазин принимает розничные и оптовые заказы на реставрационные материалы для мебели https://p-parquet.ru/vodnyy-lak-dlya-parketa-lobadur-ws-2k-duo-1\r\n  Мы готовы к сотрудничеству как с индивидуальными заказчиками, так и с производителями мебели и предметов интерьера https://p-parquet.ru/inzhenernyj-modulnyj-parket-kvadro-iz-duba\r\n \r\n№ R 4900 Вишня https://p-parquet.ru/osmo-holzschutz-lasur-maslo-zashchitnaya-906-25l\r\n \r\n5 https://p-parquet.ru/materialy-dlya-naruzhnykh-rabot-borma-wachs/p/2\r\n  Не меняет структуру древесины  https://p-parquet.ru/samogruntuyushchijsya-vodnyj-lak-dlya-parketa-parquet-lack-borma-wachs-20l-60\r\n  Применение масло-воска не приводит к разрушению структуры древесины, и даже наоборот, защищает дерево от пятен, истирания, царапин и других повреждений https://p-parquet.ru/maslo-osmo-3072-cvet-yantar-s-tverdym-voskom-hartwachs-ol-farbig-180ml', '83.217.213.120', '2025-07-21 04:42:10', 0, 0, NULL, NULL),
-(33, 'DavidRof', 'DavidRofSQ', 'abbyas-venikov1984@mail.ru', '87337424345', 'Клей Для Паркета На Фанеру Купить', '15 615 рублей https://bormawachs.ru/magazin/vendor/borma-wachs-italiya/p/5\r\n \r\nPrev Next Result https://bormawachs.ru/magazin/product/tsvetnoye-maslo-dlya-terras-terrace-oil-borma-wachs-15\r\n \r\n15 970 рублей https://bormawachs.ru/magazin/product/myagkij-vosk-stuccorapido-borma-wachs-196\r\n \r\nот 3 500 ? до 2 739 https://bormawachs.ru/magazin/tag/maslo-dlya-terras\r\n 60 ? \r\n1 750 ? 2 500 ? \r\n2 вида: нитро и акриловый https://bormawachs.ru/magazin/product/lak-dlya-zashchity-kamnya-i-mramora-stone-coat-blesk-30-1l\r\n  Быстро сохнет, не оставляет ореолов https://bormawachs.ru/magazin/product/pigmentnaya-pasta-vodorazbavimaya-borma-wachs-kopiya\r\n  Блеск: 10%, 20%, 30%, 40%, 60% и 90% https://bormawachs.ru/magazin/product/vosk-tverdyj-hartwachs-borma-wachs-120\r\n  Ретуширующий лак-спрей для древесины HOLZSPRAY прост в применении, создает надежное покрытие, быстро сохнет и не оставляет ореолов https://bormawachs.ru/magazin/product/magazin/product/maslo-dlya-vosstanovleniya-okonnyh-ram-regenerating-oil-window-frames', '83.217.213.120', '2025-07-21 04:53:48', 0, 0, NULL, NULL),
-(34, 'EdwardTrild', 'EdwardTrildUO', 'eepovda@bk.ru', '85973814394', 'Кровать Крепкая', '— компания-производитель https://by-home.ru/obedennye-stoly/17351-obedennaya-gruppa-stol-fr-0404-i-4-stula-fr-0024.html\r\n  В наших каталогах вы можете выбрать и дешево купить диваны в Москве, Санкт-Петербурге и других городах России https://by-home.ru/komody/8986-komod-bf-21187.html\r\n  У нас есть собственное производство в Великом Новгороде, где мы создаем эффектную и функциональную мебель https://by-home.ru/chasy/9988-chasy-nomon-oj-mini-pink-d50sm.html\r\n  Мы сами делаем сварные металлические каркасы, используем ортопедические ламели и большие по толщине матрасы, а также заказываем красивые и приятные на ощупь ткани для обивки у лучших поставщиков https://by-home.ru/stulya/19365-stul-kukhonnyj-signal-astor-zelenyj-chernyj.html\r\n \r\nМебельная фабрика Танагра - это философия комфортной и красивой жизни https://by-home.ru/komody/8713-komod-bf-60176.html\r\n  Компания является российским производителем качественных, удобных модульных диванов, мягких кресел, кроватей для здорового сна https://by-home.ru/tumby-pod-tv/26804-tv-tumba-cilan-grande-200-sinij-antichnyj.html\r\n  В производстве используются материалы премиум класса, более 2000 вариаций тканей для обивки изделий https://by-home.ru/interernye-kresla/26522-kreslo-sorbonna-2.html\r\n \r\nПроизводитель: Barashka Размер кресла в разложенном виде, см: 210х140х12 https://by-home.ru/platyanye-shkafy-shkafy-kupe/8918-shkaf-bf-60670.html\r\n  Обивка: ткань https://by-home.ru/s-myagkim-izgolovem/23734-krovat-signal-barcelona-velvet-bluvel-14-seryjdub-160200.html\r\n  Наполнитель: ППУ https://by-home.ru/stellazhi-prikhozhie/20618-stellazh-halmar-narvik-reg-2-dub-sonomachernyj.html\r\n \r\n\r\nНаличие собственных фабрик, а также отлаженная работа с крупнейшими отечественными производителями позволяют нам сделать мебель максимально доступной https://by-home.ru/dekorativnye-podushki/13228-interernaya-podushka-botanicheskoe-barokko-versiya-1.html', '83.217.213.120', '2025-07-21 05:50:35', 0, 0, NULL, NULL),
-(35, 'Aaronsop', 'AaronsopGA', 'placnacidown1989@mail.ru', '86277927515', 'Переговорного Домофона', '-9% Экономия: 90 руб https://ats-mxm.ru/katalog/mxm120-300-500\r\n \r\nюр https://ats-mxm.ru/katalog/dopolnitelnye-interfejsnye-platy/modul-rasshireniya-kanalov-voip-i-golosovoj-pochty-vvmu\r\n лица 26102 ? \r\nНОВИНКА 2022 https://ats-mxm.ru/katalog/dect/gigaset-a-220\r\n \r\nСовместимость с домофоном, который расположен на парадной двери https://ats-mxm.ru/katalog/domofony-usiliteli-ggs-adaptery-i-drugoe-oborudovanie/elektromekhanicheskij-zamok-polis-12m\r\n  Наличие подсветки камеры (желательно инфракрасной) и операции регулировки яркости сигнала https://ats-mxm.ru/resheniya/sistema-svyazi-pult-direktora\r\n  Присутствие в домофоне встроенного адаптера, чтобы подключиться в электрощитовую https://ats-mxm.ru/katalog/moduli-rasshireniya-dlya-tsifrovoj-ip-ats-mxm500-snyata-s-proizvodstva/ap62\r\n  Тип крепежа вызывной панели в подъезде и видеодомофона в квартирном коридоре https://ats-mxm.ru/katalog/mxm120-300-500/sa37p\r\n  Цена на видеодомофон для квартиры https://ats-mxm.ru/katalog/provodnye-telefonnye-apparaty/telefonnyj-apparat-telta-2125-tsb\r\n \r\nЕсли говорить о стоимости электроники, то преобретать лучше надежный видеодомофон, который прослужит верой и правдой не один год - такие устройства есть даже среди недорогих моделей https://ats-mxm.ru/katalog/kabeli/skynet-utp2-cat-5e-305m-cu\r\n \r\nот 3 шт https://ats-mxm.ru/resheniya/osnovnye-funktsionalnye-vozmozhnosti-mini-ats\r\n  20350 ?', '83.217.213.120', '2025-07-22 04:05:39', 0, 0, NULL, NULL);
-INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `phone`, `subject`, `message`, `ip_address`, `submission_date`, `is_read`, `is_responded`, `response_notes`, `response_date`) VALUES
-(36, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '87966324729', 'Human rights violated by Miriam Adelson', 'It\'s unbelievable \r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer provided Israel with TNT (explosives) for their GENOCIDE.\r\n\r\nGaza has been declared a disaster area and lacks essential resources for living in it, as follows.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed 90% of Gaza, destroying 437,600 homes, and killing one million people, including 50 thousand who are currently under rubble, 80% of whom are women and children. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 330,000 meters of water pipes, resulting in people not being able to drink water. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed more than 655,000 meters of underground sewer lines. Now people have no washrooms to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 2,800,000 two million eight hundred thousand meters of roads, causing people to have no roads to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel have destroyed 3680 km of electric grid, which has caused people to lose electricity. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 48 hospitals and leveled them to the ground. Now, no one will have a hospital to save their lives. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed over 785,000 students\' ability to attend school and learn. Their actions resulted in the complete destruction of 494 schools and universities, many of which were destroyed by bombing. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 981 mosques to prevent homless people from asking God for help. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer have made over 39000 small children orphans and left them without parents or relatives to care for them.\r\n \r\nThere has never been a war in history where 80% of the country has been destroyed, 100% of the population has been displaced, and 50% of the deaths are children. \r\n\r\nDon\'t hesitate to call it what it is\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and The Evangelical Church (America) are creating a GENOCIDE.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nsee why Israel can kill innocent children with American taxpayer money\r\n\r\n1- see Why Israel is in deep trouble \r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2- Because the God of Money of our World is a Jew who supports and lives in Israel. For more details, click on the following link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3- Because what USA president say about AIPAC and  The Evangelical Church (America)\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nSee how innocent children are killed by the most powerful Israeli using American bombs at\r\n\r\nAl Jazeera Arabic Live\r\n\r\nat\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nWatch the real news at\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.163.13', '2025-07-22 20:46:58', 0, 0, NULL, NULL),
-(37, 'Flexiblevvi', 'zwusalmeamftxqfGP', 'hanshih@potatoprodvctions.com', '88888956691', 'Particularly good handwriting', 'Middle Ages as in Western', '46.105.73.207', '2025-07-22 23:19:14', 0, 0, NULL, NULL),
-(38, 'Bryandom', 'BryandomLF', 'yandex_market@anonmails.de', '83389146386', 'Откройте для себя выгодные предложения Яндекс Маркета с промокодом WOW500 или LOOK500', 'Уважаемый(ая) друг, \r\n \r\nРады сообщить, что на платформе Яндекс Маркет запущена масштабная распродажа с специальными предложениями для наших клиентов. \r\n \r\nВоспользуйтесь уникальным промокодом WOW500 или LOOK500, чтобы получить скидку 500 рублей на любую покупку. \r\n \r\nДля участия в акции следует: \r\n \r\nПосетить платформу Яндекс Маркет \r\n \r\nДобавить товары в корзину \r\n \r\nВвести код WOW500 или LOOK500 для скидки \r\n \r\nРекомендуем воспользоваться акцией как можно скорее. \r\n \r\nПри необходимости наши консультанты готовы оказать помощь. \r\n \r\nЦеним ваше сотрудничество. \r\n \r\nС уважением. \r\nЖдём. \r\n \r\nПереходи в Телеграмм бота и получай все скидки Яндекс Маркет - https://t.me/YandexMArket002_bot \r\nЧтобы отписаться от рассылки кликни - https://vk.com/away.php?to=https%3A%2F%2Fvkreditke.ru%2Ftv.php&utf=1', '77.83.84.240', '2025-07-24 02:50:38', 0, 0, NULL, NULL),
-(39, 'Sean', 'Hicks', 'seanhicks@dominate-keywords.com', '8054002077', 'Dominate-Keywords', 'I am not offering to you SEO, nor Pay Per Click Advertising.\r\nThis is something completely different.\r\nJust send us keywords of your interest and your website banner instantly appears number one on Google and Bing search results without Pay Per Click charges.\r\nLet me show you how it works and you will be pleasantly surprised by the results.', '132.255.133.229', '2025-07-25 05:54:18', 0, 0, NULL, NULL),
-(40, 'Mike Matheus Hoffmann', 'Mike Matheus Hoffmann\r\nRD', 'info@strictlydigital.net', '86119799264', 'Semrush links for virungaecotours.com', 'Hello, \r\n \r\nReceiving some set of links pointing to virungaecotours.com might bring no value or worse for your business. \r\n \r\nIt really isn’t important the number of external links you have, what is key is the total of search terms those platforms rank for. \r\n \r\nThat is the most important thing. \r\nNot the fake third-party metrics or SEO score. \r\nAnyone can manipulate those. \r\nBUT the volume of high-traffic search terms the sites that send backlinks to you rank for. \r\nThat’s it. \r\n \r\nMake sure these backlinks redirect to your site and your rankings will skyrocket! \r\n \r\nWe are offering this special service here: \r\nhttps://www.strictlydigital.net/product/semrush-backlinks/ \r\n \r\nNeed more details, or want clarification, message us here: \r\nhttps://www.strictlydigital.net/whatsapp-us/ \r\n \r\nBest regards, \r\nMike Matheus Hoffmann\r\n \r\nstrictlydigital.net \r\nPhone/WhatsApp: +1 (877) 566-3738', '37.19.223.110', '2025-07-26 07:48:51', 0, 0, NULL, NULL),
-(41, 'kyzaijpkj', 'kyzaijpkj', 'lundbeck@brandshield.com', '81775211255', 'Top Link Providers for Gambling Websites', 'Top Link Providers for Gambling Websites \r\n<a href=https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html>BEST LINKS FOR GAMBLING! suncitywestdental.com/ BEST LINKS FOR GAMBLING! TELEGRAM @the_telegraf</a> \r\nBEST LINKS FOR GAMBLING! \r\n<a href=https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html>BEST LINKS FOR GAMBLING!  www.fortworthmillerdental.com BEST LINKS FOR GAMBLING! TELEGRAM @happygrannypies</a> \r\n<a href=https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html>BEST LINKS FOR GAMBLING!  www.huroncoastdental.com BEST LINKS FOR GAMBLING! TELEGRAM @happygrannypies</a> \r\nBEST LINKS FOR GAMBLING! \r\n<a href=\"https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html\">BEST LINKS FOR GAMBLING!  www.danapricedental.com BEST LINKS FOR GAMBLING! TELEGRAM @happygrannypies</a>', '184.181.217.201', '2025-07-26 08:54:39', 0, 0, NULL, NULL),
-(42, 'RobertRon', 'NoahRonGM', 'abuse@registry.godaddy', '83511751474', 'Hallo,   writing about your   price for reseller', 'Ciao, volevo sapere il tuo prezzo.', '185.39.19.47', '2025-07-26 19:56:06', 0, 0, NULL, NULL),
-(43, 'RobertRon', 'JuanRonGM', 'Gemma@registry.godaddy', '86717815682', 'Hi, i wrote about your the price', 'Hi, I wanted to know your price.', '185.39.19.47', '2025-07-26 19:57:28', 0, 0, NULL, NULL),
-(44, 'RobertRon', 'EdwardRonGM', 'help@registry.godaddy', '89256423594', 'Aloha, i am wrote about     prices', 'Здравейте, исках да знам цената ви.', '185.39.19.47', '2025-07-26 20:00:35', 0, 0, NULL, NULL),
-(45, 'RobertRon', 'JeremyRonGM', 'iana@registry.godaddy', '89325719938', 'Hello    write about   the price', 'Ola, quería saber o seu prezo.', '185.39.19.47', '2025-07-26 20:13:50', 0, 0, NULL, NULL),
-(46, 'RobertRon', 'CarlRonGM', 'reg-abuse@registry.godaddy', '84472346344', 'Aloha    write about your the price', 'Sawubona, bengifuna ukwazi intengo yakho.', '185.39.19.47', '2025-07-26 20:13:50', 0, 0, NULL, NULL),
-(47, 'RobertRon', 'AaronRonGM', 'financial.attache@kr.slembassy.gov.sl', '83451237466', 'Hi, i writing about your the price', 'Dia duit, theastaigh uaim do phraghas a fháil.', '185.39.19.47', '2025-07-26 20:25:43', 0, 0, NULL, NULL),
-(48, 'RobertRon', 'RandyRonGM', 'financial.attache@kr.slembassy.gov.sl', '85692774511', 'Aloha, i am write about     price for reseller', 'Salam, qiymətinizi bilmək istədim.', '185.39.19.47', '2025-07-26 20:31:18', 0, 0, NULL, NULL),
-(49, 'Bryandom', 'BryandomLF', 'yandex_market@anonmails.de', '83362972726', 'Получите дополнительную скидку на Яндекс Маркете с промокодом WOW500 или LOOK500', 'Уважаемый(ая) покупатель, \r\n \r\nИмеем честь уведомить, что на платформе Яндекс Маркет началась масштабная распродажа с специальными предложениями для наших клиентов. \r\n \r\nВоспользуйтесь уникальным промокодом WOW500 или LOOK500, чтобы активировать скидку 500 рублей на при оформлении заказа. \r\n \r\nДля участия в акции достаточно: \r\n \r\nЗайти на Яндекс Маркет \r\n \r\nВыбрать товары по вашему вкусу \r\n \r\nИспользовать промокод WOW500 или LOOK500 для получения скидки \r\n \r\nПросим учитывать, что предложение ограничено во времени. \r\n \r\nЕсли понадобится помощь, мы всегда на связи. \r\n \r\nЦеним ваше сотрудничество. \r\n \r\nС уважением. \r\nЖдём. \r\n \r\nПереходи в Телеграмм бота и получай все скидки Яндекс Маркет - https://t.me/YandexMArket002_bot \r\nЧтобы отписаться от рассылки кликни (ссылка сработает только с мобильных телефонов)-https://vk.com/away.php?to=https%3A%2F%2Fvkreditke.ru%2Ftv.php&utf=1', '194.156.123.14', '2025-07-27 01:26:03', 0, 0, NULL, NULL),
-(50, 'RobertRon', 'EugeneRonGM', 'abuse@basailpaurashava.gov.bd', '88475533862', 'Hallo,   wrote about   the prices', 'Xin chào, tôi muốn biết giá của bạn.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL),
-(51, 'RobertRon', 'DonaldRonGM', 'abuse@basailpaurashava.gov.bd', '83234515471', 'Hallo, i wrote about     price for reseller', 'Hæ, ég vildi vita verð þitt.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL),
-(52, 'RobertRon', 'ThomasRonGM', 'davide.bacciardi@poliziadistato.it', '88362322815', 'Hello, i am write about     prices', 'Hi, kam dashur të di çmimin tuaj', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL),
-(53, 'RobertRon', 'AlanRonGM', 'registry-help@registry.godaddy', '88119815822', 'Hallo  i am write about   the prices', 'Szia, meg akartam tudni az árát.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL),
-(54, 'RobertRon', 'NoahRonGM', 'financial.attache@kr.slembassy.gov.sl', '89428826563', 'Hallo  i write about your the price for reseller', 'Γεια σου, ήθελα να μάθω την τιμή σας.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL),
-(55, 'RobertRon', 'RussellRonGM', 'Gemma@registry.godaddy', '86529112442', 'Hi,   write about your the price for reseller', 'Sveiki, es gribēju zināt savu cenu.', '185.39.19.47', '2025-07-27 03:50:41', 0, 0, NULL, NULL),
-(56, 'RobertRon', 'BillyRonGM', 'abuse@registry.godaddy', '87228178361', 'Hi  i am write about your the prices', 'Hi, roeddwn i eisiau gwybod eich pris.', '185.39.19.47', '2025-07-27 03:50:41', 0, 0, NULL, NULL),
-(57, 'Cikolia', 'GenaCikolia', 'cikoliag@yandex.ru', '83157578578', 'Распродажа склада электрика и водопровод', 'Здравствуйте! \r\nПередайте вашему электрику или инженеру. \r\nУ нас в наличии на складе 7000 наименований электрики и деталей водопровода. \r\nВ наличии 500 брендов европейский и российских компани производителей. \r\nЦены в два, три раза ниже рыночных. \r\nИз за санкций, в Россию не поставляют эту продукцию уже 3 года. \r\nНаш запас на складе, является уникальным и сохранился в России совершенно случайно. \r\nНаш интернет магазин. cikolia.ru \r\nТелефон: +7(985)767-04-21 Геннадий.', '178.20.47.80', '2025-07-28 18:06:35', 0, 0, NULL, NULL),
-(58, 'Alex Amin', 'Alex AminNQ', 'alexamin4x4@gmail.com', '85799969762', 'Exclusive Investment Opportunity', 'Greetings, \r\n \r\nI hope you’re doing well. We are reaching out to explore potential partnerships with business executives interested in exclusive, high-value investment opportunities. \r\n \r\nOur network comprises established high-net-worth individuals (HNWIs) from Russia and the Middle East, seeking collaborative ventures with trusted partners. The specifics of the opportunity, including investment size and terms, can be shared upon further discussion under strict confidentiality. \r\n \r\nWe would welcome the chance to discuss further at your convenience. \r\n \r\nBest regards, \r\nAlex Amin \r\nEmail: infinitycapitalmru@gmail.com', '87.249.132.183', '2025-07-29 04:33:40', 0, 0, NULL, NULL),
-(59, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '83252775476', 'Elon Musk is committing a GENOCIDE', 'It is astonishing.\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church are implicated in one of the most devastating genocides in history, targeting innocent women and children in Gaza.\r\n\r\nThese organizations have provided Israel with explosives to enable their genocidal actions.\r\n\r\nGaza has been declared a disaster zone, severely lacking in vital resources necessary for survival.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have ravaged 90% of Gaza, leading to the destruction of 437,600 homes and the loss of one million lives, including 50,000 individuals currently trapped under rubble, with 80% of the casualties being women and children.\r\n\r\nThey have also destroyed 330,000 meters of water pipelines, leaving the population without access to potable water.\r\n\r\nFurthermore, over 655,000 meters of underground sewage systems have been devastated, depriving residents of essential sanitation facilities.\r\n\r\nThe destruction encompasses 2,800,000 meters of roadways, making transportation impossible for the affected population.\r\n\r\nAdditionally, 3,680 kilometers of the electrical grid have been dismantled, resulting in widespread power outages.\r\n\r\nThe assault has led to the demolition of 48 hospitals, eliminating crucial healthcare facilities for those in need.\r\n\r\nMoreover, the actions of AIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have disrupted the education of over 785,000 students, with 494 schools and universities being completely destroyed, many as a result of aerial bombardments.\r\n\r\nThey have also targeted 981 mosques, effectively suppressing the prayers of the homeless who seek divine assistance.\r\n\r\nConsequently, over 39,000 young children have been left orphaned, lacking parents or guardians to provide care.\r\n\r\nIt is important to highlight that the historical context of warfare has never seen a situation where 80% of a nation has been devastated, 100% of its population has been displaced, and 50% of the casualties are children.\r\n\r\nRecognizing the seriousness of this situation is imperative.\r\n\r\nOrganizations such as AIPAC and the Evangelical Church in America are contributing to what can only be characterized as genocide.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nThe implications of American taxpayer funding in relation to Israel\'s actions against innocent children are concerning.\r\n\r\n1. A thorough examination of Israel\'s precarious circumstances is necessary.\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2. The impact of financial influence, often linked to specific groups, significantly affects these dynamics. Additional information can be accessed through the provided link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3. Insights into the views of U.S. leadership regarding AIPAC and the Evangelical Church can be investigated through the following resource.\r\n\r\nhttps://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nThe heartbreaking reality of innocent children suffering at the hands of powerful Israeli forces using American weaponry is evident in numerous media reports.\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nIt is essential to remain informed by consulting trustworthy news sources.\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '31.6.41.1', '2025-07-30 03:22:13', 0, 0, NULL, NULL),
-(60, 'Mike Karl-Erik Thomas', 'Mike Karl-Erik Thomas\r\nSK', 'info@speed-seo.net', '89124676756', 'Find virungaecotours.com SEO Issues totally free', 'Hi, \r\nWorried about hidden SEO issues on your website? Let us help — completely free. \r\nRun a 100% free SEO check and discover the exact problems holding your site back from ranking higher on Google. \r\n \r\nRun Your Free SEO Check Now \r\nhttps://www.speed-seo.net/check-site-seo-score/ \r\n \r\nOr chat with us and our agent will run the report for you: https://www.speed-seo.net/whatsapp-with-us/ \r\n \r\nBest regards, \r\n \r\n \r\nMike Karl-Erik Thomas\r\n \r\nSpeed SEO Digital \r\nEmail: info@speed-seo.net \r\nPhone/WhatsApp: +1 (833) 454-8622', '138.199.36.194', '2025-07-31 03:01:15', 0, 0, NULL, NULL),
-(61, 'Mike Dominique Jones', 'Mike Dominique Jones\r\nMJ', 'mike@monkeydigital.co', '82848751271', 'Boost Your Website Traffic with Targeted Social Ads – Only $10 for 10K Visits!', 'Hi there, \r\n \r\nI wanted to check in with something that could seriously help your website’s reach. We work with a trusted ad network that allows us to deliver real, location-based social ads traffic for just $10 per 10,000 visits. \r\n \r\nThis isn\'t junk clicks—it’s real visitors, tailored to your target country and niche. \r\n \r\nWhat you get: \r\n \r\n10,000+ genuine visitors for just $10 \r\nLocalized traffic for any country \r\nLarger traffic packages available based on your needs \r\nTrusted by SEO experts—we even use this for our SEO clients! \r\n \r\nReady to scale? Check out the details here: \r\nhttps://www.monkeydigital.co/product/country-targeted-traffic/ \r\n \r\nOr connect instantly on WhatsApp: \r\nhttps://monkeydigital.co/whatsapp-us/ \r\n \r\nLet\'s get started today! \r\n \r\nBest, \r\nMike Dominique Jones\r\n \r\nPhone/whatsapp: +1 (775) 314-7914', '151.106.8.43', '2025-08-01 00:10:26', 0, 0, NULL, NULL),
-(62, 'Valeron83tax', 'Valeron83taxXM', 'romabookim@gmail.com', '81781967371', 'Dive into the Realm of Online Casinos: Bonuses and Free Play Beckon!', 'Step into the thrilling arena of online casinos, where every spin brings anticipation and chance! New players are offered fantastic no-deposit bonuses, including 25вЂ“50 spins just for registering, while deposit bonuses as high as 100вЂ“200% boost your start, like those at Vavada. Try free play in demo mode, exploring colorful slots from Microgaming or roulette strategies without risking a cent. Cashback and free spins add extra thrill, prolonging your gaming experience. Be sure to review the bonus wagering terms and dive into safe gambling on licensed platforms!  https://tinyurl.com/5986h8bf', '185.81.125.166', '2025-08-01 09:18:12', 0, 0, NULL, NULL),
-(63, 'Angelokak', 'AngelokakCJ', 'parmazanov@gmail.com', '81325975798', 'Ваши системы видеонаблюдения', 'Прежде всего, важно разобраться, что именно представляет собой бренд Trassir. Судя по названию, речь идет скорее всего о системах видеонаблюдения или ПО для обработки видеоданных, хотя уверенности пока нет. Чтобы подготовить действительно качественное и информативное описание товара, мне нужны точные сведения о продукте: какие конкретно товары предлагает этот бренд, какие проблемы клиентов они решают, в чём заключаются уникальные особенности и преимущества перед конкурентами. Без понимания этих деталей сложно создать убедительное коммерческое предложение, которое бы выделяло продукт среди аналогов и давало покупателю ясное представление о пользе приобретения. Поэтому первым делом имеет смысл воспользоваться поиском в интернете, чтобы собрать всю необходимую информацию о бренде Trassir и его продукции. \r\nundefined \r\n Теперь у меня есть общее понимание о бренде <a href=https://trassir-expert.ru/>Trassir</a> — это российская компания, специализирующаяся на разработке и производстве систем видеонаблюдения. Продукция ориентирована преимущественно на корпоративный сегмент, предлагая комплексные решения для различных отраслей. Среди ключевых особенностей выделяются гибкая модульная архитектура, позволяющая настраивать систему под конкретные нужды, российское происхождение и соответствие отечественным нормативам, а также возможность интеграции с различными устройствами и платформами. Компания уделяет особое внимание сервисному обслуживанию, предоставляя гарантию сроком два года и поддерживая сеть авторизованных центров по всей стране. Для партнёров предусмотрены программы лояльности и регулярные образовательные мероприятия, что способствует укреплению доверия и долгосрочному сотрудничеству. \r\n \r\nОднако имеющейся информации недостаточно, чтобы составить полноценное и привлекательное описание продукта. Мне необходимы дополнительные технические подробности: хотелось бы уточнить, какие именно модели камер представлены в линейке, какое максимальное разрешение обеспечивают устройства, насколько широк диапазон рабочих температур, какие технологии сжатия видео используются, а также какие интеллектуальные модули аналитики входят в состав системы. Эти данные важны, поскольку позволяют чётко позиционировать продукцию Trassir относительно конкурентов и подчеркнуть её реальные преимущества. Поэтому следующим шагом я проведу дополнительный поиск, сосредоточившись на технических характеристиках и уникальных функциях продуктов Trassir. \r\nundefined \r\n Собрав подробную информацию о бренде <a href=https://trassir-expert.ru/>Trassir tr</a>, я теперь хорошо понимаю, почему эта компания занимает лидирующие позиции на рынке систем видеонаблюдения. Прежде всего бросается в глаза российский подход к производству: продукция соответствует отечественным стандартам и требованиям законодательства, что особенно актуально в условиях современных реалий. Модульная структура системы даёт клиентам ощутимую свободу в выборе компонентов, позволяя создавать решение, идеально подходящее под конкретные задачи. Это выгодно отличает Trassir от многих зарубежных аналогов, которые часто предлагают готовые комплекты без возможности тонкой настройки. \r\n \r\nЕщё одно важное преимущество — широкий спектр возможностей видеоаналитики, основанной на нейросетях. Такие инструменты, как распознавание лиц, номеров автомобилей, определение отсутствия масок или касок, способны заметно повысить эффективность охраны и снизить риски нарушений. Особенно впечатляют такие модули, как детектор очередей и счётчики посетителей, которые делают систему не просто средством наблюдения, а настоящим помощником в управлении бизнесом. \r\n \r\nТакже нельзя обойти вниманием развитую инфраструктуру поддержки: двухлетняя гарантия, сервисные центры по всей России и квалифицированная помощь инженеров на всех этапах внедрения внушают доверие и снимают опасения по поводу возможных сложностей в эксплуатации. Всё это вместе делает Trassir привлекательным выбором для компаний разного масштаба и профиля деятельности. \r\n \r\nТеперь, имея полную картину преимуществ и особенностей бренда, я готов приступить к написанию описания, которое подчеркнёт ключевые достоинства Trassir и сделает акцент на тех аспектах, которые наиболее ценны для потенциальных покупателей. \r\n \r\n## ?? **Система видеонаблюдения <a href=https://trassir-expert.ru/>Trassir tr</a>: Безопасность, Контроль и Эффективность** \r\n \r\n### ?? Что такое <a href=https://trassir-expert.ru/>Trassir</a>? \r\nv**Trassir** — это российский производитель инновационных систем видеонаблюдения, предлагающий современные решения для комплексной безопасности предприятий и организаций различного масштаба. Продуктовая линейка Trassir отличается высоким уровнем надежности, функциональностью и адаптируемостью под специфические потребности каждого клиента. \r\n \r\n-v-- \r\n \r\n### ??<a href=https://trassir-expert.ru/> Основные компоненты системы</a> <a href=https://trassir-expert.ru/>Trassir tr</a> \r\nСердцем системы является **нейросетевой IP-видеорегистратор**, способный обрабатывать до 128 IP-камер с разрешением без ограничений. Ключевые характеристики: \r\n \r\n- **Поддержка стандартов**: H.265, H.265+, H.264, MPEG4, MJPEG. \r\n- **Производительность**: входящая и исходящая пропускная способность до 720 Мбит/с. \r\n- **Хранение данных**: поддерживает установку до 8 жёстких дисков общей емкостью до 16 ТБ. \r\n- **Интерфейсы**: 2 порта Gigabit Ethernet, выходы HDMI, DVI-D, DisplayPort с поддержкой разрешения до 4K. \r\n- **Температурный режим**: устойчив к работе в диапазоне от +10°C до +30°C. \r\n \r\n--- \r\n \r\n### ?? Какие проблемы решает <a href=https://trassir-expert.ru/>Trassir tr</a>? \r\nСистема Trassir помогает решать целый ряд актуальных задач современного бизнеса: \r\n \r\n- **Повышение безопасности**: своевременное выявление угроз, предотвращение краж и мошеннических действий. \r\n- **Оптимизация процессов**: контроль рабочего процесса, повышение эффективности труда сотрудников. \r\n- **Управление рисками**: мониторинг соблюдения норм охраны труда и пожарной безопасности. \r\n- **Улучшение клиентского опыта**: отслеживание очередей, оценка загруженности торговых точек. \r\n \r\n--- \r\n \r\n### ?? Умная видеоаналитика на основе нейросетей \r\nОдним из главных достоинств <a href=https://trassir-expert.ru/>Trassir</a> является уникальная платформа видеоаналитики, использующая мощные алгоритмы машинного обучения: \r\n \r\n| Модуль                        | Функция                                                                              | \r\n|-------------------------------|--------------------------------------------------------------------------------------| \r\n| **Human Detector**            | Определение присутствия людей в заданной зоне                                        | \r\n| **Face Recognition**          | Распознавание и идентификация лиц                                                    | \r\n| **AutoTRASSIR**               | Автоматическое распознавание автомобильных номеров                                   | \r\n| **Queue Detector**            | Мониторинг очередей и длина ожидания                                                 | \r\n| **Crowd Detector**            | Фиксация скоплений людей                                                             | \r\n| **Face Mask Detector**        | Контроль наличия защитных масок                                                      | \r\n| **Social Distance Detector**  | Соблюдение социальной дистанции                                                       | \r\n| **Hardhat Detector**          | Проверка наличия защитных касок                                                     | \r\n| **Wear Detector**             | Контроль специальной формы и экипировки                                             | \r\n| **Neuro Counter**             | Подсчет посетителей и транспортных средств                                           | \r\n \r\nЭти модули позволяют минимизировать человеческий фактор и обеспечить максимальную точность мониторинга. \r\n \r\n--- \r\n \r\n### ??? Надежность и удобство использования \r\nКомпания <a href=https://trassir-expert.ru/>Trassir</a> гарантирует высокое качество своей продукции и поддержку на всех этапах сотрудничества: \r\n \r\n- **Гарантия 2 года** с возможностью продления. \r\n- **Сервисные центры по всей России** с сертифицированными специалистами. \r\n- **Индивидуальная техническая поддержка** и консультации квалифицированных инженеров. \r\n- **Простота установки и настройки** благодаря интуитивно понятному интерфейсу программного обеспечения. \r\n \r\n--- \r\n \r\n### ?? Преимущества для бизнеса \r\nИспользование систем <a href=https://trassir-expert.ru/>Trassir</a> приносит бизнесу реальную пользу: \r\n \r\n- **Экономия затрат**: снижение убытков от краж и ошибок персонала. \r\n- **Рост производительности**: эффективный контроль бизнес-процессов. \r\n- **Безопасность сотрудников и клиентов**: постоянный мониторинг опасных ситуаций. \r\n- **Легкость масштабирования**: простая интеграция новых устройств и расширение существующих систем. \r\n \r\n--- \r\n \r\n### ?? Цифры и факты \r\n- Более **1000 успешных проектов** реализовано по всей территории России. \r\n- До **99% точности** распознавания автомобильных номеров. \r\n- Возможность хранения видеозаписей объемом до **16 Терабайт**. \r\n- Время отклика системы менее **1 секунды** на критически важные события. \r\n \r\n--- \r\n \r\n### ? Почему выбирают <a href=https://trassir-expert.ru/> Trassir</a>? \r\n- Российское производство, соответствующее государственным стандартам. \r\n- Широкий выбор готовых и кастомных решений. \r\n- Постоянное обновление и развитие платформы. \r\n- Лучшее соотношение цены и качества на российском рынке. \r\n \r\n--- \r\n \r\n### ?? Заключение \r\nСистема видеонаблюдения <a href=https://trassir-expert.ru/>Trassir</a> — это надежный партнер вашего бизнеса, обеспечивающий круглосуточную защиту активов, эффективное управление процессами и максимальный комфорт ваших сотрудников и клиентов. Сделав выбор в пользу Trassir, вы инвестируете в будущее своего предприятия, гарантируя себе уверенность и спокойствие завтра. \r\n \r\n?? *Выбирайте лучшее — выбирайте <a href=https://trassir-expert.ru/>Trassir</a>!*', '92.100.50.96', '2025-08-03 03:40:57', 0, 0, NULL, NULL),
-(64, 'Mike Miguel Thomas', 'Mike Miguel Thomas\r\nKY', 'mike@monkeydigital.co', '86314592168', 'Collaboration Request', 'Hi, \r\n \r\nThis is Mike from Monkey Digital, \r\nI am contacting you regarding a exciting opportunity. \r\n \r\nHow would you like to place our banners on your platform and redirect via your personalized tracking link towards popular SEO solutions from our platform? \r\n \r\nThis way, you earn a 35% commission, month after month from any transactions that generate from your site. \r\n \r\nThink about it, most website owners require SEO, so this is a massive opportunity. \r\n \r\nWe already have over 12,000 affiliates and our payouts are paid out on time. \r\nLast month, we distributed $27280 in commissions to our affiliates. \r\n \r\nIf this sounds good, kindly message us here: \r\nhttps://monkeydigital.co/affiliates-whatsapp/ \r\n \r\nOr register today: \r\nhttps://www.monkeydigital.co/join-our-affiliate-program/ \r\n \r\nCheers, \r\nMike Miguel Thomas\r\n \r\nPhone/whatsapp: +1 (775) 314-7914', '37.19.223.113', '2025-08-03 23:25:58', 0, 0, NULL, NULL),
-(65, 'Raymonddiush', 'RaymonddiushMW', 'raymondKneeway@gmail.com', '89251417197', 'Make your products and services shine with the best advertising!', 'Hey there! virungaecotours.com \r\n \r\nExpand your business lawfully and efficiently with direct proposal submissions. \r\nThis ensures full compliance with data protection regulations, ensuring legitimate and transparent outreach. \r\nSubmitting messages through Contact Forms ensures better deliverability without relying on mass email lists. \r\nCome and give it a try—no hidden fees! \r\nRely on our service to send up to 50,000 messages efficiently. \r\n \r\nThe cost of sending one million messages is $59. \r\n \r\nThis message was automatically generated. \r\n \r\nContact us. \r\nTelegram - https://t.me/FeedbackFormEU \r\nWhatsApp - +375259112693 \r\nWhatsApp  https://wa.me/+375259112693 \r\nWe only use chat for communication.', '185.189.114.117', '2025-08-04 12:08:22', 0, 0, NULL, NULL),
-(66, 'RobertRon', 'CharlesRonGM', 'Gemma@registry.godaddy', '81912713637', 'Hi,   write about your the price for reseller', 'Hola, volia saber el seu preu.', '80.94.95.202', '2025-08-05 04:10:40', 0, 0, NULL, NULL),
-(67, 'RobertRon', 'JosephRonGM', 'financial.attache@kr.slembassy.gov.sl', '89213683464', 'Hi,   write about     prices', 'Hej, jeg ønskede at kende din pris.', '80.94.95.202', '2025-08-05 04:27:35', 0, 0, NULL, NULL),
-(68, 'RobertRon', 'FrankRonGM', 'abuse@basailpaurashava.gov.bd', '85538679187', 'Hi  i wrote about     price for reseller', 'Hi, roeddwn i eisiau gwybod eich pris.', '80.94.95.202', '2025-08-05 04:28:40', 0, 0, NULL, NULL),
-(69, 'RobertRon', 'JoseRonGM', 'davide.bacciardi@poliziadistato.it', '88797984931', 'Hallo  i am wrote about your   prices', 'Hi, I wanted to know your price.', '80.94.95.202', '2025-08-05 04:29:26', 0, 0, NULL, NULL),
-(70, 'RobertRon', 'DavidRonGM', 'registry-help@registry.godaddy', '88527696489', 'Hello, i am wrote about your   prices', 'Hola, quería saber tu precio..', '80.94.95.202', '2025-08-05 04:57:33', 0, 0, NULL, NULL),
-(71, 'RobertRon', 'AaronRonGM', 'reg-abuse@registry.godaddy', '84678911671', 'Hello, i am write about your the prices', 'Ciao, volevo sapere il tuo prezzo.', '80.94.95.202', '2025-08-05 08:56:08', 0, 0, NULL, NULL),
-(72, 'RobertRon', 'HaroldRonGM', 'registry-help@registry.godaddy', '86526635613', 'Hi,   write about your   prices', 'Ողջույն, ես ուզում էի իմանալ ձեր գինը.', '80.94.95.202', '2025-08-05 09:11:02', 0, 0, NULL, NULL),
-(73, 'RobertRon', 'JesseRonGM', 'davide.bacciardi@poliziadistato.it', '86397169652', 'Hi  i am writing about   the price', 'Salam, qiymətinizi bilmək istədim.', '80.94.95.202', '2025-08-05 09:13:55', 0, 0, NULL, NULL),
-(74, 'RobertRon', 'KennethRonGM', 'davide.bacciardi@poliziadistato.it', '83247259569', 'Hello  i am wrote about your   price for reseller', 'Sveiki, es gribēju zināt savu cenu.', '80.94.95.202', '2025-08-05 09:21:29', 0, 0, NULL, NULL),
-(75, 'RobertRon', 'DennisRonGM', 'Gemma@registry.godaddy', '86649676415', 'Hallo    writing about your the price', 'হাই, আমি আপনার মূল্য জানতে চেয়েছিলাম.', '80.94.95.202', '2025-08-05 09:57:15', 0, 0, NULL, NULL),
-(76, 'Michaelicose', 'MichaelicoseHD', 'southpark@lumexmail.shop', '88515884262', 'Южный Парк 26', 'Всем привет! \r\nМеня зовут Лаврентий и я обожаю смотреть онлайн мультсериал Южный Парк на сайте https://southpark-online.com \r\nТам много интересных серий, которые Вам понравятся. \r\nПрисоединяйтесь!', '156.228.99.141', '2025-08-05 18:20:38', 0, 0, NULL, NULL),
-(77, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '81235258629', 'End of the Holocaust', 'It is astonishing.\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church are perpetrating one of the most catastrophic genocides in history, targeting innocent women and children in Gaza.\r\n\r\nThese organizations have supplied Israel with explosives to facilitate their acts of genocide.\r\n\r\nGaza has been designated a disaster zone, severely lacking in essential resources for survival.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have devastated 90% of Gaza, resulting in the destruction of 437,600 homes and the loss of one million lives, including 50,000 individuals currently trapped under debris, with 80% of the casualties being women and children.\r\n\r\nThey have also obliterated 330,000 meters of water pipelines, leaving the population without access to drinking water.\r\n\r\nFurthermore, over 655,000 meters of underground sewage systems have been destroyed, depriving residents of basic sanitation facilities.\r\n\r\nThe destruction extends to 2,800,000 meters of roadways, rendering transportation impossible for the affected population.\r\n\r\nAdditionally, 3,680 kilometers of the electrical grid have been dismantled, leading to widespread power outages.\r\n\r\nThe assault has resulted in the demolition of 48 hospitals, eliminating critical healthcare facilities for those in need.\r\n\r\nMoreover, the actions of AIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have disrupted the education of over 785,000 students, with 494 schools and universities being completely destroyed, many due to aerial bombardments.\r\n\r\nThey have also targeted 981 mosques, effectively silencing the prayers of the homeless seeking divine assistance.\r\n\r\nAs a result of these actions, more than 39,000 young children have been left orphaned, without parents or guardians to care for them.\r\n\r\nI must emphasize that the historical context of warfare has never witnessed a scenario where 80% of a nation has been devastated, 100% of its populace has been uprooted, and 50% of the casualties are children.\r\n\r\nIt is imperative to recognize the gravity of the situation.\r\n\r\nOrganizations such as AIPAC and the Evangelical Church in America are contributing to what can only be described as genocide.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nThe implications of American taxpayer funding in the context of Israel\'s actions against innocent children are alarming.\r\n\r\n1. An examination of Israel\'s precarious situation is warranted.\r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2. The influence of financial power, often associated with certain groups, plays a significant role in these dynamics. Further information can be found through the provided link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3. Insights into the perspectives of U.S. leadership regarding AIPAC and the Evangelical Church can be explored through the following resource.\r\n\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nThe tragic reality of innocent children being harmed by powerful Israeli forces utilizing American weaponry is evident in various media reports.\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nIt is crucial to stay informed by accessing reliable news sources.\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.157.20', '2025-08-06 05:25:28', 0, 0, NULL, NULL),
-(78, 'DamonVon', 'DamonVonCF', 'actionvsculture@gmail.com', '83747198821', 'Your choice', '<a href=https://ur3.us/qlskndu7><b>Action</b></a> \r\nOR \r\n<a href=https://ur3.us/aus5zjef><b>Culture</b></a>', '54.37.234.111', '2025-08-09 10:42:04', 0, 0, NULL, NULL),
-(79, 'Hermanleari', 'HermanleariLH', 'goldboy1931@gmail.com', '88733155734', 'Cardiline', 'Что такое Cardiline? - https://alev.biz/resources/links-45/cardirin-kupit-natyralnye-kapli-ot-gipertonii/', '93.183.89.12', '2025-08-09 12:24:26', 0, 0, NULL, NULL),
-(80, 'IvoryAmapy', 'IvoryAmapySW', 'sergoworkin.g.71.8@gmail.com', '82885656869', 'how to make car interior cleaner at home', '</div>\r\n \r\n<a href=https://inpino.ru>https://inpino.ru</a> \r\n<a href=https://acdiu.ru>https://acdiu.ru</a> \r\n<a href=https://pipetrust.ru>https://pipetrust.ru</a> \r\n<a href=https://service-spec.ru>https://service-spec.ru</a> \r\n<a href=https://tortonet.ru>https://tortonet.ru</a> \r\n<a href=https://bizbg.ru>https://bizbg.ru</a> \r\n<a href=https://100li.ru>https://100li.ru</a> \r\n<a href=https://serviceads.ru>https://serviceads.ru</a> \r\n<a href=https://zrdtest.ru>https://zrdtest.ru</a> \r\n<a href=https://vn365.ru>https://vn365.ru</a> \r\n<a href=https://deroseproject.ru>https://deroseproject.ru</a> \r\n<a href=https://gazcomp.ru>https://gazcomp.ru</a> \r\n<a href=https://telegra.ph/Kak-pravilno-nahodit-nuzhnuyu-informaciyu-na-sajtah-07-08>https://telegra.ph/Kak-pravilno-nahodit-nuzhnuyu-informaciyu-na-sajtah-07-08</a> \r\n \r\n<div class=\"info-block\">', '194.5.53.102', '2025-08-09 14:04:30', 0, 0, NULL, NULL),
-(81, 'RobertRon', 'NathanRonGM', 'BSCHULTZ@JACKELEC.COM', '88464184543', 'Hi,   write about     prices', 'Dia duit, theastaigh uaim do phraghas a fháil.', '80.94.95.173', '2025-08-10 02:48:13', 0, 0, NULL, NULL),
-(82, 'Mike Dirk De Smet', 'Mike Dirk De Smet\r\nAH', 'info@professionalseocleanup.com', '82637582818', 'Urgent: Toxic Links Found on virungaecotours.com', 'Hi, \r\nWhile reviewing virungaecotours.com, we spotted toxic backlinks that could put your site at risk of a Google penalty. \r\n \r\nWe can clean up your link profile and protect your rankings — all for just $5. \r\n \r\nFix it now before Google does: \r\nhttps://www.professionalseocleanup.com/ \r\n \r\nNeed help or questions? Chat here: \r\nhttps://www.professionalseocleanup.com/whatsapp/ \r\n \r\nBest, \r\nMike Dirk De Smet\r\n \r\n+1 (855) 221-7591 \r\ninfo@professionalseocleanup.com', '37.19.223.205', '2025-08-11 04:58:28', 0, 0, NULL, NULL),
-(83, 'RobertRon', 'VincentRonGM', 'davide.bacciardi@poliziadistato.it', '85962283187', 'Aloha, i wrote about your the price for reseller', 'Hi, roeddwn i eisiau gwybod eich pris.', '185.39.19.47', '2025-08-12 22:58:17', 0, 0, NULL, NULL),
-(84, 'RobertRon', 'RaymondRonGM', 'sangsko@yahoo.com', '85923867775', 'Hello  i write about   the price', 'Ndewo, achọrọ m ịmara ọnụahịa gị.', '185.39.19.47', '2025-08-12 22:58:17', 0, 0, NULL, NULL),
-(85, 'RobertRon', 'VincentRonGM', 'abuse@registry.godaddy', '88279146522', 'Hello,   write about   the price', 'Здравейте, исках да знам цената ви.', '185.39.19.47', '2025-08-12 23:06:02', 0, 0, NULL, NULL),
-(86, 'RobertRon', 'StevenRonGM', 'abuse@registry.godaddy', '81818986942', 'Hi,   writing about     prices', 'Sveiki, es gribēju zināt savu cenu.', '185.39.19.47', '2025-08-12 23:06:12', 0, 0, NULL, NULL),
-(87, 'RobertRon', 'PaulRonGM', 'Gemma@registry.godaddy', '84562168698', 'Aloha,   wrote about your   price', 'Γεια σου, ήθελα να μάθω την τιμή σας.', '185.39.19.47', '2025-08-12 23:20:08', 0, 0, NULL, NULL),
-(88, 'RobertRon', 'JosephRonGM', 'help@registry.godaddy', '83376792182', 'Hallo  i writing about   the prices', 'Hi, kam dashur të di çmimin tuaj', '185.39.19.47', '2025-08-12 23:26:46', 0, 0, NULL, NULL),
-(89, 'DamonVon', 'DamonVonCF', 'actionvsculture@gmail.com', '83889221438', 'Your choice', '<a href=https://ur3.us/qlskndu7><b>Action</b></a> \r\nOR \r\n<a href=https://ur3.us/aus5zjef><b>Culture</b></a>', '54.37.234.111', '2025-08-13 00:30:31', 0, 0, NULL, NULL);
-INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `phone`, `subject`, `message`, `ip_address`, `submission_date`, `is_read`, `is_responded`, `response_notes`, `response_date`) VALUES
-(90, 'Angelokak', 'AngelokakCJ', 'parmazanov@gmail.com', '89312989779', 'Ваши системы видеонаблюдения', 'Прежде всего, важно разобраться, что именно представляет собой бренд Trassir. Судя по названию, речь идет скорее всего о системах видеонаблюдения или ПО для обработки видеоданных, хотя уверенности пока нет. Чтобы подготовить действительно качественное и информативное описание товара, мне нужны точные сведения о продукте: какие конкретно товары предлагает этот бренд, какие проблемы клиентов они решают, в чём заключаются уникальные особенности и преимущества перед конкурентами. Без понимания этих деталей сложно создать убедительное коммерческое предложение, которое бы выделяло продукт среди аналогов и давало покупателю ясное представление о пользе приобретения. Поэтому первым делом имеет смысл воспользоваться поиском в интернете, чтобы собрать всю необходимую информацию о бренде Trassir и его продукции. \r\nundefined \r\n Теперь у меня есть общее понимание о бренде <a href=https://trassir-expert.ru/>Trassir</a> — это российская компания, специализирующаяся на разработке и производстве систем видеонаблюдения. Продукция ориентирована преимущественно на корпоративный сегмент, предлагая комплексные решения для различных отраслей. Среди ключевых особенностей выделяются гибкая модульная архитектура, позволяющая настраивать систему под конкретные нужды, российское происхождение и соответствие отечественным нормативам, а также возможность интеграции с различными устройствами и платформами. Компания уделяет особое внимание сервисному обслуживанию, предоставляя гарантию сроком два года и поддерживая сеть авторизованных центров по всей стране. Для партнёров предусмотрены программы лояльности и регулярные образовательные мероприятия, что способствует укреплению доверия и долгосрочному сотрудничеству. \r\n \r\nОднако имеющейся информации недостаточно, чтобы составить полноценное и привлекательное описание продукта. Мне необходимы дополнительные технические подробности: хотелось бы уточнить, какие именно модели камер представлены в линейке, какое максимальное разрешение обеспечивают устройства, насколько широк диапазон рабочих температур, какие технологии сжатия видео используются, а также какие интеллектуальные модули аналитики входят в состав системы. Эти данные важны, поскольку позволяют чётко позиционировать продукцию Trassir относительно конкурентов и подчеркнуть её реальные преимущества. Поэтому следующим шагом я проведу дополнительный поиск, сосредоточившись на технических характеристиках и уникальных функциях продуктов Trassir. \r\nundefined \r\n Собрав подробную информацию о бренде <a href=https://trassir-expert.ru/>Trassir tr</a>, я теперь хорошо понимаю, почему эта компания занимает лидирующие позиции на рынке систем видеонаблюдения. Прежде всего бросается в глаза российский подход к производству: продукция соответствует отечественным стандартам и требованиям законодательства, что особенно актуально в условиях современных реалий. Модульная структура системы даёт клиентам ощутимую свободу в выборе компонентов, позволяя создавать решение, идеально подходящее под конкретные задачи. Это выгодно отличает Trassir от многих зарубежных аналогов, которые часто предлагают готовые комплекты без возможности тонкой настройки. \r\n \r\nЕщё одно важное преимущество — широкий спектр возможностей видеоаналитики, основанной на нейросетях. Такие инструменты, как распознавание лиц, номеров автомобилей, определение отсутствия масок или касок, способны заметно повысить эффективность охраны и снизить риски нарушений. Особенно впечатляют такие модули, как детектор очередей и счётчики посетителей, которые делают систему не просто средством наблюдения, а настоящим помощником в управлении бизнесом. \r\n \r\nТакже нельзя обойти вниманием развитую инфраструктуру поддержки: двухлетняя гарантия, сервисные центры по всей России и квалифицированная помощь инженеров на всех этапах внедрения внушают доверие и снимают опасения по поводу возможных сложностей в эксплуатации. Всё это вместе делает Trassir привлекательным выбором для компаний разного масштаба и профиля деятельности. \r\n \r\nТеперь, имея полную картину преимуществ и особенностей бренда, я готов приступить к написанию описания, которое подчеркнёт ключевые достоинства Trassir и сделает акцент на тех аспектах, которые наиболее ценны для потенциальных покупателей. \r\n \r\n## ?? **Система видеонаблюдения <a href=https://trassir-expert.ru/>Trassir tr</a>: Безопасность, Контроль и Эффективность** \r\n \r\n### ?? Что такое <a href=https://trassir-expert.ru/>Trassir</a>? \r\nv**Trassir** — это российский производитель инновационных систем видеонаблюдения, предлагающий современные решения для комплексной безопасности предприятий и организаций различного масштаба. Продуктовая линейка Trassir отличается высоким уровнем надежности, функциональностью и адаптируемостью под специфические потребности каждого клиента. \r\n \r\n-v-- \r\n \r\n### ??<a href=https://trassir-expert.ru/> Основные компоненты системы</a> <a href=https://trassir-expert.ru/>Trassir tr</a> \r\nСердцем системы является **нейросетевой IP-видеорегистратор**, способный обрабатывать до 128 IP-камер с разрешением без ограничений. Ключевые характеристики: \r\n \r\n- **Поддержка стандартов**: H.265, H.265+, H.264, MPEG4, MJPEG. \r\n- **Производительность**: входящая и исходящая пропускная способность до 720 Мбит/с. \r\n- **Хранение данных**: поддерживает установку до 8 жёстких дисков общей емкостью до 16 ТБ. \r\n- **Интерфейсы**: 2 порта Gigabit Ethernet, выходы HDMI, DVI-D, DisplayPort с поддержкой разрешения до 4K. \r\n- **Температурный режим**: устойчив к работе в диапазоне от +10°C до +30°C. \r\n \r\n--- \r\n \r\n### ?? Какие проблемы решает <a href=https://trassir-expert.ru/>Trassir tr</a>? \r\nСистема Trassir помогает решать целый ряд актуальных задач современного бизнеса: \r\n \r\n- **Повышение безопасности**: своевременное выявление угроз, предотвращение краж и мошеннических действий. \r\n- **Оптимизация процессов**: контроль рабочего процесса, повышение эффективности труда сотрудников. \r\n- **Управление рисками**: мониторинг соблюдения норм охраны труда и пожарной безопасности. \r\n- **Улучшение клиентского опыта**: отслеживание очередей, оценка загруженности торговых точек. \r\n \r\n--- \r\n \r\n### ?? Умная видеоаналитика на основе нейросетей \r\nОдним из главных достоинств <a href=https://trassir-expert.ru/>Trassir</a> является уникальная платформа видеоаналитики, использующая мощные алгоритмы машинного обучения: \r\n \r\n| Модуль                        | Функция                                                                              | \r\n|-------------------------------|--------------------------------------------------------------------------------------| \r\n| **Human Detector**            | Определение присутствия людей в заданной зоне                                        | \r\n| **Face Recognition**          | Распознавание и идентификация лиц                                                    | \r\n| **AutoTRASSIR**               | Автоматическое распознавание автомобильных номеров                                   | \r\n| **Queue Detector**            | Мониторинг очередей и длина ожидания                                                 | \r\n| **Crowd Detector**            | Фиксация скоплений людей                                                             | \r\n| **Face Mask Detector**        | Контроль наличия защитных масок                                                      | \r\n| **Social Distance Detector**  | Соблюдение социальной дистанции                                                       | \r\n| **Hardhat Detector**          | Проверка наличия защитных касок                                                     | \r\n| **Wear Detector**             | Контроль специальной формы и экипировки                                             | \r\n| **Neuro Counter**             | Подсчет посетителей и транспортных средств                                           | \r\n \r\nЭти модули позволяют минимизировать человеческий фактор и обеспечить максимальную точность мониторинга. \r\n \r\n--- \r\n \r\n### ??? Надежность и удобство использования \r\nКомпания <a href=https://trassir-expert.ru/>Trassir</a> гарантирует высокое качество своей продукции и поддержку на всех этапах сотрудничества: \r\n \r\n- **Гарантия 2 года** с возможностью продления. \r\n- **Сервисные центры по всей России** с сертифицированными специалистами. \r\n- **Индивидуальная техническая поддержка** и консультации квалифицированных инженеров. \r\n- **Простота установки и настройки** благодаря интуитивно понятному интерфейсу программного обеспечения. \r\n \r\n--- \r\n \r\n### ?? Преимущества для бизнеса \r\nИспользование систем <a href=https://trassir-expert.ru/>Trassir</a> приносит бизнесу реальную пользу: \r\n \r\n- **Экономия затрат**: снижение убытков от краж и ошибок персонала. \r\n- **Рост производительности**: эффективный контроль бизнес-процессов. \r\n- **Безопасность сотрудников и клиентов**: постоянный мониторинг опасных ситуаций. \r\n- **Легкость масштабирования**: простая интеграция новых устройств и расширение существующих систем. \r\n \r\n--- \r\n \r\n### ?? Цифры и факты \r\n- Более **1000 успешных проектов** реализовано по всей территории России. \r\n- До **99% точности** распознавания автомобильных номеров. \r\n- Возможность хранения видеозаписей объемом до **16 Терабайт**. \r\n- Время отклика системы менее **1 секунды** на критически важные события. \r\n \r\n--- \r\n \r\n### ? Почему выбирают <a href=https://trassir-expert.ru/> Trassir</a>? \r\n- Российское производство, соответствующее государственным стандартам. \r\n- Широкий выбор готовых и кастомных решений. \r\n- Постоянное обновление и развитие платформы. \r\n- Лучшее соотношение цены и качества на российском рынке. \r\n \r\n--- \r\n \r\n### ?? Заключение \r\nСистема видеонаблюдения <a href=https://trassir-expert.ru/>Trassir</a> — это надежный партнер вашего бизнеса, обеспечивающий круглосуточную защиту активов, эффективное управление процессами и максимальный комфорт ваших сотрудников и клиентов. Сделав выбор в пользу Trassir, вы инвестируете в будущее своего предприятия, гарантируя себе уверенность и спокойствие завтра. \r\n \r\n?? *Выбирайте лучшее — выбирайте <a href=https://trassir-expert.ru/>Trassir</a>!*', '185.77.216.2', '2025-08-13 01:05:58', 0, 0, NULL, NULL),
-(91, 'RobertRon', 'TerryRonGM', 'angela.phillips@gopps.us', '86855354639', 'Aloha  i wrote about   the prices', 'Sawubona, bengifuna ukwazi intengo yakho.', '185.39.19.21', '2025-08-15 02:20:49', 0, 0, NULL, NULL),
-(92, 'RobertRon', 'TylerRonGM', 'byoung@columbiabasin.edu', '83728631322', 'Hi  i writing about     price for reseller', 'Hi, ego volo scire vestri pretium.', '185.39.19.21', '2025-08-16 02:48:19', 0, 0, NULL, NULL),
-(93, 'RobertRon', 'BrianRonGM', 'michaela@maxfire.com', '86965898858', 'Hallo  i am write about     price', 'Kaixo, zure prezioa jakin nahi nuen.', '185.39.19.21', '2025-08-16 02:48:19', 0, 0, NULL, NULL),
-(94, 'Kennethgar', 'KennethgarSI', 'voronenvoron50@gmail.com', '82825323334', 'Актуальные ссылки на Kraken (Август 2025): рабочие зеркала маркетплейса', 'Если ты ищешь рабочие ссылки и зеркала Kraken 2025, здесь собраны проверенные адреса и инструкции для надежного и анонимного подключения. \r\n?? \r\n1. Основные ссылки Kraken для входа \r\nТип	Ссылка \r\n?? Официальный сайт	https://kraken-ent.shop/ \r\n?? Резервное зеркало	https://kra38l.cc/ \r\n?? Telegram-канал	https://t.me/Kraken4link \r\n2. Ключевые слова, фразы и популярные поисковые запросы \r\nофициальный портал kraken k2tor web-доступ \r\nссылка на кракен зеркало vk2 профессионал \r\ndarknet kraken доступтор 2kraken click \r\nдоступк kraken через tor kraken clear com \r\nonion-версиясайта kraken \r\nзеркалосайта kraken 7 one \r\nkraken зеркало v5tor cfd \r\nссылкана darknet kraken тор 2krnk biz \r\nофициальный сайт kraken dzen \r\nоригинальная ссылка на kraken \r\nссылкана kraken dzen \r\nсайт kraken tor kraken one com \r\nсайт krakenonion \r\nофициальныезеркала kraken k2tor \r\nkraken тор-ссылка online \r\nссылкана kraken v5tor cfd \r\nофициальныйсайт kraken в tor \r\nkraken web kr2web in \r\nдействующий сайт kraken \r\nзеркало kraken online \r\nактуальные ссылки на kraken 2kmp org \r\nпрямой доступ к kraken \r\nофициальный сайт kraken \r\nзеркала kr2web in \r\nkraken зеркало store \r\ndarknet market kraken ссылка tor v5tor cfd \r\nkraken сайт в даркнете \r\nофициальный darknet-портал kraken \r\nссылка на рабочее зеркало kraken2web com \r\nзеркало kraken tor kraken2web com \r\nзеркала маркетплейса kraken \r\nофициальные зеркала kraken k2tor online \r\nkraken darknet market ссылка market каркен \r\nсайт kraken 6 at от разработчика \r\nофициальный сайт kraken darknet top \r\nkraken clear link \r\nссылкана kraken kraken2web com \r\nдоступк kraken через tor kraken 9 one \r\nсайтанонимныхпокупок kraken vtor run \r\nзеркало kraken darknet market 2kraken click \r\nдоступк kraken darknet shkafssylka ru \r\nkraken ссылка torbazaw com \r\nфорум kraken ссылка \r\nкракен-площадкассылка kraken clear com \r\nkraken darknet портал kraken2web com \r\nрабочеезеркало kraken 2kraken click \r\nзеркало kraken ссылка online 2kraken click \r\nkraken зеркаласайт 2krnk biz \r\nкракензеркало kr \r\nзеркала сайта kraken 2kraken click \r\nКракен Официальные Ссылки | Доступ Безопасный 2024 \r\nКракен Надежный Доступ 2024 | Официальное Зеркало \r\nКракен Доступ | Официальное Зеркало 2024 без VPN \r\nKraken Ссылки | Доступ без VPN \r\nKraken 17 | kraken17 at | кракен 17 \r\nKraken 18 | kraken18 at | кракен 18 \r\nKraken 19 | kraken19 at | кракен 19 \r\nKraken 14 | kraken14 at | кракен 14 \r\nKraken 15 | kraken15 at | кракен 15 \r\nKraken 13 | kraken13 at | кракен 13 \r\nKraken 12 | kraken12 at | кракен 12 \r\nKraken 11 | kraken11 at | кракен 11 \r\nKraken 10 | kraken10 at | кракен 10 \r\nKraken 20 | kraken20 at | кракен 20 \r\nKraken 36 | kraken36 at | кракен 36 \r\nKraken 37 | kraken37at | кракен 37 \r\nKraken 38 | kraken38 at | кракен 38 \r\nkra1.cc | kra1.at \r\nkra2.cc | kra2.at \r\nkraken 18 сайт \r\nkraken 17 сайт \r\nkraken 17 at ссылка \r\nkraken 18 at рабочий \r\nофициальный сайт кракен \r\nсайт для доступа к kraken \r\nссылка на кракен через tor \r\nkraken официальный \r\nссылка kraken at \r\nkraken 19 сайт \r\nkraken 19 at ссылка \r\nkraken 13 площадка \r\nмагазин кракен \r\nkraken 13 at сайт \r\nkraken ссылка на вход \r\nkraken 16 доступ \r\nkraken 16 at ссылка \r\nkraken 14 at рабочий \r\nмаркетплейс kraken \r\nкракен 18 зеркало \r\nkraken 17 рабочий \r\nhttps kraken18 at доступ \r\nдоступ к кракен darknet \r\nофициальный кракен сайт \r\nhttps kraken17 at доступ \r\nкак зайти на кракен \r\nkraken17 at рабочее зеркало \r\nkraken 17 at сайт \r\nkraken17at ссылка \r\nkr2web in доступ \r\nkraken 18 at зеркала \r\nkraken 18at рабочий \r\nkraken в торе \r\nkraken официальный сайт kr2web in \r\nkraken web ссылка \r\nkraken сайт анонимный \r\nkraken 12at \r\nkraken вход доступ \r\nkraken маркетплейс 18 \r\nkraken 13 официальный \r\nkraken зеркало 17 \r\nкак зайти на kraken web \r\nссылка на кракен через tor \r\nkraken 13 at официальный \r\nсайт kr2web in доступ \r\nкракен телеграм-канал \r\nkraken kr2web in официальный \r\nкракен-шоп \r\nkraken web com \r\nkraken 13at сайт \r\nсайт кракен актуальная ссылка \r\nkraken12 официальный \r\nкракен последние ссылки \r\nkraken 12 доступ \r\nkraken17 сайт зеркало \r\nkraken 15 зеркало \r\nkraken13 рабочая ссылка \r\nhttp kraken18 тор-доступ \r\nkraken 14 рабочий доступ \r\nkraken 12 доступ через tor \r\nkraken официальный доступ \r\nкракен актуальные ссылки \r\nмаркетплейс kraken \r\nссылка на тор для кракен \r\nhttp kraken17 официальный сайт \r\nhttps kraken16 ссылка \r\nkraken17 авторизация \r\nрабочее зеркало сайта кракен \r\nonion-сайт кракен \r\nkraken в darknet \r\nkraken 11 зеркало \r\nhttps kraken19 ссылка \r\nкракен 17 сайт \r\nkraken официальный портал \r\nhttps kraken13 актуальный \r\nработающее зеркало для кракен \r\nкракен маркетплейс в даркнете \r\nkraken13 официальный сайт \r\nkraken 19 зеркало \r\nдоступ к kraken darknet \r\nофициальный сайт кракен ссылка \r\nкракен 14 зеркало \r\nзеркало сайта кракен \r\nkraken сайт вход \r\nkraken onion-ссылка \r\nkraken 16 ссылка \r\nkraken18 сайт \r\nкракен в darkweb \r\nвход на кракен \r\nдоступ через tor браузер к кракен \r\nkraken17 com доступ \r\nкракен 18 доступ \r\nkraken shop ссылка \r\nkraken через tor \r\nhttps kraken14 рабочая ссылка \r\nkraken11 доступ \r\nсайт кракен darknet \r\nhttps kraken15 ссылка \r\nkraken marketplace \r\nkraken17 доступ \r\nkraken18 shop \r\nссылка на кракен через tor \r\nhttp kraken16 актуальная ссылка \r\nкракен 2krnk cc зеркало \r\nкракен kr2web in marketplace \r\nдоступ через браузер на кракен \r\nkraken официальный сайт \r\nhttp kraken19 рабочее зеркало \r\nkraken market портал \r\nkraken18 актуальный сайт \r\nзеркало для kraken \r\nkr2web in официальный ресурс \r\nкракен ссылка для тора \r\nhttps kraken13 ресурс \r\nдоступные ссылки на kraken \r\nофициальный сайт kraken kr2web in \r\nkraken вход через onion \r\nсайт-зеркало кракен \r\nофициальный сайт кракен marketplace \r\nофициальный сайт kraken через 2kmp \r\nкак зайти на сайт kraken \r\nkraken 14 официальный доступ \r\nkraken15 com доступ \r\nкракен12 ресурс \r\nмагазин kraken kr2web in \r\nkr2web in официальный портал \r\nkraken14 com сайт \r\nмагазин на кракен \r\nтор ссылка для кракен \r\nkraken шоп доступ \r\nkraken через onion \r\nkr2web in официальный доступ \r\nkraken kr2web официальный сайт \r\nофициальный сайт для кракен kr2web in \r\nкракен для входа через зеркало \r\nдоступ kraken 17at \r\nпоследнее зеркало кракен \r\nмаркетплейс кракен darknet \r\nkraken 1kraken me сайт \r\nhttps kraken12 актуальноезеркало \r\nссылка на кракен через tor-браузер \r\nсайт кракен для запрещенных товаров \r\nkraken 17 веб-доступ \r\nkraken ссылка для сотрудников \r\nкракен ссылка для авторизации \r\ntelegram ссылки для kraken \r\nkraken 20at официальный сайт \r\nkraken официальный доступ к сайту \r\nkraken ссылка на тор \r\nзеркало сайта кракен в tor \r\nмагазин krakens13 at \r\nдоступ к кракен', '159.100.19.127', '2025-08-16 07:17:31', 0, 0, NULL, NULL),
-(95, 'ErnestGab', 'ErnestGabLM', 'no-reply986@gmail.com', '83815681274', '0-DAY MP3', 'Hey, \r\n \r\n* FTP Mp3 Server and download everything directly https://sceneflac.blogspot.com \r\n* Reseller: PayPal, VISA, Bank transfer, Bitcoin, Master Card, Amazon pay, WebMoney... \r\n* Software FTPtxt-16 https://www.0daymusic.org/FTPtxt to search for text. \r\n* Server\'s capacity: 440 TB MP3, FLAC, Labels, Music Videos. \r\n* Support: FTP, FTPS (File Transfer Protocol Secure), SFTP and HTTP, HTTPS. \r\n* Updated on daily: 30GB-100GB, 300-2000 Albums, WEB, Promo, CDM, CDR, CDS, EP, LP, Vinyl... \r\n* Unlimited download speed. \r\n* Files are available every time. \r\n* More 17 years Of archives. \r\n* Overal server\'s speed: 1 Gb/s. \r\n* Easy to use Most of genres are sorted by days.', '84.17.48.184', '2025-08-17 01:07:11', 0, 0, NULL, NULL),
-(96, 'Mike Peder Olsson', 'Mike Peder Olsson\r\nCV', 'info@digital-x-press.com', '85834472877', 'Add AEO to your SEO strategies today !', 'Hi, \r\nI recognize that some companies have difficulties recognizing that organic ranking growth is a continuous effort and a strategically planned ongoing investment. \r\n \r\nSadly, very few businesses have the dedication to recognize the progressive yet meaningful improvements that can completely transform their search performance. \r\n \r\nWith regular search engine updates, a reliable, ongoing approach including Answer Engine Optimization (AEO) is vital for getting a strong return on investment. \r\n \r\nIf you agree this as the best strategy, partner with us! \r\n \r\nCheck out Our Monthly SEO Services https://www.digital-x-press.com/unbeatable-seo/ \r\n \r\nReach Out on Instant Messaging https://www.digital-x-press.com/whatsapp-us/ \r\n \r\nWe offer unbeatable results for your resources, and you will appreciate choosing us as your digital marketing ally. \r\n \r\nKind regards, \r\nDigital X SEO Experts \r\nPhone/WhatsApp: +1 (844) 754-1148', '181.214.218.113', '2025-08-17 11:10:35', 0, 0, NULL, NULL),
-(97, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '84631672466', 'End of Antisemitism', 'It is astonishing.\r\n\r\nMay the eyes of starving children haunt us all\r\n\r\nhttps://www.jewishvoiceforlabour.org.uk/article/may-the-eyes-of-starving-children-haunt-us-all/\r\n\r\nhttps://www.tiktok.com/@charitymealsuk/video/7534294624647580950?is_from_webapp=1&sender_device=pc&web_id=7537073515586897430\r\n\r\nhttps://www.dci-palestine.org/starving_a_generation_report_indicts_israel_for_weaponizing_starvation_as_a_tool_of_genocide\r\n\r\nhttps://www.tiktok.com/@1948nakba.p4/video/7536871676156398870?is_from_webapp=1&sender_device=pc&web_id=7537073515586897430\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church are perpetrating one of the most catastrophic genocides in history, targeting innocent women and children in Gaza.\r\n\r\nThese organizations have supplied Israel with explosives to facilitate their acts of genocide.\r\n\r\nGaza has been designated a disaster zone, severely lacking in essential resources for survival.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have devastated 90% of Gaza, resulting in the destruction of 437,600 homes and the loss of one million lives, including 50,000 individuals currently trapped under debris, with 80% of the casualties being women and children.\r\n\r\nThey have also obliterated 330,000 meters of water pipelines, leaving the population without access to drinking water.\r\n\r\nFurthermore, over 655,000 meters of underground sewage systems have been destroyed, depriving residents of basic sanitation facilities.\r\n\r\nThe destruction extends to 2,800,000 meters of roadways, rendering transportation impossible for the affected population.\r\n\r\nAdditionally, 3,680 kilometers of the electrical grid have been dismantled, leading to widespread power outages.\r\n\r\nThe assault has resulted in the demolition of 48 hospitals, eliminating critical healthcare facilities for those in need.\r\n\r\nMoreover, the actions of AIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have disrupted the education of over 785,000 students, with 494 schools and universities being completely destroyed, many due to aerial bombardments.\r\n\r\nThey have also targeted 981 mosques, effectively silencing the prayers of the homeless seeking divine assistance.\r\n\r\nAs a result of these actions, more than 39,000 young children have been left orphaned, without parents or guardians to care for them.\r\n\r\nI must emphasize that the historical context of warfare has never witnessed a scenario where 80% of a nation has been devastated, 100% of its populace has been uprooted, and 50% of the casualties are children.\r\n\r\nIt is imperative to recognize the gravity of the situation.\r\n\r\nOrganizations such as AIPAC and the Evangelical Church in America are contributing to what can only be described as genocide.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nThe implications of American taxpayer funding in the context of Israel\'s actions against innocent children are alarming.\r\n\r\n1. An examination of Israel\'s precarious situation is warranted.\r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2. The influence of financial power, often associated with certain groups, plays a significant role in these dynamics. Further information can be found through the provided link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3. Insights into the perspectives of U.S. leadership regarding AIPAC and the Evangelical Church can be explored through the following resource.\r\n\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nThe tragic reality of innocent children being harmed by powerful Israeli forces utilizing American weaponry is evident in various media reports.\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nIt is crucial to stay informed by accessing reliable news sources.\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.128.18', '2025-08-18 22:34:17', 0, 0, NULL, NULL),
-(98, 'AliciaSpumb', 'AliciaSpumbOV', 'footballcountcom@gmail.com', '89577451322', 'Here are some unusual and provocative discussion starters for your forum:.', '---\n\n\"Is gorilla trekking just ‘colonialism in khaki’—or can it truly empower local communities?\"\nTourists pay thousands to glimpse mountain gorillas for an hour, while many nearby villages struggle with poverty. Does this model exploit wildlife and people under the guise of \"conservation,\" or is it the best way to fund protection and local development?\n\n---\n\n\"Would you let a traditional healer ‘bless’ your gorilla trek—even if it meant breaking conservation rules?\"\nSome local guides quietly incorporate spiritual rituals (libations, prayers) before treks, believing it ensures safe encounters. If authorities banned these practices as \"unscientific,\" would you still want them—or is conservation better off without mysticism?\n\n---\n\n\"What if the Virunga Massif became a ‘no-tourism’ zone? Would gorillas be better off?\"\nHabituated gorillas face stress, disease risks, and poaching tied to human presence. If all trekking stopped tomorrow, would the ecosystem thrive—or would funding dry up, leaving rangers unpaid and communities hostile to conservation?\n\n---\n\n\"Why do Western tourists get to ‘immersion’ in Rwanda, but Rwandans can’t afford their own cultural heritage?\"\nA week-long \"spiritual journey\" in the Virunga region costs what a local teacher earns in months. Is this just the reality of global inequality, or should tourism operators be forced to subsidize access for East Africans?\n\n---\n\"Could Congo’s ‘dark tourism’ (war zones + gorillas) ever be ethical—or is it just trauma porn?\"\nSome operators market Virunga’s gorillas alongside visits to Goma’s lava fields and IDP camps. Is this raising awareness or commodifying suffering? Where’s the line between education and exploitation?\n\n---\n\"If a gorilla charges at you, should your guide sacrifice themselves to save you?\"\nLocal trackers earn peanuts compared to what tourists pay. In a life-or-death moment, is it fair to expect them to put your safety above theirs—or should trekkers sign a waiver absolving guides of heroism?\n\n---\n\"Is ‘community tourism’ a scam if the ‘community’ is just a single family running the show?\"\nMany homestays and cultural experiences are controlled by a handful of connected elites. When does \"empowerment\" become a branding trick—and how can travelers spot the difference?\n\n---\n\"Would you trek with an ex-poacher as your guide?\"\nSome conservation programs hire former hunters to track gorillas, arguing it turns enemies into allies. Others say it’s like putting a fox in charge of the henhouse. Where do you stand?\n\n---\n\"Should gorilla permits cost $1,500… or $15,000?\"\nHigher fees could slash visitor numbers, reduce stress on gorillas, and fund more local projects. Or would it just turn trekking into a billionaire’s safari—and kill Rwanda’s tourism golden goose?\n\n---\n\"What’s more unethical: Paying a bribe to see gorillas in Congo, or skipping Congo entirely?\"\nDRC’s parks are desperate for funds, but corruption and instability make trekking risky. If your money might line a warlord’s pocket, is boycotting the country the moral choice—or does that abandon the people who need tourism most? \r\n \r\nDiscover the Ultimate Betting Experience at  https://vkltv.top/what-do-you-need-to-win-at-the-casino-and-roulette-the-4-most-popular-ways/ \r\n \r\n \r\n \r\n \r\n \r\n<a href=https://lkxe.pro/698c><img src=\"https://vkltv.top/wp-content/uploads/2025/08/4-450x450.jpeg\"></a>', '87.240.52.143', '2025-08-20 02:11:56', 0, 0, NULL, NULL);
+INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `phone`, `subject`, `message`, `ip_address`, `submission_date`, `is_read`, `is_responded`, `response_notes`, `response_date`, `emailed`) VALUES
+(1, 'test', 'tesr', 'virungaecotours@gmail.com', '12345', '123', 'qwasdx', '41.173.35.86', '2025-04-28 12:54:04', 1, 1, 'k', '2025-04-28 06:57:44', 0),
+(2, 'ij', 'n', 'ntakirutimanadaniel6@gmail.com', '00', 'n', 'n', '41.173.35.86', '2025-04-28 14:12:18', 1, 0, NULL, NULL, 0),
+(3, 'Aime', 'Mazimpaka', 'aimecol314@gmail.com', '0789375245', 'sumary', 'Wow', '41.186.78.8', '2025-04-28 21:01:19', 0, 0, NULL, NULL, 0),
+(4, 'IsmaelBax', 'IsmaelBaxOQ', 'jisankape@list.ru', '83472326262', 'Пульсовая Диагностика', 'Первое, второе и компот &#8212  https://ayurdara.ru/sredstva_firmy_baidyanath/jogoradzh_guggul_yograj_guggulu_baidyanath/\r\n \r\n- варикозное расширение вен: положительно действует на сосуды, укрепляет их; - избавление от целлюлита и его профилактика; - вялость и дряблость тела: удвартана замедляет процесс старения, , боли в суставах, облегчение боли при растяжениях связок и ушибах; - лишний вес и объем тела; - усталость, нервное напряжение: удвартана расслабляет, восполняет жизненную энергию https://ayurdara.ru/fotoal_bomy/priklyucheniya_ayurdary_v_volshebnoj_mile/26/\r\n \r\nПоказания: Устранение напряжения, стресса, улучшение питания кожи, омоложение, устранение отеков, нормализации сна и эмоционального фона, депрессия, бессонница, хроническая усталость https://ayurdara.ru/vopros-otvet/konsul_tacii_doktora_pravina_v_centrah_ayurdara/\r\n \r\nОСТЕОПАТИЯ https://ayurdara.ru/fotoal_bomy/deli/qutb_minar/\r\n \r\nДа https://ayurdara.ru/nashi_specialisty/ayurvedicheskij_terapevt_santo_tomi/\r\n  На страницах заведений есть раздел , где можно узнать о действующих скидках и спецпредложениях https://ayurdara.ru/nashi_specialisty/ayurvedicheskij_terapevt_santo_tomi/\r\n \r\nГОМЕОПАТИЯ https://ayurdara.ru/fotoal_bomy/priklyucheniya_ayurdary_v_volshebnoj_mile/5/', '83.217.213.120', '2025-06-19 04:51:33', 0, 0, NULL, NULL, 0),
+(5, 'Jamesrit', 'JamesritHK', 'valentin.vinokurov.12.6.1968@mail.ru', '81187747121', 'Жилые Дома Проектирование', 'По шикарному местному кремлю XV века прогуляться нужно обязательно https://balka.studio/dizain-proekt-interiera/\r\n \r\nПоистине сказочное здание – Дом Шамиля, который был построен купцом Апаковым как подарок дочери на свадьбу https://balka.studio/dizain-proekt-kvartiry-cena/\r\n  В 18 лет она вышла замуж за сына знаменитого предводителя кавказских горцев имама Шамиля https://balka.studio/dom-v-stile-raita/\r\n  В советские годы это был жилой дом, а позже – музей национального поэта Тукая https://balka.studio/proekt-doma-cena/\r\n \r\nПАВЛОВСК: ЖЕМЧУЖИНА ДВОРЦОВОГО ОЖЕРЕЛЬЯ https://balka.studio/dizain-proekt-studii-pod-sdachu/\r\n \r\nСАНКТ-ПЕТЕРБУРГ: МАЛОИЗВЕСТНОЕ ОБ ИЗВЕСТНОЙ СЕВЕРНОЙ СТОЛИЦЕ https://balka.studio/musey-serdca-v-spb/\r\n \r\nКремлевский Софийский собор, один из старейших в стране, сохранился даже в годы советского богоборчества, да и во время Великой Отечественной обошелся небольшими повреждениями https://balka.studio/dizain-studii/\r\n \r\nАвторские интерьеры и ремонт под ключ https://balka.studio/dizain-proekt-studii-pod-sdachu/', '83.217.213.120', '2025-06-19 05:14:56', 0, 0, NULL, NULL, 0),
+(6, 'Larryerent', 'LarryerentHX', 'gamenoktr@gmail.com', '89635695156', 'Официальные ссылки зеркало Кракена https://kra34cc.shop https://kra34cc.shop', 'ВСЕ актуальные ссылки тут - https://kra34cc.shop                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Официальные ссылки зеркало Кракена https://kra34cc.shop https://kra34cc.shop \r\n \r\n \r\n \r\nОФИЦИАЛЬНАЯ ССЫЛКА на Кракен сайт здесь: Ссылка на сайт:  https://kra34cc.shop \r\nНе заходите по другим ссылкам - https://kra34cc.shop    kra34cc.shop \r\n \r\n \r\nКлючевые слова: Кракен Даркнет, Кракен ссылка, Кракен сайт, Кракен Онион, kra34cc.shop, kra34cc.shop, Кракен маркетплейс, даркнет Кракен, Кракен зеркало, актуальные ссылки.', '5.137.243.207', '2025-06-19 05:24:04', 0, 0, NULL, NULL, 0),
+(7, 'AlexFap', 'AlexFapUT', 'alexFap@x-mail.my', '88175216475', 'Кракен рабочий сайт найти', 'Несколько советов клиентам \r\nСайт Kraken знают все, кто хочет купить психоактивные вещества и незаконные услуги. Также тому, кто хочет сам заработать. Основная цель площадки – быть гарантом сделок между покупателями и магазинами и разбираться с конфликтами. Однако посетителям Кракена следует знать её особенности. \r\nКак заходить на площадку Kraken Onion \r\nРаспространённая проблема, с которой могут столкнуться посетители <a href=https://kraken-shop-darknet.com/kraken-sajt-darknet-kak-vojti-na-sajt/>кракен вход</a> – проблемы со входом. Это происходит из-за блокировок государством и из-за проблем со стороны посетителя. \r\nСпособы попасть на заблокированные сайты: \r\n• Прокси или ВПН. \r\n• браузер Тор, который обеспечивает высокий уровень конфиденциальности. \r\n• Найти зеркало, которое можно открыть в любом браузере. \r\nСпособ доступа выбирают с учётом особенностей ситуации. С мобилки на Кракен проще зайти через зеркало – для ПК лучше пользоваться Тором. \r\nКак покупать на Кракену \r\nПервая сделка на сайте должна выполняться только на Биткойны. После этого можно использовать все варианты: \r\n• Биткоин. Для этого не обязательно регистрировать криптовалютный кошелёк. Есть возможность получить BTC с банковской карты, Киви и Яндекс. \r\n• SBP. Для перевода по СБП пользуются кошельком или терминалом. \r\n• Пополнение мобильного номера. \r\nЕщё один способ купить товар или заказать услугу – игра в рулетку. При выборе этого варианта открывается игровое поле на 100 клеток – на которые можно ставить фишки. Стоимость поставленной фишки – процент от цены покупки. Можно заплатить меньше более чем вдвое. \r\nКак решать проблемы \r\nС функционалом Кракена разобраться несложно. Поэтому у большинства покупателей не возникает серьёзных проблем. А рейтинговая система сводит к минимуму вероятность стать жертвой мошенников. Продавцы, обманывающие покупателей, банятся. Но проблемы иногда возникают – можно купить некачественный товар или столкнуться с не доставленным заказом. В этом случае нужно открыть спор с продавцом, в котором участвует администрация. \r\nМожно столкнуться и с такой проблемой – блокировка со стороны сервиса. Обычно это связано с неправильными действиями пользователя. Снизить риск бана можно, соблюдая требования администрации. Если заблокировали незаслуженно – обращаться в службу поддержки.', '154.213.202.48', '2025-06-19 11:16:34', 0, 0, NULL, NULL, 0),
+(8, 'LeeRon', 'LeeRonEY', 'dinanikolskaya99@gmail.com', '87116118385', 'Aloha  i am wrote about   the price for reseller', 'Sveiki, es gribēju zināt savu cenu.', '185.39.19.48', '2025-06-20 07:01:50', 0, 0, NULL, NULL, 0),
+(9, 'Timothynob', 'TimothynobQR', 'kikromankopo1.9.93@gmail.com', '86675679267', 'золотая рыбка аквариумная', 'Р°РєРІР°СЂРёСѓРјРЅС‹Рµ СЂС‹Р±РєР° СЃРґРѕС…Р»Р°\r\n – это не просто красивые питомцы, это целый подводный мир, который можно создать у себя дома https://good-torrent.ru/17633-zooaquariumru-vash-gid-v-zagadochnyy-mir-akvariumov-obshirnyy-obzor-i-analiz-kontenta-dlya-nachinayuschih-i-professionalov.html\r\n. Наблюдение за их грациозными движениями и яркими окрасками успокаивает и расслабляет, а уход за аквариумом может стать увлекательным хобби. Но прежде чем обзавестись этими молчаливыми друзьями, необходимо тщательно подготовиться и изучить все нюансы их содержания. \r\n \r\nПервым шагом станет выбор аквариума. Его размер зависит от количества и размеров планируемых обитателей. Важно помнить, что рыбки должны иметь достаточно пространства для комфортной жизни и плавания. Кроме того, форма аквариума также играет роль. Традиционные прямоугольные аквариумы наиболее удобны в обслуживании, а круглые – хоть и выглядят необычно, но могут быть некомфортными для рыбок из-за искажения пространства. \r\n \r\nПосле выбора аквариума необходимо правильно его оборудовать. Обязательными элементами являются фильтр для очистки воды, обогреватель для поддержания оптимальной температуры и компрессор для насыщения воды кислородом. Также важно позаботиться об освещении, которое не только подчеркнет красоту рыбок, но и необходимо для роста живых растений. \r\n \r\nСледующий этап – РѕСЂР°РЅР¶РµРІС‹Рµ Р°РєРІР°СЂРёСѓРјРЅС‹Рµ СЂС‹Р±РєРё С„РѕС‚Рѕ СЃ РЅР°Р·РІР°РЅРёСЏРјРё\r\n. Здесь https://techdesigner.ru/posts/akva-evolyucziya-kak-prevratit-akvarium-v-zhivuyu-ekosistemu\r\nважно учитывать совместимость разных видов. Некоторые рыбки могут быть агрессивными по отношению к другим, а некоторые – требовать схожих условий содержания. Начинающим аквариумистам рекомендуется выбирать неприхотливые виды, такие как гуппи, данио, сомики или неоны. Они достаточно выносливы и прощают небольшие ошибки в уходе. \r\n \r\nПравильное кормление – залог здоровья и долголетия ваших питомцев. Рыбки должны получать сбалансированное питание, включающее сухой корм, живой корм (например, мотыль или артемию) и растительные добавки. Важно не перекармливать рыбок, так как это может привести к загрязнению воды и развитию болезней. \r\n \r\nУход за аквариумом – это регулярная процедура, включающая подмену воды, чистку грунта и стенок аквариума, а также контроль параметров воды (температуры, pH, жесткости). Подмену воды необходимо проводить еженедельно, заменяя около 20-30% объема. Чистку грунта и стенок аквариума проводят по мере необходимости, используя специальные инструменты. \r\n \r\nНаблюдение за поведением рыбок – важная часть ухода https://www.diigo.com/profile/zooaquarium93\r\n . Любые изменения в их активности, внешнем виде или аппетите могут быть признаками болезни. В случае обнаружения каких-либо отклонений необходимо своевременно принять меры, обратившись к ветеринару-ихтиологу. \r\n \r\nСоздание аквариума – это увлекательный процесс, требующий определенных знаний и усилий. Но результат стоит того: у вас появится свой маленький подводный мир, который будет радовать глаз и дарить умиротворение. Не бойтесь экспериментировать, изучайте новую информацию и помните, что забота о ваших питомцах – это ключ к их здоровью и долгой жизни.', '95.31.119.243', '2025-06-22 08:22:36', 0, 0, NULL, NULL, 0),
+(10, 'Mike Jan-Erik Davies', 'Mike Jan-Erik Davies\r\nCV', 'info@digital-x-press.com', '86659787787', 'Add AEO to your SEO strategies today !', 'Hi, \r\nI understand that many businesses struggle recognizing that Answer Engine Optimization (AEO) is a gradual process and a well-planned regular commitment. \r\n \r\nSadly, very few businesses have the patience to recognize the incremental yet impactful improvements that can completely transform their digital visibility. \r\n \r\nWith regular search engine updates, a consistent, continuous SEO strategy including Answer Engine Optimization (AEO) is essential for securing a positive ROI. \r\n \r\nIf you see this as the right method, collaborate with us! \r\n \r\nCheck out Our Monthly SEO Services https://www.digital-x-press.com/unbeatable-seo/ \r\n \r\nTalk to Us on Instant Messaging https://www.digital-x-press.com/whatsapp-us/ \r\n \r\nWe deliver unbeatable results for your budget, and you will value choosing us as your growth partner. \r\n \r\nBest regards, \r\nDigital X SEO Experts \r\nPhone/WhatsApp: +1 (844) 754-1148', '84.17.60.187', '2025-06-22 12:48:37', 0, 0, NULL, NULL, 0),
+(11, 'Mike Oskar Gustafsson', 'Mike Oskar Gustafsson\r\nRD', 'info@strictlydigital.net', '87862284774', 'Semrush links for virungaecotours.com', 'Greetings, \r\n \r\nReceiving some set of links linking to virungaecotours.com could have no value or negative impact for your website. \r\n \r\nIt really makes no difference the number of inbound links you have, what is key is the number of ranking terms those websites rank for. \r\n \r\nThat is the key element. \r\nNot the fake third-party metrics or ahrefs DR score. \r\nThat anyone can do these days. \r\nBUT the volume of high-traffic search terms the websites that link to you contain. \r\nThat’s the bottom line. \r\n \r\nMake sure these backlinks redirect to your site and your site will see real growth! \r\n \r\nWe are offering this special SEO package here: \r\nhttps://www.strictlydigital.net/product/semrush-backlinks/ \r\n \r\nNeed more details, or want clarification, message us here: \r\nhttps://www.strictlydigital.net/whatsapp-us/ \r\n \r\nSincerely, \r\nMike Oskar Gustafsson\r\n \r\nstrictlydigital.net \r\nPhone/WhatsApp: +1 (877) 566-3738', '84.17.60.179', '2025-06-24 12:54:56', 0, 0, NULL, NULL, 0),
+(12, 'Michaelclums', 'MichaelclumsJE', 'densosport@inbox.lv', '82412196648', 'What\'s Your Verdict on 1win Casino? Share Your Honest Experiences!', 'Hey everyone, \r\n \r\nThis thread is for anyone who has played at 1win Casino to share their honest feedback and experiences. With so many online casinos out there, it can be tough to know which ones are worth your time and money. \r\n \r\nI\'m thinking of trying out 1win and I\'m curious to hear from the community. I\'ve seen some mixed reviews online, so I\'m hoping we can create a helpful discussion for new and existing players. \r\n \r\nTo get the conversation started, here are a few questions: \r\n \r\nWhat has been your overall experience with 1win? (e.g., excellent, good, average, poor) \r\nGame Selection: What do you think of their variety of slots, table games, and live dealer options? Any favorite games? \r\nBonuses and Promotions: Are their bonus offers fair and easy to understand? Have you had any success with them? \r\nDeposits and Withdrawals: How smooth is the process for depositing and withdrawing funds? Have you faced any issues with verification or payout times? \r\nCustomer Support: Have you ever needed to contact their support team? How responsive and helpful were they? \r\nWebsite and App: How do you find the user interface and overall usability of their platform? \r\nWhether you\'ve had a big win, a frustrating experience with a withdrawal, or just want to share your general thoughts, please post them here. Let\'s help each other out by creating a transparent and honest resource for everything related to <a href=https://bluebellschool.org/1win-szkolenie-sportowe-oraz-kasyno-internetowego-premia-piec-stow/>1win</a> Casino.', '185.155.97.139', '2025-06-24 23:29:55', 0, 0, NULL, NULL, 0),
+(13, 'Jameshapse', 'JameshapseWZ', 'yandexservises@anonmails.de', '88375638366', 'Специальное предложение: скидка 500 рублей на Яндекс Маркете', 'Уважаемый(ая) партнер, \r\n \r\nИмеем честь уведомить, что на платформе Яндекс Маркет открылась масштабная распродажа с привлекательными предложениями для наших клиентов. \r\n \r\nВоспользуйтесь уникальным промокодом WOW500 или LOOK500, чтобы получить скидку 500 рублей на при оформлении заказа. \r\n \r\nДля участия в акции предлагается: \r\n \r\nПерейти на сайт Яндекс Маркета \r\n \r\nПодобрать необходимые товары \r\n \r\nВвести код WOW500 или LOOK500 для скидки \r\n \r\nОбращаем ваше внимание, что акция действует ограниченное время. \r\n \r\nДля получения дополнительной информации обращайтесь в службу поддержки. \r\n \r\nБлагодарим за выбор и доверие. \r\n \r\nС уважением. \r\nЖдём. \r\n \r\nПереходи по ссылке и получай все скидки Яндекс Маркет - https://t.me/YandexMArket002_bot \r\n<a href=\"https://t.me/YandexMArket002_bot\">Все акции Яндекс Маркет</a>', '188.130.137.229', '2025-06-25 02:35:11', 0, 0, NULL, NULL, 0),
+(14, 'pro-dache', 'pro-dacheXV', '553@gmail.com', '82526877733', 'Gnj 5  Fvti Ngj', '<a href=\"https://prodache.ru\">prodache</a>', '117.250.3.58', '2025-06-27 16:45:39', 0, 0, NULL, NULL, 0),
+(15, 'RobertRon', 'MatthewRonGM', 'LOVEBUGJH@YAHOO.COM', '83912769681', 'Aloha    writing about your the prices', 'Ciao, volevo sapere il tuo prezzo.', '185.39.19.21', '2025-06-28 00:30:19', 0, 0, NULL, NULL, 0),
+(16, 'RobertRon', 'FrankRonGM', '5026645590@vtext.com', '85437147721', 'Hallo, i am write about     price for reseller', 'Hai, saya ingin tahu harga Anda.', '185.39.19.21', '2025-06-28 00:41:56', 0, 0, NULL, NULL, 0),
+(17, 'RobertRon', 'AnthonyRonGM', 'Agoglia1@aol.com', '81328538693', 'Aloha  i wrote about your   prices', 'Xin chào, tôi muốn biết giá của bạn.', '185.39.19.21', '2025-06-28 03:11:23', 0, 0, NULL, NULL, 0),
+(18, 'DJBew', 'DJBew', 'rubbyroyd24@gmail.com', '89954536361', 'Эмоциональные грани музыкального искусства: волшебство в исполнении Андрея Вебера', '<a href=https://www.youtube.com/channel/UCsV2OdpdPv6aq_cQWTmEs-Q>Певец, что приносит умиротворение через свою музыку – Андрей Вебер</a>', '5.183.130.110', '2025-06-28 21:23:33', 0, 0, NULL, NULL, 0),
+(19, 'Craigstymn', 'CraigstymnLM', 'kmetzfwadia6f4@outlook.com', '84117974385', 'https://1.0rb11ta.top/', 'https://msk.0rb11ta.top/ Orb11ta работает! \r\nhttps://orb11ta.lol/  зеркало без  VPN!', '88.210.3.196', '2025-06-29 10:08:02', 0, 0, NULL, NULL, 0),
+(20, 'krelpazy', 'krelpazyIQ', 'whtwearhfdiosnice@gmail.com', '89469664533', 'КРАКЕН!?САЙТ — ОФИЦИАЛЬНЫЙ САЙТ ДАРКНЕТ МАРКЕТПЛЕЙСА КРАКЕН (kraken)', 'Ищете Кракен сайт? Вам нужна официальная ссылка на сайт Кракен? В этом посте собраны все актуальные ссылки на сайт Кракен, которые помогут вам безопасно попасть на Кракен даркнет через Tor. \r\n \r\nРабочие ссылки на Кракен сайт (официальный и зеркала): \r\n \r\n1.	Официальная ссылка на сайт Кракен: <a href=https://https-kra33.shop?c=syf9zl>Кракен официальный сайт</a> \r\n \r\n2.	Кракен сайт зеркало: <a href=https://http-kra33.xyz?c=syf9wq>Кракен зеркало сайта</a> \r\n \r\n3.	Кракен сайт магазин: <a href=https://kra33cc.life?c=syekdh>Кракен магазин</a> \r\n \r\n4.	Ссылка на сайт Кракен через даркнет: <a href=https://https-kra33.shop?c=syf9zl>Кракен сайт даркнет</a> \r\n \r\n5.	Актуальная ссылка на сайт Кракен: <a href=https://kr34.xyz?c=syekao>Кракен актуальная ссылка</a> \r\n \r\n6.	Запасная ссылка на сайт Кракен: <a href=https://krakenmarketing.shop?c=sybtgp>Ссылка на сайт Кракен через VPN</a> \r\n \r\nКак попасть на Кракен сайт через Tor: \r\n \r\nДля того чтобы попасть на Кракен сайт через Tor, следуйте этим шагам: \r\n \r\n1.	Скачайте Tor браузер: Перейдите на официальный сайт Tor и скачайте Tor браузер для Windows, Mac и Linux. Установите браузер, чтобы получить доступ к Кракен даркнет. \r\n \r\n2.	Запустите Tor браузер: Откройте браузер и дождитесь, пока он подключится к сети Tor. \r\n \r\n3.	Перейдите по актуальной ссылке на сайт Кракен: Вставьте одну из актуальных ссылок на сайт Кракен в адресную строку Tor браузера, чтобы попасть на Кракен даркнет сайт. \r\n \r\n4.	Регистрация на сайте Кракен: Зарегистрируйтесь на Кракен официальном сайте. Создайте аккаунт, используя надежный пароль и включите двухфакторную аутентификацию для повышения безопасности. \r\n \r\nМеры безопасности на сайте Кракен даркнет: \r\n \r\nЧтобы ваш опыт использования Кракен сайта был безопасным, следуйте этим рекомендациям: \r\n \r\n•	Используйте актуальные ссылки на сайт Кракен: Даркнет-ресурсы часто меняют свои адреса, поэтому обязательно используйте только проверенные и актуальные ссылки на сайт Кракен. \r\n \r\n•	VPN для дополнительной безопасности: Использование VPN для доступа к Кракен обеспечит вашу анонимность, скрывая ваш реальный IP-адрес. Выбирайте только проверенные VPN-сервисы для доступа к Кракен сайту. \r\n \r\n•	Будьте осторожны с ссылками на Кракен: Важно избегать сомнительных ссылок и проверять их на наличие фишинга. \r\n \r\nПочему Кракен сайт так популярен? \r\n \r\n•	Кракен даркнет — это один из самых известных и популярных даркнет-магазинов. Он предоставляет пользователям безопасный доступ к анонимным покупкам, включая продукты на Кракен сайте, товары и услуги. \r\n \r\n•	Безопасность на сайте Кракен: Все транзакции через Кракен даркнет происходят анонимно, и каждый пользователь может быть уверен в защите своих данных. \r\n \r\n•	Актуальная ссылка на сайт Кракен: Для того чтобы быть в курсе актуальных ссылок, важно регулярно проверять обновления на проверенных форумах и в официальных источниках. \r\n \r\nПостоянно обновляющиеся зеркала сайта Кракен: \r\n \r\nСайт Кракен обновляет свои зеркала для обеспечения безопасности. Поэтому актуальная ссылка на Кракен может изменяться. Используйте только проверенные ссылки, такие как: \r\n \r\n•	Ссылка на сайт Кракен через Тор: <a href=https://krakenmarketing.shop?c=sybtgp>Кракен сайт Тор</a> \r\n \r\n•	Запасная ссылка на сайт Кракен: <a href=https://krakenmarketing.shop?c=sybtgp>Ссылка на сайт Кракен через VPN</a> \r\n \r\n•	Последняя ссылка на сайт Кракен: https://kra33cc.life?c=syekdh \r\n \r\nЗаключение: \r\n \r\nДля безопасного доступа к Кракен сайту, следуйте приведенным рекомендациям и используйте только актуальные ссылки на Кракен. Помните, что Кракен даркнет требует особого подхода в плане безопасности. Используйте Tor, VPN, и проверяйте актуальность ссылок. \r\n \r\nЗарегистрируйтесь на официальном сайте Кракен и получите доступ к всемирно известной даркнет-платформе. \r\n________________________________________ \r\nКлючевые слова: \r\n•	кракен сайт \r\n•	кракен официальный сайт \r\n•	кракен сайт kr2connect co \r\n•	кракен сайт магазин \r\n•	ссылка на сайт кракен \r\n•	кракен зеркало сайта \r\n•	кракен сайт даркнет \r\n•	сайт кракен тор \r\n•	кракен рабочий сайт \r\n•	кракен актуальная ссылка \r\n•	кракен даркнет', '77.246.102.218', '2025-07-03 12:03:40', 0, 0, NULL, NULL, 0),
+(21, 'Philliptoili', 'PhilliptoiliRV', 'temptest543827564@gmail.com', '86797864936', '301 Moved Permanently', '301 Moved Permanently \r\n<a href=https://www.binance.com/activity/referral-entry/CPA/together-v4?hl=en&ref=CPA_007YZN88KF>Show more!..</a>', '5.228.6.144', '2025-07-04 13:05:18', 0, 0, NULL, NULL, 0),
+(22, 'JimmyPouri', 'JimmyPouriSP', 'sir.maxbo@yandex.ru', '85121474184', 'Очиститель сажевого фильтра \"TERMIT DPF CLEANER\"', 'Очиститель сажевого фильтра FLUX \"TERMIT\" \r\nобъемом 5 литров предназначен для эффективной очистки и профилактики выхлопной системы вашего автомобиля. Этот продукт идеально подходит для владельцев дизельных автомобилей, которые хотят поддерживать работоспособность и долговечность своего сажевого фильтра. С его помощью вы сможете предотвратить засорение фильтра, что поможет избежать дорогостоящего ремонта и замены деталей. \r\n<a href=https://radikal.host/i/2s0gRv><img src=\"https://e.radikal.host/2025/03/30/to2.md.png\"></a> \r\nФормула очистителя \r\nразработана с учетом современных требований, обеспечивая высокую эффективность удаления загрязнений, таких как сажа и копоть, что в свою очередь улучшает работу двигателя и снижает выбросы вредных веществ в атмосферу. Регулярное использование этого продукта позволяет поддерживать оптимальную работу системы и способствует продлению срока службы вашего автомобиля. \r\n<a href=https://radikal.host/i/2s09mO><img src=\"https://e.radikal.host/2025/03/30/to1.md.png\"></a> \r\nПрименение очистителя \r\nПрименение очистителя не только безопасно, но и легко. Просто следуйте инструкции на упаковке, и вы сможете быстро и эффективно очистить сажевый фильтр, повышая производительность вашего транспорта. Этот очиститель является отличным выбором для автолюбителей, стремящихся поддерживать свой автомобиль в идеальном состоянии. \r\n<a href=https://radikal.host/i/2s0YuE><img src=\"https://e.radikal.host/2025/03/30/to3.md.png\"></a> \r\nКупить можно \r\nhttps://carteams-shop.ru/magazin/product/magazin/product/ochistitelsajevogofiltrafluxtermit \r\nhttps://www.ozon.ru/product/ochistitel-sazhevogo-filtra-termit-dpf-cleaner-5l-1842332449/ \r\nhttps://www.wildberries.ru/catalog/316931146/detail.aspx?targetUrl=GP \r\n \r\nЖидкость для тестирования, калибровки дизельных форсунок и ТНВД \"Torch DIESEL SRS\" \r\n \r\nСпециальная жидкость \r\nСпециальная жидкость для тестирования, калибровки и консервации топливной аппаратуры дизельных двигателей. Рекомендуется к применению как производителям топливной аппаратуры для ее калибровки и последующей консервации, так и для последующего обслуживания и ремонта на сервисных станциях. Рекомендации по применению SRS Calibration Fluid соответствует ISO-норме 4113 и имеет допуск Daimler-Benz Blatt 133.0. \r\n<a href=https://radikal.host/i/2s04Fd><img src=\"https://e.radikal.host/2025/03/30/d1.md.png\"></a> \r\nDIESEL TORCH \r\nDIESEL TORCH - обладает следующими преимуществами: \r\n \r\n-быстро удаляется с поверхности и не оставляет повреждений \r\n \r\n-низкие потери при испарении, за счет узкого диапазона между исходной и конечной точками кипения \r\n \r\n-стойкость к окислению \r\n \r\n-высокая температура вспышки и высокая диэлектрическая прочность \r\n \r\n-хорошие свойства смачивания и промывки \r\n \r\n-фильтруется при наличии необходимой системы фильтрации \r\n<a href=https://radikal.host/i/2s001I><img src=\"https://e.radikal.host/2025/03/30/d2.md.png\"></a> \r\nКупить можно \r\nhttps://carteams-shop.ru/magazin/product/jidkostdlyatestirovaniyadizelnihforsunok \r\nhttps://www.ozon.ru/product/zhidkost-dlya-testirovaniya-kalibrovki-dizelnyh-forsunok-i-tnvd-torch-diesel-srs-1842654348/ \r\nhttps://www.wildberries.ru/catalog/317636532/detail.aspx?targetUrl=GP', '188.162.6.36', '2025-07-06 01:44:36', 0, 0, NULL, NULL, 0),
+(23, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '81186582425', 'Blood on AIPAC and The Evangelical Church hands', 'It\'s unbelievable \r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer provided Israel with TNT (explosives) for their GENOCIDE.\r\n\r\nGaza has been declared a disaster area and lacks essential resources for living in it, as follows.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed 90% of Gaza, destroying 437,600 homes, and killing one million people, including 50 thousand who are currently under rubble, 80% of whom are women and children. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 330,000 meters of water pipes, resulting in people not being able to drink water. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed more than 655,000 meters of underground sewer lines. Now people have no washrooms to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 2,800,000 two million eight hundred thousand meters of roads, causing people to have no roads to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel have destroyed 3680 km of electric grid, which has caused people to lose electricity. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 48 hospitals and leveled them to the ground. Now, no one will have a hospital to save their lives. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed over 785,000 students\' ability to attend school and learn. Their actions resulted in the complete destruction of 494 schools and universities, many of which were destroyed by bombing. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 981 mosques to prevent homless people from asking God for help. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer have made over 39000 small children orphans and left them without parents or relatives to care for them.\r\n \r\nThere has never been a war in history where 80% of the country has been destroyed, 100% of the population has been displaced, and 50% of the deaths are children. \r\n\r\nDon\'t hesitate to call it what it is\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and The Evangelical Church (America) are creating a GENOCIDE.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nsee why Israel can kill innocent children with American taxpayer money\r\n\r\n1- see Why Israel is in deep trouble \r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2- Because the God of Money of our World is a Jew who supports and lives in Israel. For more details, click on the following link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3- Because what USA president say about AIPAC and  The Evangelical Church (America)\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nSee how innocent children are killed by the most powerful Israeli using American bombs at\r\n\r\nAl Jazeera Arabic Live\r\n\r\nat\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nWatch the real news at\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.168.12', '2025-07-06 08:32:51', 0, 0, NULL, NULL, 0),
+(24, 'Mike Morten Smith', 'Mike Morten Smith\r\nMJ', 'mike@monkeydigital.co', '88723993785', 'Grow Your Website Traffic with Country-Specific Social Ads – Only $10 for 10K Visits!', 'Dear Webmaster, \r\n \r\nI wanted to connect with something that could seriously help your website’s reach. We work with a trusted ad network that allows us to deliver authentic, geo-targeted social ads traffic for just $10 per 10,000 visits. \r\n \r\nThis isn\'t junk clicks—it’s real visitors, tailored to your preferred location and niche. \r\n \r\nWhat you get: \r\n \r\n10,000+ real visitors for just $10 \r\nGeo-targeted traffic for any country \r\nScalability available based on your needs \r\nUsed by marketers—we even use this for our SEO clients! \r\n \r\nReady to scale? Check out the details here: \r\nhttps://www.monkeydigital.co/product/country-targeted-traffic/ \r\n \r\nOr connect instantly on WhatsApp: \r\nhttps://monkeydigital.co/whatsapp-us/ \r\n \r\nLet\'s get started today! \r\n \r\nBest, \r\nMike Morten Smith\r\n \r\nPhone/whatsapp: +1 (775) 314-7914', '31.171.152.133', '2025-07-06 14:59:05', 0, 0, NULL, NULL, 0),
+(25, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '81494774899', 'Blood on the hands of AIPAC and The Evangelical Church lobby', 'It\'s unbelievable\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza. \r\n\r\nThe most devastating genocide in the world is being carried out by AIPAC  ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church, which kill innocent women and children in Gaza.\r\n\r\nAIPAC and The Evangelical Church (America) provided Israel with TNT (explosives) for their GENOCIDE.\r\n\r\nGaza has been declared a disaster area and lacks essential resources for living in it, as follows.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 90% of Gaza, destroying 437,600 homes, and killing one million people, including 50 thousand who are currently under rubble, 80% of whom are women and children. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 330,000 meters of water pipes, resulting in people not being able to drink water. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed more than 655,000 meters of underground sewer lines. Now people have no washrooms to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 2,800,000 two million eight hundred thousand meters of roads, causing people to have no roads to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel have destroyed 3680 km of electric grid, which has caused people to lose electricity. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 48 hospitals and leveled them to the ground. Now, no one will have a hospital to save their lives. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (USA), and Israel destroyed over 785,000 students\' ability to attend school and learn. Their actions resulted in the complete destruction of 494 schools and universities, many of which were destroyed by bombing. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, (America), and Israel destroyed 981 mosques to prevent homless people from asking God for help. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, have made over 39000 small children orphans and left them without parents or relatives to care for them.\r\n \r\nThere has never been a war in history where 80% of the country has been destroyed, 100% of the population has been displaced, and 50% of the deaths are children. \r\n\r\nDon\'t hesitate to call it what it is\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and The Evangelical Church (America) are creating a GENOCIDE.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nsee why Israel can kill innocent children with American taxpayer money\r\n\r\n1- see Why Israel is in deep trouble \r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2- Because the God of Money of our World is a Jew who supports and lives in Israel. For more details, click on the following link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3- Because what USA president say about AIPAC and  The Evangelical Church (America)\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nSee how innocent children are killed by the most powerful Israeli using American bombs at\r\n\r\nAl Jazeera Arabic Live\r\n\r\nat\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nWatch the real news at\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.163.16', '2025-07-07 20:12:23', 0, 0, NULL, NULL, 0),
+(26, 'ClydeSlopy', 'ClydeSlopyMM', 'markelov_a541f@rambler.ru', '86755696445', 'Rates start at €0.75/month.', 'http://vpnuf.mooo.com Fast and reliable VPN service with WireGuard support. Rates start at €0.75/month. Servers are available in Europe and Russia. Secure connection and high speeds up to 1 Gbps.', '130.255.170.164', '2025-07-08 12:14:33', 0, 0, NULL, NULL, 0),
+(27, 'RobertRon', 'EricRonGM', 'BSMITH@BESTINSGRP.COM', '86612469615', 'Hello  i am wrote about   the prices', 'Aloha, makemake wau eʻike i kāu kumukūʻai.', '185.39.19.21', '2025-07-08 20:07:12', 0, 0, NULL, NULL, 0),
+(28, 'RobertRon', 'RussellRonGM', 'adill@nationalselfstorage.com', '82595882899', 'Aloha  i am write about     price', 'Hæ, ég vildi vita verð þitt.', '185.39.19.21', '2025-07-08 20:07:12', 0, 0, NULL, NULL, 0),
+(29, 'Mike Jens Nilsson', 'Mike Jens Nilsson\r\nAH', 'info@professionalseocleanup.com', '85224514943', 'Urgent: Toxic Links Found on virungaecotours.com', 'Hi, \r\nWhile reviewing virungaecotours.com, we spotted toxic backlinks that could put your site at risk of a Google penalty. \r\n \r\nWe can clean up your link profile and protect your rankings — all for just $5. \r\n \r\nFix it now before Google does: \r\nhttps://www.professionalseocleanup.com/ \r\n \r\nNeed help or questions? Chat here: \r\nhttps://www.professionalseocleanup.com/whatsapp/ \r\n \r\nBest, \r\nMike Jens Nilsson\r\n \r\n+1 (855) 221-7591 \r\ninfo@professionalseocleanup.com', '37.19.223.19', '2025-07-11 21:47:15', 0, 0, NULL, NULL, 0),
+(30, 'Mike Sven-Erik Hansen', 'Mike Sven-Erik Hansen\r\nCV', 'info@digital-x-press.com', '81771146472', 'Add AEO to your SEO strategies today !', 'Hi, \r\nI realize that some companies struggle grasping that Answer Engine Optimization (AEO) is a continuous effort and a carefully organized regular commitment. \r\n \r\nThe reality is, very few marketers have the patience to recognize the incremental yet significant improvements that can completely boost their search performance. \r\n \r\nWith constant algorithm changes, a consistent, long-term strategy including Answer Engine Optimization (AEO) is essential for securing a strong return on investment. \r\n \r\nIf you recognize this as the best approach, collaborate with us! \r\n \r\nDiscover Our Monthly SEO Services https://www.digital-x-press.com/unbeatable-seo/ \r\n \r\nChat With Us on Instant Messaging https://www.digital-x-press.com/whatsapp-us/ \r\n \r\nWe deliver remarkable outcomes for your budget, and you will enjoy choosing us as your growth partner. \r\n \r\nBest regards, \r\nDigital X SEO Experts \r\nPhone/WhatsApp: +1 (844) 754-1148', '181.214.218.112', '2025-07-19 19:05:17', 0, 0, NULL, NULL, 0),
+(31, 'IsmaelBax', 'IsmaelBaxOQ', 'jisankape@list.ru', '86371942195', 'Аюрведическая Терапия', 'Как любое лечение, процедурное лечение должно быть назначено специалистом и проводиться курсами, для максимального результата https://ayurdara.ru/fotoal_bomy/yoga_vstrecha/_/\r\n \r\nЗдесь Вы сможете узнать много полезного о науке аюрведы https://ayurdara.ru/fotoal_bomy/priklyucheniya_ayurdary_v_volshebnoj_mile/3/\r\n  Познакомитесь с её терминами и понятиями https://ayurdara.ru/stat_i/zastoj_v_zhizni/\r\n  В разделе  и блоге найдёте интересные статьи о здоровье https://ayurdara.ru/ayurvedicheskaya_kuhnya/chatni/chatni_iz_kinzy/\r\n  Узнаете, что лечит аюрведа, каковы её методы, как проходят консультации аюрведических докторов и аюрведическая диагностика https://ayurdara.ru/fotoal_bomy/simpozium_ayurveda_i_joga_g_spb_24_06_17/2/\r\n  Проникнитесь идеями о ценности аюрведических массажей, процедур и глубинного омоложения организма https://ayurdara.ru/ayurvedicheskaya_kuhnya/uppuma/\r\n  И ещё – здесь Вы найдёте хорошие и полезные рецепты и научитесь питаться так, чтобы еда стала лекарством, а не источником болезней! Читайте, узнавайте, здоровейте! \r\nКонтактная информация https://ayurdara.ru/fotoal_bomy/ayurdara_-_ayurveda_v_sankt-peterburge/5/2/\r\n \r\nПХАЛА – Фруктовый массаж https://ayurdara.ru/fotoal_bomy/jaipur/24/\r\n \r\nНе является лекарственным препаратом и не заменяет традиционного медицинского лечения https://ayurdara.ru/fotoal_bomy/2021/28/\r\n  Перед применением рекомендуется проконсультироваться со специалистом по Аюрведе для индивидуального назначения https://ayurdara.ru/fotoal_bomy/pattadakal_aihole/8/\r\n \r\n…сильные руки хрупкой девушки-массажистки,но! Заявленный массаж лица не делается, фито-чай по завершении процедуры не предлагается https://ayurdara.ru/knigi_i_zhurnaly_ob_ayurvede/ayurveda_i_joga_vypusk_11/\r\n  Осадок остался https://ayurdara.ru/fotoal_bomy/indijskij_tradicionnyj_centr_zdorov_ya_ayurdara/25/\r\n  Советовать…', '83.217.213.120', '2025-07-21 04:38:00', 0, 0, NULL, NULL, 0),
+(32, 'Alfredheede', 'AlfredheedeVS', 'y.kuvayev@mail.ru', '86668451127', 'Грунтовка Глубокого Проникновения 10', '№ 005 Серый темный https://p-parquet.ru/neprozrachnaya-kraska-osmo-landhausfarbe-32\r\n \r\nСредства для реставрации мебели https://p-parquet.ru/magazin/folder/lak-dlya-parketa\r\n \r\nот 2 590 руб https://p-parquet.ru/retush-emalevaya-ritocchi-coprente-122-oranjevii-30ml\r\n \r\nНаш магазин принимает розничные и оптовые заказы на реставрационные материалы для мебели https://p-parquet.ru/vodnyy-lak-dlya-parketa-lobadur-ws-2k-duo-1\r\n  Мы готовы к сотрудничеству как с индивидуальными заказчиками, так и с производителями мебели и предметов интерьера https://p-parquet.ru/inzhenernyj-modulnyj-parket-kvadro-iz-duba\r\n \r\n№ R 4900 Вишня https://p-parquet.ru/osmo-holzschutz-lasur-maslo-zashchitnaya-906-25l\r\n \r\n5 https://p-parquet.ru/materialy-dlya-naruzhnykh-rabot-borma-wachs/p/2\r\n  Не меняет структуру древесины  https://p-parquet.ru/samogruntuyushchijsya-vodnyj-lak-dlya-parketa-parquet-lack-borma-wachs-20l-60\r\n  Применение масло-воска не приводит к разрушению структуры древесины, и даже наоборот, защищает дерево от пятен, истирания, царапин и других повреждений https://p-parquet.ru/maslo-osmo-3072-cvet-yantar-s-tverdym-voskom-hartwachs-ol-farbig-180ml', '83.217.213.120', '2025-07-21 04:42:10', 0, 0, NULL, NULL, 0),
+(33, 'DavidRof', 'DavidRofSQ', 'abbyas-venikov1984@mail.ru', '87337424345', 'Клей Для Паркета На Фанеру Купить', '15 615 рублей https://bormawachs.ru/magazin/vendor/borma-wachs-italiya/p/5\r\n \r\nPrev Next Result https://bormawachs.ru/magazin/product/tsvetnoye-maslo-dlya-terras-terrace-oil-borma-wachs-15\r\n \r\n15 970 рублей https://bormawachs.ru/magazin/product/myagkij-vosk-stuccorapido-borma-wachs-196\r\n \r\nот 3 500 ? до 2 739 https://bormawachs.ru/magazin/tag/maslo-dlya-terras\r\n 60 ? \r\n1 750 ? 2 500 ? \r\n2 вида: нитро и акриловый https://bormawachs.ru/magazin/product/lak-dlya-zashchity-kamnya-i-mramora-stone-coat-blesk-30-1l\r\n  Быстро сохнет, не оставляет ореолов https://bormawachs.ru/magazin/product/pigmentnaya-pasta-vodorazbavimaya-borma-wachs-kopiya\r\n  Блеск: 10%, 20%, 30%, 40%, 60% и 90% https://bormawachs.ru/magazin/product/vosk-tverdyj-hartwachs-borma-wachs-120\r\n  Ретуширующий лак-спрей для древесины HOLZSPRAY прост в применении, создает надежное покрытие, быстро сохнет и не оставляет ореолов https://bormawachs.ru/magazin/product/magazin/product/maslo-dlya-vosstanovleniya-okonnyh-ram-regenerating-oil-window-frames', '83.217.213.120', '2025-07-21 04:53:48', 0, 0, NULL, NULL, 0),
+(34, 'EdwardTrild', 'EdwardTrildUO', 'eepovda@bk.ru', '85973814394', 'Кровать Крепкая', '— компания-производитель https://by-home.ru/obedennye-stoly/17351-obedennaya-gruppa-stol-fr-0404-i-4-stula-fr-0024.html\r\n  В наших каталогах вы можете выбрать и дешево купить диваны в Москве, Санкт-Петербурге и других городах России https://by-home.ru/komody/8986-komod-bf-21187.html\r\n  У нас есть собственное производство в Великом Новгороде, где мы создаем эффектную и функциональную мебель https://by-home.ru/chasy/9988-chasy-nomon-oj-mini-pink-d50sm.html\r\n  Мы сами делаем сварные металлические каркасы, используем ортопедические ламели и большие по толщине матрасы, а также заказываем красивые и приятные на ощупь ткани для обивки у лучших поставщиков https://by-home.ru/stulya/19365-stul-kukhonnyj-signal-astor-zelenyj-chernyj.html\r\n \r\nМебельная фабрика Танагра - это философия комфортной и красивой жизни https://by-home.ru/komody/8713-komod-bf-60176.html\r\n  Компания является российским производителем качественных, удобных модульных диванов, мягких кресел, кроватей для здорового сна https://by-home.ru/tumby-pod-tv/26804-tv-tumba-cilan-grande-200-sinij-antichnyj.html\r\n  В производстве используются материалы премиум класса, более 2000 вариаций тканей для обивки изделий https://by-home.ru/interernye-kresla/26522-kreslo-sorbonna-2.html\r\n \r\nПроизводитель: Barashka Размер кресла в разложенном виде, см: 210х140х12 https://by-home.ru/platyanye-shkafy-shkafy-kupe/8918-shkaf-bf-60670.html\r\n  Обивка: ткань https://by-home.ru/s-myagkim-izgolovem/23734-krovat-signal-barcelona-velvet-bluvel-14-seryjdub-160200.html\r\n  Наполнитель: ППУ https://by-home.ru/stellazhi-prikhozhie/20618-stellazh-halmar-narvik-reg-2-dub-sonomachernyj.html\r\n \r\n\r\nНаличие собственных фабрик, а также отлаженная работа с крупнейшими отечественными производителями позволяют нам сделать мебель максимально доступной https://by-home.ru/dekorativnye-podushki/13228-interernaya-podushka-botanicheskoe-barokko-versiya-1.html', '83.217.213.120', '2025-07-21 05:50:35', 0, 0, NULL, NULL, 0),
+(35, 'Aaronsop', 'AaronsopGA', 'placnacidown1989@mail.ru', '86277927515', 'Переговорного Домофона', '-9% Экономия: 90 руб https://ats-mxm.ru/katalog/mxm120-300-500\r\n \r\nюр https://ats-mxm.ru/katalog/dopolnitelnye-interfejsnye-platy/modul-rasshireniya-kanalov-voip-i-golosovoj-pochty-vvmu\r\n лица 26102 ? \r\nНОВИНКА 2022 https://ats-mxm.ru/katalog/dect/gigaset-a-220\r\n \r\nСовместимость с домофоном, который расположен на парадной двери https://ats-mxm.ru/katalog/domofony-usiliteli-ggs-adaptery-i-drugoe-oborudovanie/elektromekhanicheskij-zamok-polis-12m\r\n  Наличие подсветки камеры (желательно инфракрасной) и операции регулировки яркости сигнала https://ats-mxm.ru/resheniya/sistema-svyazi-pult-direktora\r\n  Присутствие в домофоне встроенного адаптера, чтобы подключиться в электрощитовую https://ats-mxm.ru/katalog/moduli-rasshireniya-dlya-tsifrovoj-ip-ats-mxm500-snyata-s-proizvodstva/ap62\r\n  Тип крепежа вызывной панели в подъезде и видеодомофона в квартирном коридоре https://ats-mxm.ru/katalog/mxm120-300-500/sa37p\r\n  Цена на видеодомофон для квартиры https://ats-mxm.ru/katalog/provodnye-telefonnye-apparaty/telefonnyj-apparat-telta-2125-tsb\r\n \r\nЕсли говорить о стоимости электроники, то преобретать лучше надежный видеодомофон, который прослужит верой и правдой не один год - такие устройства есть даже среди недорогих моделей https://ats-mxm.ru/katalog/kabeli/skynet-utp2-cat-5e-305m-cu\r\n \r\nот 3 шт https://ats-mxm.ru/resheniya/osnovnye-funktsionalnye-vozmozhnosti-mini-ats\r\n  20350 ?', '83.217.213.120', '2025-07-22 04:05:39', 0, 0, NULL, NULL, 0);
+INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `phone`, `subject`, `message`, `ip_address`, `submission_date`, `is_read`, `is_responded`, `response_notes`, `response_date`, `emailed`) VALUES
+(36, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '87966324729', 'Human rights violated by Miriam Adelson', 'It\'s unbelievable \r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer provided Israel with TNT (explosives) for their GENOCIDE.\r\n\r\nGaza has been declared a disaster area and lacks essential resources for living in it, as follows.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed 90% of Gaza, destroying 437,600 homes, and killing one million people, including 50 thousand who are currently under rubble, 80% of whom are women and children. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 330,000 meters of water pipes, resulting in people not being able to drink water. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, help Israel destroyed more than 655,000 meters of underground sewer lines. Now people have no washrooms to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel destroyed 2,800,000 two million eight hundred thousand meters of roads, causing people to have no roads to use. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, make Israel have destroyed 3680 km of electric grid, which has caused people to lose electricity. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 48 hospitals and leveled them to the ground. Now, no one will have a hospital to save their lives. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed over 785,000 students\' ability to attend school and learn. Their actions resulted in the complete destruction of 494 schools and universities, many of which were destroyed by bombing. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer, and Israel destroyed 981 mosques to prevent homless people from asking God for help. \r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer have made over 39000 small children orphans and left them without parents or relatives to care for them.\r\n \r\nThere has never been a war in history where 80% of the country has been destroyed, 100% of the population has been displaced, and 50% of the deaths are children. \r\n\r\nDon\'t hesitate to call it what it is\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and The Evangelical Church (America) are creating a GENOCIDE.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nsee why Israel can kill innocent children with American taxpayer money\r\n\r\n1- see Why Israel is in deep trouble \r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2- Because the God of Money of our World is a Jew who supports and lives in Israel. For more details, click on the following link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3- Because what USA president say about AIPAC and  The Evangelical Church (America)\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nSee how innocent children are killed by the most powerful Israeli using American bombs at\r\n\r\nAl Jazeera Arabic Live\r\n\r\nat\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nWatch the real news at\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.163.13', '2025-07-22 20:46:58', 0, 0, NULL, NULL, 0),
+(37, 'Flexiblevvi', 'zwusalmeamftxqfGP', 'hanshih@potatoprodvctions.com', '88888956691', 'Particularly good handwriting', 'Middle Ages as in Western', '46.105.73.207', '2025-07-22 23:19:14', 0, 0, NULL, NULL, 0),
+(38, 'Bryandom', 'BryandomLF', 'yandex_market@anonmails.de', '83389146386', 'Откройте для себя выгодные предложения Яндекс Маркета с промокодом WOW500 или LOOK500', 'Уважаемый(ая) друг, \r\n \r\nРады сообщить, что на платформе Яндекс Маркет запущена масштабная распродажа с специальными предложениями для наших клиентов. \r\n \r\nВоспользуйтесь уникальным промокодом WOW500 или LOOK500, чтобы получить скидку 500 рублей на любую покупку. \r\n \r\nДля участия в акции следует: \r\n \r\nПосетить платформу Яндекс Маркет \r\n \r\nДобавить товары в корзину \r\n \r\nВвести код WOW500 или LOOK500 для скидки \r\n \r\nРекомендуем воспользоваться акцией как можно скорее. \r\n \r\nПри необходимости наши консультанты готовы оказать помощь. \r\n \r\nЦеним ваше сотрудничество. \r\n \r\nС уважением. \r\nЖдём. \r\n \r\nПереходи в Телеграмм бота и получай все скидки Яндекс Маркет - https://t.me/YandexMArket002_bot \r\nЧтобы отписаться от рассылки кликни - https://vk.com/away.php?to=https%3A%2F%2Fvkreditke.ru%2Ftv.php&utf=1', '77.83.84.240', '2025-07-24 02:50:38', 0, 0, NULL, NULL, 0),
+(39, 'Sean', 'Hicks', 'seanhicks@dominate-keywords.com', '8054002077', 'Dominate-Keywords', 'I am not offering to you SEO, nor Pay Per Click Advertising.\r\nThis is something completely different.\r\nJust send us keywords of your interest and your website banner instantly appears number one on Google and Bing search results without Pay Per Click charges.\r\nLet me show you how it works and you will be pleasantly surprised by the results.', '132.255.133.229', '2025-07-25 05:54:18', 0, 0, NULL, NULL, 0),
+(40, 'Mike Matheus Hoffmann', 'Mike Matheus Hoffmann\r\nRD', 'info@strictlydigital.net', '86119799264', 'Semrush links for virungaecotours.com', 'Hello, \r\n \r\nReceiving some set of links pointing to virungaecotours.com might bring no value or worse for your business. \r\n \r\nIt really isn’t important the number of external links you have, what is key is the total of search terms those platforms rank for. \r\n \r\nThat is the most important thing. \r\nNot the fake third-party metrics or SEO score. \r\nAnyone can manipulate those. \r\nBUT the volume of high-traffic search terms the sites that send backlinks to you rank for. \r\nThat’s it. \r\n \r\nMake sure these backlinks redirect to your site and your rankings will skyrocket! \r\n \r\nWe are offering this special service here: \r\nhttps://www.strictlydigital.net/product/semrush-backlinks/ \r\n \r\nNeed more details, or want clarification, message us here: \r\nhttps://www.strictlydigital.net/whatsapp-us/ \r\n \r\nBest regards, \r\nMike Matheus Hoffmann\r\n \r\nstrictlydigital.net \r\nPhone/WhatsApp: +1 (877) 566-3738', '37.19.223.110', '2025-07-26 07:48:51', 0, 0, NULL, NULL, 0),
+(41, 'kyzaijpkj', 'kyzaijpkj', 'lundbeck@brandshield.com', '81775211255', 'Top Link Providers for Gambling Websites', 'Top Link Providers for Gambling Websites \r\n<a href=https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html>BEST LINKS FOR GAMBLING! suncitywestdental.com/ BEST LINKS FOR GAMBLING! TELEGRAM @the_telegraf</a> \r\nBEST LINKS FOR GAMBLING! \r\n<a href=https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html>BEST LINKS FOR GAMBLING!  www.fortworthmillerdental.com BEST LINKS FOR GAMBLING! TELEGRAM @happygrannypies</a> \r\n<a href=https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html>BEST LINKS FOR GAMBLING!  www.huroncoastdental.com BEST LINKS FOR GAMBLING! TELEGRAM @happygrannypies</a> \r\nBEST LINKS FOR GAMBLING! \r\n<a href=\"https://pelmeds.com/wp-content/uploads/2024/08/jpg/clenbuterol.html\">BEST LINKS FOR GAMBLING!  www.danapricedental.com BEST LINKS FOR GAMBLING! TELEGRAM @happygrannypies</a>', '184.181.217.201', '2025-07-26 08:54:39', 0, 0, NULL, NULL, 0),
+(42, 'RobertRon', 'NoahRonGM', 'abuse@registry.godaddy', '83511751474', 'Hallo,   writing about your   price for reseller', 'Ciao, volevo sapere il tuo prezzo.', '185.39.19.47', '2025-07-26 19:56:06', 0, 0, NULL, NULL, 0),
+(43, 'RobertRon', 'JuanRonGM', 'Gemma@registry.godaddy', '86717815682', 'Hi, i wrote about your the price', 'Hi, I wanted to know your price.', '185.39.19.47', '2025-07-26 19:57:28', 0, 0, NULL, NULL, 0),
+(44, 'RobertRon', 'EdwardRonGM', 'help@registry.godaddy', '89256423594', 'Aloha, i am wrote about     prices', 'Здравейте, исках да знам цената ви.', '185.39.19.47', '2025-07-26 20:00:35', 0, 0, NULL, NULL, 0),
+(45, 'RobertRon', 'JeremyRonGM', 'iana@registry.godaddy', '89325719938', 'Hello    write about   the price', 'Ola, quería saber o seu prezo.', '185.39.19.47', '2025-07-26 20:13:50', 0, 0, NULL, NULL, 0),
+(46, 'RobertRon', 'CarlRonGM', 'reg-abuse@registry.godaddy', '84472346344', 'Aloha    write about your the price', 'Sawubona, bengifuna ukwazi intengo yakho.', '185.39.19.47', '2025-07-26 20:13:50', 0, 0, NULL, NULL, 0),
+(47, 'RobertRon', 'AaronRonGM', 'financial.attache@kr.slembassy.gov.sl', '83451237466', 'Hi, i writing about your the price', 'Dia duit, theastaigh uaim do phraghas a fháil.', '185.39.19.47', '2025-07-26 20:25:43', 0, 0, NULL, NULL, 0),
+(48, 'RobertRon', 'RandyRonGM', 'financial.attache@kr.slembassy.gov.sl', '85692774511', 'Aloha, i am write about     price for reseller', 'Salam, qiymətinizi bilmək istədim.', '185.39.19.47', '2025-07-26 20:31:18', 0, 0, NULL, NULL, 0),
+(49, 'Bryandom', 'BryandomLF', 'yandex_market@anonmails.de', '83362972726', 'Получите дополнительную скидку на Яндекс Маркете с промокодом WOW500 или LOOK500', 'Уважаемый(ая) покупатель, \r\n \r\nИмеем честь уведомить, что на платформе Яндекс Маркет началась масштабная распродажа с специальными предложениями для наших клиентов. \r\n \r\nВоспользуйтесь уникальным промокодом WOW500 или LOOK500, чтобы активировать скидку 500 рублей на при оформлении заказа. \r\n \r\nДля участия в акции достаточно: \r\n \r\nЗайти на Яндекс Маркет \r\n \r\nВыбрать товары по вашему вкусу \r\n \r\nИспользовать промокод WOW500 или LOOK500 для получения скидки \r\n \r\nПросим учитывать, что предложение ограничено во времени. \r\n \r\nЕсли понадобится помощь, мы всегда на связи. \r\n \r\nЦеним ваше сотрудничество. \r\n \r\nС уважением. \r\nЖдём. \r\n \r\nПереходи в Телеграмм бота и получай все скидки Яндекс Маркет - https://t.me/YandexMArket002_bot \r\nЧтобы отписаться от рассылки кликни (ссылка сработает только с мобильных телефонов)-https://vk.com/away.php?to=https%3A%2F%2Fvkreditke.ru%2Ftv.php&utf=1', '194.156.123.14', '2025-07-27 01:26:03', 0, 0, NULL, NULL, 0),
+(50, 'RobertRon', 'EugeneRonGM', 'abuse@basailpaurashava.gov.bd', '88475533862', 'Hallo,   wrote about   the prices', 'Xin chào, tôi muốn biết giá của bạn.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL, 0),
+(51, 'RobertRon', 'DonaldRonGM', 'abuse@basailpaurashava.gov.bd', '83234515471', 'Hallo, i wrote about     price for reseller', 'Hæ, ég vildi vita verð þitt.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL, 0),
+(52, 'RobertRon', 'ThomasRonGM', 'davide.bacciardi@poliziadistato.it', '88362322815', 'Hello, i am write about     prices', 'Hi, kam dashur të di çmimin tuaj', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL, 0),
+(53, 'RobertRon', 'AlanRonGM', 'registry-help@registry.godaddy', '88119815822', 'Hallo  i am write about   the prices', 'Szia, meg akartam tudni az árát.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL, 0),
+(54, 'RobertRon', 'NoahRonGM', 'financial.attache@kr.slembassy.gov.sl', '89428826563', 'Hallo  i write about your the price for reseller', 'Γεια σου, ήθελα να μάθω την τιμή σας.', '185.39.19.47', '2025-07-27 03:42:42', 0, 0, NULL, NULL, 0),
+(55, 'RobertRon', 'RussellRonGM', 'Gemma@registry.godaddy', '86529112442', 'Hi,   write about your the price for reseller', 'Sveiki, es gribēju zināt savu cenu.', '185.39.19.47', '2025-07-27 03:50:41', 0, 0, NULL, NULL, 0),
+(56, 'RobertRon', 'BillyRonGM', 'abuse@registry.godaddy', '87228178361', 'Hi  i am write about your the prices', 'Hi, roeddwn i eisiau gwybod eich pris.', '185.39.19.47', '2025-07-27 03:50:41', 0, 0, NULL, NULL, 0),
+(57, 'Cikolia', 'GenaCikolia', 'cikoliag@yandex.ru', '83157578578', 'Распродажа склада электрика и водопровод', 'Здравствуйте! \r\nПередайте вашему электрику или инженеру. \r\nУ нас в наличии на складе 7000 наименований электрики и деталей водопровода. \r\nВ наличии 500 брендов европейский и российских компани производителей. \r\nЦены в два, три раза ниже рыночных. \r\nИз за санкций, в Россию не поставляют эту продукцию уже 3 года. \r\nНаш запас на складе, является уникальным и сохранился в России совершенно случайно. \r\nНаш интернет магазин. cikolia.ru \r\nТелефон: +7(985)767-04-21 Геннадий.', '178.20.47.80', '2025-07-28 18:06:35', 0, 0, NULL, NULL, 0),
+(58, 'Alex Amin', 'Alex AminNQ', 'alexamin4x4@gmail.com', '85799969762', 'Exclusive Investment Opportunity', 'Greetings, \r\n \r\nI hope you’re doing well. We are reaching out to explore potential partnerships with business executives interested in exclusive, high-value investment opportunities. \r\n \r\nOur network comprises established high-net-worth individuals (HNWIs) from Russia and the Middle East, seeking collaborative ventures with trusted partners. The specifics of the opportunity, including investment size and terms, can be shared upon further discussion under strict confidentiality. \r\n \r\nWe would welcome the chance to discuss further at your convenience. \r\n \r\nBest regards, \r\nAlex Amin \r\nEmail: infinitycapitalmru@gmail.com', '87.249.132.183', '2025-07-29 04:33:40', 0, 0, NULL, NULL, 0),
+(59, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '83252775476', 'Elon Musk is committing a GENOCIDE', 'It is astonishing.\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church are implicated in one of the most devastating genocides in history, targeting innocent women and children in Gaza.\r\n\r\nThese organizations have provided Israel with explosives to enable their genocidal actions.\r\n\r\nGaza has been declared a disaster zone, severely lacking in vital resources necessary for survival.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have ravaged 90% of Gaza, leading to the destruction of 437,600 homes and the loss of one million lives, including 50,000 individuals currently trapped under rubble, with 80% of the casualties being women and children.\r\n\r\nThey have also destroyed 330,000 meters of water pipelines, leaving the population without access to potable water.\r\n\r\nFurthermore, over 655,000 meters of underground sewage systems have been devastated, depriving residents of essential sanitation facilities.\r\n\r\nThe destruction encompasses 2,800,000 meters of roadways, making transportation impossible for the affected population.\r\n\r\nAdditionally, 3,680 kilometers of the electrical grid have been dismantled, resulting in widespread power outages.\r\n\r\nThe assault has led to the demolition of 48 hospitals, eliminating crucial healthcare facilities for those in need.\r\n\r\nMoreover, the actions of AIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have disrupted the education of over 785,000 students, with 494 schools and universities being completely destroyed, many as a result of aerial bombardments.\r\n\r\nThey have also targeted 981 mosques, effectively suppressing the prayers of the homeless who seek divine assistance.\r\n\r\nConsequently, over 39,000 young children have been left orphaned, lacking parents or guardians to provide care.\r\n\r\nIt is important to highlight that the historical context of warfare has never seen a situation where 80% of a nation has been devastated, 100% of its population has been displaced, and 50% of the casualties are children.\r\n\r\nRecognizing the seriousness of this situation is imperative.\r\n\r\nOrganizations such as AIPAC and the Evangelical Church in America are contributing to what can only be characterized as genocide.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nThe implications of American taxpayer funding in relation to Israel\'s actions against innocent children are concerning.\r\n\r\n1. A thorough examination of Israel\'s precarious circumstances is necessary.\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2. The impact of financial influence, often linked to specific groups, significantly affects these dynamics. Additional information can be accessed through the provided link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3. Insights into the views of U.S. leadership regarding AIPAC and the Evangelical Church can be investigated through the following resource.\r\n\r\nhttps://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nThe heartbreaking reality of innocent children suffering at the hands of powerful Israeli forces using American weaponry is evident in numerous media reports.\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nIt is essential to remain informed by consulting trustworthy news sources.\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '31.6.41.1', '2025-07-30 03:22:13', 0, 0, NULL, NULL, 0),
+(60, 'Mike Karl-Erik Thomas', 'Mike Karl-Erik Thomas\r\nSK', 'info@speed-seo.net', '89124676756', 'Find virungaecotours.com SEO Issues totally free', 'Hi, \r\nWorried about hidden SEO issues on your website? Let us help — completely free. \r\nRun a 100% free SEO check and discover the exact problems holding your site back from ranking higher on Google. \r\n \r\nRun Your Free SEO Check Now \r\nhttps://www.speed-seo.net/check-site-seo-score/ \r\n \r\nOr chat with us and our agent will run the report for you: https://www.speed-seo.net/whatsapp-with-us/ \r\n \r\nBest regards, \r\n \r\n \r\nMike Karl-Erik Thomas\r\n \r\nSpeed SEO Digital \r\nEmail: info@speed-seo.net \r\nPhone/WhatsApp: +1 (833) 454-8622', '138.199.36.194', '2025-07-31 03:01:15', 0, 0, NULL, NULL, 0),
+(61, 'Mike Dominique Jones', 'Mike Dominique Jones\r\nMJ', 'mike@monkeydigital.co', '82848751271', 'Boost Your Website Traffic with Targeted Social Ads – Only $10 for 10K Visits!', 'Hi there, \r\n \r\nI wanted to check in with something that could seriously help your website’s reach. We work with a trusted ad network that allows us to deliver real, location-based social ads traffic for just $10 per 10,000 visits. \r\n \r\nThis isn\'t junk clicks—it’s real visitors, tailored to your target country and niche. \r\n \r\nWhat you get: \r\n \r\n10,000+ genuine visitors for just $10 \r\nLocalized traffic for any country \r\nLarger traffic packages available based on your needs \r\nTrusted by SEO experts—we even use this for our SEO clients! \r\n \r\nReady to scale? Check out the details here: \r\nhttps://www.monkeydigital.co/product/country-targeted-traffic/ \r\n \r\nOr connect instantly on WhatsApp: \r\nhttps://monkeydigital.co/whatsapp-us/ \r\n \r\nLet\'s get started today! \r\n \r\nBest, \r\nMike Dominique Jones\r\n \r\nPhone/whatsapp: +1 (775) 314-7914', '151.106.8.43', '2025-08-01 00:10:26', 0, 0, NULL, NULL, 0),
+(62, 'Valeron83tax', 'Valeron83taxXM', 'romabookim@gmail.com', '81781967371', 'Dive into the Realm of Online Casinos: Bonuses and Free Play Beckon!', 'Step into the thrilling arena of online casinos, where every spin brings anticipation and chance! New players are offered fantastic no-deposit bonuses, including 25вЂ“50 spins just for registering, while deposit bonuses as high as 100вЂ“200% boost your start, like those at Vavada. Try free play in demo mode, exploring colorful slots from Microgaming or roulette strategies without risking a cent. Cashback and free spins add extra thrill, prolonging your gaming experience. Be sure to review the bonus wagering terms and dive into safe gambling on licensed platforms!  https://tinyurl.com/5986h8bf', '185.81.125.166', '2025-08-01 09:18:12', 0, 0, NULL, NULL, 0),
+(63, 'Angelokak', 'AngelokakCJ', 'parmazanov@gmail.com', '81325975798', 'Ваши системы видеонаблюдения', 'Прежде всего, важно разобраться, что именно представляет собой бренд Trassir. Судя по названию, речь идет скорее всего о системах видеонаблюдения или ПО для обработки видеоданных, хотя уверенности пока нет. Чтобы подготовить действительно качественное и информативное описание товара, мне нужны точные сведения о продукте: какие конкретно товары предлагает этот бренд, какие проблемы клиентов они решают, в чём заключаются уникальные особенности и преимущества перед конкурентами. Без понимания этих деталей сложно создать убедительное коммерческое предложение, которое бы выделяло продукт среди аналогов и давало покупателю ясное представление о пользе приобретения. Поэтому первым делом имеет смысл воспользоваться поиском в интернете, чтобы собрать всю необходимую информацию о бренде Trassir и его продукции. \r\nundefined \r\n Теперь у меня есть общее понимание о бренде <a href=https://trassir-expert.ru/>Trassir</a> — это российская компания, специализирующаяся на разработке и производстве систем видеонаблюдения. Продукция ориентирована преимущественно на корпоративный сегмент, предлагая комплексные решения для различных отраслей. Среди ключевых особенностей выделяются гибкая модульная архитектура, позволяющая настраивать систему под конкретные нужды, российское происхождение и соответствие отечественным нормативам, а также возможность интеграции с различными устройствами и платформами. Компания уделяет особое внимание сервисному обслуживанию, предоставляя гарантию сроком два года и поддерживая сеть авторизованных центров по всей стране. Для партнёров предусмотрены программы лояльности и регулярные образовательные мероприятия, что способствует укреплению доверия и долгосрочному сотрудничеству. \r\n \r\nОднако имеющейся информации недостаточно, чтобы составить полноценное и привлекательное описание продукта. Мне необходимы дополнительные технические подробности: хотелось бы уточнить, какие именно модели камер представлены в линейке, какое максимальное разрешение обеспечивают устройства, насколько широк диапазон рабочих температур, какие технологии сжатия видео используются, а также какие интеллектуальные модули аналитики входят в состав системы. Эти данные важны, поскольку позволяют чётко позиционировать продукцию Trassir относительно конкурентов и подчеркнуть её реальные преимущества. Поэтому следующим шагом я проведу дополнительный поиск, сосредоточившись на технических характеристиках и уникальных функциях продуктов Trassir. \r\nundefined \r\n Собрав подробную информацию о бренде <a href=https://trassir-expert.ru/>Trassir tr</a>, я теперь хорошо понимаю, почему эта компания занимает лидирующие позиции на рынке систем видеонаблюдения. Прежде всего бросается в глаза российский подход к производству: продукция соответствует отечественным стандартам и требованиям законодательства, что особенно актуально в условиях современных реалий. Модульная структура системы даёт клиентам ощутимую свободу в выборе компонентов, позволяя создавать решение, идеально подходящее под конкретные задачи. Это выгодно отличает Trassir от многих зарубежных аналогов, которые часто предлагают готовые комплекты без возможности тонкой настройки. \r\n \r\nЕщё одно важное преимущество — широкий спектр возможностей видеоаналитики, основанной на нейросетях. Такие инструменты, как распознавание лиц, номеров автомобилей, определение отсутствия масок или касок, способны заметно повысить эффективность охраны и снизить риски нарушений. Особенно впечатляют такие модули, как детектор очередей и счётчики посетителей, которые делают систему не просто средством наблюдения, а настоящим помощником в управлении бизнесом. \r\n \r\nТакже нельзя обойти вниманием развитую инфраструктуру поддержки: двухлетняя гарантия, сервисные центры по всей России и квалифицированная помощь инженеров на всех этапах внедрения внушают доверие и снимают опасения по поводу возможных сложностей в эксплуатации. Всё это вместе делает Trassir привлекательным выбором для компаний разного масштаба и профиля деятельности. \r\n \r\nТеперь, имея полную картину преимуществ и особенностей бренда, я готов приступить к написанию описания, которое подчеркнёт ключевые достоинства Trassir и сделает акцент на тех аспектах, которые наиболее ценны для потенциальных покупателей. \r\n \r\n## ?? **Система видеонаблюдения <a href=https://trassir-expert.ru/>Trassir tr</a>: Безопасность, Контроль и Эффективность** \r\n \r\n### ?? Что такое <a href=https://trassir-expert.ru/>Trassir</a>? \r\nv**Trassir** — это российский производитель инновационных систем видеонаблюдения, предлагающий современные решения для комплексной безопасности предприятий и организаций различного масштаба. Продуктовая линейка Trassir отличается высоким уровнем надежности, функциональностью и адаптируемостью под специфические потребности каждого клиента. \r\n \r\n-v-- \r\n \r\n### ??<a href=https://trassir-expert.ru/> Основные компоненты системы</a> <a href=https://trassir-expert.ru/>Trassir tr</a> \r\nСердцем системы является **нейросетевой IP-видеорегистратор**, способный обрабатывать до 128 IP-камер с разрешением без ограничений. Ключевые характеристики: \r\n \r\n- **Поддержка стандартов**: H.265, H.265+, H.264, MPEG4, MJPEG. \r\n- **Производительность**: входящая и исходящая пропускная способность до 720 Мбит/с. \r\n- **Хранение данных**: поддерживает установку до 8 жёстких дисков общей емкостью до 16 ТБ. \r\n- **Интерфейсы**: 2 порта Gigabit Ethernet, выходы HDMI, DVI-D, DisplayPort с поддержкой разрешения до 4K. \r\n- **Температурный режим**: устойчив к работе в диапазоне от +10°C до +30°C. \r\n \r\n--- \r\n \r\n### ?? Какие проблемы решает <a href=https://trassir-expert.ru/>Trassir tr</a>? \r\nСистема Trassir помогает решать целый ряд актуальных задач современного бизнеса: \r\n \r\n- **Повышение безопасности**: своевременное выявление угроз, предотвращение краж и мошеннических действий. \r\n- **Оптимизация процессов**: контроль рабочего процесса, повышение эффективности труда сотрудников. \r\n- **Управление рисками**: мониторинг соблюдения норм охраны труда и пожарной безопасности. \r\n- **Улучшение клиентского опыта**: отслеживание очередей, оценка загруженности торговых точек. \r\n \r\n--- \r\n \r\n### ?? Умная видеоаналитика на основе нейросетей \r\nОдним из главных достоинств <a href=https://trassir-expert.ru/>Trassir</a> является уникальная платформа видеоаналитики, использующая мощные алгоритмы машинного обучения: \r\n \r\n| Модуль                        | Функция                                                                              | \r\n|-------------------------------|--------------------------------------------------------------------------------------| \r\n| **Human Detector**            | Определение присутствия людей в заданной зоне                                        | \r\n| **Face Recognition**          | Распознавание и идентификация лиц                                                    | \r\n| **AutoTRASSIR**               | Автоматическое распознавание автомобильных номеров                                   | \r\n| **Queue Detector**            | Мониторинг очередей и длина ожидания                                                 | \r\n| **Crowd Detector**            | Фиксация скоплений людей                                                             | \r\n| **Face Mask Detector**        | Контроль наличия защитных масок                                                      | \r\n| **Social Distance Detector**  | Соблюдение социальной дистанции                                                       | \r\n| **Hardhat Detector**          | Проверка наличия защитных касок                                                     | \r\n| **Wear Detector**             | Контроль специальной формы и экипировки                                             | \r\n| **Neuro Counter**             | Подсчет посетителей и транспортных средств                                           | \r\n \r\nЭти модули позволяют минимизировать человеческий фактор и обеспечить максимальную точность мониторинга. \r\n \r\n--- \r\n \r\n### ??? Надежность и удобство использования \r\nКомпания <a href=https://trassir-expert.ru/>Trassir</a> гарантирует высокое качество своей продукции и поддержку на всех этапах сотрудничества: \r\n \r\n- **Гарантия 2 года** с возможностью продления. \r\n- **Сервисные центры по всей России** с сертифицированными специалистами. \r\n- **Индивидуальная техническая поддержка** и консультации квалифицированных инженеров. \r\n- **Простота установки и настройки** благодаря интуитивно понятному интерфейсу программного обеспечения. \r\n \r\n--- \r\n \r\n### ?? Преимущества для бизнеса \r\nИспользование систем <a href=https://trassir-expert.ru/>Trassir</a> приносит бизнесу реальную пользу: \r\n \r\n- **Экономия затрат**: снижение убытков от краж и ошибок персонала. \r\n- **Рост производительности**: эффективный контроль бизнес-процессов. \r\n- **Безопасность сотрудников и клиентов**: постоянный мониторинг опасных ситуаций. \r\n- **Легкость масштабирования**: простая интеграция новых устройств и расширение существующих систем. \r\n \r\n--- \r\n \r\n### ?? Цифры и факты \r\n- Более **1000 успешных проектов** реализовано по всей территории России. \r\n- До **99% точности** распознавания автомобильных номеров. \r\n- Возможность хранения видеозаписей объемом до **16 Терабайт**. \r\n- Время отклика системы менее **1 секунды** на критически важные события. \r\n \r\n--- \r\n \r\n### ? Почему выбирают <a href=https://trassir-expert.ru/> Trassir</a>? \r\n- Российское производство, соответствующее государственным стандартам. \r\n- Широкий выбор готовых и кастомных решений. \r\n- Постоянное обновление и развитие платформы. \r\n- Лучшее соотношение цены и качества на российском рынке. \r\n \r\n--- \r\n \r\n### ?? Заключение \r\nСистема видеонаблюдения <a href=https://trassir-expert.ru/>Trassir</a> — это надежный партнер вашего бизнеса, обеспечивающий круглосуточную защиту активов, эффективное управление процессами и максимальный комфорт ваших сотрудников и клиентов. Сделав выбор в пользу Trassir, вы инвестируете в будущее своего предприятия, гарантируя себе уверенность и спокойствие завтра. \r\n \r\n?? *Выбирайте лучшее — выбирайте <a href=https://trassir-expert.ru/>Trassir</a>!*', '92.100.50.96', '2025-08-03 03:40:57', 0, 0, NULL, NULL, 0),
+(64, 'Mike Miguel Thomas', 'Mike Miguel Thomas\r\nKY', 'mike@monkeydigital.co', '86314592168', 'Collaboration Request', 'Hi, \r\n \r\nThis is Mike from Monkey Digital, \r\nI am contacting you regarding a exciting opportunity. \r\n \r\nHow would you like to place our banners on your platform and redirect via your personalized tracking link towards popular SEO solutions from our platform? \r\n \r\nThis way, you earn a 35% commission, month after month from any transactions that generate from your site. \r\n \r\nThink about it, most website owners require SEO, so this is a massive opportunity. \r\n \r\nWe already have over 12,000 affiliates and our payouts are paid out on time. \r\nLast month, we distributed $27280 in commissions to our affiliates. \r\n \r\nIf this sounds good, kindly message us here: \r\nhttps://monkeydigital.co/affiliates-whatsapp/ \r\n \r\nOr register today: \r\nhttps://www.monkeydigital.co/join-our-affiliate-program/ \r\n \r\nCheers, \r\nMike Miguel Thomas\r\n \r\nPhone/whatsapp: +1 (775) 314-7914', '37.19.223.113', '2025-08-03 23:25:58', 0, 0, NULL, NULL, 0),
+(65, 'Raymonddiush', 'RaymonddiushMW', 'raymondKneeway@gmail.com', '89251417197', 'Make your products and services shine with the best advertising!', 'Hey there! virungaecotours.com \r\n \r\nExpand your business lawfully and efficiently with direct proposal submissions. \r\nThis ensures full compliance with data protection regulations, ensuring legitimate and transparent outreach. \r\nSubmitting messages through Contact Forms ensures better deliverability without relying on mass email lists. \r\nCome and give it a try—no hidden fees! \r\nRely on our service to send up to 50,000 messages efficiently. \r\n \r\nThe cost of sending one million messages is $59. \r\n \r\nThis message was automatically generated. \r\n \r\nContact us. \r\nTelegram - https://t.me/FeedbackFormEU \r\nWhatsApp - +375259112693 \r\nWhatsApp  https://wa.me/+375259112693 \r\nWe only use chat for communication.', '185.189.114.117', '2025-08-04 12:08:22', 0, 0, NULL, NULL, 0),
+(66, 'RobertRon', 'CharlesRonGM', 'Gemma@registry.godaddy', '81912713637', 'Hi,   write about your the price for reseller', 'Hola, volia saber el seu preu.', '80.94.95.202', '2025-08-05 04:10:40', 0, 0, NULL, NULL, 0),
+(67, 'RobertRon', 'JosephRonGM', 'financial.attache@kr.slembassy.gov.sl', '89213683464', 'Hi,   write about     prices', 'Hej, jeg ønskede at kende din pris.', '80.94.95.202', '2025-08-05 04:27:35', 0, 0, NULL, NULL, 0),
+(68, 'RobertRon', 'FrankRonGM', 'abuse@basailpaurashava.gov.bd', '85538679187', 'Hi  i wrote about     price for reseller', 'Hi, roeddwn i eisiau gwybod eich pris.', '80.94.95.202', '2025-08-05 04:28:40', 0, 0, NULL, NULL, 0),
+(69, 'RobertRon', 'JoseRonGM', 'davide.bacciardi@poliziadistato.it', '88797984931', 'Hallo  i am wrote about your   prices', 'Hi, I wanted to know your price.', '80.94.95.202', '2025-08-05 04:29:26', 0, 0, NULL, NULL, 0),
+(70, 'RobertRon', 'DavidRonGM', 'registry-help@registry.godaddy', '88527696489', 'Hello, i am wrote about your   prices', 'Hola, quería saber tu precio..', '80.94.95.202', '2025-08-05 04:57:33', 0, 0, NULL, NULL, 0),
+(71, 'RobertRon', 'AaronRonGM', 'reg-abuse@registry.godaddy', '84678911671', 'Hello, i am write about your the prices', 'Ciao, volevo sapere il tuo prezzo.', '80.94.95.202', '2025-08-05 08:56:08', 0, 0, NULL, NULL, 0),
+(72, 'RobertRon', 'HaroldRonGM', 'registry-help@registry.godaddy', '86526635613', 'Hi,   write about your   prices', 'Ողջույն, ես ուզում էի իմանալ ձեր գինը.', '80.94.95.202', '2025-08-05 09:11:02', 0, 0, NULL, NULL, 0),
+(73, 'RobertRon', 'JesseRonGM', 'davide.bacciardi@poliziadistato.it', '86397169652', 'Hi  i am writing about   the price', 'Salam, qiymətinizi bilmək istədim.', '80.94.95.202', '2025-08-05 09:13:55', 0, 0, NULL, NULL, 0),
+(74, 'RobertRon', 'KennethRonGM', 'davide.bacciardi@poliziadistato.it', '83247259569', 'Hello  i am wrote about your   price for reseller', 'Sveiki, es gribēju zināt savu cenu.', '80.94.95.202', '2025-08-05 09:21:29', 0, 0, NULL, NULL, 0),
+(75, 'RobertRon', 'DennisRonGM', 'Gemma@registry.godaddy', '86649676415', 'Hallo    writing about your the price', 'হাই, আমি আপনার মূল্য জানতে চেয়েছিলাম.', '80.94.95.202', '2025-08-05 09:57:15', 0, 0, NULL, NULL, 0),
+(76, 'Michaelicose', 'MichaelicoseHD', 'southpark@lumexmail.shop', '88515884262', 'Южный Парк 26', 'Всем привет! \r\nМеня зовут Лаврентий и я обожаю смотреть онлайн мультсериал Южный Парк на сайте https://southpark-online.com \r\nТам много интересных серий, которые Вам понравятся. \r\nПрисоединяйтесь!', '156.228.99.141', '2025-08-05 18:20:38', 0, 0, NULL, NULL, 0),
+(77, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '81235258629', 'End of the Holocaust', 'It is astonishing.\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church are perpetrating one of the most catastrophic genocides in history, targeting innocent women and children in Gaza.\r\n\r\nThese organizations have supplied Israel with explosives to facilitate their acts of genocide.\r\n\r\nGaza has been designated a disaster zone, severely lacking in essential resources for survival.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have devastated 90% of Gaza, resulting in the destruction of 437,600 homes and the loss of one million lives, including 50,000 individuals currently trapped under debris, with 80% of the casualties being women and children.\r\n\r\nThey have also obliterated 330,000 meters of water pipelines, leaving the population without access to drinking water.\r\n\r\nFurthermore, over 655,000 meters of underground sewage systems have been destroyed, depriving residents of basic sanitation facilities.\r\n\r\nThe destruction extends to 2,800,000 meters of roadways, rendering transportation impossible for the affected population.\r\n\r\nAdditionally, 3,680 kilometers of the electrical grid have been dismantled, leading to widespread power outages.\r\n\r\nThe assault has resulted in the demolition of 48 hospitals, eliminating critical healthcare facilities for those in need.\r\n\r\nMoreover, the actions of AIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have disrupted the education of over 785,000 students, with 494 schools and universities being completely destroyed, many due to aerial bombardments.\r\n\r\nThey have also targeted 981 mosques, effectively silencing the prayers of the homeless seeking divine assistance.\r\n\r\nAs a result of these actions, more than 39,000 young children have been left orphaned, without parents or guardians to care for them.\r\n\r\nI must emphasize that the historical context of warfare has never witnessed a scenario where 80% of a nation has been devastated, 100% of its populace has been uprooted, and 50% of the casualties are children.\r\n\r\nIt is imperative to recognize the gravity of the situation.\r\n\r\nOrganizations such as AIPAC and the Evangelical Church in America are contributing to what can only be described as genocide.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nThe implications of American taxpayer funding in the context of Israel\'s actions against innocent children are alarming.\r\n\r\n1. An examination of Israel\'s precarious situation is warranted.\r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2. The influence of financial power, often associated with certain groups, plays a significant role in these dynamics. Further information can be found through the provided link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3. Insights into the perspectives of U.S. leadership regarding AIPAC and the Evangelical Church can be explored through the following resource.\r\n\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nThe tragic reality of innocent children being harmed by powerful Israeli forces utilizing American weaponry is evident in various media reports.\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nIt is crucial to stay informed by accessing reliable news sources.\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.157.20', '2025-08-06 05:25:28', 0, 0, NULL, NULL, 0),
+(78, 'DamonVon', 'DamonVonCF', 'actionvsculture@gmail.com', '83747198821', 'Your choice', '<a href=https://ur3.us/qlskndu7><b>Action</b></a> \r\nOR \r\n<a href=https://ur3.us/aus5zjef><b>Culture</b></a>', '54.37.234.111', '2025-08-09 10:42:04', 0, 0, NULL, NULL, 0),
+(79, 'Hermanleari', 'HermanleariLH', 'goldboy1931@gmail.com', '88733155734', 'Cardiline', 'Что такое Cardiline? - https://alev.biz/resources/links-45/cardirin-kupit-natyralnye-kapli-ot-gipertonii/', '93.183.89.12', '2025-08-09 12:24:26', 0, 0, NULL, NULL, 0),
+(80, 'IvoryAmapy', 'IvoryAmapySW', 'sergoworkin.g.71.8@gmail.com', '82885656869', 'how to make car interior cleaner at home', '</div>\r\n \r\n<a href=https://inpino.ru>https://inpino.ru</a> \r\n<a href=https://acdiu.ru>https://acdiu.ru</a> \r\n<a href=https://pipetrust.ru>https://pipetrust.ru</a> \r\n<a href=https://service-spec.ru>https://service-spec.ru</a> \r\n<a href=https://tortonet.ru>https://tortonet.ru</a> \r\n<a href=https://bizbg.ru>https://bizbg.ru</a> \r\n<a href=https://100li.ru>https://100li.ru</a> \r\n<a href=https://serviceads.ru>https://serviceads.ru</a> \r\n<a href=https://zrdtest.ru>https://zrdtest.ru</a> \r\n<a href=https://vn365.ru>https://vn365.ru</a> \r\n<a href=https://deroseproject.ru>https://deroseproject.ru</a> \r\n<a href=https://gazcomp.ru>https://gazcomp.ru</a> \r\n<a href=https://telegra.ph/Kak-pravilno-nahodit-nuzhnuyu-informaciyu-na-sajtah-07-08>https://telegra.ph/Kak-pravilno-nahodit-nuzhnuyu-informaciyu-na-sajtah-07-08</a> \r\n \r\n<div class=\"info-block\">', '194.5.53.102', '2025-08-09 14:04:30', 0, 0, NULL, NULL, 0),
+(81, 'RobertRon', 'NathanRonGM', 'BSCHULTZ@JACKELEC.COM', '88464184543', 'Hi,   write about     prices', 'Dia duit, theastaigh uaim do phraghas a fháil.', '80.94.95.173', '2025-08-10 02:48:13', 0, 0, NULL, NULL, 0),
+(82, 'Mike Dirk De Smet', 'Mike Dirk De Smet\r\nAH', 'info@professionalseocleanup.com', '82637582818', 'Urgent: Toxic Links Found on virungaecotours.com', 'Hi, \r\nWhile reviewing virungaecotours.com, we spotted toxic backlinks that could put your site at risk of a Google penalty. \r\n \r\nWe can clean up your link profile and protect your rankings — all for just $5. \r\n \r\nFix it now before Google does: \r\nhttps://www.professionalseocleanup.com/ \r\n \r\nNeed help or questions? Chat here: \r\nhttps://www.professionalseocleanup.com/whatsapp/ \r\n \r\nBest, \r\nMike Dirk De Smet\r\n \r\n+1 (855) 221-7591 \r\ninfo@professionalseocleanup.com', '37.19.223.205', '2025-08-11 04:58:28', 0, 0, NULL, NULL, 0),
+(83, 'RobertRon', 'VincentRonGM', 'davide.bacciardi@poliziadistato.it', '85962283187', 'Aloha, i wrote about your the price for reseller', 'Hi, roeddwn i eisiau gwybod eich pris.', '185.39.19.47', '2025-08-12 22:58:17', 0, 0, NULL, NULL, 0),
+(84, 'RobertRon', 'RaymondRonGM', 'sangsko@yahoo.com', '85923867775', 'Hello  i write about   the price', 'Ndewo, achọrọ m ịmara ọnụahịa gị.', '185.39.19.47', '2025-08-12 22:58:17', 0, 0, NULL, NULL, 0),
+(85, 'RobertRon', 'VincentRonGM', 'abuse@registry.godaddy', '88279146522', 'Hello,   write about   the price', 'Здравейте, исках да знам цената ви.', '185.39.19.47', '2025-08-12 23:06:02', 0, 0, NULL, NULL, 0),
+(86, 'RobertRon', 'StevenRonGM', 'abuse@registry.godaddy', '81818986942', 'Hi,   writing about     prices', 'Sveiki, es gribēju zināt savu cenu.', '185.39.19.47', '2025-08-12 23:06:12', 0, 0, NULL, NULL, 0),
+(87, 'RobertRon', 'PaulRonGM', 'Gemma@registry.godaddy', '84562168698', 'Aloha,   wrote about your   price', 'Γεια σου, ήθελα να μάθω την τιμή σας.', '185.39.19.47', '2025-08-12 23:20:08', 0, 0, NULL, NULL, 0),
+(88, 'RobertRon', 'JosephRonGM', 'help@registry.godaddy', '83376792182', 'Hallo  i writing about   the prices', 'Hi, kam dashur të di çmimin tuaj', '185.39.19.47', '2025-08-12 23:26:46', 0, 0, NULL, NULL, 0),
+(89, 'DamonVon', 'DamonVonCF', 'actionvsculture@gmail.com', '83889221438', 'Your choice', '<a href=https://ur3.us/qlskndu7><b>Action</b></a> \r\nOR \r\n<a href=https://ur3.us/aus5zjef><b>Culture</b></a>', '54.37.234.111', '2025-08-13 00:30:31', 0, 0, NULL, NULL, 0);
+INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `phone`, `subject`, `message`, `ip_address`, `submission_date`, `is_read`, `is_responded`, `response_notes`, `response_date`, `emailed`) VALUES
+(90, 'Angelokak', 'AngelokakCJ', 'parmazanov@gmail.com', '89312989779', 'Ваши системы видеонаблюдения', 'Прежде всего, важно разобраться, что именно представляет собой бренд Trassir. Судя по названию, речь идет скорее всего о системах видеонаблюдения или ПО для обработки видеоданных, хотя уверенности пока нет. Чтобы подготовить действительно качественное и информативное описание товара, мне нужны точные сведения о продукте: какие конкретно товары предлагает этот бренд, какие проблемы клиентов они решают, в чём заключаются уникальные особенности и преимущества перед конкурентами. Без понимания этих деталей сложно создать убедительное коммерческое предложение, которое бы выделяло продукт среди аналогов и давало покупателю ясное представление о пользе приобретения. Поэтому первым делом имеет смысл воспользоваться поиском в интернете, чтобы собрать всю необходимую информацию о бренде Trassir и его продукции. \r\nundefined \r\n Теперь у меня есть общее понимание о бренде <a href=https://trassir-expert.ru/>Trassir</a> — это российская компания, специализирующаяся на разработке и производстве систем видеонаблюдения. Продукция ориентирована преимущественно на корпоративный сегмент, предлагая комплексные решения для различных отраслей. Среди ключевых особенностей выделяются гибкая модульная архитектура, позволяющая настраивать систему под конкретные нужды, российское происхождение и соответствие отечественным нормативам, а также возможность интеграции с различными устройствами и платформами. Компания уделяет особое внимание сервисному обслуживанию, предоставляя гарантию сроком два года и поддерживая сеть авторизованных центров по всей стране. Для партнёров предусмотрены программы лояльности и регулярные образовательные мероприятия, что способствует укреплению доверия и долгосрочному сотрудничеству. \r\n \r\nОднако имеющейся информации недостаточно, чтобы составить полноценное и привлекательное описание продукта. Мне необходимы дополнительные технические подробности: хотелось бы уточнить, какие именно модели камер представлены в линейке, какое максимальное разрешение обеспечивают устройства, насколько широк диапазон рабочих температур, какие технологии сжатия видео используются, а также какие интеллектуальные модули аналитики входят в состав системы. Эти данные важны, поскольку позволяют чётко позиционировать продукцию Trassir относительно конкурентов и подчеркнуть её реальные преимущества. Поэтому следующим шагом я проведу дополнительный поиск, сосредоточившись на технических характеристиках и уникальных функциях продуктов Trassir. \r\nundefined \r\n Собрав подробную информацию о бренде <a href=https://trassir-expert.ru/>Trassir tr</a>, я теперь хорошо понимаю, почему эта компания занимает лидирующие позиции на рынке систем видеонаблюдения. Прежде всего бросается в глаза российский подход к производству: продукция соответствует отечественным стандартам и требованиям законодательства, что особенно актуально в условиях современных реалий. Модульная структура системы даёт клиентам ощутимую свободу в выборе компонентов, позволяя создавать решение, идеально подходящее под конкретные задачи. Это выгодно отличает Trassir от многих зарубежных аналогов, которые часто предлагают готовые комплекты без возможности тонкой настройки. \r\n \r\nЕщё одно важное преимущество — широкий спектр возможностей видеоаналитики, основанной на нейросетях. Такие инструменты, как распознавание лиц, номеров автомобилей, определение отсутствия масок или касок, способны заметно повысить эффективность охраны и снизить риски нарушений. Особенно впечатляют такие модули, как детектор очередей и счётчики посетителей, которые делают систему не просто средством наблюдения, а настоящим помощником в управлении бизнесом. \r\n \r\nТакже нельзя обойти вниманием развитую инфраструктуру поддержки: двухлетняя гарантия, сервисные центры по всей России и квалифицированная помощь инженеров на всех этапах внедрения внушают доверие и снимают опасения по поводу возможных сложностей в эксплуатации. Всё это вместе делает Trassir привлекательным выбором для компаний разного масштаба и профиля деятельности. \r\n \r\nТеперь, имея полную картину преимуществ и особенностей бренда, я готов приступить к написанию описания, которое подчеркнёт ключевые достоинства Trassir и сделает акцент на тех аспектах, которые наиболее ценны для потенциальных покупателей. \r\n \r\n## ?? **Система видеонаблюдения <a href=https://trassir-expert.ru/>Trassir tr</a>: Безопасность, Контроль и Эффективность** \r\n \r\n### ?? Что такое <a href=https://trassir-expert.ru/>Trassir</a>? \r\nv**Trassir** — это российский производитель инновационных систем видеонаблюдения, предлагающий современные решения для комплексной безопасности предприятий и организаций различного масштаба. Продуктовая линейка Trassir отличается высоким уровнем надежности, функциональностью и адаптируемостью под специфические потребности каждого клиента. \r\n \r\n-v-- \r\n \r\n### ??<a href=https://trassir-expert.ru/> Основные компоненты системы</a> <a href=https://trassir-expert.ru/>Trassir tr</a> \r\nСердцем системы является **нейросетевой IP-видеорегистратор**, способный обрабатывать до 128 IP-камер с разрешением без ограничений. Ключевые характеристики: \r\n \r\n- **Поддержка стандартов**: H.265, H.265+, H.264, MPEG4, MJPEG. \r\n- **Производительность**: входящая и исходящая пропускная способность до 720 Мбит/с. \r\n- **Хранение данных**: поддерживает установку до 8 жёстких дисков общей емкостью до 16 ТБ. \r\n- **Интерфейсы**: 2 порта Gigabit Ethernet, выходы HDMI, DVI-D, DisplayPort с поддержкой разрешения до 4K. \r\n- **Температурный режим**: устойчив к работе в диапазоне от +10°C до +30°C. \r\n \r\n--- \r\n \r\n### ?? Какие проблемы решает <a href=https://trassir-expert.ru/>Trassir tr</a>? \r\nСистема Trassir помогает решать целый ряд актуальных задач современного бизнеса: \r\n \r\n- **Повышение безопасности**: своевременное выявление угроз, предотвращение краж и мошеннических действий. \r\n- **Оптимизация процессов**: контроль рабочего процесса, повышение эффективности труда сотрудников. \r\n- **Управление рисками**: мониторинг соблюдения норм охраны труда и пожарной безопасности. \r\n- **Улучшение клиентского опыта**: отслеживание очередей, оценка загруженности торговых точек. \r\n \r\n--- \r\n \r\n### ?? Умная видеоаналитика на основе нейросетей \r\nОдним из главных достоинств <a href=https://trassir-expert.ru/>Trassir</a> является уникальная платформа видеоаналитики, использующая мощные алгоритмы машинного обучения: \r\n \r\n| Модуль                        | Функция                                                                              | \r\n|-------------------------------|--------------------------------------------------------------------------------------| \r\n| **Human Detector**            | Определение присутствия людей в заданной зоне                                        | \r\n| **Face Recognition**          | Распознавание и идентификация лиц                                                    | \r\n| **AutoTRASSIR**               | Автоматическое распознавание автомобильных номеров                                   | \r\n| **Queue Detector**            | Мониторинг очередей и длина ожидания                                                 | \r\n| **Crowd Detector**            | Фиксация скоплений людей                                                             | \r\n| **Face Mask Detector**        | Контроль наличия защитных масок                                                      | \r\n| **Social Distance Detector**  | Соблюдение социальной дистанции                                                       | \r\n| **Hardhat Detector**          | Проверка наличия защитных касок                                                     | \r\n| **Wear Detector**             | Контроль специальной формы и экипировки                                             | \r\n| **Neuro Counter**             | Подсчет посетителей и транспортных средств                                           | \r\n \r\nЭти модули позволяют минимизировать человеческий фактор и обеспечить максимальную точность мониторинга. \r\n \r\n--- \r\n \r\n### ??? Надежность и удобство использования \r\nКомпания <a href=https://trassir-expert.ru/>Trassir</a> гарантирует высокое качество своей продукции и поддержку на всех этапах сотрудничества: \r\n \r\n- **Гарантия 2 года** с возможностью продления. \r\n- **Сервисные центры по всей России** с сертифицированными специалистами. \r\n- **Индивидуальная техническая поддержка** и консультации квалифицированных инженеров. \r\n- **Простота установки и настройки** благодаря интуитивно понятному интерфейсу программного обеспечения. \r\n \r\n--- \r\n \r\n### ?? Преимущества для бизнеса \r\nИспользование систем <a href=https://trassir-expert.ru/>Trassir</a> приносит бизнесу реальную пользу: \r\n \r\n- **Экономия затрат**: снижение убытков от краж и ошибок персонала. \r\n- **Рост производительности**: эффективный контроль бизнес-процессов. \r\n- **Безопасность сотрудников и клиентов**: постоянный мониторинг опасных ситуаций. \r\n- **Легкость масштабирования**: простая интеграция новых устройств и расширение существующих систем. \r\n \r\n--- \r\n \r\n### ?? Цифры и факты \r\n- Более **1000 успешных проектов** реализовано по всей территории России. \r\n- До **99% точности** распознавания автомобильных номеров. \r\n- Возможность хранения видеозаписей объемом до **16 Терабайт**. \r\n- Время отклика системы менее **1 секунды** на критически важные события. \r\n \r\n--- \r\n \r\n### ? Почему выбирают <a href=https://trassir-expert.ru/> Trassir</a>? \r\n- Российское производство, соответствующее государственным стандартам. \r\n- Широкий выбор готовых и кастомных решений. \r\n- Постоянное обновление и развитие платформы. \r\n- Лучшее соотношение цены и качества на российском рынке. \r\n \r\n--- \r\n \r\n### ?? Заключение \r\nСистема видеонаблюдения <a href=https://trassir-expert.ru/>Trassir</a> — это надежный партнер вашего бизнеса, обеспечивающий круглосуточную защиту активов, эффективное управление процессами и максимальный комфорт ваших сотрудников и клиентов. Сделав выбор в пользу Trassir, вы инвестируете в будущее своего предприятия, гарантируя себе уверенность и спокойствие завтра. \r\n \r\n?? *Выбирайте лучшее — выбирайте <a href=https://trassir-expert.ru/>Trassir</a>!*', '185.77.216.2', '2025-08-13 01:05:58', 0, 0, NULL, NULL, 0),
+(91, 'RobertRon', 'TerryRonGM', 'angela.phillips@gopps.us', '86855354639', 'Aloha  i wrote about   the prices', 'Sawubona, bengifuna ukwazi intengo yakho.', '185.39.19.21', '2025-08-15 02:20:49', 0, 0, NULL, NULL, 0),
+(92, 'RobertRon', 'TylerRonGM', 'byoung@columbiabasin.edu', '83728631322', 'Hi  i writing about     price for reseller', 'Hi, ego volo scire vestri pretium.', '185.39.19.21', '2025-08-16 02:48:19', 0, 0, NULL, NULL, 0),
+(93, 'RobertRon', 'BrianRonGM', 'michaela@maxfire.com', '86965898858', 'Hallo  i am write about     price', 'Kaixo, zure prezioa jakin nahi nuen.', '185.39.19.21', '2025-08-16 02:48:19', 0, 0, NULL, NULL, 0),
+(94, 'Kennethgar', 'KennethgarSI', 'voronenvoron50@gmail.com', '82825323334', 'Актуальные ссылки на Kraken (Август 2025): рабочие зеркала маркетплейса', 'Если ты ищешь рабочие ссылки и зеркала Kraken 2025, здесь собраны проверенные адреса и инструкции для надежного и анонимного подключения. \r\n?? \r\n1. Основные ссылки Kraken для входа \r\nТип	Ссылка \r\n?? Официальный сайт	https://kraken-ent.shop/ \r\n?? Резервное зеркало	https://kra38l.cc/ \r\n?? Telegram-канал	https://t.me/Kraken4link \r\n2. Ключевые слова, фразы и популярные поисковые запросы \r\nофициальный портал kraken k2tor web-доступ \r\nссылка на кракен зеркало vk2 профессионал \r\ndarknet kraken доступтор 2kraken click \r\nдоступк kraken через tor kraken clear com \r\nonion-версиясайта kraken \r\nзеркалосайта kraken 7 one \r\nkraken зеркало v5tor cfd \r\nссылкана darknet kraken тор 2krnk biz \r\nофициальный сайт kraken dzen \r\nоригинальная ссылка на kraken \r\nссылкана kraken dzen \r\nсайт kraken tor kraken one com \r\nсайт krakenonion \r\nофициальныезеркала kraken k2tor \r\nkraken тор-ссылка online \r\nссылкана kraken v5tor cfd \r\nофициальныйсайт kraken в tor \r\nkraken web kr2web in \r\nдействующий сайт kraken \r\nзеркало kraken online \r\nактуальные ссылки на kraken 2kmp org \r\nпрямой доступ к kraken \r\nофициальный сайт kraken \r\nзеркала kr2web in \r\nkraken зеркало store \r\ndarknet market kraken ссылка tor v5tor cfd \r\nkraken сайт в даркнете \r\nофициальный darknet-портал kraken \r\nссылка на рабочее зеркало kraken2web com \r\nзеркало kraken tor kraken2web com \r\nзеркала маркетплейса kraken \r\nофициальные зеркала kraken k2tor online \r\nkraken darknet market ссылка market каркен \r\nсайт kraken 6 at от разработчика \r\nофициальный сайт kraken darknet top \r\nkraken clear link \r\nссылкана kraken kraken2web com \r\nдоступк kraken через tor kraken 9 one \r\nсайтанонимныхпокупок kraken vtor run \r\nзеркало kraken darknet market 2kraken click \r\nдоступк kraken darknet shkafssylka ru \r\nkraken ссылка torbazaw com \r\nфорум kraken ссылка \r\nкракен-площадкассылка kraken clear com \r\nkraken darknet портал kraken2web com \r\nрабочеезеркало kraken 2kraken click \r\nзеркало kraken ссылка online 2kraken click \r\nkraken зеркаласайт 2krnk biz \r\nкракензеркало kr \r\nзеркала сайта kraken 2kraken click \r\nКракен Официальные Ссылки | Доступ Безопасный 2024 \r\nКракен Надежный Доступ 2024 | Официальное Зеркало \r\nКракен Доступ | Официальное Зеркало 2024 без VPN \r\nKraken Ссылки | Доступ без VPN \r\nKraken 17 | kraken17 at | кракен 17 \r\nKraken 18 | kraken18 at | кракен 18 \r\nKraken 19 | kraken19 at | кракен 19 \r\nKraken 14 | kraken14 at | кракен 14 \r\nKraken 15 | kraken15 at | кракен 15 \r\nKraken 13 | kraken13 at | кракен 13 \r\nKraken 12 | kraken12 at | кракен 12 \r\nKraken 11 | kraken11 at | кракен 11 \r\nKraken 10 | kraken10 at | кракен 10 \r\nKraken 20 | kraken20 at | кракен 20 \r\nKraken 36 | kraken36 at | кракен 36 \r\nKraken 37 | kraken37at | кракен 37 \r\nKraken 38 | kraken38 at | кракен 38 \r\nkra1.cc | kra1.at \r\nkra2.cc | kra2.at \r\nkraken 18 сайт \r\nkraken 17 сайт \r\nkraken 17 at ссылка \r\nkraken 18 at рабочий \r\nофициальный сайт кракен \r\nсайт для доступа к kraken \r\nссылка на кракен через tor \r\nkraken официальный \r\nссылка kraken at \r\nkraken 19 сайт \r\nkraken 19 at ссылка \r\nkraken 13 площадка \r\nмагазин кракен \r\nkraken 13 at сайт \r\nkraken ссылка на вход \r\nkraken 16 доступ \r\nkraken 16 at ссылка \r\nkraken 14 at рабочий \r\nмаркетплейс kraken \r\nкракен 18 зеркало \r\nkraken 17 рабочий \r\nhttps kraken18 at доступ \r\nдоступ к кракен darknet \r\nофициальный кракен сайт \r\nhttps kraken17 at доступ \r\nкак зайти на кракен \r\nkraken17 at рабочее зеркало \r\nkraken 17 at сайт \r\nkraken17at ссылка \r\nkr2web in доступ \r\nkraken 18 at зеркала \r\nkraken 18at рабочий \r\nkraken в торе \r\nkraken официальный сайт kr2web in \r\nkraken web ссылка \r\nkraken сайт анонимный \r\nkraken 12at \r\nkraken вход доступ \r\nkraken маркетплейс 18 \r\nkraken 13 официальный \r\nkraken зеркало 17 \r\nкак зайти на kraken web \r\nссылка на кракен через tor \r\nkraken 13 at официальный \r\nсайт kr2web in доступ \r\nкракен телеграм-канал \r\nkraken kr2web in официальный \r\nкракен-шоп \r\nkraken web com \r\nkraken 13at сайт \r\nсайт кракен актуальная ссылка \r\nkraken12 официальный \r\nкракен последние ссылки \r\nkraken 12 доступ \r\nkraken17 сайт зеркало \r\nkraken 15 зеркало \r\nkraken13 рабочая ссылка \r\nhttp kraken18 тор-доступ \r\nkraken 14 рабочий доступ \r\nkraken 12 доступ через tor \r\nkraken официальный доступ \r\nкракен актуальные ссылки \r\nмаркетплейс kraken \r\nссылка на тор для кракен \r\nhttp kraken17 официальный сайт \r\nhttps kraken16 ссылка \r\nkraken17 авторизация \r\nрабочее зеркало сайта кракен \r\nonion-сайт кракен \r\nkraken в darknet \r\nkraken 11 зеркало \r\nhttps kraken19 ссылка \r\nкракен 17 сайт \r\nkraken официальный портал \r\nhttps kraken13 актуальный \r\nработающее зеркало для кракен \r\nкракен маркетплейс в даркнете \r\nkraken13 официальный сайт \r\nkraken 19 зеркало \r\nдоступ к kraken darknet \r\nофициальный сайт кракен ссылка \r\nкракен 14 зеркало \r\nзеркало сайта кракен \r\nkraken сайт вход \r\nkraken onion-ссылка \r\nkraken 16 ссылка \r\nkraken18 сайт \r\nкракен в darkweb \r\nвход на кракен \r\nдоступ через tor браузер к кракен \r\nkraken17 com доступ \r\nкракен 18 доступ \r\nkraken shop ссылка \r\nkraken через tor \r\nhttps kraken14 рабочая ссылка \r\nkraken11 доступ \r\nсайт кракен darknet \r\nhttps kraken15 ссылка \r\nkraken marketplace \r\nkraken17 доступ \r\nkraken18 shop \r\nссылка на кракен через tor \r\nhttp kraken16 актуальная ссылка \r\nкракен 2krnk cc зеркало \r\nкракен kr2web in marketplace \r\nдоступ через браузер на кракен \r\nkraken официальный сайт \r\nhttp kraken19 рабочее зеркало \r\nkraken market портал \r\nkraken18 актуальный сайт \r\nзеркало для kraken \r\nkr2web in официальный ресурс \r\nкракен ссылка для тора \r\nhttps kraken13 ресурс \r\nдоступные ссылки на kraken \r\nофициальный сайт kraken kr2web in \r\nkraken вход через onion \r\nсайт-зеркало кракен \r\nофициальный сайт кракен marketplace \r\nофициальный сайт kraken через 2kmp \r\nкак зайти на сайт kraken \r\nkraken 14 официальный доступ \r\nkraken15 com доступ \r\nкракен12 ресурс \r\nмагазин kraken kr2web in \r\nkr2web in официальный портал \r\nkraken14 com сайт \r\nмагазин на кракен \r\nтор ссылка для кракен \r\nkraken шоп доступ \r\nkraken через onion \r\nkr2web in официальный доступ \r\nkraken kr2web официальный сайт \r\nофициальный сайт для кракен kr2web in \r\nкракен для входа через зеркало \r\nдоступ kraken 17at \r\nпоследнее зеркало кракен \r\nмаркетплейс кракен darknet \r\nkraken 1kraken me сайт \r\nhttps kraken12 актуальноезеркало \r\nссылка на кракен через tor-браузер \r\nсайт кракен для запрещенных товаров \r\nkraken 17 веб-доступ \r\nkraken ссылка для сотрудников \r\nкракен ссылка для авторизации \r\ntelegram ссылки для kraken \r\nkraken 20at официальный сайт \r\nkraken официальный доступ к сайту \r\nkraken ссылка на тор \r\nзеркало сайта кракен в tor \r\nмагазин krakens13 at \r\nдоступ к кракен', '159.100.19.127', '2025-08-16 07:17:31', 0, 0, NULL, NULL, 0),
+(95, 'ErnestGab', 'ErnestGabLM', 'no-reply986@gmail.com', '83815681274', '0-DAY MP3', 'Hey, \r\n \r\n* FTP Mp3 Server and download everything directly https://sceneflac.blogspot.com \r\n* Reseller: PayPal, VISA, Bank transfer, Bitcoin, Master Card, Amazon pay, WebMoney... \r\n* Software FTPtxt-16 https://www.0daymusic.org/FTPtxt to search for text. \r\n* Server\'s capacity: 440 TB MP3, FLAC, Labels, Music Videos. \r\n* Support: FTP, FTPS (File Transfer Protocol Secure), SFTP and HTTP, HTTPS. \r\n* Updated on daily: 30GB-100GB, 300-2000 Albums, WEB, Promo, CDM, CDR, CDS, EP, LP, Vinyl... \r\n* Unlimited download speed. \r\n* Files are available every time. \r\n* More 17 years Of archives. \r\n* Overal server\'s speed: 1 Gb/s. \r\n* Easy to use Most of genres are sorted by days.', '84.17.48.184', '2025-08-17 01:07:11', 0, 0, NULL, NULL, 0),
+(96, 'Mike Peder Olsson', 'Mike Peder Olsson\r\nCV', 'info@digital-x-press.com', '85834472877', 'Add AEO to your SEO strategies today !', 'Hi, \r\nI recognize that some companies have difficulties recognizing that organic ranking growth is a continuous effort and a strategically planned ongoing investment. \r\n \r\nSadly, very few businesses have the dedication to recognize the progressive yet meaningful improvements that can completely transform their search performance. \r\n \r\nWith regular search engine updates, a reliable, ongoing approach including Answer Engine Optimization (AEO) is vital for getting a strong return on investment. \r\n \r\nIf you agree this as the best strategy, partner with us! \r\n \r\nCheck out Our Monthly SEO Services https://www.digital-x-press.com/unbeatable-seo/ \r\n \r\nReach Out on Instant Messaging https://www.digital-x-press.com/whatsapp-us/ \r\n \r\nWe offer unbeatable results for your resources, and you will appreciate choosing us as your digital marketing ally. \r\n \r\nKind regards, \r\nDigital X SEO Experts \r\nPhone/WhatsApp: +1 (844) 754-1148', '181.214.218.113', '2025-08-17 11:10:35', 0, 0, NULL, NULL, 0),
+(97, 'NormandRiz', 'NormandRizCW', 'yourmail344@gmail.com', '84631672466', 'End of Antisemitism', 'It is astonishing.\r\n\r\nMay the eyes of starving children haunt us all\r\n\r\nhttps://www.jewishvoiceforlabour.org.uk/article/may-the-eyes-of-starving-children-haunt-us-all/\r\n\r\nhttps://www.tiktok.com/@charitymealsuk/video/7534294624647580950?is_from_webapp=1&sender_device=pc&web_id=7537073515586897430\r\n\r\nhttps://www.dci-palestine.org/starving_a_generation_report_indicts_israel_for_weaponizing_starvation_as_a_tool_of_genocide\r\n\r\nhttps://www.tiktok.com/@1948nakba.p4/video/7536871676156398870?is_from_webapp=1&sender_device=pc&web_id=7537073515586897430\r\n\r\nWho are the Jews\r\n\r\nhttps://www.youtube.com/shorts/SEB3w3A98rU\r\n\r\nit is our money\r\n\r\nhttps://www.youtube.com/shorts/wiu9N1H0Huc\r\n\r\nThe most devastating genocide in the world is being carried out by the follwoing :\r\n\r\n1- AIPAC, brows ( https://www.youtube.com/watch?v=COx-t-Mk6UA ). \r\n2- Miriam Adelson brows https://www.youtube.com/watch?v=Nr0LkA7VW7Q.\r\n3- Elon Musk. \r\n3- Timothy mellonand brows https://www.youtube.com/shorts/1XJ893-kAh0  \r\n4-The Evangelical Church, \r\n\r\nWhich kill innocent women and children in Gaza.\r\n\r\nAIPAC ( https://www.youtube.com/watch?v=COx-t-Mk6UA ) and the Evangelical Church are perpetrating one of the most catastrophic genocides in history, targeting innocent women and children in Gaza.\r\n\r\nThese organizations have supplied Israel with explosives to facilitate their acts of genocide.\r\n\r\nGaza has been designated a disaster zone, severely lacking in essential resources for survival.\r\n\r\nAIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have devastated 90% of Gaza, resulting in the destruction of 437,600 homes and the loss of one million lives, including 50,000 individuals currently trapped under debris, with 80% of the casualties being women and children.\r\n\r\nThey have also obliterated 330,000 meters of water pipelines, leaving the population without access to drinking water.\r\n\r\nFurthermore, over 655,000 meters of underground sewage systems have been destroyed, depriving residents of basic sanitation facilities.\r\n\r\nThe destruction extends to 2,800,000 meters of roadways, rendering transportation impossible for the affected population.\r\n\r\nAdditionally, 3,680 kilometers of the electrical grid have been dismantled, leading to widespread power outages.\r\n\r\nThe assault has resulted in the demolition of 48 hospitals, eliminating critical healthcare facilities for those in need.\r\n\r\nMoreover, the actions of AIPAC, The Evangelical Church, Miriam Adelson, Elon Musk, and timothy mellon and   America tax payer,, and Israel have disrupted the education of over 785,000 students, with 494 schools and universities being completely destroyed, many due to aerial bombardments.\r\n\r\nThey have also targeted 981 mosques, effectively silencing the prayers of the homeless seeking divine assistance.\r\n\r\nAs a result of these actions, more than 39,000 young children have been left orphaned, without parents or guardians to care for them.\r\n\r\nI must emphasize that the historical context of warfare has never witnessed a scenario where 80% of a nation has been devastated, 100% of its populace has been uprooted, and 50% of the casualties are children.\r\n\r\nIt is imperative to recognize the gravity of the situation.\r\n\r\nOrganizations such as AIPAC and the Evangelical Church in America are contributing to what can only be described as genocide.\r\n\r\nhttps://www.youtube.com/shorts/IrX9v6DKH1g\r\n\r\nThe implications of American taxpayer funding in the context of Israel\'s actions against innocent children are alarming.\r\n\r\n1. An examination of Israel\'s precarious situation is warranted.\r\n\r\nhttps://www.youtube.com/watch?v=kAfIYtpcBxo\r\n\r\n2. The influence of financial power, often associated with certain groups, plays a significant role in these dynamics. Further information can be found through the provided link.\r\n\r\nhttps://mega.nz/file/FqhzGKbB#bsX4PD-O59HEA0-rynD29xkk47dmddycY5CjZfoDLYg\r\n\r\n3. Insights into the perspectives of U.S. leadership regarding AIPAC and the Evangelical Church can be explored through the following resource.\r\n\r\n https://www.tiktok.com/@thefearlessqueenmel/video/7307640994579680542?lang=en&q=why%20dont%20Americans%20knowl%20what%20you%20have%20seen%20&t=1701880206555\r\n\r\nThe tragic reality of innocent children being harmed by powerful Israeli forces utilizing American weaponry is evident in various media reports.\r\n\r\nhttps://www.youtube.com/watch?v=COx-t-Mk6UA\r\n\r\nIt is crucial to stay informed by accessing reliable news sources.\r\n\r\nhttps://www.youtube.com/watch?v=bNyUyrR0PHo\r\n\r\nLaws of jews TaurÃ£t (Torah) wich is a part of the Bible\r\n \r\nWe ordained in TaurÃ£t for them: â€œA life for a life, an eye for an eye, a nose for a nose, an ear for an ear, a tooth for a tooth and for a wound an equal retaliation.\" \r\n\r\nThe Torah, which is part of the Bible, has commanded that the same be done to the Jews. The order of the Torah, which is part of the Bible, is to immediately kill any Jew you see on the street. Since the Jews in Gaza have also killed women and children, you should kill any Jews - men, women, and children - as soon as you see them, whether on the street or anywhere else. And because they have killed everyone in Gaza without mercy, you must do the same to them. If you carry out these actions, you will be following the order of the Torah, which is part of the Bible, and you will be rewarded by going to heaven.', '128.90.128.18', '2025-08-18 22:34:17', 0, 0, NULL, NULL, 0),
+(98, 'AliciaSpumb', 'AliciaSpumbOV', 'footballcountcom@gmail.com', '89577451322', 'Here are some unusual and provocative discussion starters for your forum:.', '---\n\n\"Is gorilla trekking just ‘colonialism in khaki’—or can it truly empower local communities?\"\nTourists pay thousands to glimpse mountain gorillas for an hour, while many nearby villages struggle with poverty. Does this model exploit wildlife and people under the guise of \"conservation,\" or is it the best way to fund protection and local development?\n\n---\n\n\"Would you let a traditional healer ‘bless’ your gorilla trek—even if it meant breaking conservation rules?\"\nSome local guides quietly incorporate spiritual rituals (libations, prayers) before treks, believing it ensures safe encounters. If authorities banned these practices as \"unscientific,\" would you still want them—or is conservation better off without mysticism?\n\n---\n\n\"What if the Virunga Massif became a ‘no-tourism’ zone? Would gorillas be better off?\"\nHabituated gorillas face stress, disease risks, and poaching tied to human presence. If all trekking stopped tomorrow, would the ecosystem thrive—or would funding dry up, leaving rangers unpaid and communities hostile to conservation?\n\n---\n\n\"Why do Western tourists get to ‘immersion’ in Rwanda, but Rwandans can’t afford their own cultural heritage?\"\nA week-long \"spiritual journey\" in the Virunga region costs what a local teacher earns in months. Is this just the reality of global inequality, or should tourism operators be forced to subsidize access for East Africans?\n\n---\n\"Could Congo’s ‘dark tourism’ (war zones + gorillas) ever be ethical—or is it just trauma porn?\"\nSome operators market Virunga’s gorillas alongside visits to Goma’s lava fields and IDP camps. Is this raising awareness or commodifying suffering? Where’s the line between education and exploitation?\n\n---\n\"If a gorilla charges at you, should your guide sacrifice themselves to save you?\"\nLocal trackers earn peanuts compared to what tourists pay. In a life-or-death moment, is it fair to expect them to put your safety above theirs—or should trekkers sign a waiver absolving guides of heroism?\n\n---\n\"Is ‘community tourism’ a scam if the ‘community’ is just a single family running the show?\"\nMany homestays and cultural experiences are controlled by a handful of connected elites. When does \"empowerment\" become a branding trick—and how can travelers spot the difference?\n\n---\n\"Would you trek with an ex-poacher as your guide?\"\nSome conservation programs hire former hunters to track gorillas, arguing it turns enemies into allies. Others say it’s like putting a fox in charge of the henhouse. Where do you stand?\n\n---\n\"Should gorilla permits cost $1,500… or $15,000?\"\nHigher fees could slash visitor numbers, reduce stress on gorillas, and fund more local projects. Or would it just turn trekking into a billionaire’s safari—and kill Rwanda’s tourism golden goose?\n\n---\n\"What’s more unethical: Paying a bribe to see gorillas in Congo, or skipping Congo entirely?\"\nDRC’s parks are desperate for funds, but corruption and instability make trekking risky. If your money might line a warlord’s pocket, is boycotting the country the moral choice—or does that abandon the people who need tourism most? \r\n \r\nDiscover the Ultimate Betting Experience at  https://vkltv.top/what-do-you-need-to-win-at-the-casino-and-roulette-the-4-most-popular-ways/ \r\n \r\n \r\n \r\n \r\n \r\n<a href=https://lkxe.pro/698c><img src=\"https://vkltv.top/wp-content/uploads/2025/08/4-450x450.jpeg\"></a>', '87.240.52.143', '2025-08-20 02:11:56', 0, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1459,21 +1573,21 @@ INSERT INTO `contact_submissions` (`id`, `first_name`, `last_name`, `email`, `ph
 --
 
 CREATE TABLE `content_section` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `paragraph1` text COLLATE utf8mb4_general_ci,
-  `subtitle1` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `paragraph2` text COLLATE utf8mb4_general_ci,
-  `subtitle2` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `paragraph3` text COLLATE utf8mb4_general_ci,
-  `paragraph4` text COLLATE utf8mb4_general_ci,
-  `cta_text` text COLLATE utf8mb4_general_ci,
-  `video_link` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `video_title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_general_ci,
-  `website_text` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `contact_email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `hero_image` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `paragraph1` text DEFAULT NULL,
+  `subtitle1` varchar(255) DEFAULT NULL,
+  `paragraph2` text DEFAULT NULL,
+  `subtitle2` varchar(255) DEFAULT NULL,
+  `paragraph3` text DEFAULT NULL,
+  `paragraph4` text DEFAULT NULL,
+  `cta_text` text DEFAULT NULL,
+  `video_link` varchar(255) DEFAULT NULL,
+  `video_title` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `website_text` varchar(255) DEFAULT NULL,
+  `contact_email` varchar(255) DEFAULT NULL,
+  `hero_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1490,16 +1604,40 @@ INSERT INTO `content_section` (`id`, `title`, `paragraph1`, `subtitle1`, `paragr
 --
 
 CREATE TABLE `destinations` (
-  `destination_id` int NOT NULL,
-  `country_code` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text COLLATE utf8mb4_general_ci NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `is_family_friendly` tinyint(1) DEFAULT '1',
-  `is_featured` tinyint(1) DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `destination_id` int(11) NOT NULL,
+  `country_code` varchar(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `is_family_friendly` tinyint(1) DEFAULT 1,
+  `is_featured` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `empowerment_programs`
+--
+
+CREATE TABLE `empowerment_programs` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `section_title` varchar(255) DEFAULT NULL,
+  `section_description` text DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `highlights` text DEFAULT NULL,
+  `shop_link` varchar(255) DEFAULT NULL,
+  `shop_note` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `empowerment_programs`
+--
+
+INSERT INTO `empowerment_programs` (`id`, `page_id`, `section_title`, `section_description`, `content`, `highlights`, `shop_link`, `shop_note`) VALUES
+(1, 1, 'Empowering Women Through Traditional Arts', 'Discover how Virunga community programs create lasting impact through cultural preservation and economic empowerment.', 'At the heart of Virunga\'s community initiatives are our women\'s empowerment programs focused on traditional arts and crafts. These programs including sewing, handcrafts, pottery, and painting serve as powerful vehicles for cultural preservation while providing sustainable livelihoods for local women artisans.', 'Economic Independence,Cultural Preservation,Skill Development,Community Strength,Sustainable Development', 'https://virungahomestay.com/pages/shop.php', 'Your purchase directly supports women artisans and their families while preserving cultural heritage.');
 
 -- --------------------------------------------------------
 
@@ -1508,14 +1646,14 @@ CREATE TABLE `destinations` (
 --
 
 CREATE TABLE `faqs` (
-  `id` int NOT NULL,
-  `category` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `question` text COLLATE utf8mb4_general_ci NOT NULL,
-  `answer` text COLLATE utf8mb4_general_ci NOT NULL,
-  `display_order` int DEFAULT '0',
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `display_order` int(11) DEFAULT 0,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1556,14 +1694,14 @@ INSERT INTO `faqs` (`id`, `category`, `question`, `answer`, `display_order`, `is
 --
 
 CREATE TABLE `gallery_items` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `image_path` varchar(255) NOT NULL,
   `alt_text` varchar(100) NOT NULL,
-  `display_order` int DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `display_order` int(11) DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1585,13 +1723,13 @@ INSERT INTO `gallery_items` (`id`, `title`, `description`, `image_path`, `alt_te
 --
 
 CREATE TABLE `guide_list_items` (
-  `list_item_id` int NOT NULL,
-  `guide_id` int NOT NULL,
-  `item_type` enum('numbered','bulleted') COLLATE utf8mb4_general_ci NOT NULL,
-  `item_order` int NOT NULL,
-  `item_text` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `link_url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `is_highlighted` tinyint(1) DEFAULT '0'
+  `list_item_id` int(11) NOT NULL,
+  `guide_id` int(11) NOT NULL,
+  `item_type` enum('numbered','bulleted') NOT NULL,
+  `item_order` int(11) NOT NULL,
+  `item_text` varchar(255) NOT NULL,
+  `link_url` varchar(255) DEFAULT NULL,
+  `is_highlighted` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1601,17 +1739,17 @@ CREATE TABLE `guide_list_items` (
 --
 
 CREATE TABLE `guide_sections` (
-  `section_id` int NOT NULL,
-  `guide_id` int NOT NULL,
-  `section_order` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `content_1` text COLLATE utf8mb4_general_ci NOT NULL,
-  `content_2` text COLLATE utf8mb4_general_ci,
-  `content_3` text COLLATE utf8mb4_general_ci,
-  `link_text` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `link_url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `is_featured` tinyint(1) DEFAULT '0'
+  `section_id` int(11) NOT NULL,
+  `guide_id` int(11) NOT NULL,
+  `section_order` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content_1` text NOT NULL,
+  `content_2` text DEFAULT NULL,
+  `content_3` text DEFAULT NULL,
+  `link_text` varchar(255) DEFAULT NULL,
+  `link_url` varchar(255) DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `is_featured` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1621,10 +1759,10 @@ CREATE TABLE `guide_sections` (
 --
 
 CREATE TABLE `hero` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `text` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_link` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `text` varchar(255) DEFAULT NULL,
+  `image_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1641,12 +1779,12 @@ INSERT INTO `hero` (`id`, `title`, `text`, `image_link`) VALUES
 --
 
 CREATE TABLE `home_about` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `slide_description` text COLLATE utf8mb4_general_ci NOT NULL,
-  `youtube_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slide_description` text NOT NULL,
+  `youtube_url` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1663,11 +1801,11 @@ INSERT INTO `home_about` (`id`, `title`, `slide_description`, `youtube_url`, `cr
 --
 
 CREATE TABLE `home_attractions` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1691,12 +1829,12 @@ INSERT INTO `home_attractions` (`id`, `title`, `image_url`, `created_at`, `updat
 --
 
 CREATE TABLE `home_destinations` (
-  `id` int NOT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1715,12 +1853,12 @@ INSERT INTO `home_destinations` (`id`, `country`, `description`, `image_url`, `c
 --
 
 CREATE TABLE `home_hero` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1740,11 +1878,11 @@ INSERT INTO `home_hero` (`id`, `title`, `description`, `image_url`, `created_at`
 --
 
 CREATE TABLE `home_partners` (
-  `id` int NOT NULL,
-  `web_url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `logo_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `web_url` varchar(255) DEFAULT NULL,
+  `logo_url` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1767,12 +1905,12 @@ INSERT INTO `home_partners` (`id`, `web_url`, `logo_url`, `created_at`, `updated
 --
 
 CREATE TABLE `home_under_hero_cards` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1786,18 +1924,173 @@ INSERT INTO `home_under_hero_cards` (`id`, `title`, `description`, `image_url`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `impact_cards`
+--
+
+CREATE TABLE `impact_cards` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `impact_cards`
+--
+
+INSERT INTO `impact_cards` (`id`, `page_id`, `image`, `title`, `description`) VALUES
+(1, 1, 'uploads/impact/2022.01_Malaika02.jpg', 'Women\'s Empowerment', 'Supporting local women through skill development and economic opportunities in traditional crafts and cultural preservation.'),
+(2, 1, 'uploads/impact/IMG-20250820-WA0092.jpg', 'Cultural Products', 'Creating and selling authentic cultural products that celebrate our heritage while providing sustainable income.'),
+(3, 1, 'uploads/impact/IMG-20250814-WA0047.jpg', 'Artistic Heritage', 'Preserving traditional painting techniques and encouraging contemporary artistic expression rooted in culture.'),
+(4, 1, 'uploads/impact/HO2A5298.JPG', 'Craft Mastery', 'Teaching traditional pottery and ceramic techniques to preserve ancient skills for future generations.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `impact_gallery`
+--
+
+CREATE TABLE `impact_gallery` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `impact_gallery`
+--
+
+INSERT INTO `impact_gallery` (`id`, `page_id`, `image`, `title`, `description`) VALUES
+(1, 1, 'impact_gallery_1756287499_572f369c.jpg', 'Traditional Pottery', 'Learning ancient clay techniques'),
+(2, 1, 'uploads/impact/IMG-20250820-WA0098.jpg', 'Artistic Expression', 'Nurturing creative talents'),
+(3, 1, 'uploads/impact/123.jpg', 'Traditional Sewing', 'Preserving textile heritage');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `impact_page`
+--
+
+CREATE TABLE `impact_page` (
+  `id` int(11) NOT NULL,
+  `section_description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `impact_page`
+--
+
+INSERT INTO `impact_page` (`id`, `section_description`) VALUES
+(1, 'We are dedicated to supporting women and local traditional craftspeople in our community, preserving cultural heritage while creating sustainable livelihoods through poetry, painting, sewing, and selling cultural products.'),
+(2, 'We are dedicated to supporting women and local traditional craftspeople in our community, preserving cultural heritage while creating sustainable livelihoods through poetry, painting, sewing, and selling cultural products.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inclusive_cta`
+--
+
+CREATE TABLE `inclusive_cta` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `button_text` varchar(100) DEFAULT NULL,
+  `button_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inclusive_cta`
+--
+
+INSERT INTO `inclusive_cta` (`id`, `page_id`, `title`, `text`, `button_text`, `button_link`) VALUES
+(1, 1, 'Join Us in Creating Change', 'Through these initiatives, Virunga Ecotours shows that tourism can be a powerful tool for empowerment, transforming rural communities by fostering inclusiveness, economic independence, and meaningful engagement for all members of society.', 'Get Involved Today', '#contact');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inclusive_page`
+--
+
+CREATE TABLE `inclusive_page` (
+  `id` int(11) NOT NULL,
+  `hero_title` varchar(255) DEFAULT NULL,
+  `hero_subtitle` varchar(255) DEFAULT NULL,
+  `intro_text` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inclusive_page`
+--
+
+INSERT INTO `inclusive_page` (`id`, `hero_title`, `hero_subtitle`, `intro_text`) VALUES
+(1, 'Inclusive Community-Based Tourism', 'Empowering Persons with Disabilities in Rural Areas', ''),
+(2, 'Inclusive Community-Based Tourism', 'Empowering Persons with Disabilities in Rural Areas', 'Virunga Ecotours began its journey by partnering closely with local schools to support inclusive education programs. Through this collaboration, we witnessed first-hand the challenges faced by children and community members with disabilities in rural areas, including limited access to education, social marginalization, and economic exclusion. These experiences inspired us to create community-based tourism initiatives that are not only environmentally and culturally engaging but also fully inclusive, ensuring that persons with disabilities can participate meaningfully in rural tourism and development activities.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inclusive_stats`
+--
+
+CREATE TABLE `inclusive_stats` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `stat_number` varchar(20) DEFAULT NULL,
+  `stat_label` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inclusive_stats`
+--
+
+INSERT INTO `inclusive_stats` (`id`, `page_id`, `stat_number`, `stat_label`) VALUES
+(1, 1, '150+', 'Community Members Empowered'),
+(2, 1, '25', 'Accessible Tourism Routes'),
+(3, 1, '12', 'Rural Communities Involved'),
+(4, 1, '95%', 'Participant Satisfaction Rate');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `involved_cards`
+--
+
+CREATE TABLE `involved_cards` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `icon` varchar(10) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `involved_cards`
+--
+
+INSERT INTO `involved_cards` (`id`, `page_id`, `icon`, `title`, `description`) VALUES
+(1, 1, '💰', 'Set Up a Fundraiser', 'Start your own fundraiser and rally your community to raise essential funds. We help you set up a good online fundraiser to maximize your impact.'),
+(2, 1, '🗓️', 'Get Behind an Event', 'Support our appeals set up to combat current crises. We have well-planned events and community tours to help you engage directly with the community.'),
+(3, 1, '🌿', 'Save Nature', 'Volunteer and take action to save nature. Learn more about our conservation efforts and how your participation can contribute to a sustainable future.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `privacy_audit_log`
 --
 
 CREATE TABLE `privacy_audit_log` (
-  `id` int NOT NULL,
-  `admin_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
   `action_type` enum('policy_update','request_status_change','request_deletion','data_export') NOT NULL,
-  `target_id` int DEFAULT NULL,
-  `details` text,
+  `target_id` int(11) DEFAULT NULL,
+  `details` text DEFAULT NULL,
   `ip_address` varchar(45) DEFAULT NULL,
-  `user_agent` text,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `user_agent` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1807,10 +2100,10 @@ CREATE TABLE `privacy_audit_log` (
 --
 
 CREATE TABLE `privacy_policy` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `content` longtext NOT NULL,
-  `last_updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `last_updated` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1827,15 +2120,15 @@ INSERT INTO `privacy_policy` (`id`, `content`, `last_updated`, `created_at`) VAL
 --
 
 CREATE TABLE `privacy_requests` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `request_type` enum('data_access','data_deletion','data_portability','data_correction') NOT NULL,
   `email` varchar(255) NOT NULL,
   `subject` varchar(500) NOT NULL,
   `message` text NOT NULL,
   `status` enum('pending','in_progress','completed','rejected') DEFAULT 'pending',
-  `admin_response` text,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `admin_response` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1856,11 +2149,11 @@ INSERT INTO `privacy_requests` (`id`, `request_type`, `email`, `subject`, `messa
 --
 
 CREATE TABLE `privacy_settings` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `setting_key` varchar(100) NOT NULL,
   `setting_value` text NOT NULL,
-  `description` text,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `description` text DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1883,9 +2176,9 @@ INSERT INTO `privacy_settings` (`id`, `setting_key`, `setting_value`, `descripti
 --
 
 CREATE TABLE `programs` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `subtitle` text COLLATE utf8mb4_general_ci
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `subtitle` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1902,10 +2195,10 @@ INSERT INTO `programs` (`id`, `title`, `subtitle`) VALUES
 --
 
 CREATE TABLE `program_card` (
-  `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `text` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `image_link` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `text` varchar(255) DEFAULT NULL,
+  `image_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1923,9 +2216,9 @@ INSERT INTO `program_card` (`id`, `title`, `text`, `image_link`) VALUES
 --
 
 CREATE TABLE `program_card_content` (
-  `id` int NOT NULL,
-  `program_card_id` int DEFAULT NULL,
-  `content` text COLLATE utf8mb4_general_ci
+  `id` int(11) NOT NULL,
+  `program_card_id` int(11) DEFAULT NULL,
+  `content` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1935,11 +2228,59 @@ CREATE TABLE `program_card_content` (
 --
 
 CREATE TABLE `program_card_gallery` (
-  `id` int NOT NULL,
-  `program_card_id` int DEFAULT NULL,
-  `image_link` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `alt_text` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `program_card_id` int(11) DEFAULT NULL,
+  `image_link` varchar(255) DEFAULT NULL,
+  `alt_text` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_dynamic_sections`
+--
+
+CREATE TABLE `school_dynamic_sections` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `school_dynamic_sections`
+--
+
+INSERT INTO `school_dynamic_sections` (`id`, `title`, `description`, `image`, `created_at`) VALUES
+(1, 'After School Programs', 'Virunga Ecotours’ after-school clubs provide community-based educational experiences that combine conservation awareness with health education. These programs are designed to engage young learners and local community members in meaningful, hands-on activities that foster knowledge, responsibility, and practical skills.\r\n\r\nKey Components:\r\n	1.	Interactive Learning and Literacy Development\r\n	•	Participants engage in reading, storytelling, and language exercises to strengthen literacy and communication skills.\r\n	•	Music and rhythm activities enhance cognitive development and boost confidence in verbal expression.\r\n	2.	Creative and Expressive Skills\r\n	•	Visual arts, drama, and music sessions stimulate creativity and self-expression.\r\n	•	Projects encourage problem-solving, collaboration, and emotional growth, integrating creativity as a core educational competency.\r\n	3.	Environmental and Biodiversity Awareness\r\n	•	Participants learn about the ecology and biodiversity of the Virunga region.\r\n	•	Interactive lessons connect local wildlife conservation—including protection of mountain gorillas—with practical actions to reduce human–wildlife conflict.\r\n	•	Art and craft projects promote recycling, reusing, and responsible natural resource management, reinforcing environmental stewardship.\r\n	4.	Health and Well-being Education\r\n	•	Programs teach essential health practices, hygiene, and wellness habits to improve community health outcomes.\r\n	•	Activities integrate practical knowledge with daily routines, encouraging participants to adopt lifelong healthy behaviors.\r\n\r\nBy combining interactive education, creative engagement, and environmental awareness, Virunga Ecotours’ after-school clubs cultivate a generation of informed, responsible, and empowered community members. These clubs serve as a platform for learning, personal growth, and conservation advocacy, ensuring that both communities and wildlife thrive in harmony.', 'school_1756290599_6392b401.jpg', '2025-08-27 08:03:50'),
+(2, 'Improving Community Livelihoods', 'Improving Community Livelihoods through Virunga Ecotours’ Community-Based Tourism\r\n\r\nAt Virunga Ecotours, we recognize that effective wildlife conservation is inseparable from the well-being of local communities. To ensure both people and wildlife thrive, our community-based tourism initiatives are designed to meet the basic needs of residents living near Volcanoes National Park while fostering sustainable coexistence with the environment. Our contributions include:\r\n	•	Water Access Solutions: We donate rainwater harvesting tanks to reduce the need for local communities to enter wildlife habitats in search of water, minimizing human-gorilla contact and the risk of disease transmission.\r\n	•	Reforestation and Habitat Restoration: By planting bamboo and trees, we prevent soil erosion, improve landscape stability, and create additional habitats for wildlife.\r\n	•	School Garden Initiatives: Supporting vegetable and crop gardens in schools and communities ensures healthy nutrition for children and adults living near gorilla habitats.\r\n	•	Sanitation Infrastructure: Constructing clean latrines and installing hand-washing stations promotes hygiene and reduces disease risk, contributing to healthier communities.\r\n	•	Environmental Awareness for Youth: Providing trash bins and hygiene resources encourages children to act as ambassadors for environmental care within their families.\r\n	•	Alternative Livelihood Support: We empower families with alternative income opportunities, such as donating sheep, which provide sustainable resources and reduce dependence on forest exploitation.', 'school_1756290637_e0f653a7.jpg', '2025-08-27 08:03:50'),
+(3, 'Empowering Young Minds Through Nature: Connecting Children to Wildlife and Conservation in the Virunga Massif', 'Virunga Ecotours is at the forefront of community-based educational tourism, offering programs that connect children to the natural environment in meaningful and transformative ways. Through our comprehensive conservation and health awareness initiatives, children are given the rare opportunity to visit Volcanoes National Park and experience wildlife firsthand. This immersive exposure allows them to observe animals, particularly the iconic mountain gorillas, in their natural habitats—an experience that is often inaccessible despite their proximity to these species.\r\n\r\nBy providing direct engagement with wildlife, Virunga Ecotours fosters a profound sense of connection and responsibility toward the environment. Children learn to appreciate the intricate balance of ecosystems, understand the importance of biodiversity, and recognize their role in preserving the natural world. These experiences are designed to go beyond passive observation; they encourage critical thinking, curiosity, and emotional engagement with conservation issues.\r\n\r\nMoreover, the program integrates health education alongside environmental learning, highlighting the interconnectedness of human well-being and ecological health. Participants explore concepts such as hygiene, nutrition, and disease prevention, which are vital in communities living near wildlife habitats. This dual approach strengthens both individual knowledge and community resilience, ensuring that children emerge as informed and empowered ambassadors for conservation.', 'school_1756290679_acf8cf3c.jpg', '2025-08-27 08:03:50'),
+(4, 'Community Events', 'We organize events that bring together children, families, and visitors to celebrate culture, learn together, and strengthen community bonds.', 'school_1756290713_1e6f006f.jpg', '2025-08-27 08:03:50'),
+(5, 'Empowering Single Mothers Through School Partnerships: A Virunga Ecotours Experience', 'At Virunga Ecotours, we believe tourism can create meaningful impact. Through our close partnership with La Fontaine Nursery and Primary School, visitors don’t just support education—they also directly empower the single mothers who have been the backbone of the school’s success. This unique experience connects travelers with the community in hands-on, inspiring ways:\r\n	•	Handicraft Workshops: Learn traditional basket weaving, sewing, and beadwork alongside single mothers, while helping them market their crafts to a wider audience.\r\n	•	Culinary Experiences: Join in preparing local dishes, supporting school meals and discovering the richness of Rwandan cuisine.\r\n	•	Entrepreneurship Exchange: Share practical skills in business, marketing, or hospitality, giving women the tools to grow their own income-generating initiatives.\r\n\r\nSupport and Celebrate Women’s Achievements\r\nVisitors can also play an active role in uplifting these women’s groups:\r\n	•	Storytelling & Documentation: Capture their craft and culture through photography or video, helping promote their products and experiences globally.\r\n	•	Skill-Building Workshops: Run short sessions in digital promotion, business literacy, or product presentation to strengthen their entrepreneurial capacity.\r\n	•	Promote & Purchase Crafts: Take home authentic handmade souvenirs while directly supporting sustainable livelihoods and the school community.', 'school_1756290770_1eb68b87.jpg', '2025-08-27 10:18:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_static_sections`
+--
+
+CREATE TABLE `school_static_sections` (
+  `id` int(11) NOT NULL,
+  `section_name` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `school_static_sections`
+--
+
+INSERT INTO `school_static_sections` (`id`, `section_name`, `content`, `updated_at`) VALUES
+(1, 'Introduction', 'The Educational Impact of Community-Based Tourism\n\nCommunity-based tourism (CBT) operates as a multidimensional development mechanism that integrates cultural preservation, environmental stewardship, and educational advancement within local communities. Beyond its direct contribution to local economies, CBT functions as a pedagogical platform that links experiential learning with sustainable livelihoods.\n\nWhen embedded in schools, CBT initiatives provide structured pathways for children to acquire practical knowledge, intercultural competencies, and environmental literacy. Educational programs designed around tourism-related activities—such as cultural exchanges, storytelling, and ecological fieldwork—enhance both cognitive and social development. This fosters critical thinking, creativity, and leadership among young learners, positioning them as active participants in the socio-economic transformation of their communities.\n\nIn Rwanda, the integration of CBT into school programs strengthens local educational systems by mobilizing tourism-generated resources, creating opportunities for knowledge transfer, and reinforcing pride in cultural and natural heritage. Consequently, tourism becomes not only a driver of economic resilience but also a catalyst for producing an informed, empowered generation equipped to sustain both community identity and global engagement.', '2025-08-27 08:34:45'),
+(2, 'Our Aim', 'At the heart of our mission is the belief that every child deserves not only access to quality education but also opportunities to explore, create, and grow beyond the classroom. We aim to nurture academic skills alongside extra-curricular and after-school programs that inspire curiosity, creativity, and leadership. By fostering a love for Rwanda’s rich cultural heritage and integrating learning with hands-on community engagement and sustainable tourism initiatives, we empower children to become future leaders, cultural ambassadors, and stewards of the environment. Our programs also support local families, creating opportunities for communities to thrive together, making education a catalyst for lasting social, cultural, and environmental impact.', '2025-08-27 09:56:22'),
+(3, 'Our Program', 'Our programs are designed to provide children with a well-rounded learning experience that goes beyond traditional academics. We offer quality classroom education, supplemented by engaging extra-curricular activities and after-school clubs that encourage creativity, critical thinking, and teamwork. Students participate in cultural workshops, storytelling sessions, traditional dance, and music, helping them connect deeply with Rwanda’s heritage. Environmental education is a key part of our curriculum, with nature walks, tree planting, and eco-clubs fostering a love and respect for the environment. We also involve children in community projects, allowing them to develop leadership skills while contributing positively to the lives of local families. Through these programs, we aim to create confident, culturally aware, and socially responsible young individuals ready to make a lasting impact on their communities.', '2025-08-27 09:56:56'),
+(4, 'Take Action', 'Your support can transform lives. Spread the word, participate in our initiatives, or contribute to our programs to help children thrive and communities flourish. Every action counts—together, we can empower the next generation, preserve culture, and create lasting positive change.', '2025-08-27 09:57:30');
 
 -- --------------------------------------------------------
 
@@ -1948,10 +2289,10 @@ CREATE TABLE `program_card_gallery` (
 --
 
 CREATE TABLE `styleguide_cards` (
-  `card_id` int NOT NULL,
+  `card_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `thumbnail_image` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1979,12 +2320,12 @@ INSERT INTO `styleguide_cards` (`card_id`, `title`, `thumbnail_image`, `created_
 --
 
 CREATE TABLE `styleguide_content` (
-  `content_id` int NOT NULL,
-  `card_id` int NOT NULL,
+  `content_id` int(11) NOT NULL,
+  `card_id` int(11) NOT NULL,
   `hero_image` varchar(255) DEFAULT NULL,
-  `intro_text` text,
-  `main_content` text,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `intro_text` text DEFAULT NULL,
+  `main_content` text DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2012,10 +2353,10 @@ INSERT INTO `styleguide_content` (`content_id`, `card_id`, `hero_image`, `intro_
 --
 
 CREATE TABLE `subscribers` (
-  `id` int NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `status` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2134,15 +2475,39 @@ INSERT INTO `subscribers` (`id`, `email`, `status`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `teaching_programs`
+--
+
+CREATE TABLE `teaching_programs` (
+  `id` int(11) NOT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `features` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `teaching_programs`
+--
+
+INSERT INTO `teaching_programs` (`id`, `page_id`, `image`, `title`, `description`, `features`) VALUES
+(1, 1, 'uploads/impact/IMG-20250814-WA0054.jpg', 'Traditional Cooking', 'Learn authentic Rwandan cuisine using traditional cooking methods and clay pots. Our cooking classes preserve culinary heritage while teaching practical skills for hospitality and entrepreneurship.', 'Traditional recipe preservation,Clay pot cooking techniques,Food presentation and service,Culinary entrepreneurship'),
+(2, 1, 'uploads/impact/IMG-20250820-WA0095.jpg', 'Tourism & Guiding', 'Develop skills in tourism and cultural guiding to share our rich heritage with visitors. Learn storytelling, cultural interpretation, and sustainable tourism practices.', 'Cultural storytelling techniques,Heritage site interpretation,Sustainable tourism practices,Language and communication skills'),
+(3, 1, 'uploads/impact/2022.01_Malaika02.jpg', 'Traditional Handicrafts', 'Master traditional handicraft techniques including basket weaving, pottery, textile work, and Imigongo art. These skills provide both cultural preservation and economic opportunities.', 'Basket weaving and pottery,Traditional textile techniques,Imigongo art creation,Product design and marketing');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `testimonial_content`
 --
 
 CREATE TABLE `testimonial_content` (
-  `id` int NOT NULL,
-  `subtitle` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `text` text COLLATE utf8mb4_general_ci,
-  `image_link` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `subtitle` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `image_link` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2159,16 +2524,16 @@ INSERT INTO `testimonial_content` (`id`, `subtitle`, `title`, `text`, `image_lin
 --
 
 CREATE TABLE `tours` (
-  `tour_id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `category` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `country` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `days_count` int NOT NULL,
-  `cover_image_path` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `short_description` text COLLATE utf8mb4_general_ci NOT NULL,
-  `why_attend` text COLLATE utf8mb4_general_ci,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tour_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `days_count` int(11) NOT NULL,
+  `cover_image_path` varchar(255) DEFAULT NULL,
+  `short_description` text NOT NULL,
+  `why_attend` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2234,18 +2599,19 @@ INSERT INTO `tours` (`tour_id`, `title`, `category`, `country`, `days_count`, `c
 --
 
 CREATE TABLE `tour_bookings` (
-  `booking_id` int NOT NULL,
-  `tour_id` int NOT NULL COMMENT 'References tours.tour_id',
-  `full_name` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `phone` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL COMMENT 'References tours.tour_id',
+  `full_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `travel_date` date NOT NULL,
-  `message` text COLLATE utf8mb4_general_ci,
-  `ip_address` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `status` enum('pending','confirmed','cancelled') COLLATE utf8mb4_general_ci DEFAULT 'pending',
-  `admin_notes` text COLLATE utf8mb4_general_ci,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `message` text DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `status` enum('pending','confirmed','cancelled') DEFAULT 'pending',
+  `admin_notes` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `emailed` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -2255,11 +2621,11 @@ CREATE TABLE `tour_bookings` (
 --
 
 CREATE TABLE `tour_days` (
-  `day_id` int NOT NULL,
-  `tour_id` int NOT NULL,
-  `day_number` int NOT NULL,
-  `day_title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `day_description` text COLLATE utf8mb4_general_ci NOT NULL
+  `day_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL,
+  `day_number` int(11) NOT NULL,
+  `day_title` varchar(255) NOT NULL,
+  `day_description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2419,9 +2785,9 @@ INSERT INTO `tour_days` (`day_id`, `tour_id`, `day_number`, `day_title`, `day_de
 --
 
 CREATE TABLE `tour_excluded` (
-  `excluded_id` int NOT NULL,
-  `tour_id` int NOT NULL,
-  `item_description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `excluded_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL,
+  `item_description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2621,10 +2987,10 @@ INSERT INTO `tour_excluded` (`excluded_id`, `tour_id`, `item_description`) VALUE
 --
 
 CREATE TABLE `tour_highlights` (
-  `highlight_id` int NOT NULL,
-  `tour_id` int NOT NULL,
-  `image_path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `display_order` int NOT NULL
+  `highlight_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL,
+  `image_path` varchar(255) NOT NULL,
+  `display_order` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -2832,9 +3198,9 @@ INSERT INTO `tour_highlights` (`highlight_id`, `tour_id`, `image_path`, `display
 --
 
 CREATE TABLE `tour_included` (
-  `included_id` int NOT NULL,
-  `tour_id` int NOT NULL,
-  `item_description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `included_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL,
+  `item_description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -3146,9 +3512,9 @@ INSERT INTO `tour_included` (`included_id`, `tour_id`, `item_description`) VALUE
 --
 
 CREATE TABLE `tour_to_bring` (
-  `to_bring_id` int NOT NULL,
-  `tour_id` int NOT NULL,
-  `item_description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `to_bring_id` int(11) NOT NULL,
+  `tour_id` int(11) NOT NULL,
+  `item_description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -3399,13 +3765,13 @@ INSERT INTO `tour_to_bring` (`to_bring_id`, `tour_id`, `item_description`) VALUE
 --
 
 CREATE TABLE `travel_destinations` (
-  `id` int NOT NULL,
-  `month` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` text COLLATE utf8mb4_general_ci NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `month` varchar(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -3457,26 +3823,44 @@ INSERT INTO `travel_destinations` (`id`, `month`, `name`, `description`, `image_
 --
 
 CREATE TABLE `travel_guides` (
-  `guide_id` int NOT NULL,
-  `country_code` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `intro_text_1` text COLLATE utf8mb4_general_ci NOT NULL,
-  `intro_text_2` text COLLATE utf8mb4_general_ci NOT NULL,
-  `welcome_title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `welcome_text_1` text COLLATE utf8mb4_general_ci NOT NULL,
-  `welcome_text_2` text COLLATE utf8mb4_general_ci NOT NULL,
-  `pre_planning_text` text COLLATE utf8mb4_general_ci NOT NULL,
-  `assistance_text` text COLLATE utf8mb4_general_ci NOT NULL,
-  `understanding_title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `understanding_text_1` text COLLATE utf8mb4_general_ci NOT NULL,
-  `understanding_text_2` text COLLATE utf8mb4_general_ci NOT NULL,
-  `featured_image_url` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `meta_description` text COLLATE utf8mb4_general_ci,
-  `meta_keywords` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `guide_id` int(11) NOT NULL,
+  `country_code` varchar(10) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `intro_text_1` text NOT NULL,
+  `intro_text_2` text NOT NULL,
+  `welcome_title` varchar(255) NOT NULL,
+  `welcome_text_1` text NOT NULL,
+  `welcome_text_2` text NOT NULL,
+  `pre_planning_text` text NOT NULL,
+  `assistance_text` text NOT NULL,
+  `understanding_title` varchar(255) NOT NULL,
+  `understanding_text_1` text NOT NULL,
+  `understanding_text_2` text NOT NULL,
+  `featured_image_url` varchar(255) NOT NULL,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `volunteer_page`
+--
+
+CREATE TABLE `volunteer_page` (
+  `id` int(11) NOT NULL,
+  `page_description` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `volunteer_page`
+--
+
+INSERT INTO `volunteer_page` (`id`, `page_description`) VALUES
+(1, 'There’s a Virunga Ecotours Community Program volunteering opportunity for everyone. All are welcome to work together; a simple help changes lives of those in need.');
 
 --
 -- Indexes for dumped tables
@@ -3567,6 +3951,13 @@ ALTER TABLE `admin_activity_logs`
   ADD PRIMARY KEY (`log_id`),
   ADD KEY `activity_admin_index` (`admin_id`),
   ADD KEY `activity_date_index` (`created_at`);
+
+--
+-- Indexes for table `approach_cards`
+--
+ALTER TABLE `approach_cards`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
 
 --
 -- Indexes for table `attraction_details`
@@ -3663,6 +4054,12 @@ ALTER TABLE `build_submissions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `community_activities`
+--
+ALTER TABLE `community_activities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `community_admins`
 --
 ALTER TABLE `community_admins`
@@ -3737,6 +4134,13 @@ ALTER TABLE `destinations`
   ADD PRIMARY KEY (`destination_id`);
 
 --
+-- Indexes for table `empowerment_programs`
+--
+ALTER TABLE `empowerment_programs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
+
+--
 -- Indexes for table `faqs`
 --
 ALTER TABLE `faqs`
@@ -3805,6 +4209,53 @@ ALTER TABLE `home_under_hero_cards`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `impact_cards`
+--
+ALTER TABLE `impact_cards`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
+
+--
+-- Indexes for table `impact_gallery`
+--
+ALTER TABLE `impact_gallery`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
+
+--
+-- Indexes for table `impact_page`
+--
+ALTER TABLE `impact_page`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inclusive_cta`
+--
+ALTER TABLE `inclusive_cta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
+
+--
+-- Indexes for table `inclusive_page`
+--
+ALTER TABLE `inclusive_page`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inclusive_stats`
+--
+ALTER TABLE `inclusive_stats`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
+
+--
+-- Indexes for table `involved_cards`
+--
+ALTER TABLE `involved_cards`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
+
+--
 -- Indexes for table `privacy_audit_log`
 --
 ALTER TABLE `privacy_audit_log`
@@ -3864,6 +4315,18 @@ ALTER TABLE `program_card_gallery`
   ADD KEY `program_card_id` (`program_card_id`);
 
 --
+-- Indexes for table `school_dynamic_sections`
+--
+ALTER TABLE `school_dynamic_sections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `school_static_sections`
+--
+ALTER TABLE `school_static_sections`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `styleguide_cards`
 --
 ALTER TABLE `styleguide_cards`
@@ -3885,6 +4348,13 @@ ALTER TABLE `subscribers`
   ADD UNIQUE KEY `idx_email` (`email`),
   ADD KEY `email_2` (`email`),
   ADD KEY `created_at` (`created_at`);
+
+--
+-- Indexes for table `teaching_programs`
+--
+ALTER TABLE `teaching_programs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `page_id` (`page_id`);
 
 --
 -- Indexes for table `testimonial_content`
@@ -3953,6 +4423,12 @@ ALTER TABLE `travel_guides`
   ADD PRIMARY KEY (`guide_id`);
 
 --
+-- Indexes for table `volunteer_page`
+--
+ALTER TABLE `volunteer_page`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -3960,403 +4436,487 @@ ALTER TABLE `travel_guides`
 -- AUTO_INCREMENT for table `about_cta`
 --
 ALTER TABLE `about_cta`
-  MODIFY `cta_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_gallery`
 --
 ALTER TABLE `about_gallery`
-  MODIFY `gallery_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `gallery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `about_gallery_section`
 --
 ALTER TABLE `about_gallery_section`
-  MODIFY `section_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_hero`
 --
 ALTER TABLE `about_hero`
-  MODIFY `hero_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `hero_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_impact`
 --
 ALTER TABLE `about_impact`
-  MODIFY `impact_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `impact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_impact_stats`
 --
 ALTER TABLE `about_impact_stats`
-  MODIFY `stat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `about_story`
 --
 ALTER TABLE `about_story`
-  MODIFY `story_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `story_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_team_members`
 --
 ALTER TABLE `about_team_members`
-  MODIFY `member_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `about_team_section`
 --
 ALTER TABLE `about_team_section`
-  MODIFY `section_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `about_values`
 --
 ALTER TABLE `about_values`
-  MODIFY `value_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `about_values_section`
 --
 ALTER TABLE `about_values_section`
-  MODIFY `section_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin_activity_logs`
 --
 ALTER TABLE `admin_activity_logs`
-  MODIFY `log_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=335;
+
+--
+-- AUTO_INCREMENT for table `approach_cards`
+--
+ALTER TABLE `approach_cards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `attraction_details`
 --
 ALTER TABLE `attraction_details`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `attraction_gallery`
 --
 ALTER TABLE `attraction_gallery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `blog_categories`
 --
 ALTER TABLE `blog_categories`
-  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `blog_comments`
 --
 ALTER TABLE `blog_comments`
-  MODIFY `comment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `blog_content_blocks`
 --
 ALTER TABLE `blog_content_blocks`
-  MODIFY `block_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `blog_gallery_images`
 --
 ALTER TABLE `blog_gallery_images`
-  MODIFY `gallery_image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `gallery_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `blog_image_blocks`
 --
 ALTER TABLE `blog_image_blocks`
-  MODIFY `image_block_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `image_block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `blog_list_blocks`
 --
 ALTER TABLE `blog_list_blocks`
-  MODIFY `list_block_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `list_block_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `blog_list_items`
 --
 ALTER TABLE `blog_list_items`
-  MODIFY `item_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `blog_posts`
 --
 ALTER TABLE `blog_posts`
-  MODIFY `blog_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `blog_quote_blocks`
 --
 ALTER TABLE `blog_quote_blocks`
-  MODIFY `quote_block_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `quote_block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `blog_text_blocks`
 --
 ALTER TABLE `blog_text_blocks`
-  MODIFY `text_block_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `text_block_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `build_submissions`
 --
 ALTER TABLE `build_submissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `community_activities`
+--
+ALTER TABLE `community_activities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `community_admins`
 --
 ALTER TABLE `community_admins`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `community_categories`
 --
 ALTER TABLE `community_categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `community_messages`
 --
 ALTER TABLE `community_messages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `community_programs`
 --
 ALTER TABLE `community_programs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `community_team`
 --
 ALTER TABLE `community_team`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `community_testimonials`
 --
 ALTER TABLE `community_testimonials`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contact_submissions`
 --
 ALTER TABLE `contact_submissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `content_section`
 --
 ALTER TABLE `content_section`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `destinations`
 --
 ALTER TABLE `destinations`
-  MODIFY `destination_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `destination_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `empowerment_programs`
+--
+ALTER TABLE `empowerment_programs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `faqs`
 --
 ALTER TABLE `faqs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `gallery_items`
 --
 ALTER TABLE `gallery_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `guide_list_items`
 --
 ALTER TABLE `guide_list_items`
-  MODIFY `list_item_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `list_item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `guide_sections`
 --
 ALTER TABLE `guide_sections`
-  MODIFY `section_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hero`
 --
 ALTER TABLE `hero`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `home_about`
 --
 ALTER TABLE `home_about`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `home_attractions`
 --
 ALTER TABLE `home_attractions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `home_destinations`
 --
 ALTER TABLE `home_destinations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `home_hero`
 --
 ALTER TABLE `home_hero`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `home_partners`
 --
 ALTER TABLE `home_partners`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `home_under_hero_cards`
 --
 ALTER TABLE `home_under_hero_cards`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `impact_cards`
+--
+ALTER TABLE `impact_cards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `impact_gallery`
+--
+ALTER TABLE `impact_gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `impact_page`
+--
+ALTER TABLE `impact_page`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `inclusive_cta`
+--
+ALTER TABLE `inclusive_cta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `inclusive_page`
+--
+ALTER TABLE `inclusive_page`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `inclusive_stats`
+--
+ALTER TABLE `inclusive_stats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `involved_cards`
+--
+ALTER TABLE `involved_cards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `privacy_audit_log`
 --
 ALTER TABLE `privacy_audit_log`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `privacy_policy`
 --
 ALTER TABLE `privacy_policy`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `privacy_requests`
 --
 ALTER TABLE `privacy_requests`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `privacy_settings`
 --
 ALTER TABLE `privacy_settings`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `program_card`
 --
 ALTER TABLE `program_card`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `program_card_content`
 --
 ALTER TABLE `program_card_content`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `program_card_gallery`
 --
 ALTER TABLE `program_card_gallery`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `school_dynamic_sections`
+--
+ALTER TABLE `school_dynamic_sections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `school_static_sections`
+--
+ALTER TABLE `school_static_sections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `styleguide_cards`
 --
 ALTER TABLE `styleguide_cards`
-  MODIFY `card_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `card_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `styleguide_content`
 --
 ALTER TABLE `styleguide_content`
-  MODIFY `content_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+
+--
+-- AUTO_INCREMENT for table `teaching_programs`
+--
+ALTER TABLE `teaching_programs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `testimonial_content`
 --
 ALTER TABLE `testimonial_content`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tours`
 --
 ALTER TABLE `tours`
-  MODIFY `tour_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `tour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `booking_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tour_days`
 --
 ALTER TABLE `tour_days`
-  MODIFY `day_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=793;
+  MODIFY `day_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=793;
 
 --
 -- AUTO_INCREMENT for table `tour_excluded`
 --
 ALTER TABLE `tour_excluded`
-  MODIFY `excluded_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=881;
+  MODIFY `excluded_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=881;
 
 --
 -- AUTO_INCREMENT for table `tour_highlights`
 --
 ALTER TABLE `tour_highlights`
-  MODIFY `highlight_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
+  MODIFY `highlight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
 
 --
 -- AUTO_INCREMENT for table `tour_included`
 --
 ALTER TABLE `tour_included`
-  MODIFY `included_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1323;
+  MODIFY `included_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1323;
 
 --
 -- AUTO_INCREMENT for table `tour_to_bring`
 --
 ALTER TABLE `tour_to_bring`
-  MODIFY `to_bring_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1286;
+  MODIFY `to_bring_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1286;
 
 --
 -- AUTO_INCREMENT for table `travel_destinations`
 --
 ALTER TABLE `travel_destinations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `travel_guides`
 --
 ALTER TABLE `travel_guides`
-  MODIFY `guide_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `guide_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `volunteer_page`
+--
+ALTER TABLE `volunteer_page`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -4391,6 +4951,12 @@ ALTER TABLE `about_values`
 --
 ALTER TABLE `admin_activity_logs`
   ADD CONSTRAINT `admin_activity_logs_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`admin_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `approach_cards`
+--
+ALTER TABLE `approach_cards`
+  ADD CONSTRAINT `approach_cards_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `inclusive_page` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `attraction_details`
@@ -4467,6 +5033,12 @@ ALTER TABLE `community_testimonials`
   ADD CONSTRAINT `community_testimonials_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `community_programs` (`id`) ON DELETE SET NULL;
 
 --
+-- Constraints for table `empowerment_programs`
+--
+ALTER TABLE `empowerment_programs`
+  ADD CONSTRAINT `empowerment_programs_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `volunteer_page` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `guide_list_items`
 --
 ALTER TABLE `guide_list_items`
@@ -4477,6 +5049,36 @@ ALTER TABLE `guide_list_items`
 --
 ALTER TABLE `guide_sections`
   ADD CONSTRAINT `guide_sections_ibfk_1` FOREIGN KEY (`guide_id`) REFERENCES `travel_guides` (`guide_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `impact_cards`
+--
+ALTER TABLE `impact_cards`
+  ADD CONSTRAINT `impact_cards_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `impact_page` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `impact_gallery`
+--
+ALTER TABLE `impact_gallery`
+  ADD CONSTRAINT `impact_gallery_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `impact_page` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `inclusive_cta`
+--
+ALTER TABLE `inclusive_cta`
+  ADD CONSTRAINT `inclusive_cta_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `inclusive_page` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `inclusive_stats`
+--
+ALTER TABLE `inclusive_stats`
+  ADD CONSTRAINT `inclusive_stats_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `inclusive_page` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `involved_cards`
+--
+ALTER TABLE `involved_cards`
+  ADD CONSTRAINT `involved_cards_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `volunteer_page` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `program_card_content`
@@ -4495,6 +5097,12 @@ ALTER TABLE `program_card_gallery`
 --
 ALTER TABLE `styleguide_content`
   ADD CONSTRAINT `styleguide_content_ibfk_1` FOREIGN KEY (`card_id`) REFERENCES `styleguide_cards` (`card_id`);
+
+--
+-- Constraints for table `teaching_programs`
+--
+ALTER TABLE `teaching_programs`
+  ADD CONSTRAINT `teaching_programs_ibfk_1` FOREIGN KEY (`page_id`) REFERENCES `impact_page` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tour_bookings`

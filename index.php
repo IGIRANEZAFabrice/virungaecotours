@@ -12,8 +12,8 @@ require_once 'indexhandler.php';
 <meta name="keywords" content="Rwanda gorilla trekking, community tourism Rwanda, Virunga Massif tours, authentic Rwanda experiences, sustainable ecotourism, mountain gorilla adventures, cultural tourism Rwanda">
 
 <!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Authentic Virunga Journeys | Rwanda Community Tourism">
-<meta property="og:description" content="Discover Rwanda's hidden treasures through community-based tourism. Mountain gorilla trekking, cultural experiences, and spiritual journeys in the Virunga Massif.">
+<meta property="og:title" content="Virunga Ecotours Authentic Virunga Journeys | Rwanda Community Tourism">
+<meta property="og:description" content="Virunga Ecotours Discover Rwanda's hidden treasures through community-based tourism. Mountain gorilla trekking, cultural experiences, and spiritual journeys in the Virunga Massif.">
 <meta property="og:image" content="https://yourwebsite.com/images/virunga-gorillas-hero.jpg">
 <meta property="og:url" content="https://yourwebsite.com">
 <meta property="og:type" content="website">
@@ -47,6 +47,7 @@ require_once 'indexhandler.php';
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/new.css" />
+    <link rel="stylesheet" href="css/kids.css" />
      <style>
       .section-subtitle {
         text-align: justify; max-width: 700px; margin: 0 auto 40px; color: #666; line-height: 1.6;
@@ -257,11 +258,31 @@ require_once 'indexhandler.php';
             <!--    <li><span class="legend-dot border"></span> Country Borders</li>-->
             <!--    <li><span class="legend-dot gorilla"></span> Gorilla Habitats</li>-->
             <!--  </ul>-->
-            <!--</div>-->
+            <!--</div>-->z
           </div>
         </div>
       </section>
-      
+      <div class="parallax-section">
+        <div class="content-container">
+            <h2 class="section-title">Bridging the Gap for Young Explorers</h2>
+            <p>Virunga Ecotours bridges the gap created by age restrictions in Volcanoes National Park by offering safe, engaging, and educational opportunities for children under 13 and 15 years old. While parents explore the gorillas and golden monkeys, kids embark on tailored programs that spark creativity, build cultural awareness, and inspire curiosity about nature.</p>
+            
+            <p>These experiences ensure that family travel is inclusive, meaningful, and enriching for every member. Children are not only entertained but also guided through structured activities that combine fun with learning—ranging from games and arts to conservation-inspired discovery. Parents enjoy their park adventures with peace of mind, knowing their children are equally immersed in purposeful exploration.</p>
+            <p>Our Kids’ and Teens’ program offers fun, educational activities like storytelling, art, music, conservation learning, and cultural exploration. Through games, creative projects, traditional dances, eco-trails, success stories, and visits to places like Buhanga Eco Park and Mpanga Wetland, young participants build imagination, teamwork, confidence, and environmental awareness while staying connected to local culture and nature.</p>
+            <a href="./pages/kids.php" class="enquire-btn">
+              Learn More
+              <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="parallax-image">
+            <div class="image-overlay">
+                <h3>Young Explorers Program</h3>
+                <p>Creating unforgettable memories while parents discover Rwanda's wildlife treasures</p>
+            </div>
+        </div>
+    </div>
+
       <!-- Destinations Section -->
       <section class="destinations-section" style="margin-bottom: -1.5rem;">
         <div class="container">
@@ -335,8 +356,7 @@ require_once 'indexhandler.php';
         </div>
       </section>
 
-      
-
+       
       <!-- Tailor-made Banner -->
       <section class="tailor-made-banner">
         <div class="container">
@@ -690,15 +710,16 @@ require_once 'indexhandler.php';
         </div>
       </section>
      
-
+<?php include 'includes/footer.php'; ?>
     </main>
 
-  <?php include 'includes/footer.php'; ?>
+  
   <script src="js/script.js" defer></script>
  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="js/new.js" defer></script>
   <script src="js/last.js" defer></script>
+  <script src="js/kids.js" defer></script>
   </body>
 </html>

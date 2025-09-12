@@ -89,6 +89,56 @@ $countries = ['rwanda', 'uganda', 'congo'];
         </div>
     </section>
 
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>Community-Based Tourism Integration</h2>
+                    <p>Virunga Ecotours integrates community-based activities into tourism by linking travel experiences with local development priorities around the Virunga Massif. In education, tourists are connected with schools through visits, exchanges, and support for learning initiatives, turning tourism into a tool for knowledge sharing and encouragement of youth.</p>
+
+                    <p>Health is addressed by engaging visitors with community health practices, creating opportunities to learn about local challenges while contributing to improved well-being through awareness or small-scale support. Conservation is woven into the experience through ecological walks, tree planting, and storytelling about the region's biodiversity, highlighting how tourism sustains the natural environment.</p>
+
+                    <p>Women empowerment is advanced by partnering with local cooperatives and artisans, giving travelers the chance to interact with women leaders, share in cultural traditions, and contribute to their economic independence. This integration allows tourism to function as both an enriching visitor experience and a driver of community progress.</p>
+                </div>
+
+                <div class="intro-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Education</h3>
+                        <p>School visits, exchanges, and learning initiatives that connect tourists with youth development</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Health</h3>
+                        <p>Community health practices and awareness programs that improve local well-being</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Conservation</h3>
+                        <p>Ecological walks, tree planting, and biodiversity storytelling that sustains the environment</p>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-female"></i>
+                        </div>
+                        <h3>Women Empowerment</h3>
+                        <p>Partnerships with cooperatives and artisans that promote economic independence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Filters Section -->
     <section class="filters-section">
         <div class="container">

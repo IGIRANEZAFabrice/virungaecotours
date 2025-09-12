@@ -1,5 +1,138 @@
 /* Programs Page Specific Styles */
 
+/* Introduction Section */
+.intro-section {
+    padding: 4rem 0;
+    background: white;
+    border-bottom: 1px solid var(--neutral-beige);
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.intro-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.highlight-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--neutral-light);
+    border-radius: 15px;
+    border: 1px solid var(--neutral-beige);
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(42, 72, 88, 0.1);
+    border-color: var(--primary-green);
+}
+
+.highlight-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-sage) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover .highlight-icon {
+    transform: scale(1.1);
+}
+
+.highlight-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.highlight-item h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.highlight-item p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Mobile Responsive for Introduction */
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 3rem 0;
+    }
+
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .intro-text h2 {
+        font-size: 2rem;
+    }
+
+    .intro-text p {
+        font-size: 1rem;
+    }
+
+    .intro-highlights {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .highlight-item {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .highlight-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .highlight-icon i {
+        font-size: 1.2rem;
+    }
+}
+
 /* Page Header */
 .page-header {
     position: relative;

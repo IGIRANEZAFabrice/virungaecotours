@@ -274,7 +274,7 @@
                 
                 <div class="rules-country" data-searchable="uganda bwindi mgahinga queen elizabeth permits guides wildlife">
                     <h4><i class="fas fa-map-marker-alt fa-icon"></i>Uganda National Parks</h4>
-                    <p style="margin-bottom: 1rem; color: var(--neutral-beige);">Bwindi Impenetrable, Mgahinga, Queen Elizabeth</p>
+                    <p style="margin-bottom: 1rem;">Bwindi Impenetrable, Mgahinga, Queen Elizabeth</p>
                     
                     <div class="rules-category">
                         <h5><i class="fas fa-ticket-alt fa-icon"></i>Permits and Entry</h5>
@@ -319,7 +319,7 @@
 
                 <div class="rules-country" data-searchable="rwanda volcanoes nyungwe akagera permits rangers wildlife">
                     <h4><i class="fas fa-map-marker-alt fa-icon"></i>Rwanda National Parks</h4>
-                    <p style="margin-bottom: 1rem; color: var(--neutral-beige);">Volcanoes NP, Nyungwe NP, Akagera NP</p>
+                    <p style="margin-bottom: 1rem;">Volcanoes NP, Nyungwe NP, Akagera NP</p>
                     
                     <div class="rules-category">
                         <h5><i class="fas fa-ticket-alt fa-icon"></i>Permits and Entry</h5>
@@ -372,7 +372,7 @@
 
                 <div class="rules-country" data-searchable="drc congo virunga kahuzi-biega permits rangers wildlife">
                     <h4><i class="fas fa-map-marker-alt fa-icon"></i>DRC National Parks</h4>
-                    <p style="margin-bottom: 1rem; color: var(--neutral-beige);">Virunga NP, Kahuzi-Biega NP</p>
+                    <p style="margin-bottom: 1rem;">Virunga NP, Kahuzi-Biega NP</p>
                     
                     <div class="rules-category">
                         <h5><i class="fas fa-ticket-alt fa-icon"></i>Permits and Entry</h5>
@@ -425,7 +425,7 @@
 
                 <div class="shared-rules" data-searchable="shared rules uganda rwanda drc permits guides wildlife environmental protection">
                     <h4><i class="fas fa-globe-africa fa-icon"></i>Shared Rules Across Uganda, Rwanda, and DRC</h4>
-                    <ol style="list-style: decimal; padding-left: 2rem; color: #000;">
+                    <ol style="list-style: decimal; padding-left: 2rem; color: #000000;">
                         <li><strong>Permits:</strong> Mandatory for entry and all specialized wildlife activities</li>
                         <li><strong>Guided Visits:</strong> Required for all treks and wildlife encounters</li>
                         <li><strong>Wildlife Interaction:</strong> Maintain safe distances; feeding, touching, or harassment prohibited</li>

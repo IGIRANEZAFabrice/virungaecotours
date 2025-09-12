@@ -130,19 +130,19 @@
                                         </div>
                                         <div class="dropdown-section">
                                             <h4>By Category</h4>
-                                            <a href="programs.php?category=Education" class="dropdown-link">
+                                            <a href="education.php" class="dropdown-link">
                                                 <i class="fas fa-graduation-cap"></i>
                                                 Education
                                             </a>
-                                            <a href="programs.php?category=Health" class="dropdown-link">
+                                            <a href="health.php" class="dropdown-link">
                                                 <i class="fas fa-heartbeat"></i>
                                                 Health
                                             </a>
-                                            <a href="programs.php?category=Conservation" class="dropdown-link">
+                                            <a href="conservation.php" class="dropdown-link">
                                                 <i class="fas fa-leaf"></i>
                                                 Conservation
                                             </a>
-                                            <a href="programs.php?category=Women Empowerment" class="dropdown-link">
+                                            <a href="women.php" class="dropdown-link">
                                                 <i class="fas fa-female"></i>
                                                 Women Empowerment
                                             </a>

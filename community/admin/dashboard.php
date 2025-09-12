@@ -340,6 +340,7 @@ $recent_messages_result = mysqli_query($conn, $recent_messages_query);
                     top: 0;
                     z-index: 100;
                     border-bottom: 1px solid var(--neutral-beige);
+                    margin-left: 280px; /* keep topbar aligned with fixed sidebar */
                 }
 
                 .top-bar-left {
@@ -618,6 +619,7 @@ $recent_messages_result = mysqli_query($conn, $recent_messages_query);
                     
                     .top-bar {
                         padding: 1rem;
+                        margin-left: 0; /* sidebar collapses on mobile */
                     }
                     
                     .user-details {

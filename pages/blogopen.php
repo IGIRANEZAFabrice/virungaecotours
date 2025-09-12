@@ -76,6 +76,11 @@ $suggestion_stmt->close();
     <link rel="stylesheet" href="../css/earthy-theme.css" />
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/blogopen.css" />
+    <link
+      rel="shortcut icon"
+      href="../images/logos/icon.png"
+      type="image/x-icon"
+    />
     <script src="../js/header.js"></script>
     <style>
         .content-paragraph div {

@@ -1,0 +1,138 @@
+
+        .parallax-section {
+            position: relative;
+            display: flex;
+            min-height: 100vh;
+            overflow: hidden;
+            
+        }
+
+        .content-container {
+            flex: 1;
+            padding: var(--spacing-xl) 60px;
+          
+            z-index: 2;
+            position: relative;
+            max-width: 50%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #8b7355;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .content-container p {
+            font-size: 1.1rem;
+            color: #5d4e41;
+            margin-bottom: 25px;
+            text-align: justify;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .content-container p:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .content-container p:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .parallax-image {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100vh;
+            background: url('../images/kids/hero/IMG-20250814-WA0043.jpg') center center/cover no-repeat;
+            z-index: 1;
+            transition: transform 0.1s ease-out;
+        }
+
+        .parallax-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #8b7355 30%, #967259 10%);
+            opacity: 0.4;
+            z-index: 2;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            z-index: 3;
+            color: #f6f4f0;
+            max-width: 300px;
+        }
+
+        .image-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: #f6f4f0;
+        }
+
+        .image-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            color: #f6f4f0;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .parallax-section {
+                flex-direction: column;
+            }
+            
+            .content-container {
+                max-width: 100%;
+                padding: 60px 40px;
+            }
+            
+            .parallax-image {
+                position: relative;
+                width: 100%;
+                height: 50vh;
+                order: -1;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-container p {
+                font-size: 1rem;
+            }
+            
+            .image-overlay {
+                bottom: var(--spacing-md);
+                left: var(--spacing-md);
+            }
+        }

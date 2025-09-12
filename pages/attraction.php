@@ -48,6 +48,46 @@ function cleanImagePath($path) {
 // Format activities as array
 $activities = !empty($attraction['activities']) ? explode(',', $attraction['activities']) : [];
 
+// Search for related itineraries/tours based on attraction title
+$related_tours = [];
+if (!empty($attraction['title'])) {
+    // Extract keywords from attraction title (remove common words and get main keywords)
+    $title_words = explode(' ', strtolower($attraction['title']));
+    $keywords = array_filter($title_words, function($word) {
+        $common_words = ['the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'national', 'park'];
+        return strlen($word) > 3 && !in_array($word, $common_words);
+    });
+
+    if (!empty($keywords)) {
+        // Build search query for tours containing any of the keywords
+        $search_conditions = [];
+        $search_params = [];
+
+        foreach ($keywords as $keyword) {
+            $search_conditions[] = "LOWER(title) LIKE ?";
+            $search_params[] = '%' . $keyword . '%';
+        }
+
+        if (!empty($search_conditions)) {
+            $tours_query = "SELECT tour_id, title, short_description, cover_image_path, category, country, days_count
+                           FROM tours
+                           WHERE " . implode(' OR ', $search_conditions) . "
+                           ORDER BY created_at DESC
+                           LIMIT 6";
+
+            try {
+                require_once('../admin/config/database.php');
+                $tours_stmt = $pdo->prepare($tours_query);
+                $tours_stmt->execute($search_params);
+                $related_tours = $tours_stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (Exception $e) {
+                // If there's an error, just continue without related tours
+                error_log("Error fetching related tours: " . $e->getMessage());
+            }
+        }
+    }
+}
+
 // Page title
 $page_title = $attraction['title'] . ' - Virunga Ecotours';
 ?>
@@ -59,7 +99,10 @@ $page_title = $attraction['title'] . ' - Virunga Ecotours';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($page_title); ?></title>
     <link rel="shortcut icon" href="../images/logos/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="../css/earthy-theme.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/attraction.css">
@@ -136,6 +179,47 @@ $page_title = $attraction['title'] . ' - Virunga Ecotours';
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
+            </section>
+            <?php endif; ?>
+
+            <!-- Related Itineraries Section -->
+            <?php if (!empty($related_tours)): ?>
+            <section class="related-itineraries-section">
+                <h2>Related Itineraries</h2>
+                <p class="section-description">Discover our carefully crafted tours that feature <?php echo htmlspecialchars($attraction['title']); ?></p>
+                <div class="itineraries-grid">
+                    <?php foreach ($related_tours as $tour): ?>
+                        <div class="itinerary-card">
+                            <div class="itinerary-image">
+                                <?php if (!empty($tour['cover_image_path'])): ?>
+                                    <img src="../<?php echo htmlspecialchars($tour['cover_image_path']); ?>" alt="<?php echo htmlspecialchars($tour['title']); ?>">
+                                <?php else: ?>
+                                    <div class="placeholder-image">
+                                        <i class="fas fa-mountain"></i>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="itinerary-badge">
+                                    <span class="days-count"><?php echo htmlspecialchars($tour['days_count']); ?> Days</span>
+                                </div>
+                            </div>
+                            <div class="itinerary-content">
+                                <div class="itinerary-meta">
+                                    <span class="category"><?php echo htmlspecialchars($tour['category']); ?></span>
+                                </div>
+                                <h3><?php echo htmlspecialchars($tour['title']); ?></h3>
+                                <?php if (!empty($tour['short_description'])): ?>
+                                    <p class="itinerary-description"><?php echo htmlspecialchars(substr($tour['short_description'], 0, 120)) . (strlen($tour['short_description']) > 120 ? '...' : ''); ?></p>
+                                <?php endif; ?>
+                                <div class="itinerary-actions">
+                                    <a href="../pages/itenaryopen.php?id=<?php echo $tour['tour_id']; ?>" class="view-tour-btn">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                
             </section>
             <?php endif; ?>
 

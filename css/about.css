@@ -211,6 +211,186 @@ p {
   margin: 0 auto 60px;
 }
 
+/* Team Introduction Styles */
+.team-introduction {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--neutral-beige);
+}
+
+.team-intro-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-intro-text {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.team-intro-text h3 {
+  font-size: 2rem;
+  color: var(--primary-green);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.team-intro-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-composition {
+  margin-bottom: 3rem;
+}
+
+.team-composition h4 {
+  font-size: 1.6rem;
+  color: var(--primary-brown);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.team-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.role-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--neutral-cream);
+  border-radius: 15px;
+  border-left: 4px solid var(--accent-terracotta);
+  transition: all 0.3s ease;
+}
+
+.role-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.role-icon {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-sage) 100%);
+  color: var(--white);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.role-content h5 {
+  font-size: 1.2rem;
+  color: var(--primary-brown);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.role-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-medium);
+  margin: 0;
+}
+
+.team-approach {
+  background: var(--neutral-light);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.team-approach h4 {
+  font-size: 1.6rem;
+  color: var(--primary-brown);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.team-approach p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-medium);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.team-meeting h4 {
+  font-size: 1.6rem;
+  color: var(--primary-brown);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.meeting-ways {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.meeting-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: 12px;
+  border: 2px solid var(--neutral-beige);
+  transition: all 0.3s ease;
+}
+
+.meeting-item:hover {
+  border-color: var(--accent-terracotta);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.meeting-icon {
+  background: linear-gradient(135deg, var(--accent-terracotta) 0%, var(--primary-brown) 100%);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.meeting-content h6 {
+  font-size: 1.1rem;
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.meeting-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-medium);
+  margin: 0;
+}
+
 .team-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -768,6 +948,52 @@ footer {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
+
+  /* Team Introduction Responsive */
+  .team-introduction {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .team-intro-text h3 {
+    font-size: 1.6rem;
+  }
+
+  .team-intro-text p {
+    font-size: 1rem;
+  }
+
+  .team-composition h4,
+  .team-approach h4,
+  .team-meeting h4 {
+    font-size: 1.4rem;
+  }
+
+  .team-roles-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .role-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .role-content h5 {
+    font-size: 1.1rem;
+  }
+
+  .meeting-ways {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .meeting-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -797,5 +1023,65 @@ footer {
 
   .gallery-item {
     height: 200px;
+  }
+
+  /* Team Introduction Mobile */
+  .team-introduction {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .team-intro-text h3 {
+    font-size: 1.4rem;
+  }
+
+  .team-intro-text p {
+    font-size: 0.95rem;
+  }
+
+  .team-composition h4,
+  .team-approach h4,
+  .team-meeting h4 {
+    font-size: 1.2rem;
+  }
+
+  .team-approach p {
+    font-size: 1rem;
+  }
+
+  .role-item {
+    padding: 1rem;
+  }
+
+  .role-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .role-content h5 {
+    font-size: 1rem;
+  }
+
+  .role-content p {
+    font-size: 0.9rem;
+  }
+
+  .meeting-item {
+    padding: 1rem;
+  }
+
+  .meeting-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .meeting-content h6 {
+    font-size: 1rem;
+  }
+
+  .meeting-content p {
+    font-size: 0.85rem;
   }
 }

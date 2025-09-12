@@ -37,16 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
       <div class="footer-column company-info">
         <h3>MORE FROM Virunga Ecotours</h3>
         <ul class="footer-links">
-          <li><a href="./blogs.php" class="footer-link">Blogs</a></li>
+            <li><a href="./training.php" class="footer-link">Training Support</a></li>
+          <li><a href="./kids.php" class="footer-link">Kids Tourism</a></li>
+          <li><a href="./lgbtq.php" class="footer-link">Inclusive Tourism(LGBTQ+)</a></li>
+          <li><a href="../community/inclusive.php" class="footer-link">CBT in Inclusive Education</a></li>
+          <li><a href="./animal.php" class="footer-link">Animal Welfare Care Awareness</a></li>
+          <li><a href="./payments.php" class="footer-link">Authorized Payments Methods</a></li>
           <li><a href="./faq-page.php" class="footer-link">FAQs</a></li>
-          <li><a href="./contact.php" class="footer-link">Contact us</a></li>
-          <li><a href="./community/impact.php">Community Impact</a></li>
-          <li>
-            <a href="./build.php" class="footer-link"
-              >The Virunga Ecotours differences</a
-            >
-          </li>
-          <li><a href="./about.php" class="footer-link">About us</a></li>
+          <li><a href="../community/impact.php" class="footer-link">Community Impact</a></li>
+          <li><a href="./complaints.php" class="footer-link">Common complaints & solutions</a></li>
+          <li><a href="./requirements.php" class="footer-link">Requirements</a></li>
+          <li><a href="./styleguide.php" class="footer-link">The Virunga Ecotours differences</a></li>
+          <li><a href="./activity.php" class="footer-link">Beyond The Park Experience</a></l>
+          <li><a href="./honeymoon.php" class="footer-link">Honeymoon in CBT</a></li>
         </ul>
       </div>
 
@@ -119,12 +122,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     <!-- Bottom Footer Section -->
     <div class="footer-bottom">
       <div class="copyright">
-        <p>&copy; 2017-<?php echo date('Y'); ?> Copyright Virunga Ecotours</p>
+        <p>&copy; 2017- <?php echo date('Y'); ?> Copyright Virunga Ecotours</p>
       </div>
       <div class="legal-links">
         <a href="./faq-page.php" class="legal-link">Booking Conditions</a>
         <a href="./Privacy.php" class="legal-link">Data Protection Privacy Notice</a>
-        <a href="./privacy.php" class="legal-link">Website Terms of Use</a>
+        <a href="./Privacy.php" class="legal-link">Website Terms of Use</a>
       </div>
     </div>
   </div>

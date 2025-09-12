@@ -59,6 +59,41 @@
                 <span>Categories</span>
             </a>
         </div>
+
+        <div class="nav-item">
+            <a href="../impact/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/impact/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-heart"></i>
+                <span>Impact</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../schools/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/schools/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-school"></i>
+                <span>Schools</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../volunteer/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/volunteer/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-hands-helping"></i>
+                <span>Volunteer</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../inclusive/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/inclusive/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-universal-access"></i>
+                <span>Inclusive Programs</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../activities" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/inclusive/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-universal-access"></i>
+                <span>Activities</span>
+            </a>
+        </div>
         
         <div class="nav-divider"></div>
         

@@ -42,6 +42,11 @@ $categories_result = $conn->query($categories_query);
       Range
     </title>
     <link
+      rel="shortcut icon"
+      href="../images/logos/icon.png"
+      type="image/x-icon"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />

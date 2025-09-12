@@ -1,3 +1,40 @@
+
+<?php
+require_once '../admin/config/connection.php';
+// Error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Fetch main page info
+$page_query = "SELECT * FROM volunteer_page LIMIT 1";
+$page_result = mysqli_query($conn, $page_query);
+$page = mysqli_fetch_assoc($page_result);
+
+// Fetch involved cards
+$cards_query = "SELECT icon, title, description FROM involved_cards WHERE page_id = " . ($page['id'] ?? 1);
+$cards_result = mysqli_query($conn, $cards_query);
+$involved_cards = [];
+if ($cards_result && mysqli_num_rows($cards_result) > 0) {
+    while ($row = mysqli_fetch_assoc($cards_result)) {
+        $involved_cards[] = $row;
+    }
+}
+
+// Fetch empowerment programs
+$empower_query = "SELECT * FROM empowerment_programs WHERE page_id = " . ($page['id'] ?? 1) . " LIMIT 1";
+$empower_result = mysqli_query($conn, $empower_query);
+$empower = mysqli_fetch_assoc($empower_result);
+
+// Parse highlights (JSON or comma separated)
+$highlights = [];
+if (!empty($empower['highlights'])) {
+    if (strpos($empower['highlights'], '[') === 0) {
+        $highlights = json_decode($empower['highlights'], true);
+    } else {
+        $highlights = array_map('trim', explode(',', $empower['highlights']));
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +60,7 @@
         <!-- Hero Section -->
          <section class="page-header">
             <div class="page-header-background">
-                <img src="uploads/impact/hero.jpg" alt="About Virunga Ecotours Community" loading="lazy">
+                <img src="uploads/impact/hero.jpg" alt="About Virunga Ecotours Community" loading="lazy" ondragstart="return false;" oncontextmenu="return false;">
                 <div class="page-header-overlay"></div>
             </div>
             <div class="container">
@@ -34,7 +71,9 @@
                         <span class="current">Volunteer with us</span>
                     </nav>
                     <h1 style="color: #ffffff;">Our Impact on Community</h1>
-                    <p style="color: #ffffff;">There’s a Virunga Ecotours Community Progarm volunteering opportunity for everyone. All are welcome to work to together, a simple help changes lives of noens in need .</p>
+                    <p style="color: #ffffff;">
+                        <?php echo !empty($page['page_description']) ? nl2br(htmlspecialchars($page['page_description'])) : "There’s a Virunga Ecotours Community Program volunteering opportunity for everyone. All are welcome to work together, a simple help changes lives of ones in need."; ?>
+                    </p>
                 </div>
             </div>
         </section>
@@ -44,7 +83,9 @@
         <section class="introduction-section">
             <div class="container">
                 <h2 class="section-title">Help Change Lives</h2>
-                <p class="section-description">We believe people want to help communities that they travel to. Join us in inspiring community growth and connection through the joy of travel and meaningful action.</p>
+                <p class="section-description">
+                    <?php echo !empty($empower['content']) ? nl2br(htmlspecialchars($empower['content'])) : "We believe people want to help communities that they travel to. Join us in inspiring community growth and connection through the joy of travel and meaningful action."; ?>
+                </p>
             </div>
         </section>
 
@@ -55,21 +96,17 @@
                 <p class="section-description">Discover ways you can give back and learn more about our initiatives.</p>
 
                 <div class="involved-cards">
-                    <div class="involved-card">
-                        <div class="card-icon">💰</div>
-                        <h3>Set Up a Fundraiser</h3>
-                        <p>Start your own fundraiser and rally your community to raise essential funds. We help you set up a good online fundraiser to maximize your impact.</p>
-                    </div>
-                    <div class="involved-card">
-                        <div class="card-icon">🗓️</div>
-                        <h3>Get Behind an Event</h3>
-                        <p>Support our appeals set up to combat current crises. We have well-planned events and community tours to help you engage directly with the community.</p>
-                    </div>
-                    <div class="involved-card">
-                        <div class="card-icon">🌿</div>
-                        <h3>Save Nature</h3>
-                        <p>Volunteer and take action to save nature. Learn more about our conservation efforts and how your participation can contribute to a sustainable future.</p>
-                    </div>
+                    <?php if (count($involved_cards) > 0): ?>
+                        <?php foreach ($involved_cards as $card): ?>
+                            <div class="involved-card">
+                                <div class="card-icon"><?php echo htmlspecialchars($card['icon']); ?></div>
+                                <h3><?php echo htmlspecialchars($card['title']); ?></h3>
+                                <p><?php echo nl2br(htmlspecialchars($card['description'])); ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>No involvement options available yet.</p>
+                    <?php endif; ?>
                 </div>
             </div>
             
@@ -88,32 +125,39 @@
         <!-- Learn More Section -->
         <section class="learn-more-section">
             <div class="container">
-                <h2 class="section-title">Empowering Women Through Traditional Arts</h2>
-                <p class="section-description">Discover how Virunga community programs create lasting impact through cultural preservation and economic empowerment.</p>
+                <h2 class="section-title">
+                    <?php echo !empty($empower['section_title']) ? htmlspecialchars($empower['section_title']) : "Empowering Women Through Traditional Arts"; ?>
+                </h2>
+                <p class="section-description">
+                    <?php echo !empty($empower['section_description']) ? nl2br(htmlspecialchars($empower['section_description'])) : "Discover how Virunga community programs create lasting impact through cultural preservation and economic empowerment."; ?>
+                </p>
                 
                 <div class="empowerment-content">
                     <div class="empowerment-text">
-                        <p>At the heart of Virunga's community initiatives are our women's empowerment programs focused on traditional arts and crafts. These programs including sewing, handcrafts, pottery, and painting serve as powerful vehicles for cultural preservation while providing sustainable livelihoods for local women artisans.</p>
-                        
-                        <p>Each handcrafted item tells a story of cultural heritage passed down through generations. When you support these initiatives whether through direct funding or purchasing handmade products you're not just acquiring a beautiful piece of art; you're directly contributing to:</p>
-                        
-                        <ul class="impact-list">
-                            <li><strong>Economic Independence:</strong> Providing women with reliable income streams that support their families and reduce financial vulnerability</li>
-                            <li><strong>Cultural Preservation:</strong> Ensuring traditional techniques and artistic expressions continue to thrive in modern times</li>
-                            <li><strong>Skill Development:</strong> Offering training that combines ancestral knowledge with contemporary market awareness</li>
-                            <li><strong>Community Strength:</strong> Fostering collaborative environments where women support each other and build social bonds</li>
-                            <li><strong>Sustainable Development:</strong> Creating economic opportunities that respect and celebrate local culture and environment</li>
-                        </ul>
-                        
-                        <p>These programs have transformed countless lives, allowing women to become financial contributors to their households, gain respect within their communities, and pass their skills to younger generations. The ripple effects extend beyond individual artisans to strengthen entire communities.</p>
+                        <?php if (!empty($highlights)): ?>
+                            <div class="impact-list" style="margin-bottom:1em;">
+                                <?php echo implode('<br>', array_map('htmlspecialchars', $highlights)); ?>
+                            </div>
+                        <?php endif; ?>
+                        <p>
+                            <?php echo !empty($empower['content']) ? nl2br(htmlspecialchars($empower['content'])) : "These programs have transformed countless lives, allowing women to become financial contributors to their households, gain respect within their communities, and pass their skills to younger generations. The ripple effects extend beyond individual artisans to strengthen entire communities."; ?>
+                        </p>
                     </div>
                 </div>
                 
                 <div class="shop-action">
-                    <a href="https://virungahomestay.com/pages/shop.php" class="shop-button">
-                        Support Women Artisans - Shop Handcrafted Products
-                    </a>
-                    <p class="shop-note">Your purchase directly supports women artisans and their families while preserving cultural heritage.</p>
+                    <?php if (!empty($empower['shop_link'])): ?>
+                        <a href="<?php echo htmlspecialchars($empower['shop_link']); ?>" class="shop-button">
+                            Support Women Artisans - Shop Handcrafted Products
+                        </a>
+                    <?php else: ?>
+                        <a href="https://virungahomestay.com/pages/shop.php" class="shop-button">
+                            Support Women Artisans - Shop Handcrafted Products
+                        </a>
+                    <?php endif; ?>
+                    <p class="shop-note">
+                        <?php echo !empty($empower['shop_note']) ? nl2br(htmlspecialchars($empower['shop_note'])) : "Your purchase directly supports women artisans and their families while preserving cultural heritage."; ?>
+                    </p>
                 </div>
             </div>
         </section>

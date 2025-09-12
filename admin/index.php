@@ -193,7 +193,7 @@ if ($recentBookingsResult) {
                   <span>My Profile</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="./pages/logout.php" class="dropdown-item text-danger">
+                <a href="./pages/logout.html" class="dropdown-item text-danger">
                   <i class="fas fa-sign-out-alt"></i>
                   <span>Logout</span>
                 </a>

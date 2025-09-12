@@ -68,7 +68,7 @@
     background: white;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
-    border-left: 4px solid var(--primary-green);
+    
     padding: 1.5rem;
     z-index: 10000;
     transform: translateX(100%);
