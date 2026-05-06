@@ -57,7 +57,7 @@ $debug_info = $data['debug_info'] ?? '';
       }
       .tour-card {
         border: 1px solid #ddd;
-        border-radius: 8px;
+        border-radius: 0;
         overflow: hidden;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       }

@@ -52,7 +52,7 @@
     </div>
     <div class="closed">OR</div>
     <a href="./pages/build.php" rel="noopener noreferrer"
-      ><button class="quote-btn">Book Now</button></a
+      ><button class="quote-btn">Explore Experiences</button></a
     >
   </div>
 </div>
@@ -201,11 +201,6 @@
   <div class="nav-item">
     <span><a href="./pages/blog.php">Blog</a></span>
   </div>
-
-  <div class="nav-item">
-    <span><a href="./pages/kids.php">Kids Tourism</a></span>
-  </div>
-
   <div class="nav-item">
     <span><a href="./pages/about.php">About Us</a></span>
   </div>
@@ -227,12 +222,7 @@
         gap: 0.5rem;
       "
     >
-      <img
-        src="./images/logos/Comminity_logo.jpg"
-        alt="logo"
-        style="width: 30px; height: 30px; border-radius: 50%"
-      />
-      Community
+      Community Impact
     </a>
   </div>
 </div>
@@ -256,12 +246,7 @@
           gap: 0.5rem;
         "
       >
-        <img
-          src="./images/logos/Comminity_logo.jpg"
-          alt="logo"
-          style="width: 30px; height: 30px; border-radius: 50%"
-        />
-        Community
+        Community Impact
       </a>
     </div>
     <div class="mobile-top-links">
@@ -270,7 +255,6 @@
       <a href="./pages/faq-page.php">Faqs</a>
       <a href="./pages/about.php">About us</a>
       <a href="./pages/contactus.php">Contact us</a>
-      <a href="./pages/kids.php">Kids Tourism</a>
       <a
         href="https://www.tripadvisor.com/Attraction_Review-g317075-d21346700-Reviews-VIRUNGA_ECOTOURS-Ruhengeri_Musanze_District_Northern_Province.html"
         target="_blank"

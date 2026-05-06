@@ -38,6 +38,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' &
       <div class="footer-column company-info">
         <h3>MORE FROM Virunga Ecotours</h3>
         <ul class="footer-links">
+            <li><a class="footer-link" href="./kids.php">Kids Tourism</a></li>
             <li><a href="./training.php" class="footer-link">Training Support</a></li>
             <li><a href="./kids.php" class="footer-link">Advanture for Kids</a></li>
             <li><a href="./lgbtq.php" class="footer-link">Inclusive Tourism(LGBTQ+)</a></li>

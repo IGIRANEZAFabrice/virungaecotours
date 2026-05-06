@@ -38,7 +38,7 @@
         <a
           href="./build.php"
           rel="noopener noreferrer"
-          ><button class="quote-btn">Book Now</button></a
+          ><button class="quote-btn">Explore Experiences</button></a
         >
       </div>
     </div>
@@ -91,7 +91,7 @@
             <div class="nested-dropdown">
               <div class="nested-dropdown-container">
                 <a href="./museums.php">Museum</a>
-                <a href="./community/index.php">Community</a>
+                <a href="../community/index.php">Community</a>
               </div>
             </div>
           </div>
@@ -168,9 +168,6 @@
         <span><a href="./blog.php">Blog</a></span>
       </div>
       <div class="nav-item">
-        <span><a href="./kids.php">Kids Tourism</a></span>
-      </div>
-      <div class="nav-item">
           
         <span><a href="./about.php">About Us</a></span>
       </div>
@@ -181,8 +178,7 @@
       <div class="search-btn">
         <a href="../community/index.php" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: .5rem;"
           >
-          <img src="../images/logos/Comminity_logo.jpg" alt="logo" style="width: 30px; height: 30px; border-radius: 50%;">
-          Community
+          Community Impact
         </a>
       </div>    
     </div>
@@ -197,8 +193,7 @@
         <div class="search-btn">
           <a href="../community/index.php" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: .5rem;"
             >
-            <img src="../images/logos/Comminity_logo.jpg" alt="logo" style="width: 30px; height: 30px; border-radius: 50%;">
-            Community
+            Community Impact
           </a>
         </div>
         <div class="mobile-top-links">
@@ -208,7 +203,6 @@
           <a href="./faq-page.php">Faqs</a>
           <a href="./about.php">About us</a>
           <a href="./contactus.php">Contact us</a>
-          <a href="./kids.php">Kids</a>
           <a href="https://www.tripadvisor.com/Attraction_Review-g317075-d21346700-Reviews-VIRUNGA_ECOTOURS-Ruhengeri_Musanze_District_Northern_Province.html" target="_blank" rel="noopener noreferrer" class="mobile-tripadvisor-link">
             <img src="../images/tripadvisor/logosmall.png" alt="TripAdvisor" />
             TripAdvisor

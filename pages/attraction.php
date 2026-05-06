@@ -244,10 +244,10 @@ $page_title = $attraction['title'] . ' - Virunga Ecotours';
             <section class="related-itineraries-section">
                 <h2>Related Itineraries</h2>
                 <p class="section-description">Discover our carefully crafted tours that feature <?php echo htmlspecialchars($attraction['title']); ?></p>
-                <div class="itineraries-grid">
+                <div class="tours-cards">
                     <?php foreach ($related_tours as $tour): ?>
-                        <div class="itinerary-card">
-                            <div class="itinerary-image">
+                        <div class="tour-card">
+                            <div class="tour-card-image">
                                 <?php if (!empty($tour['cover_image_path'])): ?>
                                     <img src="../<?php echo htmlspecialchars($tour['cover_image_path']); ?>" alt="<?php echo htmlspecialchars($tour['title']); ?>">
                                 <?php else: ?>
@@ -255,21 +255,21 @@ $page_title = $attraction['title'] . ' - Virunga Ecotours';
                                         <i class="fas fa-mountain"></i>
                                     </div>
                                 <?php endif; ?>
-                                <div class="itinerary-badge">
-                                    <span class="days-count"><?php echo htmlspecialchars($tour['days_count']); ?> Days</span>
-                                </div>
+                                <div class="tour-badge"><?php echo strtoupper(htmlspecialchars($tour['category'])); ?></div>
+                                <div class="tour-offer">AVAILABLE</div>
                             </div>
-                            <div class="itinerary-content">
-                                <div class="itinerary-meta">
-                                    <span class="category"><?php echo htmlspecialchars($tour['category']); ?></span>
+                            <div class="tour-card-content">
+                                <div class="tour-tags">
+                                    <span class="tour-tag"><?php echo strtoupper(htmlspecialchars($tour['country'])); ?></span>
+                                    <span class="tour-tag"><?php echo htmlspecialchars($tour['days_count']); ?> DAYS</span>
                                 </div>
                                 <h3><?php echo htmlspecialchars($tour['title']); ?></h3>
                                 <?php if (!empty($tour['short_description'])): ?>
-                                    <p class="itinerary-description"><?php echo htmlspecialchars(substr($tour['short_description'], 0, 120)) . (strlen($tour['short_description']) > 120 ? '...' : ''); ?></p>
+                                    <p><?php echo htmlspecialchars(substr($tour['short_description'], 0, 120)) . (strlen($tour['short_description']) > 120 ? '...' : ''); ?></p>
                                 <?php endif; ?>
-                                <div class="itinerary-actions">
-                                    <a href="../pages/itenaryopen.php?id=<?php echo $tour['tour_id']; ?>" class="view-tour-btn">
-                                        <i class="fas fa-eye"></i> View Details
+                                <div class="tour-actions">
+                                    <a href="../pages/itenaryopen.php?id=<?php echo $tour['tour_id']; ?>" class="read-more-btn">
+                                        READ MORE
                                     </a>
                                 </div>
                             </div>

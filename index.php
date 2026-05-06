@@ -132,49 +132,124 @@ require_once 'indexhandler.php';
           </div>
         </div>
       </div>
-      <section class="tours-section" style="margin-top: -1.5rem;">
+      <section class="tours-section">
         <div class="container">
           <div class="section-header">
             <!--<h1>Authentic Trips Crafted By Experts</h1>-->
             <p class="section-subtitle">
-              Virunga Ecotours is a regional travel company delivering immersive journeys across the Virunga Mountains of Rwanda, Uganda, and DR Congo.
+              Virunga Ecotours designs immersive journeys across the Virunga Massif.<br>
 
-We transform traveler interests into meaningful, structured experiences  combining wildlife, culture, and human connection into one seamless journey across borders.
+Not as separate destinations but as one continuous living landscape where mountains, wildlife, and cultures naturally belong together.<br><br>
+
+Every journey is carefully shaped with intention, depth, and a deep respect for place so travel becomes experience, not just movement.
             </p>
           </div>
 
           
-          <div class="destinations-wrapper" style="margin-top: -1.5rem;">
-
-            <section class="destination-container scroll-trigger reverse">
-              <div class="destination-content">
-                <h1 class="title">Discover the Heart of the Virunga Mountains</h1>
-                
-                <p class="description">
-                   Embark on an unforgettable journey into the Virunga Mountains, where towering peaks and lush rainforests are home to the iconic mountain gorillas. Trek through misty forests and experience the rare privilege of observing these gentle giants in their natural habitat a moment both powerful and deeply moving.
-
-                  <br><br>Beyond wildlife, step into the cultural richness of the region through authentic, locally guided experiences. Meet artisans, explore village life, and connect with the traditions and stories that shape the Virunga.
-
-                  At Virunga Ecotours, every journey is designed as a personal and immersive travel experience. <br><br>With expert local guides and thoughtful planning, you will discover the Virunga through genuine encounters, seamless organization, and meaningful moments.
-
-                  Travel with us and experience the Virunga Mountains where nature, culture, and adventure come together in a truly unforgettable journey.
-                </p>
+          <section class="virunga-gallery-wrapper">
+            <div class="virunga-grid-container">
+              <div class="virunga-grid">
+                <div class="grid-item large">
+                  <div class="grid-image-wrapper">
+                    <img src="./images/hero/seven.jpeg" alt="Virunga Primates Encounter">
+                  </div>
+                  <div class="grid-overlay">
+                    <span class="grid-tag">Featured</span>
+                    <div class="grid-text">
+                      <h3>Virunga Primates Encounter</h3>
+                      <p>A rare journey into the world of mountain gorillas and golden monkeys in the volcanic forests of the Virunga Massif.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid-right">
+                  <div class="grid-item">
+                    <div class="grid-image-wrapper">
+                      <img src="./images/hero/one.jpeg" alt="Volcanic Peaks Expedition">
+                    </div>
+                    <div class="grid-overlay">
+                      <span class="grid-tag">Adventure</span>
+                      <div class="grid-text">
+                        <h3>Volcanic Peaks Expedition</h3>
+                        <p>A guided ascent into the dramatic volcanic landscapes of the Virunga range, offering breathtaking panoramic views and raw natural immersion.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="grid-item">
+                    <div class="grid-image-wrapper">
+                      <img src="./images/hero/two.jpeg" alt="Mountain Culture Immersion">
+                    </div>
+                    <div class="grid-overlay">
+                      <span class="grid-tag">Cultural</span>
+                      <div class="grid-text">
+                        <h3>Mountain Culture Immersion</h3>
+                        <p>A deeply human experience with local mountain communities, traditions, storytelling, and daily life in the Virunga region.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="grid-item">
+                    <div class="grid-image-wrapper">
+                      <img src="./images/hero/three.jpeg" alt="Virunga Landscape & Lakes Journey">
+                    </div>
+                    <div class="grid-overlay">
+                      <span class="grid-tag">Nature</span>
+                      <div class="grid-text">
+                        <h3>Virunga Landscape & Lakes Journey</h3>
+                        <p>A slow and scenic journey through the foothills of the Virunga Mountains, exploring crater lakes, rural landscapes, and quiet viewpoints that reveal the softer side of the region.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="destination-image visible">
-                <img
-                  src="./images/hero/7.jpg"
-                  alt="Chimpanzee peering through rainforest foliage"
-                ondragstart="return false;" oncontextmenu="return false;"/>
-              </div>
-            </section>
+            </div>
+          </section>
+          <!-- Popular Tours Section -->
+      <section class="popular-tours-section" style="margin-top: -2rem;">
+        <div class="container">
+          <div class="section-title">
+            <h2>Explore Our Signature Experiences</h2>
+            <div class="title-underline"></div>
           </div>
+          
+
+          <div class="tours-cards">
+            <?php if (empty($tours)): ?>
+              <p class="no-tours">No adventure tours available at the moment.</p>
+            <?php else: ?>
+              <?php foreach ($tours as $tour): ?>
+                <div class="tour-card">
+                  <div class="tour-card-image">
+                    <img
+                      src="<?php echo htmlspecialchars($tour['cover_image_path']); ?>"
+                      alt="<?php echo htmlspecialchars($tour['title']); ?>"
+                    ondragstart="return false;" oncontextmenu="return false;"/>
+                    <div class="tour-badge"><?php echo strtoupper(htmlspecialchars($tour['category'])); ?></div>
+                    <div class="tour-offer">AVAILABLE</div>
+                  </div>
+                  <div class="tour-card-content">
+                    <div class="tour-tags">
+                      <span class="tour-tag">GROUP TOUR</span>
+                      <span class="tour-tag">WILDLIFE</span>
+                    </div>
+                    <div class="tour-tags"></div>
+                    <h3><?php echo htmlspecialchars($tour['title']); ?></h3>
+                    <div class="tour-duration"><?php echo $tour['days_count']; ?> DAY<?php echo $tour['days_count'] > 1 ? 'S' : ''; ?></div>
+                    <p><?php echo htmlspecialchars(substr($tour['short_description'], 0, 200)) . '...'; ?></p>
+                    <a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>" class="read-more-btn">BOOK NOW</a>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
+
+        </div>
+      </section>
           
           <div class="tours-grid">
             <div class="section-title">
               <h2>Tailor Your Journey Around the Virunga Mountains</h2>
             </div>
             
-            <div class="features-row" style="margin-top: -1.5rem;">
+            <div class="features-row">
               <div class="feature-col">
                 <div class="feature-img">
                   <img src="./admin/<?php echo htmlspecialchars($dest_img1); ?>" alt="<?php echo htmlspecialchars($country1); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
@@ -207,37 +282,25 @@ We transform traveler interests into meaningful, structured experiences  combini
             </div>
           </div>
         </div>
-      </section>
-     
-     <!-- Map Section -->
-      <section class="map-section">
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31908.618028035762!2d29.52773323542945!3d-1.4291240048422131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19ddc5dbf07294d5%3A0xcb8227d899cc7d94!2sVirunga%20Mountains!5e0!3m2!1sen!2srw!4v1761143767031!5m2!1sen!2srw" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </section>
-        
-       
+      </section> 
     </div>
-     <?php
-        // Fetch Young Explorers section from database
-        $ye_query = "SELECT * FROM young_explorers LIMIT 1";
-        $ye_result = mysqli_query($conn, $ye_query);
-        $ye_content = mysqli_fetch_assoc($ye_result);
-
-        if ($ye_content && !empty($ye_content['section_description'])):
-    ?>
+   
     <section class="young-explorers-section">
         <div class="container">
             <div class="content-wrapper-kids">
                 <div class="content-left-kids">
-                    <h2 class="section-title">Young Explorers Experiences</h2>
+                    <h2 class="section-title">Pursuit of Feeling</h2>
 
                     <p class="content-text-kids">
-                        <?php echo nl2br(htmlspecialchars($ye_content['section_description'])); ?>
+                        The true essence of travel lies beyond movement from one place to another. It lives in the moments that take your breath away, in the quiet intensity of new landscapes, and in the emotional connection that transforms a journey into something unforgettable. These are the experiences that stay with you subtle, powerful, and lasting.<br><br>
+
+The Pursuit of Feeling is a refined collection of journeys, stories, and elevated travel experiences shaped with intention and depth. Each one is designed to awaken a sense of wonder, foster genuine connection, and leave a lasting impression that goes far beyond the journey itself.<br><br>
+
+It is never simply about where you go it is about how the experience stays with you.
                     </p>
 
 
-              <a href="./pages/kids.php" class="enquire-btn">
+              <a href="./pages/itenary.php" class="enquire-btn">
               Learn More
               <i class="fas fa-arrow-right"></i>
             </a>
@@ -245,27 +308,28 @@ We transform traveler interests into meaningful, structured experiences  combini
 
                 <div class="image-right">
                     <div class="image-placeholder">
-                        <?php if ($ye_content['image_url']): ?>
-                            <img src="<?php echo htmlspecialchars($ye_content['image_url']); ?>"
-                                 alt="Young Explorers"
-                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-                        <?php endif; ?>
+                        
+                            <img src="./images/hero/7.jpg"
+                                 alt=" Explorers"
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                       
                     </div>
                     <div class="image-overlay">
-                        <div class="overlay-text">Safe • Educational • Fun Adventures</div>
+                        <div class="overlay-text">Experiences crafted with care</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
       <!-- Destinations Section -->
       <section class="destinations-section" style="margin-bottom: -1.5rem;">
         <div class="container">
           <div class="section-title">
-            <h2>Explore Our Signature Experiences</h2>
-            
+            <h2>Cross Border Virunga Journeys</h2>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #333;">
+            <p>Curated experiences across the Virunga Mountains, with selected extensions across East Africa.</p>
           </div>
          
           <div class="main-destinations-grid">
@@ -290,55 +354,12 @@ We transform traveler interests into meaningful, structured experiences  combini
           </div>
         </div>
       </section>
-
-      <!-- Popular Tours Section -->
-      <section class="popular-tours-section" style="margin-top: -2rem;">
-        <div class="container">
-          <div class="section-title">
-            <h2>Customizable Itinerary Examples</h2>
-            <div class="title-underline"></div>
-          </div>
-          
-
-          <div class="tours-cards">
-            <?php if (empty($tours)): ?>
-              <p class="no-tours">No adventure tours available at the moment.</p>
-            <?php else: ?>
-              <?php foreach ($tours as $tour): ?>
-                <div class="tour-card">
-                  <div class="tour-card-image">
-                    <img
-                      src="<?php echo htmlspecialchars($tour['cover_image_path']); ?>"
-                      alt="<?php echo htmlspecialchars($tour['title']); ?>"
-                    ondragstart="return false;" oncontextmenu="return false;"/>
-                    <div class="tour-badge"><?php echo strtoupper(htmlspecialchars($tour['category'])); ?></div>
-                    <div class="tour-offer">AVAILABLE</div>
-                  </div>
-                  <div class="tour-card-content">
-                    <div class="tour-tags">
-                      <span class="tour-tag">GROUP TOUR</span>
-                      <span class="tour-tag">WILDLIFE</span>
-                    </div>
-                    <div class="tour-tags"></div>
-                    <h3><?php echo htmlspecialchars($tour['title']); ?></h3>
-                    <div class="tour-duration"><?php echo $tour['days_count']; ?> DAY<?php echo $tour['days_count'] > 1 ? 'S' : ''; ?></div>
-                    <p><?php echo htmlspecialchars(substr($tour['short_description'], 0, 200)) . '...'; ?></p>
-                    <a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>" class="read-more-btn">READ MORE</a>
-                  </div>
-                </div>
-              <?php endforeach; ?>
-            <?php endif; ?>
-          </div>
-
-        </div>
-      </section>
-
-       
+   
       <!-- Tailor-made Banner -->
       <section class="tailor-made-banner">
         <div class="container">
           <div class="banner-content">
-            <h2>Personalized Travel Experience:Why Choose a Custom Trip?</h2>
+            <h2>Plan your Custom Trip now </h2>
 
             <p>
               We are dedicated to listening to your preferences and
@@ -369,13 +390,9 @@ We transform traveler interests into meaningful, structured experiences  combini
       <section class="tailor-made-holidays">
         <div class="container">
           <div class="section-title">
-            <h2>Popular Multi-Day Tours </h2>
+            <h2>Featured Journeys </h2>
           </div>
-          <p class="section-subtitle">
-            Explore our most popular Multi-Day holidays, designed to
-            inspire your next adventure. Each itinerary is crafted with care,
-            ensuring a unique and unforgettable experience.
-          </p>
+          
 
           <div class="holiday-cards">
             <?php if (!empty($random_tours)): ?>
@@ -384,7 +401,7 @@ We transform traveler interests into meaningful, structured experiences  combini
                   <div class="card-image">
                     <img src="<?php echo htmlspecialchars($tour['cover_image_path']); ?>" alt="<?php echo htmlspecialchars($tour['title']); ?>" ondragstart="return false;" oncontextmenu="return false;"/>
                     <div class="tour-offer">AVAILABLE</div>
-                    <div class="card-tag <?php echo strtolower($tour['category']); ?>"><?php echo ucfirst(htmlspecialchars($tour['category'])); ?></div>
+                    <div class="card-tag <?php echo strtolower($tour['category']); ?>">Experience</div>
                   </div>
 
                   <div class="card-content">
@@ -401,7 +418,7 @@ We transform traveler interests into meaningful, structured experiences  combini
                       <?php echo htmlspecialchars(substr($tour['short_description'], 0, 200)) . '...'; ?>
                     </div>
                     <div class="card-button">
-                      <a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>" class="read-more-btn">READ MORE</a>
+                      <a href="./pages/itenaryopen.php?id=<?php echo htmlspecialchars($tour['tour_id']); ?>" class="read-more-btn">BOOK NOW</a>
                     </div>
                   </div>
                 </div>
@@ -507,7 +524,7 @@ We transform traveler interests into meaningful, structured experiences  combini
       </section>
       <br><br> <br><br> <br><br>
        <div class="dest-contain">
-      <h1 class="title">Read our month-by-month travel guide</h1>
+      <h1 class="title">Explore Our Month-by-Month Travel Guide</h1>
       
       <div class="travel-grid" id="travel-grid">
         <div class="month-card">
@@ -636,7 +653,7 @@ We transform traveler interests into meaningful, structured experiences  combini
     </section>
 
     <section class="features">
-      <h2 class="features-title">Explore Our Month-by-Month Travel Guide</h2>
+      <h2 class="features-title">why choose us </h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">

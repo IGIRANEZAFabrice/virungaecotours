@@ -71,7 +71,7 @@ if (ob_get_level() > 0) {
           <div class="cta-wrapper">
             <!-- Begin Journey CTA -->
             <div class="cta-box journey-cta">
-              <h3>Begin your journey</h3>
+              <h3>Start planning your next adventure</h3>
               <p style="text-align: left; word-spacing: normal; letter-spacing: normal;">
                 Enquire online or contact one of our Eco travel consultants.
               </p>
@@ -121,6 +121,7 @@ if (ob_get_level() > 0) {
         <h3>MORE FROM Virunga Ecotours</h3>
         <ul class="footer-links" id="companyLinks">
 
+          <li><a class="footer-link" href="./pages/kids.php">Kids Tourism</a></li>
           <li><a href="./pages/training.php" class="footer-link">Training Support</a></li>
           <li><a href="./community/impact.php" class="footer-link">Community Impact</a></li>
           <li><a href="./pages/kids.php" class="footer-link">Advanture for Kids</a></li>

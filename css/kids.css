@@ -70,8 +70,7 @@
 
 .image-right {
   position: relative;
-  height: 600px;
-  border-radius: 20px;
+  height: 100%;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   background: linear-gradient(135deg, #4a7c59 0%, #2c5530 100%);
