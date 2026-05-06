@@ -8,6 +8,7 @@
         </a>
       </div>
       <div class="top-nav">
+        <a href="./activity.php">Beyond The Park Exparience</a>
         <a href="./gallery.php">Our Gallery</a>
         <a href="./faq-page.php">Faqs</a>
       </div>
@@ -37,7 +38,7 @@
         <a
           href="./build.php"
           rel="noopener noreferrer"
-          ><button class="quote-btn">Plan your journey</button></a
+          ><button class="quote-btn">Book Now</button></a
         >
       </div>
     </div>
@@ -66,16 +67,69 @@
 
     <!-- Main Navigation -->
     <div class="main-nav">
+        <div class="nav-item">
+        <span><a href="../index.php">Home</a></span>
+      </div>
+      <div class="nav-item">
+    <span>EXPERIENCES</span> <i class="fas fa-chevron-down"></i>
+    <div class="dropdown">
+      <div class="dropdown-container">
+        <div class="destination-group">
+          <div class="nav-item-with-nested">
+            <a href="./gorilla.php" class="has-sub">COMMUNITY & LIVING VIRUNGA EXPERIENCES</a>
+            <div class="nested-dropdown">
+              <div class="nested-dropdown-container">
+                <a href="./gorilla.php">Gorilla</a>
+                <a href="./birdwatching.php">Birdwatching</a>
+                <a href="./safari.php">Safari</a>
+                <a href="./coffee.php">Coffee Tours </a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item-with-nested">
+            <a href="./museums.php" class="has-sub">VIRUNGA CULTURAL HERITAGE JOURNEYS</a>
+            <div class="nested-dropdown">
+              <div class="nested-dropdown-container">
+                <a href="./museums.php">Museum</a>
+                <a href="./community/index.php">Community</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item-with-nested">
+            <a href="./cycling.php" class="has-sub">VIRUNGA ADVENTURE EXPEDITIONS</a>
+            <div class="nested-dropdown">
+              <div class="nested-dropdown-container">
+                <a href="./cycling.php">Cycling</a>
+                <a href="./trek.php">Trek</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item-with-nested">
+            <a href="./Carhire.php" class="has-sub">VIRUNGA JOURNEY ASSURANCE & SAFETY SUPPORT</a>
+            <div class="nested-dropdown">
+              <div class="nested-dropdown-container">
+                <a href="./carhire.php">Car Hire</a>
+              </div>
+            </div>
+          </div>
+          <a href="./highend.php">LUXURY VIRUNGA IMMERSIVE JOURNEYS</a>
+          <a href="./budget.php">ESSENTIAL VIRUNGA EXPLORER JOURNEYS</a>
+          <a href="./midrange.php">SIGNATURE VIRUNGA JOURNEYS</a>
+          <a href="./evacuation.php">VIRUNGA JOURNEY ASSURANCE & SAFETY SUPPORT</a>
+        </div>
+      </div>
+    </div>
+  </div>
       <div class="nav-item">
         <span>Rwanda</span> <i class="fas fa-chevron-down"></i>
         <div class="dropdown">
           <div class="dropdown-container">
             <div class="destination-group">
-              <a href="./build.php">Build your trip in Rwanda</a>
-              <a href="./itenary.php?country=rwanda&type=day">Day Tours in Rwanda</a>
-              <a href="./itenary.php?country=rwanda&type=multi">Multi-day Tours in Rwanda</a>
-              <a href="./itenary.php?country=rwanda">Travel by style in Rwanda</a>
-              <a href="./styleguide.php?country=rwanda">Rwanda Travel guide</a>
+              <a href="./build.php">PLAN YOUR VIRUNGA JOURNEY</a>
+              <a href="./itenary.php?country=rwanda&type=day">IMMERSIVE DAY EXPERIENCES</a>
+              <a href="./itenary.php?country=rwanda&type=multi">MULTI-DAY IMMERSIVE JOURNEYS</a>
+              <a href="./itenary.php?country=rwanda">VIRUNGA JOURNEY STYLES</a>
+              <a href="./styleguide.php?country=rwanda">VIRUNGA DESTINATION GUIDE</a>
             </div>
           </div>
         </div>
@@ -86,11 +140,11 @@
         <div class="dropdown">
           <div class="dropdown-container">
             <div class="destination-group">
-              <a href="./build.php">Build your trip in Uganda</a>
-              <a href="./itenary.php?country=uganda&type=day">Day Tours in Uganda</a>
-              <a href="./itenary.php?country=uganda&type=multi">Multi-day Tours in Uganda</a>
-              <a href="./itenary.php?country=uganda">Travel by style in Uganda</a>
-              <a href="./styleguide.php?country=uganda">Uganda Travel guide</a>
+              <a href="./build.php">PLAN YOUR VIRUNGA JOURNEY</a>
+              <a href="./itenary.php?country=uganda&type=day">IMMERSIVE DAY EXPERIENCES</a>
+              <a href="./itenary.php?country=uganda&type=multi">MULTI-DAY IMMERSIVE JOURNEYS</a>
+              <a href="./itenary.php?country=uganda">VIRUNGA JOURNEY STYLES</a>
+              <a href="./styleguide.php?country=uganda">VIRUNGA DESTINATION GUIDE</a>
             </div>
           </div>
         </div>
@@ -101,10 +155,10 @@
         <div class="dropdown">
           <div class="dropdown-container">
             <div class="destination-group">
-              <a href="./build.php">Build your trip in DRCongo</a>
-              <a href="./itenary.php?country=congo&type=day">Day Tours in DRCongo</a>
-              <a href="./itenary.php?country=congo&type=multi">Multi-day Tours in DRCongo</a>
-              <a href="./styleguide.php?country=congo">DR Congo Travel guide</a>
+              <a href="./build.php">PLAN YOUR VIRUNGA JOURNEY</a>
+              <a href="./itenary.php?country=congo&type=day">IMMERSIVE DAY EXPERIENCES</a>
+              <a href="./itenary.php?country=congo&type=multi">VIRUNGA JOURNEY STYLES</a>
+              <a href="./styleguide.php?country=congo">VIRUNGA DESTINATION GUIDE</a>
             </div>
           </div>
         </div>
@@ -113,7 +167,9 @@
       <div class="nav-item">
         <span><a href="./blog.php">Blog</a></span>
       </div>
-      
+      <div class="nav-item">
+        <span><a href="./kids.php">Kids Tourism</a></span>
+      </div>
       <div class="nav-item">
           
         <span><a href="./about.php">About Us</a></span>
@@ -122,7 +178,6 @@
       <div class="nav-item">
         <span><a href="./contactus.php">Contact us</a></span>
       </div>
-      
       <div class="search-btn">
         <a href="../community/index.php" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: .5rem;"
           >
@@ -147,11 +202,13 @@
           </a>
         </div>
         <div class="mobile-top-links">
+          <a href="../index.php">Home</a>
           <a href="./blog.php">Blog</a>
           <a href="./gallery.php">Our Gallery</a>
           <a href="./faq-page.php">Faqs</a>
           <a href="./about.php">About us</a>
           <a href="./contactus.php">Contact us</a>
+          <a href="./kids.php">Kids</a>
           <a href="https://www.tripadvisor.com/Attraction_Review-g317075-d21346700-Reviews-VIRUNGA_ECOTOURS-Ruhengeri_Musanze_District_Northern_Province.html" target="_blank" rel="noopener noreferrer" class="mobile-tripadvisor-link">
             <img src="../images/tripadvisor/logosmall.png" alt="TripAdvisor" />
             TripAdvisor
@@ -168,11 +225,11 @@
             <div class="mobile-dropdown">
               <div class="mobile-links-list">
                 <ul>
-                  <li><a href="./build.php">Build your trip in Rwanda</a></li>
-                  <li><a href="./itenary.php?country=rwanda&type=day">Day Tours in Rwanda</a></li>
-                  <li><a href="./itenary.php?country=rwanda&type=multi">Multi-day Tours in Rwanda</a></li>
-                  <li><a href="./itenary.php?country=rwanda">Travel by style in Rwanda</a></li>
-                  <li><a href="./styleguide.php?country=rwanda">Rwanda Travel guide</a></li>
+                  <li><a href="./build.php">PLAN YOUR VIRUNGA JOURNEY</a></li>
+                  <li><a href="./itenary.php?country=rwanda&type=day">IMMERSIVE DAY EXPERIENCES</a></li>
+                  <li><a href="./itenary.php?country=rwanda&type=multi">MULTI-DAY IMMERSIVE JOURNEYS</a></li>
+                  <li><a href="./itenary.php?country=rwanda">VIRUNGA JOURNEY STYLES</a></li>
+                  <li><a href="./styleguide.php?country=rwanda">VIRUNGA DESTINATION GUIDE</a></li>
                 </ul>
               </div>
             </div>
@@ -185,11 +242,11 @@
             <div class="mobile-dropdown">
               <div class="mobile-links-list">
                 <ul>
-                  <li><a href="./build.php">Build your trip in Uganda</a></li>
-                  <li><a href="./itenary.php?country=uganda&type=day">Day Tours in Uganda</a></li>
-                  <li><a href="./itenary.php?country=uganda&type=multi">Multi-day Tours in Uganda</a></li>
-                  <li><a href="./itenary.php?country=uganda">Travel by style in Uganda</a></li>
-                  <li><a href="./styleguide.php?country=uganda">Uganda Travel guide</a></li>
+                  <li><a href="./build.php">PLAN YOUR VIRUNGA JOURNEY</a></li>
+                  <li><a href="./itenary.php?country=uganda&type=day">IMMERSIVE DAY EXPERIENCES</a></li>
+                  <li><a href="./itenary.php?country=uganda&type=multi">MULTI-DAY IMMERSIVE JOURNEYS</a></li>
+                  <li><a href="./itenary.php?country=uganda">VIRUNGA JOURNEY STYLES</a></li>
+                  <li><a href="./styleguide.php?country=uganda">VIRUNGA DESTINATION GUIDE</a></li>
                 </ul>
               </div>
             </div>
@@ -202,18 +259,80 @@
             <div class="mobile-dropdown">
               <div class="mobile-links-list">
                 <ul>
-                  <li><a href="./build.php">Build your trip in DRCongo</a></li>
-                  <li><a href="./itenary.php?country=congo&type=day">Day Tours in DRCongo</a></li>
-                  <li><a href="./itenary.php?country=congo&type=multi">Multi-day Tours in DRCongo</a></li>
-                  <li><a href="./styleguide.php?country=congo">DR Congo Travel guide</a></li>
+                  <li><a href="./build.php">PLAN YOUR VIRUNGA JOURNEY</a></li>
+                  <li><a href="./itenary.php?country=congo&type=day">IMMERSIVE DAY EXPERIENCES</a></li>
+                  <li><a href="./itenary.php?country=congo&type=multi">MULTI-DAY IMMERSIVE JOURNEYS</a></li>
+                  <li><a href="./styleguide.php?country=congo">VIRUNGA DESTINATION GUIDE</a></li>
                 </ul>
               </div>
             </div>
           </div> 
         </div>
+        <div class="mobile-nav-item">
+        <div class="mobile-nav-title">
+          <span>EXPERIENCES</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="mobile-dropdown">
+          <div class="mobile-links-list">
+            <ul>
+              <li class="mobile-nested-item">
+                <div class="mobile-nested-title">
+                  <span>COMMUNITY & LIVING VIRUNGA EXPERIENCES</span>
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="mobile-nested-dropdown">
+                  <ul>
+                    <li><a href="./gorilla.php">Gorilla</a></li>
+                    <li><a href="./birdwatching.php">Birdwatching</a></li>
+                    <li><a href="./safari.php">Safari</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mobile-nested-item">
+                <div class="mobile-nested-title">
+                  <span>VIRUNGA CULTURAL HERITAGE JOURNEYS</span>
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="mobile-nested-dropdown">
+                  <ul>
+                    <li><a href="./museums.php">Museum</a></li>
+                    <li><a href="../community/">Community</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="mobile-nested-item">
+                <div class="mobile-nested-title">
+                  <span>VIRUNGA ADVENTURE EXPEDITIONS</span>
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="mobile-nested-dropdown">
+                  <ul>
+                    <li><a href="./cycling.php">Cycling</a></li>
+                   
+                    <li><a href="./trek.php">Trek</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="./highend.php">LUXURY VIRUNGA IMMERSIVE JOURNEYS</a>
+              </li>
+              <li>
+                <a href="./budget.php">ESSENTIAL VIRUNGA EXPLORER JOURNEYS</a>
+              </li>
+              <li>
+                <a href="./midrange.php">SIGNATURE VIRUNGA JOURNEYS</a>
+              </li>
+              <li>
+                <a href="./insurance.php">VIRUNGA JOURNEY ASSURANCE & SAFETY SUPPORT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
       </div>
     </div>
-
     <!-- Mobile Overlay -->
     <div class="mobile-overlay"></div>
 

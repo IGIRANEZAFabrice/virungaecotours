@@ -1,138 +1,208 @@
+.young-explorers-section {
+  padding: 80px 20px;
+}
 
-        .parallax-section {
-            position: relative;
-            display: flex;
-            min-height: 100vh;
-            overflow: hidden;
-            
-        }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-        .content-container {
-            flex: 1;
-            padding: var(--spacing-xl) 60px;
-          
-            z-index: 2;
-            position: relative;
-            max-width: 50%;
-        }
+.content-wrapper-kids {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #8b7355;
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
+.content-left-kids {
+  padding-right: 20px;
+}
 
-        .content-container p {
-            font-size: 1.1rem;
-            color: #5d4e41;
-            margin-bottom: 25px;
-            text-align: justify;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
 
-        .content-container p:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
 
-        .content-container p:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+.content-text-kids {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 25px;
+  text-align: justify;
+}
 
-        .parallax-image {
-            position: fixed;
-            right: 0;
-            top: 0;
-            width: 50%;
-            height: 100vh;
-            background: url('../images/kids/hero/IMG-20250814-WA0043.jpg') center center/cover no-repeat;
-            z-index: 1;
-            transition: transform 0.1s ease-out;
-        }
+.highlight-box {
+  background: linear-gradient(135deg, #4a7c59 0%, #2c5530 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 30px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
 
-        .parallax-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, #8b7355 30%, #967259 10%);
-            opacity: 0.4;
-            z-index: 2;
-        }
+.highlight-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
 
-        .image-overlay {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            z-index: 3;
-            color: #f6f4f0;
-            max-width: 300px;
-        }
+.highlight-box p {
+  color: #f0f0f0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
 
-        .image-overlay h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            color: #f6f4f0;
-        }
 
-        .image-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            color: #f6f4f0;
-        }
+.program-title {
+  font-size: 1.4rem;
+  color: #4a7c59;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.program-subtitle {
+  color: #666;
+  font-style: italic;
+  font-size: 1rem;
+}
 
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .parallax-section {
-                flex-direction: column;
-            }
-            
-            .content-container {
-                max-width: 100%;
-                padding: 60px 40px;
-            }
-            
-            .parallax-image {
-                position: relative;
-                width: 100%;
-                height: 50vh;
-                order: -1;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
+.image-right {
+  position: relative;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #4a7c59 0%, #2c5530 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        @media (max-width: 768px) {
-            .content-container {
-                padding: var(--spacing-lg) var(--spacing-md);
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .content-container p {
-                font-size: 1rem;
-            }
-            
-            .image-overlay {
-                bottom: var(--spacing-md);
-                left: var(--spacing-md);
-            }
-        }
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .young-explorers-section {
+    padding: 60px 15px;
+  }
+
+  .content-wrapper-kids {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .content-left-kids {
+    padding-right: 0;
+    order: 2;
+  }
+
+  .image-right {
+    order: 1;
+    height: 380px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2rem);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .content-text-kids {
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+
+  .highlight-box {
+    padding: 22px;
+    margin: 22px 0;
+  }
+
+  .highlight-box h3 {
+    font-size: 1.15rem;
+  }
+
+  .program-title {
+    font-size: 1.15rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: clamp(1.5rem, 1.2rem + 2vw, 1.7rem);
+  }
+
+  .content-text-kids {
+    font-size: 0.95rem;
+  }
+
+  .highlight-box {
+    padding: 18px;
+  }
+
+  .image-right {
+    height: 300px;
+  }
+
+  .image-overlay {
+    padding: 18px;
+  }
+
+  .overlay-text {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .image-right { height: 260px; }
+  .section-title { margin-bottom: 16px; }
+  .content-text-kids { margin-bottom: 14px; }
+}
+
+/* Hover effects */
+.highlight-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.image-right {
+  transition: transform 0.3s ease;
+}
+
+.image-right:hover {
+  transform: scale(1.02);
+}

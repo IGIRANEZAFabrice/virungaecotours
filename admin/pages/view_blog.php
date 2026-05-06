@@ -11,22 +11,39 @@ require_once('../config/connection.php');
 $blog_id = isset($_GET['id']) ? intval($_GET['id']) : 0; // Changed variable name post_id to blog_id
 
 // Fetch blog post details along with category name
-$post_sql = "SELECT bp.*, bc.category_name 
-             FROM blog_posts bp 
-             JOIN blog_categories bc ON bp.category_id = bc.category_id 
+$post_sql = "SELECT bp.*, bc.category_name
+             FROM blog_posts bp
+             JOIN blog_categories bc ON bp.category_id = bc.category_id
              WHERE bp.blog_id = ?"; // Changed post_id to blog_id
 $post_stmt = $conn->prepare($post_sql);
 $post_stmt->bind_param("i", $blog_id); // Use blog_id
 $post_stmt->execute();
-$post_result = $post_stmt->get_result();
+$post_stmt->bind_result($f_blog_id, $f_title, $f_slug, $f_author, $f_read_minutes, $f_category_id, $f_cover_image, $f_main_headline, $f_introduction, $f_status, $f_views, $f_created_by, $f_created_at, $f_updated_at, $f_published_at, $f_category_name);
 
-if ($post_result->num_rows === 0) {
+if (!$post_stmt->fetch()) {
   // Blog post not found
   header('Location: blogs.php'); // Consider adding an error message
   exit();
 }
 
-$post = $post_result->fetch_assoc();
+$post = [
+  'blog_id' => $f_blog_id,
+  'title' => $f_title,
+  'slug' => $f_slug,
+  'author' => $f_author,
+  'read_minutes' => $f_read_minutes,
+  'category_id' => $f_category_id,
+  'cover_image' => $f_cover_image,
+  'main_headline' => $f_main_headline,
+  'introduction' => $f_introduction,
+  'status' => $f_status,
+  'views' => $f_views,
+  'created_by' => $f_created_by,
+  'created_at' => $f_created_at,
+  'updated_at' => $f_updated_at,
+  'published_at' => $f_published_at,
+  'category_name' => $f_category_name
+];
 $post_stmt->close(); // Close statement after fetching
 
 // Fetch content block IDs and types first
@@ -34,12 +51,10 @@ $blocks_sql = "SELECT block_id, block_type FROM blog_content_blocks WHERE blog_i
 $blocks_stmt = $conn->prepare($blocks_sql);
 $blocks_stmt->bind_param("i", $blog_id); // Use blog_id
 $blocks_stmt->execute();
-$blocks_result = $blocks_stmt->get_result();
+$blocks_stmt->bind_result($block_id, $block_type);
 
 $content_blocks_data = [];
-while ($block_base = $blocks_result->fetch_assoc()) {
-    $block_id = $block_base['block_id'];
-    $block_type = $block_base['block_type'];
+while ($blocks_stmt->fetch()) {
     $block_data = ['block_type' => $block_type]; // Initialize with type
 
     // Fetch specific block data based on type
@@ -49,8 +64,9 @@ while ($block_base = $blocks_result->fetch_assoc()) {
             $text_stmt = $conn->prepare($text_sql);
             $text_stmt->bind_param("i", $block_id);
             $text_stmt->execute();
-            $text_data = $text_stmt->get_result()->fetch_assoc();
-            $block_data = array_merge($block_data, $text_data);
+            $text_stmt->bind_result($section_title, $content);
+            $text_stmt->fetch();
+            $block_data = array_merge($block_data, ['section_title' => $section_title, 'content' => $content]);
             $text_stmt->close();
             break;
         case 'image':
@@ -58,8 +74,9 @@ while ($block_base = $blocks_result->fetch_assoc()) {
             $image_stmt = $conn->prepare($image_sql);
             $image_stmt->bind_param("i", $block_id);
             $image_stmt->execute();
-            $image_data = $image_stmt->get_result()->fetch_assoc();
-            $block_data = array_merge($block_data, $image_data);
+            $image_stmt->bind_result($image_path, $caption);
+            $image_stmt->fetch();
+            $block_data = array_merge($block_data, ['image_path' => $image_path, 'caption' => $caption]);
             $image_stmt->close();
             break;
         case 'quote':
@@ -67,8 +84,9 @@ while ($block_base = $blocks_result->fetch_assoc()) {
             $quote_stmt = $conn->prepare($quote_sql);
             $quote_stmt->bind_param("i", $block_id);
             $quote_stmt->execute();
-            $quote_data = $quote_stmt->get_result()->fetch_assoc();
-            $block_data = array_merge($block_data, $quote_data);
+            $quote_stmt->bind_result($quote_text, $attribution);
+            $quote_stmt->fetch();
+            $block_data = array_merge($block_data, ['quote_text' => $quote_text, 'attribution' => $attribution]);
             $quote_stmt->close();
             break;
         case 'list':
@@ -76,7 +94,8 @@ while ($block_base = $blocks_result->fetch_assoc()) {
             $list_stmt = $conn->prepare($list_sql);
             $list_stmt->bind_param("i", $block_id);
             $list_stmt->execute();
-            $list_data = $list_stmt->get_result()->fetch_assoc();
+            $list_stmt->bind_result($list_title);
+            $list_stmt->fetch();
             $list_stmt->close();
 
             // Fetch list items
@@ -91,17 +110,16 @@ while ($block_base = $blocks_result->fetch_assoc()) {
             $get_list_block_id_stmt = $conn->prepare($get_list_block_id_sql);
             $get_list_block_id_stmt->bind_param("i", $block_id);
             $get_list_block_id_stmt->execute();
-            $list_block_id_result = $get_list_block_id_stmt->get_result();
-            if($list_block_id_row = $list_block_id_result->fetch_assoc()) {
-                $list_block_id = $list_block_id_row['list_block_id'];
+            $get_list_block_id_stmt->bind_result($list_block_id);
+            if($get_list_block_id_stmt->fetch()) {
                 $items_stmt->bind_param("i", $list_block_id);
                 $items_stmt->execute();
-                $items_result = $items_stmt->get_result();
+                $items_stmt->bind_result($item_text);
                 $list_items = [];
-                while ($item = $items_result->fetch_assoc()) {
-                    $list_items[] = $item['item_text'];
+                while ($items_stmt->fetch()) {
+                    $list_items[] = $item_text;
                 }
-                $block_data['title'] = $list_data['list_title'] ?? null; // Use 'title' key consistent with old structure
+                $block_data['title'] = $list_title ?? null; // Use 'title' key consistent with old structure
                 $block_data['content'] = json_encode($list_items); // Store items as JSON string, similar to old structure
                 $items_stmt->close();
             }
@@ -118,11 +136,17 @@ $gallery_sql = "SELECT * FROM blog_gallery_images WHERE blog_id = ? ORDER BY ima
 $gallery_stmt = $conn->prepare($gallery_sql);
 $gallery_stmt->bind_param("i", $blog_id); // Use blog_id
 $gallery_stmt->execute();
-$gallery_result = $gallery_stmt->get_result();
+$gallery_stmt->bind_result($gallery_image_id, $g_blog_id, $image_path, $image_order, $created_at);
 
 $gallery_images = [];
-while ($image = $gallery_result->fetch_assoc()) {
-  $gallery_images[] = $image;
+while ($gallery_stmt->fetch()) {
+  $gallery_images[] = [
+    'gallery_image_id' => $gallery_image_id,
+    'blog_id' => $g_blog_id,
+    'image_path' => $image_path,
+    'image_order' => $image_order,
+    'created_at' => $created_at
+  ];
 }
 $gallery_stmt->close(); // Close statement after fetching
 

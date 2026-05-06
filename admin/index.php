@@ -16,8 +16,9 @@ $sql = "SELECT first_name, last_name, profile_image FROM admins WHERE admin_id =
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $admin_id);
 $stmt->execute();
-$result = $stmt->get_result();
-$admin = $result->fetch_assoc();
+$stmt->bind_result($first_name, $last_name, $profile_image);
+$stmt->fetch();
+$admin = ['first_name' => $first_name, 'last_name' => $last_name, 'profile_image' => $profile_image];
 $stmt->close();
 
 // Fetch recent bookings data
@@ -112,6 +113,9 @@ if ($recentBookingsResult) {
             </li>
             <li class="nav-item">
               <a href="./pages/about_page_manager.php"><i class="fas fa-users"></i> <span>Aboutus</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="./pages/accommodation/index.php"><i class="fas fa-bed"></i> <span>Accommodation</span></a>
             </li>
             <li class="nav-item">
               <a href="./pages/contact_messages.php"><i class="fas fa-envelope"></i> <span>contact messages</span></a>

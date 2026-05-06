@@ -7,31 +7,86 @@ if (session_status() === PHP_SESSION_NONE) {
 // Include database connection
 require_once '../../config/connection.php';
 
+// Compatibility function for get_result() - works with all MySQLi configurations
+function getStmtResult($stmt) {
+    if (method_exists($stmt, 'get_result')) {
+        return $stmt->get_result();
+    } else {
+        // Fallback for servers without mysqlnd support
+        $result = new stdClass();
+        $result->data = [];
+        $result->num_rows = 0;
+
+        // Get metadata
+        $metadata = $stmt->result_metadata();
+        if ($metadata) {
+            $fields = [];
+            while ($field = $metadata->fetch_field()) {
+                $fields[] = $field->name;
+            }
+
+            // Bind results
+            $values = [];
+            $refs = [];
+            foreach ($fields as $field) {
+                $refs[] = &$values[$field];
+            }
+            call_user_func_array([$stmt, 'bind_result'], $refs);
+
+            // Fetch all rows
+            while ($stmt->fetch()) {
+                $row = [];
+                foreach ($fields as $field) {
+                    $row[$field] = $values[$field];
+                }
+                $result->data[] = $row;
+            }
+            $result->num_rows = count($result->data);
+        }
+
+        return $result;
+    }
+}
+
+// Wrapper class for result object
+class CompatibleResult {
+    public $data = [];
+    public $num_rows = 0;
+    private $position = 0;
+
+    public function fetch_assoc() {
+        if ($this->position < count($this->data)) {
+            return $this->data[$this->position++];
+        }
+        return null;
+    }
+}
+
 // Function to get all blogs with pagination
 function getAllBlogs($page = 1, $limit = 10) {
     global $conn;
-    
+
     // Calculate offset
     $offset = ($page - 1) * $limit;
-    
+
     // Get total count for pagination
     $countStmt = $conn->prepare("SELECT COUNT(*) as total FROM blogs");
     $countStmt->execute();
-    $totalResult = $countStmt->get_result();
+    $totalResult = getStmtResult($countStmt);
     $totalRow = $totalResult->fetch_assoc();
     $totalBlogs = $totalRow['total'];
-    
+
     // Get blogs with pagination
     $stmt = $conn->prepare("SELECT * FROM blogs ORDER BY created_at DESC LIMIT ? OFFSET ?");
     $stmt->bind_param("ii", $limit, $offset);
     $stmt->execute();
-    $result = $stmt->get_result();
-    
+    $result = getStmtResult($stmt);
+
     $blogs = [];
     while ($row = $result->fetch_assoc()) {
         $blogs[] = $row;
     }
-    
+
     return [
         'blogs' => $blogs,
         'total' => $totalBlogs,
@@ -43,64 +98,64 @@ function getAllBlogs($page = 1, $limit = 10) {
 // Function to get a single blog by ID
 function getBlogById($blogId) {
     global $conn;
-    
+
     // Get blog details
     $stmt = $conn->prepare("SELECT * FROM blogs WHERE blog_id = ?");
     $stmt->bind_param("i", $blogId);
     $stmt->execute();
-    $result = $stmt->get_result();
-    
+    $result = getStmtResult($stmt);
+
     if ($result->num_rows === 0) {
         return null;
     }
-    
+
     $blog = $result->fetch_assoc();
-    
+
     // Get content blocks
     $blockStmt = $conn->prepare("SELECT * FROM blog_content_blocks WHERE blog_id = ? ORDER BY block_order ASC");
     $blockStmt->bind_param("i", $blogId);
     $blockStmt->execute();
-    $blockResult = $blockStmt->get_result();
-    
+    $blockResult = getStmtResult($blockStmt);
+
     $blog['content_blocks'] = [];
     while ($block = $blockResult->fetch_assoc()) {
         $blog['content_blocks'][] = $block;
     }
-    
+
     // Get gallery images
     $galleryStmt = $conn->prepare("SELECT * FROM blog_gallery_images WHERE blog_id = ? ORDER BY display_order ASC");
     $galleryStmt->bind_param("i", $blogId);
     $galleryStmt->execute();
-    $galleryResult = $galleryStmt->get_result();
-    
+    $galleryResult = getStmtResult($galleryStmt);
+
     $blog['gallery_images'] = [];
     while ($image = $galleryResult->fetch_assoc()) {
         $blog['gallery_images'][] = $image;
     }
-    
+
     return $blog;
 }
 
 // Function to get blogs by category
 function getBlogsByCategory($category, $page = 1, $limit = 10) {
     global $conn;
-    
+
     // Calculate offset
     $offset = ($page - 1) * $limit;
-    
+
     // Get total count for pagination
     $countStmt = $conn->prepare("SELECT COUNT(*) as total FROM blogs WHERE category = ?");
     $countStmt->bind_param("s", $category);
     $countStmt->execute();
-    $totalResult = $countStmt->get_result();
+    $totalResult = getStmtResult($countStmt);
     $totalRow = $totalResult->fetch_assoc();
     $totalBlogs = $totalRow['total'];
-    
+
     // Get blogs with pagination
     $stmt = $conn->prepare("SELECT * FROM blogs WHERE category = ? ORDER BY created_at DESC LIMIT ? OFFSET ?");
     $stmt->bind_param("sii", $category, $limit, $offset);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = getStmtResult($stmt);
     
     $blogs = [];
     while ($row = $result->fetch_assoc()) {
@@ -118,26 +173,26 @@ function getBlogsByCategory($category, $page = 1, $limit = 10) {
 // Function to search blogs
 function searchBlogs($query, $page = 1, $limit = 10) {
     global $conn;
-    
+
     // Prepare search query
     $searchQuery = "%$query%";
-    
+
     // Calculate offset
     $offset = ($page - 1) * $limit;
-    
+
     // Get total count for pagination
     $countStmt = $conn->prepare("SELECT COUNT(*) as total FROM blogs WHERE blog_title LIKE ? OR big_title LIKE ? OR big_description LIKE ?");
     $countStmt->bind_param("sss", $searchQuery, $searchQuery, $searchQuery);
     $countStmt->execute();
-    $totalResult = $countStmt->get_result();
+    $totalResult = getStmtResult($countStmt);
     $totalRow = $totalResult->fetch_assoc();
     $totalBlogs = $totalRow['total'];
-    
+
     // Get blogs with pagination
     $stmt = $conn->prepare("SELECT * FROM blogs WHERE blog_title LIKE ? OR big_title LIKE ? OR big_description LIKE ? ORDER BY created_at DESC LIMIT ? OFFSET ?");
     $stmt->bind_param("sssii", $searchQuery, $searchQuery, $searchQuery, $limit, $offset);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = getStmtResult($stmt);
     
     $blogs = [];
     while ($row = $result->fetch_assoc()) {

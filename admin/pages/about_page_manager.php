@@ -24,10 +24,20 @@ $impact_stats_sql = "SELECT * FROM about_impact_stats WHERE impact_id = ? AND is
 $impact_stats_stmt = $conn->prepare($impact_stats_sql);
 $impact_stats_stmt->bind_param("i", $impact_data['impact_id']);
 $impact_stats_stmt->execute();
-$impact_stats_result = $impact_stats_stmt->get_result();
 $impact_stats = [];
-while ($row = $impact_stats_result->fetch_assoc()) {
-    $impact_stats[] = $row;
+$impact_stats_stmt->store_result();
+$meta = $impact_stats_stmt->result_metadata();
+$fields = [];
+while ($field = $meta->fetch_field()) {
+    $fields[] = &$row[$field->name];
+}
+$bindResult = call_user_func_array([$impact_stats_stmt, 'bind_result'], $fields);
+while ($impact_stats_stmt->fetch()) {
+    $item = [];
+    foreach ($row as $key => $val) {
+        $item[$key] = $val;
+    }
+    $impact_stats[] = $item;
 }
 
 $team_section_sql = "SELECT * FROM about_team_section WHERE is_active = 1 LIMIT 1";
@@ -38,10 +48,20 @@ $team_members_sql = "SELECT * FROM about_team_members WHERE section_id = ? AND i
 $team_members_stmt = $conn->prepare($team_members_sql);
 $team_members_stmt->bind_param("i", $team_section_data['section_id']);
 $team_members_stmt->execute();
-$team_members_result = $team_members_stmt->get_result();
 $team_members = [];
-while ($row = $team_members_result->fetch_assoc()) {
-    $team_members[] = $row;
+$team_members_stmt->store_result();
+$meta = $team_members_stmt->result_metadata();
+$fields = [];
+while ($field = $meta->fetch_field()) {
+    $fields[] = &$row[$field->name];
+}
+$bindResult = call_user_func_array([$team_members_stmt, 'bind_result'], $fields);
+while ($team_members_stmt->fetch()) {
+    $item = [];
+    foreach ($row as $key => $val) {
+        $item[$key] = $val;
+    }
+    $team_members[] = $item;
 }
 
 $values_section_sql = "SELECT * FROM about_values_section WHERE is_active = 1 LIMIT 1";
@@ -52,10 +72,20 @@ $values_sql = "SELECT * FROM about_values WHERE section_id = ? AND is_active = 1
 $values_stmt = $conn->prepare($values_sql);
 $values_stmt->bind_param("i", $values_section_data['section_id']);
 $values_stmt->execute();
-$values_result = $values_stmt->get_result();
 $values = [];
-while ($row = $values_result->fetch_assoc()) {
-    $values[] = $row;
+$values_stmt->store_result();
+$meta = $values_stmt->result_metadata();
+$fields = [];
+while ($field = $meta->fetch_field()) {
+    $fields[] = &$row[$field->name];
+}
+$bindResult = call_user_func_array([$values_stmt, 'bind_result'], $fields);
+while ($values_stmt->fetch()) {
+    $item = [];
+    foreach ($row as $key => $val) {
+        $item[$key] = $val;
+    }
+    $values[] = $item;
 }
 
 $gallery_section_sql = "SELECT * FROM about_gallery_section WHERE is_active = 1 LIMIT 1";
@@ -66,10 +96,20 @@ $gallery_sql = "SELECT * FROM about_gallery WHERE section_id = ? AND is_active =
 $gallery_stmt = $conn->prepare($gallery_sql);
 $gallery_stmt->bind_param("i", $gallery_section_data['section_id']);
 $gallery_stmt->execute();
-$gallery_result = $gallery_stmt->get_result();
 $gallery_items = [];
-while ($row = $gallery_result->fetch_assoc()) {
-    $gallery_items[] = $row;
+$gallery_stmt->store_result();
+$meta = $gallery_stmt->result_metadata();
+$fields = [];
+while ($field = $meta->fetch_field()) {
+    $fields[] = &$row[$field->name];
+}
+$bindResult = call_user_func_array([$gallery_stmt, 'bind_result'], $fields);
+while ($gallery_stmt->fetch()) {
+    $item = [];
+    foreach ($row as $key => $val) {
+        $item[$key] = $val;
+    }
+    $gallery_items[] = $item;
 }
 
 $cta_sql = "SELECT * FROM about_cta WHERE is_active = 1 LIMIT 1";

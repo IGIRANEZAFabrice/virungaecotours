@@ -15,8 +15,19 @@ $sql = "SELECT first_name, last_name, email, phone, profile_image FROM admins WH
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $admin_id);
 $stmt->execute();
-$result = $stmt->get_result();
-$admin = $result->fetch_assoc();
+$stmt->store_result();
+$stmt->bind_result($first_name, $last_name, $email, $phone, $profile_image);
+if ($stmt->fetch()) {
+  $admin = [
+    'first_name' => $first_name,
+    'last_name' => $last_name,
+    'email' => $email,
+    'phone' => $phone,
+    'profile_image' => $profile_image
+  ];
+} else {
+  $admin = null;
+}
 $stmt->close();
 ?>
 

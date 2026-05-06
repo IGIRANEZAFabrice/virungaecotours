@@ -4,13 +4,13 @@
 .footer-main {
     background: var(--text-dark);
     color: white;
-    padding: 2.5rem 0 1.5rem;
+    padding: max(2.75rem, 1.5rem + env(safe-area-inset-top)) 0 max(1.75rem, 1rem + env(safe-area-inset-bottom));
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 2rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .footer-column {
@@ -33,7 +33,7 @@
 
 .about-column .logo-text h4 {
     color: white;
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
     font-weight: 600;
     margin: 0;
     line-height: 1.2;
@@ -41,7 +41,7 @@
 
 .about-column .logo-text span {
     color: var(--neutral-cream);
-    font-size: 0.8rem;
+    font-size: clamp(0.78rem, 0.75rem + 0.2vw, 0.85rem);
 }
 
 .footer-description {
@@ -82,7 +82,7 @@
 /* Footer Titles */
 .footer-title {
     color: white;
-    font-size: 1rem;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
     font-weight: 600;
     margin-bottom: 1rem;
     position: relative;
@@ -130,6 +130,13 @@
 .footer-links a:hover {
     color: white;
     transform: translateX(5px);
+}
+
+.footer-links a:focus-visible,
+.footer-link:focus-visible,
+.social-link:focus-visible {
+    outline: 2px solid var(--accent-terracotta);
+    outline-offset: 2px;
 }
 
 .footer-links a i {
@@ -208,7 +215,7 @@
     text-decoration: none;
     border-radius: var(--border-radius-sm);
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: clamp(0.82rem, 0.8rem + 0.2vw, 0.9rem);
     transition: all 0.3s ease;
     text-align: center;
 }
@@ -291,7 +298,7 @@
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.8rem;
+    font-size: clamp(0.8rem, 0.78rem + 0.2vw, 0.9rem);
 }
 
 .social-link:hover {
@@ -428,12 +435,17 @@
 }
 
 /* Responsive Design */
+@media (min-width: 1201px) {
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    }
+}
+
 @media (max-width: 1200px) {
     .footer-grid {
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 2rem;
     }
-    
     .contact-column {
         grid-column: 1 / -1;
         margin-top: 2rem;
@@ -451,6 +463,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }
+    .links-column .footer-links { columns: 2; column-gap: 1.25rem; }
     
     .about-column {
         grid-column: 1 / -1;
@@ -481,7 +494,7 @@
     
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
     
     .footer-stats {
@@ -553,4 +566,8 @@
         width: 45px;
         height: 45px;
     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
 }

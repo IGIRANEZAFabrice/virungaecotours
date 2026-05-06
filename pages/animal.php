@@ -268,7 +268,14 @@ require_once '../admin/config/connection.php';
             </div>
         </div>
     </section>
-
+    <section class="parallax-section-v1">
+            <div class="parallax-overlay-v">
+                <div class="parallax-content-v">
+                    <h2>Preserving Heritage, Empowering Futures</h2>
+                    <p style="color: #ffffff;">Empowering you to give back to communities around the world.</p>
+                </div>
+            </div>
+    </section>
     <!-- Beyond Park Section -->
     <section class="beyond-park-section">
         <div class="container">

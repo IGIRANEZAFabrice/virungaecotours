@@ -8,10 +8,10 @@ $error = $_GET['error'] ?? '';
 
 // Ensure page row
 $page = null;
-$pq = mysqli_query($conn, "SELECT id, hero_title, hero_subtitle, intro_text FROM inclusive_page ORDER BY id ASC LIMIT 1");
+$pq = mysqli_query($conn, "SELECT id, hero_title, hero_subtitle, hero_image, intro_text FROM inclusive_page ORDER BY id ASC LIMIT 1");
 if ($pq && mysqli_num_rows($pq) > 0) { $page = mysqli_fetch_assoc($pq); } else {
-    mysqli_query($conn, "INSERT INTO inclusive_page (hero_title, hero_subtitle, intro_text) VALUES ('Inclusive Community-Based Tourism', 'Empowering Persons with Disabilities in Rural Areas', '')");
-    $page = ['id' => mysqli_insert_id($conn), 'hero_title' => 'Inclusive Community-Based Tourism', 'hero_subtitle' => 'Empowering Persons with Disabilities in Rural Areas', 'intro_text' => ''];
+    mysqli_query($conn, "INSERT INTO inclusive_page (hero_title, hero_subtitle, hero_image, intro_text) VALUES ('Inclusive Community-Based Tourism', 'Empowering Persons with Disabilities in Rural Areas', 'assets/images/inclusive-hero.jpg', '')");
+    $page = ['id' => mysqli_insert_id($conn), 'hero_title' => 'Inclusive Community-Based Tourism', 'hero_subtitle' => 'Empowering Persons with Disabilities in Rural Areas', 'hero_image' => 'assets/images/inclusive-hero.jpg', 'intro_text' => ''];
 }
 $page_id = (int)$page['id'];
 
@@ -63,6 +63,9 @@ if ($ctaq && mysqli_num_rows($ctaq) > 0) { $cta = mysqli_fetch_assoc($ctaq); }
 			<section class="card">
 				<div class="card-header"><h2><i class="fas fa-header"></i> Hero & Intro</h2></div>
 				<div class="card-body">
+					<div style="margin-bottom: 1.5rem;">
+						<a href="edit-hero.php" class="btn btn-primary"><i class="fas fa-image"></i> Edit Hero Section & Image</a>
+					</div>
 					<form action="handlers/update-page.php" method="post" class="form-grid">
 						<input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 						<div class="form-group"><label>Hero Title</label><input type="text" name="hero_title" value="<?php echo htmlspecialchars($page['hero_title']); ?>" required placeholder="Enter hero title" /></div>
@@ -76,6 +79,9 @@ if ($ctaq && mysqli_num_rows($ctaq) > 0) { $cta = mysqli_fetch_assoc($ctaq); }
 			<section class="card">
 				<div class="card-header"><h2><i class="fas fa-shapes"></i> Approach Cards</h2></div>
 				<div class="card-body">
+					<div style="margin-bottom: 1.5rem;">
+						<a href="edit-cards.php" class="btn btn-primary"><i class="fas fa-images"></i> Edit Card Images</a>
+					</div>
 					<div class="card-creation-form">
 						<form action="handlers/cards-create.php" method="post" class="form-grid" style="margin-bottom:1.5rem;">
 							<input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />

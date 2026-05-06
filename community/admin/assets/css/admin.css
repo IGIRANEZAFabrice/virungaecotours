@@ -1,5 +1,5 @@
 /* Admin Panel Styles for Community Programs */
-
+@import url("../../../../css/earthy-theme.css");
 /* Global Admin Styles */
 * {
     margin: 0;
@@ -390,10 +390,10 @@ body {
 }
 
 .main-content {
-    flex: 1;
-    margin-left: 280px;
     background-color: var(--neutral-light);
     min-height: 100vh;
+    padding: 2rem;
+    width: 100%;
 }
 
 /* Admin Container */
@@ -513,13 +513,13 @@ body {
     .sidebar.active {
         transform: translateX(0);
     }
-    
+
     .admin-container {
         margin-left: 0;
     }
 
     .main-content {
-        margin-left: 0;
+        padding: 1rem;
     }
 
     .admin-main {

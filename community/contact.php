@@ -1,5 +1,103 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 require_once '../admin/config/connection.php';
+
+function ensurePHPMailerLoaded() {
+    static $loaded = null;
+    if ($loaded !== null) {
+        if (!$loaded) {
+            throw new \RuntimeException('PHPMailer could not be loaded.');
+        }
+        return;
+    }
+
+    $rootDir = dirname(__DIR__);
+
+    if (file_exists($rootDir . '/vendor/autoload.php')) {
+        try {
+            require_once $rootDir . '/vendor/autoload.php';
+        } catch (\Throwable $e) {
+            // Fall back to manual includes below
+        }
+    }
+
+    if (class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
+        $loaded = true;
+        return;
+    }
+
+    $phpmailerFiles = [
+        $rootDir . '/PHPMailer/src/Exception.php',
+        $rootDir . '/PHPMailer/src/PHPMailer.php',
+        $rootDir . '/PHPMailer/src/SMTP.php',
+    ];
+
+    foreach ($phpmailerFiles as $file) {
+        if (!file_exists($file)) {
+            $loaded = false;
+            throw new \RuntimeException('PHPMailer could not be loaded (files missing).');
+        }
+    }
+
+    require_once $phpmailerFiles[0];
+    require_once $phpmailerFiles[1];
+    require_once $phpmailerFiles[2];
+
+    if (!class_exists('PHPMailer\\PHPMailer\\PHPMailer')) {
+        $loaded = false;
+        throw new \RuntimeException('PHPMailer could not be loaded.');
+    }
+
+    $loaded = true;
+}
+
+function logCommunityEmailMessage($message) {
+    $logFile = dirname(__DIR__) . '/tour_booking_email_errors.log';
+    $line = '[' . date('Y-m-d H:i:s') . '] ' . $message . PHP_EOL;
+    file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX);
+}
+
+function sendCommunityNotificationEmail($recipientEmail, $subject, $bodyHtml) {
+    $email_config = [
+        'smtp_host' => 'smtp.gmail.com',
+        'smtp_port' => 587,
+        'smtp_username' => 'virungahomestay@gmail.com',
+        'smtp_password' => 'mvkumfdesmiedtnl',
+        'from_email' => 'virungahomestay@gmail.com',
+        'from_name' => 'Virunga Ecotours System',
+    ];
+
+    try {
+        ensurePHPMailerLoaded();
+
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = $email_config['smtp_host'];
+        $mail->SMTPAuth = true;
+        $mail->Username = $email_config['smtp_username'];
+        $mail->Password = $email_config['smtp_password'];
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = $email_config['smtp_port'];
+
+        $mail->setFrom($email_config['from_email'], $email_config['from_name']);
+        $mail->addReplyTo($email_config['from_email'], $email_config['from_name']);
+        $mail->addAddress($recipientEmail);
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $bodyHtml;
+        $mail->AltBody = strip_tags($bodyHtml);
+
+        $mail->send();
+        return true;
+    } catch (\Throwable $e) {
+        logCommunityEmailMessage('Email send failed to ' . $recipientEmail . ': ' . $e->getMessage());
+        return false;
+    }
+}
 
 // Handle form submission
 $message_sent = false;
@@ -34,6 +132,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ('$name', '$email', '$subject', '$message', '$phone', '$country', '$program_interest', $volunteer_interest, $donation_interest, '$ip_address', '$user_agent')";
         
         if (mysqli_query($conn, $insert_query)) {
+            // Send email notifications (both recipients) right after DB save.
+            $recipients = ['virungahomestay@gmail.com', 'info@virungaecotours.com'];
+
+            $emailBody = '
+                <h2 style="color:#2a4858;">New Community Contact Message</h2>
+                <p>
+                    User <strong>' . htmlspecialchars($name) . '</strong>
+                    (email: <strong>' . htmlspecialchars($email) . '</strong>)
+                    contacted you on the community saying:<br/>
+                    "<em>' . nl2br(htmlspecialchars($message)) . '</em>"
+                </p>
+                <p><strong>Subject:</strong> ' . htmlspecialchars($subject) . '</p>
+                <p><strong>Program interest:</strong> ' . htmlspecialchars($program_interest) . '</p>
+            ';
+
+            $subjectEmail = 'New Community Contact - ' . htmlspecialchars($name);
+            $failedRecipients = [];
+            foreach ($recipients as $recipientEmail) {
+                if (!sendCommunityNotificationEmail($recipientEmail, $subjectEmail, $emailBody)) {
+                    $failedRecipients[] = $recipientEmail;
+                }
+            }
+            if (!empty($failedRecipients)) {
+                logCommunityEmailMessage('Some notification emails failed: ' . implode(', ', $failedRecipients));
+            }
+
             $message_sent = true;
         } else {
             $error_message = 'Sorry, there was an error sending your message. Please try again.';

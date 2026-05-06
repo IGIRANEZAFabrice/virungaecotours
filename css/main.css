@@ -1,7 +1,6 @@
 /* Hero Section with Carousel */
 body {
   background-color: var(--neutral-light);
-  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 p {
@@ -1837,6 +1836,7 @@ p {
   font-size: smaller;
   padding: 0 3em;
   color: var(--text-dark);
+  font-size:17px;
 }
 .sub-padd {
   position: relative;
@@ -2282,7 +2282,7 @@ p {
   position: absolute;
   bottom: 40px;
   left: 40px;
-  background:transparent;
+  background: transparent;
   padding: 15px 30px;
   border-radius: 4px;
   font-size: 20px;
@@ -2293,8 +2293,6 @@ p {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
-
-
 
 /* Responsive styles for last hero */
 @media (max-width: 1200px) {

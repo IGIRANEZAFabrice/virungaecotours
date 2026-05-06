@@ -31,7 +31,7 @@ require_once('../admin/config/db_connect.php');
     <section class="hero-section">
         <div class="hero-slider">
             <div class="hero-slide active">
-                <img src="../images/honeymoon/hero/20230213_120618.jpg" alt="Romantic Honeymoon Volunteering" class="hero-image">
+                <img src="../images/honeymoon/hero/IMG-20250911-WA0007.jpg" alt="Romantic Honeymoon Volunteering" class="hero-image">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h1 class="hero-title">Honeymoon & Family Tours</h1>
@@ -40,7 +40,7 @@ require_once('../admin/config/db_connect.php');
                 </div>
             </div>
             <div class="hero-slide">
-                <img src="../images/honeymoon/hero/IMG_0164.jpg" alt="Family Adventure in Virunga" class="hero-image">
+                <img src="../images/honeymoon/hero/20230213_120618.jpg" alt="Family Adventure in Virunga" class="hero-image">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h1 class="hero-title">Family Adventures</h1>
@@ -49,7 +49,7 @@ require_once('../admin/config/db_connect.php');
                 </div>
             </div>
             <div class="hero-slide">
-                <img src="../images/honeymoon/hero/20230213_120618.jpg" alt="Community Impact Honeymoon" class="hero-image">
+                <img src="../images/honeymoon/hero/IMG_0164.jpg" alt="Community Impact Honeymoon" class="hero-image">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
                     <h1 class="hero-title">Beyond Traditional</h1>
@@ -110,14 +110,14 @@ require_once('../admin/config/db_connect.php');
 
                 <div class="intro-images">
                     <div class="intro-image-main">
-                        <img src="../images/honeymoon/HO2A0946.jpg" alt="Couple Volunteering in Community" class="intro-img">
-                        <div class="image-caption">Couples working together in local community projects</div>
+                        <img src="../images/honeymoon/IMG_0218.jpg" alt="Couple Volunteering in Community" class="intro-img">
+                        
                     </div>
                     <div class="intro-image-grid">
                         <img src="../images/honeymoon/IMG_0161.jpg" alt="Teaching Children" class="intro-img-small">
                         <img src="../images/honeymoon/IMG_0167.jpg" alt="Conservation Work" class="intro-img-small">
-                        <img src="../images/honeymoon/IMG_0218.jpg" alt="Health Outreach" class="intro-img-small">
-                        <img src="../images/honeymoon/IMG_9615.jpg" alt="Cultural Exchange" class="intro-img-small">
+                        <img src="../images/honeymoon/IMG-20250911-WA0074.jpg" alt="Health Outreach" class="intro-img-small">
+                        <img src="../images/honeymoon/IMG-20250911-WA0072.jpg" alt="Cultural Exchange" class="intro-img-small">
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@ require_once('../admin/config/db_connect.php');
                         </div>
                         <h3>For Families</h3>
                         <div class="why-choose-image">
-                            <img src="../images/honeymoon/ee5a1bd9-5be0-4998-95ea-977b3831a03f.jpg" alt="Family Adventure" class="why-choose-img">
+                            <img src="../images/honeymoon/IMG-20250911-WA0066.jpg" alt="Family Adventure" class="why-choose-img">
                         </div>
                     </div>
                     <div class="why-choose-content">
@@ -170,7 +170,7 @@ require_once('../admin/config/db_connect.php');
                         </div>
                         <h3>For Communities</h3>
                         <div class="why-choose-image">
-                            <img src="../images/honeymoon/HO2A0946.jpg" alt="Community Impact" class="why-choose-img">
+                            <img src="../images/honeymoon/IMG-20250911-WA0053.jpg" alt="Community Impact" class="why-choose-img">
                         </div>
                     </div>
                     <div class="why-choose-content">
@@ -192,7 +192,7 @@ require_once('../admin/config/db_connect.php');
             <div class="activities-grid">
                 <div class="activity-card">
                     <div class="activity-image">
-                        <img src="../images/honeymoon/HO2A0946.jpg" alt="Coffee to Cup Experience" class="activity-img">
+                        <img src="../images/honeymoon/coffe.jpg" alt="Coffee to Cup Experience" class="activity-img">
                         <div class="activity-overlay">
                             <div class="activity-icon">
                                 <i class="fas fa-coffee"></i>
@@ -210,29 +210,10 @@ require_once('../admin/config/db_connect.php');
                     </div>
                 </div>
 
-                <div class="activity-card">
-                    <div class="activity-image">
-                        <img src="../images/honeymoon/ee5a1bd9-5be0-4998-95ea-977b3831a03f.jpg" alt="From Soil to Table" class="activity-img">
-                        <div class="activity-overlay">
-                            <div class="activity-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="activity-content">
-                        <h3>From Soil to Table</h3>
-                        <p>Harvest fresh produce, cook side-by-side with hosts, and share a communal meal. Families learn recipes, while couples find joy in preparing dishes as a shared experience.</p>
-                        <div class="activity-features">
-                            <span class="feature-tag">Cooking</span>
-                            <span class="feature-tag">Harvest</span>
-                            <span class="feature-tag">Cultural</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="activity-card">
                     <div class="activity-image">
-                        <img src="../images/honeymoon/IMG_9615.jpg" alt="Village Walks & Storytelling" class="activity-img">
+                        <img src="../images/honeymoon/night.jpg" alt="Village Walks & Storytelling" class="activity-img">
                         <div class="activity-overlay">
                             <div class="activity-icon">
                                 <i class="fas fa-walking"></i>
@@ -252,7 +233,7 @@ require_once('../admin/config/db_connect.php');
 
                 <div class="activity-card">
                     <div class="activity-image">
-                        <img src="../images/honeymoon/IMG_0161.jpg" alt="Arts & Games for Families" class="activity-img">
+                        <img src="../images/honeymoon/arts.jpg" alt="Arts & Games for Families" class="activity-img">
                         <div class="activity-overlay">
                             <div class="activity-icon">
                                 <i class="fas fa-palette"></i>
@@ -272,7 +253,7 @@ require_once('../admin/config/db_connect.php');
 
                 <div class="activity-card">
                     <div class="activity-image">
-                        <img src="../images/honeymoon/IMG_0167.jpg" alt="Romantic Adventures" class="activity-img">
+                        <img src="../images/honeymoon/garelly2.jpg" alt="Romantic Adventures" class="activity-img">
                         <div class="activity-overlay">
                             <div class="activity-icon">
                                 <i class="fas fa-heart"></i>
@@ -292,7 +273,7 @@ require_once('../admin/config/db_connect.php');
 
                 <div class="activity-card">
                     <div class="activity-image">
-                        <img src="../images/honeymoon/HO2A0946.jpg" alt="Cultural Exchange" class="activity-img">
+                        <img src="../images/honeymoon/culture.jpg" alt="Cultural Exchange" class="activity-img">
                         <div class="activity-overlay">
                             <div class="activity-icon">
                                 <i class="fas fa-drum"></i>
@@ -310,29 +291,10 @@ require_once('../admin/config/db_connect.php');
                     </div>
                 </div>
 
-                <div class="activity-card">
-                    <div class="activity-image">
-                        <img src="../images/honeymoon/IMG_0167.jpg" alt="Infrastructure Development" class="activity-img">
-                        <div class="activity-overlay">
-                            <div class="activity-icon">
-                                <i class="fas fa-hammer"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="activity-content">
-                        <h3>Infrastructure Support</h3>
-                        <p>Help with community building projects, school renovations, and infrastructure improvements.</p>
-                        <div class="activity-features">
-                            <span class="feature-tag">Building</span>
-                            <span class="feature-tag">Development</span>
-                            <span class="feature-tag">Community</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="activity-card">
                     <div class="activity-image">
-                        <img src="../images/honeymoon/IMG_0161.jpg" alt="Agricultural Support" class="activity-img">
+                        <img src="../images/honeymoon/agliculture.jpg" alt="Agricultural Support" class="activity-img">
                         <div class="activity-overlay">
                             <div class="activity-icon">
                                 <i class="fas fa-seedling"></i>
@@ -425,68 +387,29 @@ require_once('../admin/config/db_connect.php');
 
             <div class="gallery-masonry">
                 <div class="gallery-item large">
-                    <img src="../images/honeymoon/IMG_0167.jpg" alt="Couple teaching children" class="gallery-img">
-                    <div class="gallery-overlay">
+                    <img src="../images/honeymoon/garelly1.jpg" alt="Couple teaching children" class="gallery-img">
+                    <!-- <div class="gallery-overlay">
                         <h4>Teaching Together</h4>
                         <p>Sharing knowledge and love with local children</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item medium">
-                    <img src="../images/honeymoon/HO2A0946.jpg" alt="Health outreach work" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Health Outreach</h4>
-                        <p>Supporting community wellness programs</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item small">
-                    <img src="../images/honeymoon/ee5a1bd9-5be0-4998-95ea-977b3831a03f.jpg" alt="Conservation project" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Conservation Work</h4>
-                        <p>Protecting the environment together</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item medium">
-                    <img src="../images/honeymoon/d4169c51-2071-4e83-bb2b-6c62acbe177a-2.jpg" alt="Cultural ceremony" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Cultural Immersion</h4>
-                        <p>Participating in traditional ceremonies</p>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="gallery-item large">
-                    <img src="../images/honeymoon/IMG_9615.jpg" alt="Building project" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Building Dreams</h4>
-                        <p>Contributing to infrastructure development</p>
-                    </div>
+                    <img src="../images/honeymoon/garelly3.jpg" alt="Health outreach work" class="gallery-img">
+                    <!-- <div class="gallery-overlay">
+                        <h4>Health Outreach</h4>
+                        <p>Supporting community wellness programs</p>
+                    </div> -->
                 </div>
 
-                <div class="gallery-item small">
-                    <img src="../images/honeymoon/IMG_0218.jpg" alt="Agricultural work" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Farming Together</h4>
-                        <p>Supporting sustainable agriculture</p>
-                    </div>
+                <div class="gallery-item large">
+                    <img src="../images/honeymoon/garelly4.jpg" alt="Conservation project" class="gallery-img">
+                    <!-- <div class="gallery-overlay">
+                        <h4>Conservation Work</h4>
+                        <p>Protecting the environment together</p>
+                    </div> -->
                 </div>
-
-                <div class="gallery-item medium">
-                    <img src="../images/honeymoon/IMG_0167.jpg" alt="Community celebration" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Community Celebration</h4>
-                        <p>Sharing joy with local families</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item small">
-                    <img src="../images/honeymoon/IMG_0161.jpg" alt="Romantic moment" class="gallery-img">
-                    <div class="gallery-overlay">
-                        <h4>Love in Nature</h4>
-                        <p>Romantic moments in beautiful Rwanda</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>

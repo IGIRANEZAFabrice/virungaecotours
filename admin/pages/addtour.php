@@ -6,7 +6,7 @@
   <title>Add New Tour</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../css/addtour.css">
-
+  <script src="../js/tours.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -40,7 +40,7 @@
               <option value="Adventure">Adventure</option>
               <option value="Cultural">Cultural</option>
               <option value="City Tours">City Tours</option>
-              <option value="Comunity Based Tourism">Community Based Tourism</option>
+              <option value="Community Based Experience">Community Based Experience</option>
               <option value="Family Friendly">Family Friendly</option>
               <option value="Food & Culinary">Food & Culinary</option>
               <option value="Gastronomy">Gastronomy</option>
@@ -119,11 +119,11 @@
           <h4 class="day-title"><i class="fas fa-map-marker-alt"></i> Activity 1</h4>
           <div class="form-group">
             <label for="activity1Title">Activity Title</label>
-            <input type="text" id="activity1Title" name="activities[1][title]" placeholder="Enter title for activity" required>
+            <input type="text" id="activity1Title" name="activities[1][title]" class="activity-title" placeholder="Enter title for activity" required>
           </div>
           <div class="form-group">
             <label for="activity1Desc">Activity Description</label>
-            <textarea id="activity1Desc" name="activities[1][desc]" placeholder="Describe the activity" required></textarea>
+            <textarea id="activity1Desc" name="activities[1][desc]" class="activity-desc" placeholder="Describe the activity" required></textarea>
           </div>
         </div>
       </div>
@@ -177,153 +177,35 @@
         placeholder="Enter reasons why people should attend this tour"
       ></textarea>
 
+      <h3 class="section-title"><i class="fas fa-money-bill-wave"></i> Pricing Tiers</h3>
+      <div class="list-container" id="pricingTiersList">
+        <div class="list-item pricing-tier">
+          <input type="text" placeholder="Group Size (e.g. 1-2 people)" class="tier-group" required />
+          <input type="number" step="0.01" placeholder="Price per person" class="tier-price" required />
+          <button type="button" class="btn remove-btn">
+            <i class="fas fa-trash"></i> Remove
+          </button>
+        </div>
+      </div>
+      <button type="button" class="btn add-btn" id="addPricingBtn">
+        <span>+</span> Add More Tiers
+      </button>
+
+      <h3 class="section-title"><i class="fas fa-sticky-note"></i> Pricing Notes</h3>
+      <div class="list-container" id="pricingNotesList">
+        <div class="list-item">
+          <input type="text" name="pricing_notes[]" placeholder="Enter pricing note" class="pricing-note" />
+          <button type="button" class="btn remove-btn">
+            <i class="fas fa-trash"></i> Remove
+          </button>
+        </div>
+      </div>
+      <button type="button" class="btn add-btn" id="addNoteBtn">
+        <span>+</span> Add More Notes
+      </button>
+
       <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Create Tour</button>
     </form>
   </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Update file input preview function
-        function handleFileInputChange(input) {
-            const preview = document.getElementById(input.id + 'Preview');
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.style.backgroundImage = `url('${e.target.result}')`;
-                    preview.innerHTML = ''; // Clear the preview text
-                    preview.classList.add('has-image');
-                };
-                reader.readAsDataURL(input.files[0]);
-            } else {
-                preview.style.backgroundImage = '';
-                preview.innerHTML = '<i class="fas fa-camera"></i> Image Preview';
-                preview.classList.remove('has-image');
-            }
-        }
-
-        // Add event listeners to file inputs
-        const fileInputs = document.querySelectorAll('input[type="file"]');
-        fileInputs.forEach(input => {
-            input.addEventListener('change', function() {
-                handleFileInputChange(this);
-            });
-        });
-
-        // Handle preview click to trigger file input
-        const imagePreviews = document.querySelectorAll('.image-preview');
-        imagePreviews.forEach(preview => {
-            preview.addEventListener('click', function() {
-                const inputId = this.id.replace('Preview', '');
-                document.getElementById(inputId).click();
-            });
-        });
-
-        // Add more activities
-        let activityCounter = 1;
-        const addActivityBtn = document.getElementById('addActivityBtn');
-        const activitiesContainer = document.getElementById('activitiesContainer');
-        
-        addActivityBtn.addEventListener('click', function() {
-          activityCounter++;
-          const newActivity = document.createElement('div');
-          newActivity.className = 'day-container';
-          newActivity.dataset.activity = activityCounter;
-          newActivity.innerHTML = `
-            <div class="form-row">
-              <div class="form-col">
-                <h4 class="day-title"><i class="fas fa-map-marker-alt"></i> Activity ${activityCounter}</h4>
-              </div>
-              <div class="form-col" style="text-align: right;">
-                <button type="button" class="btn remove-btn remove-activity">
-                  <i class="fas fa-trash"></i> Remove
-                </button>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="activity${activityCounter}Title">Activity Title</label>
-              <input type="text" id="activity${activityCounter}Title" name="activities[${activityCounter}][title]" placeholder="Enter title for activity" required>
-            </div>
-            <div class="form-group">
-              <label for="activity${activityCounter}Desc">Activity Description</label>
-              <textarea id="activity${activityCounter}Desc" name="activities[${activityCounter}][desc]" placeholder="Describe the activity" required></textarea>
-            </div>
-          `;
-          activitiesContainer.appendChild(newActivity);
-          
-          // Add event listener for the new remove button
-          const removeBtn = newActivity.querySelector('.remove-activity');
-          removeBtn.addEventListener('click', function() {
-            activitiesContainer.removeChild(newActivity);
-          });
-        });
-
-        // Generic function to add more list items
-        function setupListAddition(addBtnId, listId, placeholderText, inputName) {
-          const addBtn = document.getElementById(addBtnId);
-          const listContainer = document.getElementById(listId);
-          
-          addBtn.addEventListener('click', function() {
-            const newItem = document.createElement('div');
-            newItem.className = 'list-item';
-            newItem.innerHTML = `
-              <input type="text" name="${inputName}" placeholder="${placeholderText}" />
-              <button type="button" class="btn remove-btn">
-                <i class="fas fa-trash"></i> Remove
-              </button>
-            `;
-            listContainer.appendChild(newItem);
-            
-            // Add event listener for the new remove button
-            const removeBtn = newItem.querySelector('.remove-btn');
-            removeBtn.addEventListener('click', function() {
-              listContainer.removeChild(newItem);
-            });
-          });
-          
-          // Add event listeners to initial remove buttons
-          const initialRemoveBtns = listContainer.querySelectorAll('.remove-btn');
-          initialRemoveBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-              const listItem = btn.closest('.list-item');
-              if (listContainer.children.length > 1) {
-                listContainer.removeChild(listItem);
-              } else {
-                listItem.querySelector('input').value = '';
-              }
-            });
-          });
-        }
-
-        // Setup all list additions
-        setupListAddition('addIncludedBtn', 'includedList', 'Enter included item', 'included[]');
-        setupListAddition('addExcludedBtn', 'excludedList', 'Enter excluded item', 'excluded[]');
-        setupListAddition('addBringBtn', 'bringList', 'Enter item to bring', 'bring[]');
-
-        // Add form submission handler
-        const tourForm = document.getElementById('tourForm');
-        tourForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const formData = new FormData(this);
-
-          fetch('process_tour.php', {
-            method: 'POST',
-            body: formData
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              alert(data.message);
-              window.location.href = 'displaytour.php'; // Changed redirect destination
-            } else {
-              alert('Error: ' + data.message);
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred while saving the tour');
-          });
-        });
-    });
-  </script>
 </body>
 </html>

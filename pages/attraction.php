@@ -1,6 +1,63 @@
 <?php
 require_once('../admin/config/connection.php');
 
+// Compatibility function for get_result() - works with all MySQLi configurations
+function getStmtResult($stmt) {
+    if (method_exists($stmt, 'get_result')) {
+        return $stmt->get_result();
+    } else {
+        // Fallback for servers without mysqlnd support
+        $result = new stdClass();
+        $result->data = [];
+        $result->num_rows = 0;
+        $result->current_index = 0;
+
+        // Get metadata
+        $metadata = $stmt->result_metadata();
+        if ($metadata) {
+            $fields = [];
+            while ($field = $metadata->fetch_field()) {
+                $fields[] = $field->name;
+            }
+
+            // Bind results
+            $values = [];
+            $refs = [];
+            foreach ($fields as $field) {
+                $refs[] = &$values[$field];
+            }
+            call_user_func_array([$stmt, 'bind_result'], $refs);
+
+            // Fetch all rows
+            while ($stmt->fetch()) {
+                $row = [];
+                foreach ($fields as $field) {
+                    $row[$field] = $values[$field];
+                }
+                $result->data[] = $row;
+            }
+            $result->num_rows = count($result->data);
+        }
+
+        return $result;
+    }
+}
+
+// Helper function to fetch associative array from custom result object
+function fetchAssoc($result) {
+    if (is_object($result) && isset($result->data)) {
+        // Custom stdClass result object
+        if ($result->current_index < count($result->data)) {
+            return $result->data[$result->current_index++];
+        }
+        return null;
+    } elseif (is_object($result) && method_exists($result, 'fetch_assoc')) {
+        // Real MySQLi result object
+        return $result->fetch_assoc();
+    }
+    return null;
+}
+
 // Get attraction ID from URL
 $attraction_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
@@ -11,14 +68,14 @@ if ($attraction_id <= 0) {
 }
 
 // Fetch attraction data
-$attraction_query = "SELECT ha.*, ad.description, ad.location, ad.activities, ad.external_link 
+$attraction_query = "SELECT ha.*, ad.description, ad.location, ad.activities, ad.external_link
                     FROM home_attractions ha
                     LEFT JOIN attraction_details ad ON ha.id = ad.attraction_id
                     WHERE ha.id = ?";
 $stmt = $conn->prepare($attraction_query);
 $stmt->bind_param("i", $attraction_id);
 $stmt->execute();
-$result = $stmt->get_result();
+$result = getStmtResult($stmt);
 
 if ($result->num_rows === 0) {
     // Redirect if attraction not found
@@ -26,17 +83,17 @@ if ($result->num_rows === 0) {
     exit();
 }
 
-$attraction = $result->fetch_assoc();
+$attraction = fetchAssoc($result);
 
 // Fetch gallery images
 $gallery_query = "SELECT * FROM attraction_gallery WHERE attraction_id = ? ORDER BY display_order ASC";
 $gallery_stmt = $conn->prepare($gallery_query);
 $gallery_stmt->bind_param("i", $attraction_id);
 $gallery_stmt->execute();
-$gallery_result = $gallery_stmt->get_result();
+$gallery_result = getStmtResult($gallery_stmt);
 $gallery_images = [];
 
-while ($image = $gallery_result->fetch_assoc()) {
+while ($image = fetchAssoc($gallery_result)) {
     $gallery_images[] = $image;
 }
 

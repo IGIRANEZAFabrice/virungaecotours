@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     block.innerHTML = html;
     contentBlocks.appendChild(block);
 
-    // Initialize rich-text editor for textareas
+    // Initialize rich-text editor for textareas in the new block
     block.querySelectorAll("textarea").forEach((ta) => {
       enablePlainPaste(ta);
       initializeRichTextEditor(ta);
@@ -77,6 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
       fileInput.addEventListener("change", (e) => handleImagePreview(e.target));
     });
   }
+
+  // Initialize rich-text editor for existing textareas (like Introduction)
+  document.querySelectorAll("#bigDescription").forEach((ta) => {
+    enablePlainPaste(ta);
+    initializeRichTextEditor(ta);
+  });
 
   // Handle image preview
   function handleImagePreview(input) {
@@ -150,9 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hide original textarea
     textarea.style.display = "none";
 
-    // Sync content using innerText to remove unwanted \r\n
+    // Sync content using innerHTML to preserve formatting and links
     editor.addEventListener("input", () => {
-      textarea.value = editor.innerText;
+      textarea.value = editor.innerHTML;
     });
   }
 

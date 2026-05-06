@@ -28,6 +28,7 @@ $stats = mysqli_fetch_assoc($stats_result);
     <link rel="stylesheet" href="../css/earthy-theme.css">
     <link rel="stylesheet" href="assets/css/community.css">
     <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/intro.css">
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -85,6 +86,16 @@ $stats = mysqli_fetch_assoc($stats_result);
                 <h1>About Our Community Programs</h1>
                 <p>Discover the story behind our mission to empower communities and preserve the natural heritage of the Virunga Massif region.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Intro Text Section -->
+    <section class="intro-text-section">
+        <div class="container">
+            <p>The Virunga Community Programs was born from a simple idea: tourism should not only showcase the beauty of the Virunga Massif but also improve the lives of the people who call it home. Supported by Virunga Ecotours, the initiative ensures that every journey contributes to meaningful change, transforming challenges into opportunities and turning travel into lasting impact.</p>
+            <p>Across the region, families face real struggles: poverty that limits livelihoods, youth without opportunities, schools lacking resources, and communities without adequate healthcare or clean water. At the same time, women continue to confront barriers, cultural traditions risk being forgotten, and living alongside wildlife often leads to daily conflict. These challenges are significant, but they are not without solutions. Through skills training, education support, health and water projects, women’s empowerment, cultural preservation, and conservation awareness, the initiative delivers programs that are practical, people-centered, and designed for lasting results.</p>
+            <p>What makes this work different is its foundation: it is fueled by the spirit of tourism and strengthened by those who believe in meaningful impact. Each visit with Virunga Ecotours creates a ripple effect that reaches classrooms, households, and villages. Every partnership, every shared skill, every contribution helps build a future where communities thrive alongside nature.</p>
+            <p>This is more than a program, it is an open door for anyone who wants to see their time, resources, or knowledge create visible change. By walking alongside this vision, you become part of a collective effort to lift families out of poverty, give children a chance at education, empower women, protect culture, and safeguard the Virunga landscape for generations to come. Together, we can turn today’s struggles into tomorrow’s hope and build a stronger, more vibrant Virunga.</p>
         </div>
     </section>
 
@@ -338,14 +349,7 @@ $stats = mysqli_fetch_assoc($stats_result);
                 <h2>Join Our Mission</h2>
                 <p>Be part of the positive change in the Virunga region. Whether through volunteering, partnerships, or donations, your support makes a real difference in people's lives.</p>
                 <div class="cta-buttons">
-                    <a href="contact.php?action=volunteer" class="btn btn-primary">
-                        <i class="fas fa-hands-helping"></i>
-                        Volunteer With Us
-                    </a>
-                    <a href="contact.php?action=partner" class="btn btn-secondary">
-                        <i class="fas fa-handshake"></i>
-                        Partner With Us
-                    </a>
+                   
                     <a href="programs.php" class="btn btn-outline">
                         <i class="fas fa-eye"></i>
                         View Our Programs

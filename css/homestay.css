@@ -9,13 +9,17 @@
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(42, 72, 88, 0.5) 0%, rgba(139, 115, 85, 0.2) 70%);
-    z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(42, 72, 88, 0.5) 0%,
+    rgba(139, 115, 85, 0.2) 70%
+  );
+  z-index: 2;
 }
 
 .cta-container {
@@ -38,7 +42,6 @@
 }
 
 .cta-title {
-  font-family: "Playfair Display", serif;
   font-size: 1.3rem;
   color: #2d3a2e;
   margin-bottom: 0.7rem;
@@ -208,7 +211,6 @@ html {
 }
 
 .hero-title {
-  font-family: "Playfair Display", serif;
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: var(--spacing-md);
@@ -221,7 +223,7 @@ html {
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: var(--spacing-lg);
-  color: var(--neutral-cream);
+  color: #e0e7df;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
@@ -340,7 +342,6 @@ html {
 }
 
 .summary-text h2 {
-  font-family: "Playfair Display", serif;
   font-size: 1.4rem;
   color: var(--primary-green);
   margin-bottom: var(--spacing-md);
@@ -406,7 +407,6 @@ html {
 }
 
 .section-header h2 {
-  font-family: "Playfair Display", serif;
   font-size: 1.4rem;
   color: var(--primary-green);
   margin-bottom: var(--spacing-sm);
@@ -490,7 +490,6 @@ html {
 }
 
 .benefit-content h3 {
-  font-family: "Playfair Display", serif;
   font-size: 1.05rem;
   color: var(--primary-green);
   margin-bottom: var(--spacing-sm);
@@ -547,7 +546,6 @@ html {
 }
 
 .structure-content h4 {
-  font-family: "Playfair Display", serif;
   font-size: 0.98rem;
   color: var(--primary-green);
   margin-bottom: var(--spacing-xs);
@@ -572,7 +570,6 @@ html {
 }
 
 .proposition-block h2 {
-  font-family: "Playfair Display", serif;
   font-size: 1.1rem;
   color: var(--primary-green);
   margin-bottom: var(--spacing-lg);
@@ -617,7 +614,6 @@ html {
 }
 
 .value-content h4 {
-  font-family: "Playfair Display", serif;
   font-size: 0.95rem;
   color: var(--primary-green);
   margin-bottom: var(--spacing-xs);

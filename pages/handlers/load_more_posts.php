@@ -3,6 +3,47 @@ require_once '../../admin/config/connection.php'; // Adjust path as needed
 
 header('Content-Type: application/json'); // Set response type to JSON
 
+// Compatibility function for get_result() - works with all MySQLi configurations
+function getStmtResult($stmt) {
+    if (method_exists($stmt, 'get_result')) {
+        return $stmt->get_result();
+    } else {
+        // Fallback for servers without mysqlnd support
+        $result = new stdClass();
+        $result->data = [];
+        $result->num_rows = 0;
+
+        // Get metadata
+        $metadata = $stmt->result_metadata();
+        if ($metadata) {
+            $fields = [];
+            while ($field = $metadata->fetch_field()) {
+                $fields[] = $field->name;
+            }
+
+            // Bind results
+            $values = [];
+            $refs = [];
+            foreach ($fields as $field) {
+                $refs[] = &$values[$field];
+            }
+            call_user_func_array([$stmt, 'bind_result'], $refs);
+
+            // Fetch all rows
+            while ($stmt->fetch()) {
+                $row = [];
+                foreach ($fields as $field) {
+                    $row[$field] = $values[$field];
+                }
+                $result->data[] = $row;
+            }
+            $result->num_rows = count($result->data);
+        }
+
+        return $result;
+    }
+}
+
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 6; // Default limit
 $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
 
@@ -27,7 +68,7 @@ if (!$stmt) {
 
 $stmt->bind_param("ii", $limit, $offset);
 $stmt->execute();
-$result = $stmt->get_result();
+$result = getStmtResult($stmt);
 
 $posts = [];
 if ($result) {

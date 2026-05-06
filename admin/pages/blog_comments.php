@@ -13,7 +13,12 @@ $query = "SELECT bc.*, bp.title AS post_title FROM blog_comments bc
           LEFT JOIN blog_posts bp ON bc.blog_id = bp.blog_id 
           ORDER BY bc.created_at DESC";
 $result = $conn->query($query);
-$comments = $result->fetch_all(MYSQLI_ASSOC);
+$comments = [];
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $comments[] = $row;
+    }
+}
 
 // Handle comment approval
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment_id'])) {

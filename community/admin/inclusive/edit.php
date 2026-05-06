@@ -33,9 +33,9 @@ if (!$item) { header('Location: index.php?error=' . urlencode('Item not found'))
     <link rel="stylesheet" href="../assets/css/forms.css">
 </head>
 <body class="admin-layout">
-    <?php include '../includes/sidebar.php'; ?>
+   
     <div class="admin-container">
-    <?php include '../includes/topbar.php'; ?>
+
         <main class="admin-main">
             <header class="page-header">
                 <h1><?php echo $type === 'card' ? 'Edit Approach Card' : 'Edit Statistic'; ?></h1>

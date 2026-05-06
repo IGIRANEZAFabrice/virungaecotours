@@ -1,0 +1,217 @@
+/* Geoheritage Page Styles - Virunga Ecotours Community */
+/* Relies on community/assets/css/community.css and ../css/earthy-theme.css */
+
+:root {
+  --gh-brand: #2c5b3d; /* deep green */
+  --gh-accent: #d4a373; /* sandy brown */
+  --ring: #e5e7eb;
+  --muted: #6b7280;
+  --card-bg: #fff;
+  --radius: 14px;
+  --shadow-sm: 0 1px 2px rgba(16,24,40,.06), 0 1px 1px rgba(16,24,40,.04);
+  --shadow-md: 0 8px 20px rgba(16,24,40,.06), 0 2px 6px rgba(16,24,40,.08);
+}
+
+.container { width: min(1200px, 92%); margin-inline: auto; }
+.section { padding: 64px 0; }
+.lead { color: var(--muted); font-size: 1.125rem; line-height: 1.6; }
+.eyebrow { display:inline-flex; align-items:center; gap:.5rem; font-weight:600; font-size:.9rem; color: var(--gh-brand); }
+.section-title { font-size: clamp(1.4rem, 3vw, 2rem); }
+
+/* Hero */
+.gh-hero {
+  position: relative; 
+  height: 80vh; 
+  min-height: 600px; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  color:#fff; 
+  overflow:hidden;
+  background: linear-gradient(135deg, rgba(44, 91, 61, 0.8), rgba(212, 163, 115, 0.5));
+}
+.gh-hero .bg { 
+  position:absolute; 
+  inset:0; 
+  z-index: -1;
+}
+.gh-hero .bg img { 
+  width:100%; 
+  height:100%; 
+  object-fit:cover; 
+  object-position:center; 
+  opacity: 0.4;
+}
+.gh-hero .content { 
+  position:relative; 
+  z-index:1; 
+  text-align:center; 
+  padding: 0 1rem; 
+}
+.gh-hero h1 { 
+  font-size: clamp(2rem, 5vw, 3rem); 
+  margin:0 0 .6rem; 
+  text-shadow: 0 2px 6px rgba(0,0,0,.35); 
+  font-weight: 700;
+}
+.gh-hero p { 
+  color:#e5e7eb; 
+  max-width: 70ch; 
+  margin:0 auto; 
+  text-shadow: 0 1px 2px rgba(0,0,0,.35); 
+  font-size: 1.2rem;
+}
+
+/* Grid blocks */
+.gh-grid { 
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap:2rem; 
+}
+.gh-card { 
+  background: var(--card-bg); 
+  border:1px solid var(--ring); 
+  border-radius: var(--radius); 
+  padding:2rem; 
+  box-shadow: var(--shadow-sm); 
+  transition: transform .3s ease, box-shadow .3s ease; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.gh-card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: var(--shadow-md); 
+}
+.gh-card .icon { 
+  color: var(--gh-accent); 
+  font-size: 2rem; 
+  margin-bottom:1rem; 
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gh-card h3 { 
+  margin:.5rem 0 .5rem; 
+  font-size:1.25rem; 
+  font-weight: 600;
+}
+.gh-card p, .gh-card li { 
+  color: var(--muted); 
+  font-size: 1rem;
+}
+
+/* Table-like list */
+.gh-list { 
+  display:grid; 
+  gap:1rem; 
+  margin-top: 2rem; 
+}
+.gh-list .item { 
+  background:#fff; 
+  border:1px solid var(--ring); 
+  border-radius: 12px; 
+  padding:1.5rem; 
+  display:flex; 
+  gap:1rem; 
+  align-items:center; 
+  box-shadow: var(--shadow-sm); 
+  transition: background-color 0.3s ease;
+}
+.gh-list .item:hover {
+  background-color: #f9fafb;
+}
+.gh-list .item i { 
+  color: var(--gh-brand); 
+  font-size: 1.5rem;
+}
+.gh-list .item div strong {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Two column wraps */
+.gh-two { 
+  display:grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap:2rem; 
+  align-items:start; 
+}
+
+/* CTA */
+.cta-section { 
+  background: var(--gh-brand); 
+  padding:80px 0; 
+  border-top:1px solid var(--ring); 
+  color: #fff;
+}
+.cta-content { 
+  text-align:center; 
+  max-width: 840px; 
+  margin: 0 auto; 
+}
+.cta-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.cta-buttons { 
+  display:flex; 
+  gap:1rem; 
+  justify-content:center; 
+  margin-top:2rem; 
+  flex-wrap: wrap; 
+}
+.cta-btn { 
+  display:inline-flex; 
+  align-items:center; 
+  gap:.5rem; 
+  padding:1rem 2rem; 
+  border-radius:999px; 
+  border:1px solid var(--gh-accent); 
+  color: var(--gh-accent); 
+  background:transparent; 
+  text-decoration:none; 
+  font-weight:600; 
+  transition: all .3s ease; 
+}
+.cta-btn.primary { 
+  background: var(--gh-accent); 
+  color:#fff; 
+  border-color:var(--gh-accent); 
+}
+.cta-btn:hover { 
+  background: var(--gh-accent);
+  color: #fff;
+  transform: translateY(-3px);
+}
+.cta-btn.primary:hover { 
+  background: #c5936a; 
+  border-color: #c5936a;
+}
+.cta-btn:focus-visible { 
+  outline: 3px solid rgba(212, 163, 115, 0.5); 
+  outline-offset: 2px; 
+}
+
+/* Responsive */
+@media (max-width: 720px) { 
+  .gh-hero { 
+    min-height: 500px; 
+    height: 70vh; 
+  } 
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) { 
+  * { 
+    animation-duration: .001ms !important; 
+    animation-iteration-count: 1 !important; 
+    transition-duration: .001ms !important; 
+    scroll-behavior:auto !important; 
+  } 
+}

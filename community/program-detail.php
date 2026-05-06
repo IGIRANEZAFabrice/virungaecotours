@@ -127,31 +127,10 @@ $page_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVE
         </div>
         <div class="container">
             <div class="program-hero-content">
-                <nav class="breadcrumb">
-                    <a href="index.php">Community</a>
-                    <span class="separator"><i class="fas fa-chevron-right"></i></span>
-                    <a href="programs.php">Programs</a>
-                    <span class="separator"><i class="fas fa-chevron-right"></i></span>
-                    <span class="current"><?php echo htmlspecialchars($program['title']); ?></span>
-                </nav>
+                
                 
                 <div class="program-hero-info">
-                    <div class="program-badges">
-                        <span class="program-country">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <?php echo ucfirst(htmlspecialchars($program['country'])); ?>
-                        </span>
-                        <span class="program-category">
-                            <i class="fas fa-tag"></i>
-                            <?php echo htmlspecialchars($program['category']); ?>
-                        </span>
-                        <?php if ($program['featured']): ?>
-                            <span class="program-featured">
-                                <i class="fas fa-star"></i>
-                                Featured
-                            </span>
-                        <?php endif; ?>
-                    </div>
+                    
                     
                     <h1><?php echo htmlspecialchars($program['title']); ?></h1>
                     <p class="program-hero-description"><?php echo htmlspecialchars($program['short_description']); ?></p>

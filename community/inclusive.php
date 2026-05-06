@@ -1,15 +1,16 @@
 <?php require_once '../admin/config/connection.php';
 // Load main page
 $page = null;
-$pq = mysqli_query($conn, "SELECT id, hero_title, hero_subtitle, intro_text FROM inclusive_page ORDER BY id DESC LIMIT 1");
+$pq = mysqli_query($conn, "SELECT id, hero_title, hero_subtitle, hero_image, intro_text FROM inclusive_page ORDER BY id DESC LIMIT 1");
 if ($pq && mysqli_num_rows($pq) > 0) {
     $page = mysqli_fetch_assoc($pq);
 } else {
-    mysqli_query($conn, "INSERT INTO inclusive_page (hero_title, hero_subtitle, intro_text) VALUES ('Inclusive Community-Based Tourism', 'Empowering Persons with Disabilities in Rural Areas', '')");
+    mysqli_query($conn, "INSERT INTO inclusive_page (hero_title, hero_subtitle, hero_image, intro_text) VALUES ('Inclusive Community-Based Tourism', 'Empowering Persons with Disabilities in Rural Areas', 'assets/images/inclusive-hero.jpg', '')");
     $page = [
         'id' => mysqli_insert_id($conn),
         'hero_title' => 'Inclusive Community-Based Tourism',
         'hero_subtitle' => 'Empowering Persons with Disabilities in Rural Areas',
+        'hero_image' => 'assets/images/inclusive-hero.jpg',
         'intro_text' => ''
     ];
 }
@@ -71,7 +72,14 @@ if ($ctaq && mysqli_num_rows($ctaq) > 0) { $cta = mysqli_fetch_assoc($ctaq); }
      <?php include 'includes/header.php'; ?>
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-bg"></div>
+        <div class="hero-bg">
+            <?php if (!empty($page['hero_image'])): ?>
+                <img src="<?php echo htmlspecialchars($page['hero_image']); ?>" alt="Hero">
+            <?php else: ?>
+                <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2a4858 0%, #1a3a48 100%);"></div>
+            <?php endif; ?>
+        </div>
+        
         <div class="hero-content">
             <h1 class="hero-title"><?php echo htmlspecialchars($page['hero_title'] ?? 'Inclusive Community-Based Tourism'); ?></h1>
             <p class="hero-subtitle"><?php echo htmlspecialchars($page['hero_subtitle'] ?? ''); ?></p>
@@ -95,7 +103,12 @@ if ($ctaq && mysqli_num_rows($ctaq) > 0) { $cta = mysqli_fetch_assoc($ctaq); }
                 <?php else: ?>
                     <?php foreach ($cards as $card): ?>
                     <div class="approach-card">
-                        <div class="card-image" style="background-image: url('<?php echo htmlspecialchars($card['image']); ?>');">
+                        <div class="card-image">
+                            <?php if (!empty($card['image'])): ?>
+                                <img src="<?php echo htmlspecialchars($card['image']); ?>" alt="<?php echo htmlspecialchars($card['title']); ?>">
+                            <?php else: ?>
+                                <div class="card-image-placeholder"></div>
+                            <?php endif; ?>
                             <div class="card-overlay"></div>
                             <div class="card-number"><?php echo (int)$card['number']; ?></div>
                         </div>
