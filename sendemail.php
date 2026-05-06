@@ -81,9 +81,9 @@ try {
     $email_config = [
         'smtp_host' => 'smtp.gmail.com',
         'smtp_port' => 587,
-        'smtp_username' => 'virungahomestay@gmail.com',
-        'smtp_password' => 'mvkumfdesmiedtnl', 
-        'from_email' => 'virungahomestay@gmail.com',
+        'smtp_username' => 'fabrdaa@gmail.com',
+        'smtp_password' => 'mofrqznkhkthzfog', 
+        'from_email' => 'fabrdaa@gmail.com',
         'from_name' => 'Virunga Ecotours System',
         'to_email' => 'virungahomestay@gmail.com',
         'subject' => 'Daily Summary Report - ' . date('Y-m-d H:i:s')

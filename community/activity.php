@@ -145,7 +145,7 @@ $activities_result = mysqli_query($conn, $activities_query);
     <div class="container">
         <div class="booking-info-content">
             <div class="booking-header">
-                <h2>Booking Community-Based Tourism Activities with Virunga Ecotours</h2>
+                <h2>Explore Community-Based Tourism Opportunities</h2>
                 <p class="booking-subtitle">Professional and Academic Approach to Authentic Cultural Experiences</p>
             </div>
 

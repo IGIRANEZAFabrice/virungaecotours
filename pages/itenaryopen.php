@@ -168,6 +168,48 @@ require_once './itenaryopenhandler.php';
       </script>
     </section>
 
+    <?php if (!empty($pricingTiers)): ?>
+      <section class="pricing-section">
+        <div class="container">
+          <h2 class="info-title">
+            Rates (<?php echo htmlspecialchars($pricingYear ?? date('Y')); ?>)
+          </h2>
+
+          <div class="pricing-table-wrapper">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Group size</th>
+                  <th>Price per person</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($pricingTiers as $tier): ?>
+                  <tr>
+                    <td><?php echo htmlspecialchars($tier['group_size']); ?></td>
+                    <td>
+                      $<?php echo number_format((float)$tier['price_per_person'], 2); ?>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+
+          <?php if (!empty($pricingNotes)): ?>
+            <div class="pricing-notes">
+              <h3>Seasons / Discounts</h3>
+              <ul>
+                <?php foreach ($pricingNotes as $note): ?>
+                  <li><?php echo nl2br(htmlspecialchars($note['note'])); ?></li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+          <?php endif; ?>
+        </div>
+      </section>
+    <?php endif; ?>
+
     <section class="contact-section">
       <div class="contact-decoration"></div>
 
@@ -308,6 +350,32 @@ require_once './itenaryopenhandler.php';
         </div>
       </div>
     </div>
+
+    <!-- Special Notes -->
+    <div class="special-notes">
+      <div class="special-notes-inner">
+        <h3>Special Notes</h3>
+        <div class="notes-list">
+          <div class="note-item">
+            <h4>Pricing for International and Local Guests</h4>
+            <p>All listed prices are in USD and apply to bookings made from outside Rwanda. For Rwandan residents, please contact us directly to make a booking and receive rates in local currency.</p>
+          </div>
+          <div class="note-item">
+            <h4>Currency and Tax Information</h4>
+            <p>Prices shown are in USD and include all applicable Rwandan taxes. If you wish to pay in Rwandan Francs (RWF), please request an offline booking. More details can be found in our Payment Options.</p>
+          </div>
+          <div class="note-item">
+            <h4>Travel and Medical Insurance</h4>
+            <p>Please note that foreign medical insurance does not cover helicopter evacuation in Rwanda. For your safety, all our tours include emergency evacuation insurance as standard. We also strongly recommend that every traveler carries comprehensive emergency evacuation coverage.</p>
+          </div>
+          <div class="note-item">
+            <h4>Commitment to Fair Employment</h4>
+            <p>At Virunga Ecotours, we are dedicated to ethical practices. We pay fair wages and make regular contributions to pensions, maternity benefits, and community health schemes for all our employees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section class="included">
       <h1>Why Attend?</h1>
 
@@ -318,7 +386,7 @@ require_once './itenaryopenhandler.php';
       </div>
     </section>
     <div class="also-like">
-      <h2 class="section-title">You May Also Like</h2>
+      <h2 class="section-title">Recommended Experiences</h2>
       <div class="tours-cards" id="toursContainer">
         <?php if (empty($relatedTours)): ?>
           <p class="no-tours">No similar tours available at the moment.</p>

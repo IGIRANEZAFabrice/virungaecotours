@@ -21,9 +21,30 @@ $query = "SELECT bp.*, bc.category_slug, bc.category_name
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $initial_limit);
 $stmt->execute();
-$result = $stmt->get_result(); // Get result set from statement
 
-// Get only categories that have published posts (no change needed here)
+// Fallback for environments without mysqlnd
+$result = [];
+$stmt->store_result();
+if ($stmt->num_rows > 0) {
+    $meta = $stmt->result_metadata();
+    $fields = [];
+    $row = [];
+    while ($field = $meta->fetch_field()) {
+        $fields[] = &$row[$field->name];
+    }
+    call_user_func_array([$stmt, 'bind_result'], $fields);
+    while ($stmt->fetch()) {
+        $c = [];
+        foreach ($row as $key => $val) {
+            $c[$key] = $val;
+        }
+        $result[] = $c;
+    }
+}
+$stmt->close();
+
+
+// Get only categories that have published posts
 $categories_query = "SELECT DISTINCT bc.category_slug, bc.category_name 
                      FROM blog_categories bc
                      JOIN blog_posts bp ON bc.category_id = bp.category_id
@@ -56,7 +77,7 @@ $categories_result = $conn->query($categories_query);
     <script src="../js/header.js"></script>
   </head>
   <body>
-    <?php include('./includes/header.php'); ?>
+    <?php include('includes/header.php'); ?>
     
     <section class="breadcrumbs">
       <div class="container">
@@ -98,8 +119,8 @@ $categories_result = $conn->query($categories_query);
         <div class="blog-display"> 
             
             <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1200px; margin: 0 auto;"> 
-                <?php if ($result && $result->num_rows > 0): ?>
-                    <?php while ($post = $result->fetch_assoc()): ?>
+                <?php if (!empty($result)): ?>
+                    <?php foreach ($result as $post): ?>
                         
                         <div class="blog-item" 
                              data-category="<?= htmlspecialchars($post['category_slug']) // Use category slug ?>"
@@ -139,7 +160,7 @@ $categories_result = $conn->query($categories_query);
                                 <a href="./blogopen.php?id=<?= $post['blog_id'] ?>" class="blog-item-button" style="display: inline-block; background-color: #2a4858; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: bold; text-align: center; margin-top: 10px; align-self: flex-start;">READ MORE</a> 
                             </div>
                         </div>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     
                     <p class="no-posts" style="grid-column: 1 / -1; text-align: center; color: #5d4e41; padding: 40px 0;">No published blog posts found.</p> 
@@ -160,7 +181,7 @@ $categories_result = $conn->query($categories_query);
       </div>
     </section>
 
-     <?php include('./includes/footer.php'); ?>
+     <?php include('includes/footer.php'); ?>
 
     <script>
       const viewMoreButton = document.getElementById("view-more-btn");

@@ -11,7 +11,12 @@ if (!isset($_SESSION['admin_id'])) {
 // Get all contact submissions
 $query = "SELECT * FROM contact_submissions ORDER BY submission_date DESC";
 $result = $conn->query($query);
-$submissions = $result->fetch_all(MYSQLI_ASSOC);
+$submissions = [];
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        $submissions[] = $row;
+    }
+}
 
 // Handle message status updates
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

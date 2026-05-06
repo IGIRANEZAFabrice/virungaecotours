@@ -13,7 +13,14 @@
                 <span>Dashboard</span>
             </a>
         </div>
-        
+
+        <div class="nav-item">
+            <a href="../hero/hero.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'hero.php' ? 'active' : ''; ?>">
+                <i class="fas fa-image"></i>
+                <span>Hero Section</span>
+            </a>
+        </div>
+
         <div class="nav-item">
             <a href="../programs/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/programs/') !== false ? 'active' : ''; ?>">
                 <i class="fas fa-project-diagram"></i>
@@ -94,7 +101,35 @@
                 <span>Activities</span>
             </a>
         </div>
-        
+
+        <div class="nav-item">
+            <a href="../voluntourism/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/voluntourism/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-hands-helping"></i>
+                <span>Voluntourism</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../gala/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/gala/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-utensils"></i>
+                <span>Gala Dinner</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../philanthropy/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/philanthropy/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-heart"></i>
+                <span>Philanthropy</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="../heritage/" class="nav-link <?php echo strpos($_SERVER['REQUEST_URI'], '/heritage/') !== false ? 'active' : ''; ?>">
+                <i class="fas fa-landmark"></i>
+                <span>Heritage & Culture</span>
+            </a>
+        </div>
+
         <div class="nav-divider"></div>
         
         <div class="nav-item">

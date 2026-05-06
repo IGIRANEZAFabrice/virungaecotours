@@ -74,4 +74,35 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Toggle nested mobile dropdowns (e.g., Interests -> sub-links)
+  const mobileNestedItems = document.querySelectorAll(".mobile-nested-item");
+  if (mobileNestedItems && mobileNestedItems.length) {
+    mobileNestedItems.forEach((nestedItem) => {
+      const nestedTitle = nestedItem.querySelector(".mobile-nested-title");
+      const nestedDropdown = nestedItem.querySelector(".mobile-nested-dropdown");
+
+      if (nestedTitle && nestedDropdown) {
+        nestedTitle.addEventListener("click", function (e) {
+          // prevent parent dropdown closing immediately on tap
+          e.stopPropagation();
+
+          // Close sibling nested dropdowns within the same group
+          const siblings = nestedItem.parentElement.querySelectorAll(".mobile-nested-item");
+          siblings.forEach((sib) => {
+            if (sib !== nestedItem) {
+              const sibTitle = sib.querySelector(".mobile-nested-title");
+              const sibDropdown = sib.querySelector(".mobile-nested-dropdown");
+              sibDropdown && sibDropdown.classList.remove("active");
+              sibTitle && sibTitle.classList.remove("active");
+            }
+          });
+
+          // Toggle current nested dropdown and rotate chevron
+          nestedDropdown.classList.toggle("active");
+          nestedTitle.classList.toggle("active");
+        });
+      }
+    });
+  }
 });

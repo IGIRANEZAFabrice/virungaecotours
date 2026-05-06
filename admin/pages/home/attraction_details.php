@@ -1,6 +1,47 @@
 <?php
 require_once '../../config/connection.php';
 
+// Compatibility function for get_result() - works with all MySQLi configurations
+function getStmtResult($stmt) {
+    if (method_exists($stmt, 'get_result')) {
+        return $stmt->get_result();
+    } else {
+        // Fallback for servers without mysqlnd support
+        $result = new stdClass();
+        $result->data = [];
+        $result->num_rows = 0;
+
+        // Get metadata
+        $metadata = $stmt->result_metadata();
+        if ($metadata) {
+            $fields = [];
+            while ($field = $metadata->fetch_field()) {
+                $fields[] = $field->name;
+            }
+
+            // Bind results
+            $values = [];
+            $refs = [];
+            foreach ($fields as $field) {
+                $refs[] = &$values[$field];
+            }
+            call_user_func_array([$stmt, 'bind_result'], $refs);
+
+            // Fetch all rows
+            while ($stmt->fetch()) {
+                $row = [];
+                foreach ($fields as $field) {
+                    $row[$field] = $values[$field];
+                }
+                $result->data[] = $row;
+            }
+            $result->num_rows = count($result->data);
+        }
+
+        return $result;
+    }
+}
+
 // Check if user is logged in
 session_start();
 if (!isset($_SESSION['admin_id'])) {
@@ -24,7 +65,7 @@ $attraction_query = "SELECT * FROM home_attractions WHERE id = ?";
 $attraction_stmt = $conn->prepare($attraction_query);
 $attraction_stmt->bind_param("i", $attraction_id);
 $attraction_stmt->execute();
-$attraction_result = $attraction_stmt->get_result();
+$attraction_result = getStmtResult($attraction_stmt);
 
 if ($attraction_result->num_rows === 0) {
     header('Location: ./attractions.php');
@@ -38,7 +79,7 @@ $details_query = "SELECT * FROM attraction_details WHERE attraction_id = ?";
 $details_stmt = $conn->prepare($details_query);
 $details_stmt->bind_param("i", $attraction_id);
 $details_stmt->execute();
-$details_result = $details_stmt->get_result();
+$details_result = getStmtResult($details_stmt);
 $details = $details_result->num_rows > 0 ? $details_result->fetch_assoc() : null;
 
 // Fetch gallery images
@@ -46,7 +87,7 @@ $gallery_query = "SELECT * FROM attraction_gallery WHERE attraction_id = ? ORDER
 $gallery_stmt = $conn->prepare($gallery_query);
 $gallery_stmt->bind_param("i", $attraction_id);
 $gallery_stmt->execute();
-$gallery_result = $gallery_stmt->get_result();
+$gallery_result = getStmtResult($gallery_stmt);
 $gallery_images = [];
 
 while ($image = $gallery_result->fetch_assoc()) {

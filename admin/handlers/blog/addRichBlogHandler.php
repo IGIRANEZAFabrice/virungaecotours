@@ -54,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->begin_transaction();
         
         // Basic blog information
-        $title = $conn->real_escape_string($_POST['blogTitle']);
-        $author = $conn->real_escape_string($_POST['author']);
+        $title = $_POST['blogTitle'];
+        $author = $_POST['author'];
         $readMin = intval($_POST['readMin']);
-        $category = $conn->real_escape_string($_POST['category']);
-        $bigTitle = $conn->real_escape_string($_POST['bigTitle']);
-        $bigDescription = $conn->real_escape_string($_POST['bigDescription']);
+        $category = $_POST['category'];
+        $bigTitle = $_POST['bigTitle'];
+        $bigDescription = $_POST['bigDescription'];
         $adminId = $_SESSION['admin_id'];
         $slug = createSlug($title) . '-' . uniqid();
         
@@ -74,12 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare($categoryQuery);
         $stmt->bind_param("s", $category);
         $stmt->execute();
-        $categoryResult = $stmt->get_result();
-        if ($categoryResult->num_rows === 0) {
+        $stmt->bind_result($categoryId);
+        if (!$stmt->fetch()) {
             throw new Exception("Invalid category selected.");
         }
-        $categoryRow = $categoryResult->fetch_assoc();
-        $categoryId = $categoryRow['category_id'];
+        $stmt->close();
         
         // Insert blog post
         $blogQuery = "INSERT INTO blog_posts (title, slug, author, read_minutes, category_id, cover_image, 
@@ -181,10 +180,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 switch ($blockType) {
                     case 'text':
                         $sectionTitle = isset($_POST['blockTitle' . $blockId]) ? 
-                            $conn->real_escape_string($_POST['blockTitle' . $blockId]) : '';
+                            $_POST['blockTitle' . $blockId] : '';
                         // Ensure description exists and is not empty before accessing
                         $content = isset($_POST['blockDescription' . $blockId]) ? 
-                            $conn->real_escape_string($_POST['blockDescription' . $blockId]) : '';
+                            $_POST['blockDescription' . $blockId] : '';
                         
                         // Only insert if content is not empty
                         if (!empty($content)) {
@@ -215,9 +214,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                         
                         $caption = isset($_POST['blockImageCaption' . $blockId]) ? 
-                            $conn->real_escape_string($_POST['blockImageCaption' . $blockId]) : '';
+                            $_POST['blockImageCaption' . $blockId] : '';
                         $alignment = isset($_POST['blockImageAlignment' . $blockId]) ? 
-                            $conn->real_escape_string($_POST['blockImageAlignment' . $blockId]) : 'center';
+                            $_POST['blockImageAlignment' . $blockId] : 'center';
                         
                         $imageQuery = "INSERT INTO blog_image_blocks (block_id, image_path, caption, alignment) 
                                        VALUES (?, ?, ?, ?)";
@@ -229,13 +228,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     case 'quote':
                          // Ensure quote text exists and is not empty
                         $quoteText = isset($_POST['blockQuote' . $blockId]) ? 
-                            $conn->real_escape_string($_POST['blockQuote' . $blockId]) : '';
+                            $_POST['blockQuote' . $blockId] : '';
 
                         if (!empty($quoteText)) {
                             $attribution = isset($_POST['blockQuoteAttribution' . $blockId]) ? 
-                                $conn->real_escape_string($_POST['blockQuoteAttribution' . $blockId]) : '';
+                                $_POST['blockQuoteAttribution' . $blockId] : '';
                             $style = isset($_POST['blockQuoteStyle' . $blockId]) ? 
-                                $conn->real_escape_string($_POST['blockQuoteStyle' . $blockId]) : 'standard';
+                                $_POST['blockQuoteStyle' . $blockId] : 'standard';
                             
                             $quoteQuery = "INSERT INTO blog_quote_blocks (block_id, quote_text, attribution, style) 
                                            VALUES (?, ?, ?, ?)";

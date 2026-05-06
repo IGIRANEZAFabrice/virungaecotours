@@ -2,6 +2,10 @@
 // Reuse the exact database fetching mechanism from community/index.php
 require_once '../admin/config/connection.php';
 
+// Fetch community hero slides
+$hero_query = "SELECT * FROM community_hero ORDER BY id ASC";
+$hero_result = mysqli_query($conn, $hero_query);
+
 // Fetch featured programs
 $featured_programs_query = "SELECT * FROM community_programs WHERE featured = 1 AND status = 'active' ORDER BY created_at DESC LIMIT 3";
 $featured_programs_result = mysqli_query($conn, $featured_programs_query);
@@ -11,7 +15,7 @@ $testimonials_query = "SELECT * FROM community_testimonials WHERE featured = 1 A
 $testimonials_result = mysqli_query($conn, $testimonials_query);
 
 // Fetch program statistics
-$stats_query = "SELECT 
+$stats_query = "SELECT
     COUNT(*) as total_programs,
     SUM(beneficiaries) as total_beneficiaries,
     COUNT(DISTINCT country) as countries_served
@@ -56,20 +60,70 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
     <?php include 'includes/header.php'; ?>
     <!-- Hero Section -->
     <section class="hero-section">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="../images/1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Building Stronger Communities</h1>
-                <p class="hero-subtitle">Empowering local communities across Rwanda, DRC Congo, and Uganda through sustainable development, conservation, and education programs.</p>
-                <a href="#programs" class="hero-cta">
-                    <i class="fas fa-arrow-down"></i>
-                    Explore Our Impact
-                </a>
+        <?php if (isset($hero_result) && mysqli_num_rows($hero_result) > 0): ?>
+            <div class="hero-carousel-container">
+                <div class="hero-carousel-wrapper">
+                    <div class="hero-slides-container">
+                        <?php
+                        $hero_active = true;
+                        mysqli_data_seek($hero_result, 0);
+                        while ($hero = mysqli_fetch_assoc($hero_result)):
+                        ?>
+                            <div class="hero-carousel-slide <?php echo $hero_active ? 'active' : ''; ?>" style="background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<?php echo htmlspecialchars($hero['image_url']); ?>') center / cover no-repeat;">
+                                <div class="hero-content">
+                                    <h1 class="hero-title"><?php echo htmlspecialchars($hero['title']); ?></h1>
+                                    <p class="hero-subtitle"><?php echo htmlspecialchars($hero['description']); ?></p>
+                                    <a href="#programs" class="hero-cta">
+                                        <i class="fas fa-arrow-down"></i>
+                                        Explore Our Impact
+                                    </a>
+                                </div>
+                            </div>
+                        <?php
+                        $hero_active = false;
+                        endwhile;
+                        ?>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="hero-carousel-controls">
+                        <button class="hero-carousel-btn prev" onclick="prevHeroSlide()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="hero-carousel-indicators">
+                            <?php
+                            mysqli_data_seek($hero_result, 0);
+                            $indicator_index = 0;
+                            while ($hero = mysqli_fetch_assoc($hero_result)):
+                            ?>
+                                <span class="hero-indicator <?php echo $indicator_index === 0 ? 'active' : ''; ?>" onclick="goToHeroSlide(<?php echo $indicator_index; ?>)"></span>
+                            <?php
+                            $indicator_index++;
+                            endwhile;
+                            ?>
+                        </div>
+                        <button class="hero-carousel-btn next" onclick="nextHeroSlide()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
+        <?php else: ?>
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="../images/1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Building Stronger Communities</h1>
+                    <p class="hero-subtitle">Empowering local communities across Rwanda, DRC Congo, and Uganda through sustainable development, conservation, and education programs.</p>
+                    <a href="#programs" class="hero-cta">
+                        <i class="fas fa-arrow-down"></i>
+                        Explore Our Impact
+                    </a>
+                </div>
+            </div>
+        <?php endif; ?>
     </section>
 
     <!-- Statistics Section (moved below hero) -->
@@ -382,5 +436,46 @@ if ($partners_result && mysqli_num_rows($partners_result) > 0) {
     <script src="assets/js/community.js"></script>
     <script src="assets/js/scroll.js"></script>
     <script src="assets/js/community-header-footer.js"></script>
+
+    <!-- Community Hero Carousel Script -->
+    <script>
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-carousel-slide');
+        const heroIndicators = document.querySelectorAll('.hero-indicator');
+
+        function showHeroSlide(index) {
+            if (heroSlides.length === 0) return;
+
+            // Remove active class from all slides and indicators
+            heroSlides.forEach(slide => slide.classList.remove('active'));
+            heroIndicators.forEach(indicator => indicator.classList.remove('active'));
+
+            // Calculate the correct index
+            currentHeroSlide = (index + heroSlides.length) % heroSlides.length;
+
+            // Add active class to current slide and indicator
+            heroSlides[currentHeroSlide].classList.add('active');
+            if (heroIndicators[currentHeroSlide]) {
+                heroIndicators[currentHeroSlide].classList.add('active');
+            }
+        }
+
+        function nextHeroSlide() {
+            showHeroSlide(currentHeroSlide + 1);
+        }
+
+        function prevHeroSlide() {
+            showHeroSlide(currentHeroSlide - 1);
+        }
+
+        function goToHeroSlide(index) {
+            showHeroSlide(index);
+        }
+
+        // Auto-advance carousel every 5 seconds
+        if (heroSlides.length > 1) {
+            setInterval(nextHeroSlide, 5000);
+        }
+    </script>
 </body>
 </html>

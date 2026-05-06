@@ -43,6 +43,7 @@
                             <li><a href="../pages/faq-page.php">FAQs</a></li>
                             <li><a href="inclusive.php">Inclusive Tourism</a></li>
                             <li><a href="philanthropy.php">Philanthropy Tourism</a></li>
+                            <li><a href="galadinner.php">Gala Dinner</a></li>
                             <li><a href="voluntourism.php">Voluntourism</a></li>
                            
                         </ul>

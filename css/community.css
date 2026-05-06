@@ -1,23 +1,8 @@
-:root {
-    --primary-green: #2a4858;
-    --primary-brown: #8B7355;
-    --accent-sage: #2a4858ac;
-    --accent-terracotta: #967259;
-    --accent-light-brown: #A68C69;
-    --neutral-cream: #F2E8DC;
-    --neutral-beige: #D8C3A5;
-    --neutral-light: #F6F4F0;
-    --neutral-dark: #3A3026;
-    --text-dark: #3A3026;
-    --text-medium: #5D4E41;
-    --text-light: #F6F4F0;
-}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {

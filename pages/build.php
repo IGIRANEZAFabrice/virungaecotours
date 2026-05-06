@@ -817,7 +817,7 @@ html {
     <div class="form-container">
       <div class="form-inner">
         <div class="form-header">
-          <h1> Build Your trip</h1>
+          <h1> Customize Your private trip</h1>
           <p>This journey through the Virunga Massif, spanning Rwanda, the Democratic Republic of Congo (DRC), 
             and Uganda, offers an engaging exploration of the region’s rich biodiversity and unique landscapes. 
             The focus is on sustainable travel and conservation, with an emphasis on both education and responsible 

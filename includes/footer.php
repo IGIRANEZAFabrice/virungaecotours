@@ -72,14 +72,15 @@ if (ob_get_level() > 0) {
             <!-- Begin Journey CTA -->
             <div class="cta-box journey-cta">
               <h3>Begin your journey</h3>
-              <p>
+              <p style="text-align: left; word-spacing: normal; letter-spacing: normal;">
                 Enquire online or contact one of our Eco travel consultants.
               </p>
               <div class="cta-buttons">
                 <a
                   href="./pages/build.php"
                   class="cta-button primary-button"
-                  >ENQUIRE</a
+                  style="font-size: small;"
+                  >Book Now</a
                 >
                 <a href="tel:0784513435" class="cta-button secondary-button">
                   <i class="fas fa-phone"></i> +(250) 784 513 435
@@ -94,17 +95,17 @@ if (ob_get_level() > 0) {
                 Connect with Virunga Ecotours on social media for stunning photos, traveler stories, and behind-the-scenes glimpses of our adventures.
               </p>
               <div class="cta-buttons">
-                <a href="https://facebook.com/virungaecotours" target="_blank" class="cta-social-button">
+                <a href="https://www.facebook.com/VirungaPrograms?mibextid=LQQJ4d" target="_blank" class="cta-social-button">
                   <i class="fab fa-facebook-f"></i>
                   Facebook
                 </a>
-                <a href="https://instagram.com/virungaecotours" target="_blank" class="cta-social-button">
+                <a href="https://www.instagram.com/virunga_ecotours?igsh=YWtnY3FmZjcwdzFl&utm_source=qr" target="_blank" class="cta-social-button">
                   <i class="fab fa-instagram"></i>
                   Instagram
                 </a>
                 <a href="https://www.linkedin.com/in/virunga-ecotours-863a221b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="cta-social-button"><i class="fab fa-linkedin-in">
                   </i
-          ></a>
+          > Linked in</a>
                 
               </div>
             </div>
@@ -118,20 +119,29 @@ if (ob_get_level() > 0) {
     <div class="footer-top">
       <div class="footer-column company-info">
         <h3>MORE FROM Virunga Ecotours</h3>
-        <ul class="footer-links">
+        <ul class="footer-links" id="companyLinks">
 
           <li><a href="./pages/training.php" class="footer-link">Training Support</a></li>
           <li><a href="./community/impact.php" class="footer-link">Community Impact</a></li>
-          <li><a href="./pages/kids.php" class="footer-link">Kids Tourism</a></li>
+          <li><a href="./pages/kids.php" class="footer-link">Advanture for Kids</a></li>
           <li><a href="./pages/payments.php" class="footer-link">Authorized Payments Methods</a></li>
           <li><a href="./pages/lgbtq.php" class="footer-link">Inclusive Tourism(LGBTQ+)</a></li>
           <li><a href="./pages/faq-page.php" class="footer-link">FAQs</a></li>
           <li><a href="./pages/complaints.php" class="footer-link">Common complaints & solutions</a></li>
-          <li><a href="./pages/requirements.php" class="footer-link">Requirements</a></li>
+          <li><a href="./pages/requirements.php" class="footer-link">Park Entry Requirements</a></li>
           <li><a href="./community/inclusive.php" class="footer-link">CBT in Inclusive Education</a></li>
           <li><a href="./pages/animal.php" class="footer-link">Animal Welfare Care Awareness</a></li>
           <li><a href="./pages/honeymoon.php" class="footer-link">Honeymoon in CBT</a></li>
+          <li><a href="./community/galadinner.php" class="footer-link">Gala Dinner</a></li>
           
+          <li><a href="./pages/christmas.php" class="footer-link">Community Christmas Give Away</a></li>
+          <li><a href="./pages/carhire.php" class="footer-link">Car Hire</a></li>
+          <li><a href="./pages/congo-nile-trail.php" class="footer-link">Congo Nile Trail</a></li>
+          
+          <li><a href="./pages/agrotours.php" class="footer-link">Agro Tours</a></li>
+          <li><a href="./pages/beekeeping.php" class="footer-link">Beekeeping Experiences</a></li>
+          
+          <li><a href="./pages/photograph.php" class="footer-link">Kids Photography</a></li>
           <li>
             <a href="./pages/styleguide.php" class="footer-link"
               >The Virunga Ecotours differences</a
@@ -147,7 +157,7 @@ if (ob_get_level() > 0) {
           <a href="https://www.linkedin.com/in/virunga-ecotours-863a221b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-icon" aria-label="LinkedIn"
             ><i class="fab fa-linkedin-in"></i
           ></a>
-          <a href="#" class="social-icon" aria-label="YouTube"
+          <a href="https://www.youtube.com/@VirungaEcotours-o7b" class="social-icon" aria-label="YouTube"
             ><i class="fab fa-youtube"></i
           ></a>
           <a href="https://www.facebook.com/VirungaPrograms?mibextid=LQQJ4d" target="_blank" class="social-icon" aria-label="Facebook"

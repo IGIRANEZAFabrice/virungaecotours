@@ -53,6 +53,12 @@
             <li class="nav-item">
               <a href="./about_page_manager.php"><i class="fas fa-users"></i> <span>Aboutus</span></a>
             </li>
+            <li class="nav-item">
+              <a href="./accommodation/index.php"><i class="fas fa-bed"></i> <span>Accommodation</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="./gorilla/dashboard.php"><i class="fas fa-paw"></i> <span>Gorilla Page</span></a>
+            </li>
              <li class="nav-item">
               <a href="./contact_messages.php"><i class="fas fa-envelope"></i> <span>contact messages</span></a>
             </li>
@@ -94,6 +100,15 @@
             </li>
              <li class="nav-item">
               <a href="./styleguides.php"><i class="fas fa-map"></i> <span>Style Guides</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="./young_explorers.php"><i class="fas fa-child"></i> <span>Young Explorers</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="./photograph.php"><i class="fas fa-camera"></i> <span>Kids for Life Photography</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="./complaints.php"><i class="fas fa-exclamation-circle"></i> <span>Common Complaints</span></a>
             </li>
           </ul>
         </nav>

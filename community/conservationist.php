@@ -11,9 +11,10 @@
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
 
     <!-- External CSS -->
+     <link rel="stylesheet" href="../css/earthy-theme.css">
+    <link rel="stylesheet" href="assets/css/community.css">
     <link rel="stylesheet" href="assets/css/conservationist.css">
-
-    <!-- Font Awesome -->
+  <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Google Fonts -->
@@ -26,7 +27,7 @@
     <section class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-background">
-            <img src="assets/images/conservationist-hero.jpg" alt="Conservation Education" class="hero-image">
+            <img src="../images/conservationist/hero.jpg" alt="Conservation Education" class="hero-image">
         </div>
         <div class="container">
             <div class="hero-content">
@@ -54,7 +55,7 @@
                 </div>
 
                 <div class="intro-image">
-                    <img src="assets/images/conservation-education.jpg" alt="Conservation Education Program" class="intro-img">
+                    <img src="../images/conservationist/ed.jpg" alt="Conservation Education Program" class="intro-img">
                 </div>
             </div>
         </div>
@@ -120,45 +121,12 @@
         </div>
     </section>
 
-    <!-- Image Gallery Section -->
-    <section class="gallery-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Conservation in Action</h2>
-                <p>Witness the impact of our conservation education programs</p>
-            </div>
-
-            <div class="main-gallery-image">
-                <img src="assets/images/conservation-fieldwork.jpg" alt="Conservation Fieldwork" class="main-gallery-img">
-                <div class="gallery-overlay">
-                    <h3>Field Research & Education</h3>
-                    <p>Students and researchers working together in the field to study and protect mountain gorilla habitats</p>
-                </div>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/images/conservation-1.jpg" alt="Conservation Activity 1" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/conservation-2.jpg" alt="Conservation Activity 2" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/conservation-3.jpg" alt="Conservation Activity 3" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/images/conservation-4.jpg" alt="Conservation Activity 4" class="gallery-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Gorilla Section -->
     <section class="gorilla-section">
         <div class="container">
             <div class="gorilla-content">
                 <div class="gorilla-image">
-                    <img src="assets/images/mountain-gorilla.jpg" alt="Mountain Gorilla" class="gorilla-img">
+                    <img src="../images/conservationist/gorilla.jpg" alt="Mountain Gorilla" class="gorilla-img">
                 </div>
                 <div class="gorilla-text">
                     <h2>Protecting Mountain Gorillas</h2>
@@ -166,25 +134,59 @@
 
                     <p>The mountain gorilla population has shown remarkable recovery thanks to dedicated conservation efforts. Our programs continue to monitor, protect, and study these incredible animals while building local capacity for long-term conservation success.</p>
 
-                    <div class="gorilla-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">1,000+</div>
-                            <div class="stat-label">Mountain Gorillas Protected</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Years of Conservation</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Conservation Leaders Trained</div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
     </section>
+<section class="gallery-section">
+      <!-- Main sliding image -->
+      <div class="main-image-container">
+        <img
+          id="mainImage"
+          class="main-image"
+          src="../images/conservationist/1.jpg"
+          alt="Main Image"
+        />
 
+        <button class="nav-arrow left" id="prevArrow">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-arrow right" id="nextArrow">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Thumbnail row -->
+      <div class="thumbnail-row">
+        <div class="thumbnail active" data-index="0">
+          <img
+            src="../images/conservationist/6.jpg"
+            alt="Thumbnail 1"
+          />
+        </div>
+        <div class="thumbnail" data-index="1">
+          <img
+            src="../images/conservationist/2.jpg"
+            alt="Thumbnail 2"
+          />
+        </div>
+        <div class="thumbnail" data-index="2">
+          <img
+            src="../images/conservationist/3.jpg"
+            alt="Thumbnail 3"
+          />
+        </div>
+        <div class="thumbnail" data-index="3">
+          <img
+            src="../images/conservationist/5.jpg"
+            alt="Thumbnail 4"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="background-section"></section>
     <!-- Call to Action Section -->
     <section class="cta-section">
         <div class="container">
@@ -209,5 +211,109 @@
 
     <!-- External JavaScript -->
     <script src="assets/js/conservationist.js"></script>
+     <script>
+      // Get image URLs from thumbnail elements
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const images = Array.from(thumbnails).map((thumb) => {
+        // Get the full-size image URL by replacing 'w=400' with 'w=1200' in the thumbnail src
+        const thumbImg = thumb.querySelector("img");
+        return thumbImg.src.replace("w=400", "w=1200");
+      });
+
+      let currentImageIndex = 0;
+      const mainImage = document.getElementById("mainImage");
+      const prevArrow = document.getElementById("prevArrow");
+      const nextArrow = document.getElementById("nextArrow");
+
+      // Update main image and active thumbnail
+      function updateMainImage(index) {
+        currentImageIndex = index;
+        mainImage.src = images[index];
+
+        // Update active thumbnail
+        thumbnails.forEach((thumb, i) => {
+          thumb.classList.toggle("active", i === index);
+        });
+      }
+
+      // Next image
+      function nextImage() {
+        const nextIndex = (currentImageIndex + 1) % images.length;
+        updateMainImage(nextIndex);
+      }
+
+      // Previous image
+      function prevImage() {
+        const prevIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        updateMainImage(prevIndex);
+      }
+
+      // Event listeners
+      prevArrow.addEventListener("click", prevImage);
+      nextArrow.addEventListener("click", nextImage);
+
+      // Thumbnail click handlers
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener("click", () => {
+          updateMainImage(index);
+        });
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+      });
+
+      // Touch/swipe functionality
+      let startX = 0;
+      let endX = 0;
+
+      mainImage.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
+
+      mainImage.addEventListener("touchend", (e) => {
+        endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextImage();
+          } else {
+            prevImage();
+          }
+        }
+      });
+
+      // Auto-slide functionality
+      let autoSlideInterval;
+
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(nextImage, 4000);
+      }
+
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
+
+      // Start auto-slide
+      startAutoSlide();
+
+      // Pause auto-slide on hover
+      document
+        .querySelector(".main-image-container")
+        .addEventListener("mouseenter", stopAutoSlide);
+      document
+        .querySelector(".main-image-container")
+        .addEventListener("mouseleave", startAutoSlide);
+
+      // Preload images for smooth transitions
+      images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    </script>
 </body>
 </html>

@@ -1,380 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Gallery</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
-        }
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+      }
 
+      .gallery-section {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Main sliding image container */
+      .main-image-container {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      /* Navigation arrows for main image */
+      .nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+
+      .nav-arrow:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .nav-arrow.left {
+        left: 20px;
+      }
+
+      .nav-arrow.right {
+        right: 20px;
+      }
+
+      /* Thumbnail row */
+      .thumbnail-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .thumbnail {
+        aspect-ratio: 4/3;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 3px solid transparent;
+      }
+
+      .thumbnail:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .thumbnail.active {
+        border-color: #667eea;
+        transform: translateY(-3px);
+      }
+
+      .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .thumbnail:hover img {
+        transform: scale(1.05);
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .empty-content {
+        text-align: center;
+        color: #666;
+        z-index: 1;
+      }
+
+      .empty-content i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        opacity: 0.5;
+      }
+
+      .empty-content p {
+        font-size: 1.1rem;
+        opacity: 0.7;
+      }
+
+      /* Background Section */
+      .background-section {
+        position: relative;
+        top: -320px;
+        width: 100%;
+        height: 120vh;
+        bottom: 0;
+        margin-bottom: 0;
+        z-index: -2;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("../images/conservationist/hero.jpg")
+            center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
+
+      .background-content {
+        max-width: 600px;
+        padding: 40px;
+      }
+
+      .background-content h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      .background-content p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
         .gallery-section {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+          padding: 20px 15px;
         }
 
-        /* Main sliding image container */
         .main-image-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+          height: 300px;
         }
 
-        .main-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease-in-out;
+        .thumbnail-row {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
         }
 
-        /* Navigation arrows for main image */
         .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.7);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .nav-arrow:hover {
-            background: rgba(0,0,0,0.9);
-            transform: translateY(-50%) scale(1.1);
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
         }
 
         .nav-arrow.left {
-            left: 20px;
+          left: 10px;
         }
 
         .nav-arrow.right {
-            right: 20px;
+          right: 10px;
         }
 
-        /* Thumbnail row */
-        .thumbnail-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .thumbnail {
-            aspect-ratio: 4/3;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 3px solid transparent;
-        }
-
-        .thumbnail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        .thumbnail.active {
-            border-color: #667eea;
-            transform: translateY(-3px);
-        }
-
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .thumbnail:hover img {
-            transform: scale(1.05);
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .empty-content {
-            text-align: center;
-            color: #666;
-            z-index: 1;
+        .empty-section {
+          height: 200px;
         }
 
         .empty-content i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            opacity: 0.5;
+          font-size: 2rem;
         }
 
         .empty-content p {
-            font-size: 1.1rem;
-            opacity: 0.7;
-        }
-
-        /* Background Section */
-        .background-section {
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-
-        .background-content {
-            max-width: 600px;
-            padding: 40px;
+          font-size: 1rem;
         }
 
         .background-content h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+          font-size: 2rem;
         }
 
         .background-content p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery-section {
+          padding: 15px 10px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .gallery-section {
-                padding: 20px 15px;
-            }
-
-            .main-image-container {
-                height: 300px;
-            }
-
-            .thumbnail-row {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .nav-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-
-            .nav-arrow.left {
-                left: 10px;
-            }
-
-            .nav-arrow.right {
-                right: 10px;
-            }
-
-            .empty-section {
-                height: 200px;
-            }
-
-            .empty-content i {
-                font-size: 2rem;
-            }
-
-            .empty-content p {
-                font-size: 1rem;
-            }
-
-            .background-content h2 {
-                font-size: 2rem;
-            }
-
-            .background-content p {
-                font-size: 1rem;
-            }
+        .main-image-container {
+          height: 250px;
         }
 
-        @media (max-width: 480px) {
-            .gallery-section {
-                padding: 15px 10px;
-            }
-
-            .main-image-container {
-                height: 250px;
-            }
-
-            .thumbnail-row {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .nav-arrow {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-
-            .background-content {
-                padding: 20px;
-            }
+        .thumbnail-row {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
         }
+
+        .nav-arrow {
+          width: 35px;
+          height: 35px;
+          font-size: 0.9rem;
+        }
+
+        .background-content {
+          padding: 20px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <section class="gallery-section">
-        <!-- Main sliding image -->
-        <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Main Image">
-            
-            <button class="nav-arrow left" id="prevArrow">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="nav-arrow right" id="nextArrow">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
+      <!-- Main sliding image -->
+      <div class="main-image-container">
+        <img
+          id="mainImage"
+          class="main-image"
+          src="https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+          alt="Main Image"
+        />
 
-        <!-- Thumbnail row -->
-        <div class="thumbnail-row">
-            <div class="thumbnail active" data-index="0">
-                <img src="https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thumbnail 1">
-            </div>
-            <div class="thumbnail" data-index="1">
-                <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73bcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thumbnail 2">
-            </div>
-            <div class="thumbnail" data-index="2">
-                <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thumbnail 3">
-            </div>
-            <div class="thumbnail" data-index="3">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Thumbnail 4">
-            </div>
-        </div>
+        <button class="nav-arrow left" id="prevArrow">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-arrow right" id="nextArrow">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
 
+      <!-- Thumbnail row -->
+      <div class="thumbnail-row">
+        <div class="thumbnail active" data-index="0">
+          <img
+            src="https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Thumbnail 1"
+          />
+        </div>
+        <div class="thumbnail" data-index="1">
+          <img
+            src="https://images.unsplash.com/photo-1539650116574-75c0c6d73bcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Thumbnail 2"
+          />
+        </div>
+        <div class="thumbnail" data-index="2">
+          <img
+            src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Thumbnail 3"
+          />
+        </div>
+        <div class="thumbnail" data-index="3">
+          <img
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+            alt="Thumbnail 4"
+          />
+        </div>
+      </div>
     </section>
 
-    <!-- Full-width background section -->
-    <section class="background-section">
-    </section>
-
+    <section class="background-section"></section>
     <script>
-        const images = [
-            'https://images.unsplash.com/photo-1594736797933-d0601ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1539650116574-75c0c6d73bcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-            'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-        ];
+      // Get image URLs from thumbnail elements
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const images = Array.from(thumbnails).map((thumb) => {
+        // Get the full-size image URL by replacing 'w=400' with 'w=1200' in the thumbnail src
+        const thumbImg = thumb.querySelector("img");
+        return thumbImg.src.replace("w=400", "w=1200");
+      });
 
-        let currentImageIndex = 0;
-        const mainImage = document.getElementById('mainImage');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        const prevArrow = document.getElementById('prevArrow');
-        const nextArrow = document.getElementById('nextArrow');
+      let currentImageIndex = 0;
+      const mainImage = document.getElementById("mainImage");
+      const prevArrow = document.getElementById("prevArrow");
+      const nextArrow = document.getElementById("nextArrow");
 
-        // Update main image and active thumbnail
-        function updateMainImage(index) {
-            currentImageIndex = index;
-            mainImage.src = images[index];
-            
-            // Update active thumbnail
-            thumbnails.forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-        }
+      // Update main image and active thumbnail
+      function updateMainImage(index) {
+        currentImageIndex = index;
+        mainImage.src = images[index];
 
-        // Next image
-        function nextImage() {
-            const nextIndex = (currentImageIndex + 1) % images.length;
-            updateMainImage(nextIndex);
-        }
-
-        // Previous image
-        function prevImage() {
-            const prevIndex = (currentImageIndex - 1 + images.length) % images.length;
-            updateMainImage(prevIndex);
-        }
-
-        // Event listeners
-        prevArrow.addEventListener('click', prevImage);
-        nextArrow.addEventListener('click', nextImage);
-
-        // Thumbnail click handlers
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-                updateMainImage(index);
-            });
+        // Update active thumbnail
+        thumbnails.forEach((thumb, i) => {
+          thumb.classList.toggle("active", i === index);
         });
+      }
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextImage();
-            if (e.key === 'ArrowLeft') prevImage();
+      // Next image
+      function nextImage() {
+        const nextIndex = (currentImageIndex + 1) % images.length;
+        updateMainImage(nextIndex);
+      }
+
+      // Previous image
+      function prevImage() {
+        const prevIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        updateMainImage(prevIndex);
+      }
+
+      // Event listeners
+      prevArrow.addEventListener("click", prevImage);
+      nextArrow.addEventListener("click", nextImage);
+
+      // Thumbnail click handlers
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener("click", () => {
+          updateMainImage(index);
         });
+      });
 
-        // Touch/swipe functionality
-        let startX = 0;
-        let endX = 0;
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+      });
 
-        mainImage.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
+      // Touch/swipe functionality
+      let startX = 0;
+      let endX = 0;
 
-        mainImage.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
+      mainImage.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
 
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    nextImage();
-                } else {
-                    prevImage();
-                }
-            }
-        });
+      mainImage.addEventListener("touchend", (e) => {
+        endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
 
-        // Auto-slide functionality
-        let autoSlideInterval;
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextImage, 4000);
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextImage();
+          } else {
+            prevImage();
+          }
         }
+      });
 
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
+      // Auto-slide functionality
+      let autoSlideInterval;
 
-        // Start auto-slide
-        startAutoSlide();
+      function startAutoSlide() {
+        autoSlideInterval = setInterval(nextImage, 4000);
+      }
 
-        // Pause auto-slide on hover
-        document.querySelector('.main-image-container').addEventListener('mouseenter', stopAutoSlide);
-        document.querySelector('.main-image-container').addEventListener('mouseleave', startAutoSlide);
+      function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+      }
 
-        // Preload images for smooth transitions
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+      // Start auto-slide
+      startAutoSlide();
+
+      // Pause auto-slide on hover
+      document
+        .querySelector(".main-image-container")
+        .addEventListener("mouseenter", stopAutoSlide);
+      document
+        .querySelector(".main-image-container")
+        .addEventListener("mouseleave", startAutoSlide);
+
+      // Preload images for smooth transitions
+      images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
     </script>
-</body>
+  </body>
 </html>

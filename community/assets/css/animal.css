@@ -12,6 +12,56 @@
     --transition: all 0.3s ease;
     --white: #ffffff;
 }
+/* Parallax Section */
+.parallax-section-v1 {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    margin: var(--spacing-lg) 0 0 0;
+    background-image: url('../../../images/animal/parallax.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+
+.parallax-overlay-v {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.107), rgba(0, 0, 0, 0.062));
+    pointer-events: none;
+}
+
+.parallax-content-v {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.parallax-content-v h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: white;
+}
+.parallax-content-v p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.9);
+}
+
 
 /* Reset and Base Styles */
 * {

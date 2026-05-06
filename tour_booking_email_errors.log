@@ -1,0 +1,5 @@
+[2026-04-08 08:11:08] Email send failed to virungahomestay@gmail.com: PHPMailer could not be loaded (files missing).
+[2026-04-08 08:11:08] Email send failed to info@virungaecotours.com: PHPMailer could not be loaded.
+[2026-04-08 08:11:08] Some notification emails failed: virungahomestay@gmail.com, info@virungaecotours.com
+[2026-04-08 08:11:08] Email send failed to fabrdaa@gmail.com: PHPMailer could not be loaded.
+[2026-04-08 08:11:08] Customer confirmation failed for fabrdaa@gmail.com

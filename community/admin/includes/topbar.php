@@ -127,7 +127,6 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid var(--neutral-beige);
-    margin-left: 280px; /* prevent overlap with fixed sidebar */
 }
 
 .top-bar-left {

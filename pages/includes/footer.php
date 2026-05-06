@@ -1,8 +1,9 @@
 <?php
-require_once '../admin/config/connection.php';
+// Use absolute path so includes work regardless of current working directory
+require_once __DIR__ . '/../../admin/config/connection.php';
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
+// Handle form submission (guarded for CLI runs where REQUEST_METHOD may be undefined)
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $response = ['success' => false, 'message' => ''];
     
@@ -38,19 +39,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
         <h3>MORE FROM Virunga Ecotours</h3>
         <ul class="footer-links">
             <li><a href="./training.php" class="footer-link">Training Support</a></li>
-          <li><a href="./kids.php" class="footer-link">Kids Tourism</a></li>
-          <li><a href="./lgbtq.php" class="footer-link">Inclusive Tourism(LGBTQ+)</a></li>
-          <li><a href="../community/inclusive.php" class="footer-link">CBT in Inclusive Education</a></li>
-          <li><a href="./animal.php" class="footer-link">Animal Welfare Care Awareness</a></li>
-          <li><a href="./payments.php" class="footer-link">Authorized Payments Methods</a></li>
-          <li><a href="./faq-page.php" class="footer-link">FAQs</a></li>
-          <li><a href="../community/impact.php" class="footer-link">Community Impact</a></li>
-          <li><a href="./complaints.php" class="footer-link">Common complaints & solutions</a></li>
-          <li><a href="./requirements.php" class="footer-link">Requirements</a></li>
-          <li><a href="./styleguide.php" class="footer-link">The Virunga Ecotours differences</a></li>
-          <li><a href="./activity.php" class="footer-link">Beyond The Park Experience</a></l>
-          <li><a href="./honeymoon.php" class="footer-link">Honeymoon in CBT</a></li>
-        </ul>
+            <li><a href="./kids.php" class="footer-link">Advanture for Kids</a></li>
+            <li><a href="./lgbtq.php" class="footer-link">Inclusive Tourism(LGBTQ+)</a></li>
+            <li><a href="../community/inclusive.php" class="footer-link">CBT in Inclusive Education</a></li>
+            <li><a href="./animal.php" class="footer-link">Animal Welfare Care Awareness</a></li>
+            <li><a href="./payments.php" class="footer-link">Authorized Payments Methods</a></li>
+            <li><a href="./faq-page.php" class="footer-link">FAQs</a></li>
+            <li><a href="../community/impact.php" class="footer-link">Community Impact</a></li>
+            <li><a href="./complaints.php" class="footer-link">Common complaints & solutions</a></li>
+            <li><a href="./requirements.php" class="footer-link">Park Entry Requirements</a></li>
+            <li><a href="./styleguide.php" class="footer-link">The Virunga Ecotours differences</a></li>
+            <li><a href="./activity.php" class="footer-link">Beyond The Park Experience</a></li>
+            <li><a href="./honeymoon.php" class="footer-link">Honeymoon in CBT</a></li>
+            <li><a href="../community/galadinner.php" class="footer-link">Gala Dinner</a></li>
+            <li><a href="./christmas.php" class="footer-link">Community Christmas Give Away</a></li>
+            <li><a href="./carhire.php" class="footer-link">Car Hire</a></li>
+            <li><a href="./congo-nile-trail.php" class="footer-link">Congo Nile Trail</a></li>
+            <li><a href="./photograph.php" class="footer-link">Kids Photography</a></li>
+            <li><a href="./agrotours.php" class="footer-link">Agro Tours</a></li>
+            <li><a href="./beekeeping.php" class="footer-link">Beekeeping Experiences</a></li>
+          </ul>
       </div>
 
       <div class="footer-column social-connect">
@@ -59,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
           <a href="https://www.linkedin.com/in/virunga-ecotours-863a221b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-icon" aria-label="LinkedIn"
             ><i class="fab fa-linkedin-in"></i
           ></a>
-          <a href="#" class="social-icon" aria-label="YouTube"
+          <a href="https://www.youtube.com/@VirungaEcotours-o7b" class="social-icon" aria-label="YouTube"
             ><i class="fab fa-youtube"></i
           ></a>
           <a href="https://www.facebook.com/VirungaPrograms?mibextid=LQQJ4d" target="_blank" class="social-icon" aria-label="Facebook"
@@ -162,7 +170,7 @@ document.getElementById('newsletterForm').addEventListener('submit', function(e)
     // Disable button during submission
     submitButton.disabled = true;
     
-    fetch('./includes/save-subscriber.php', {  // Updated path with ./ prefix
+    fetch('./includes/save-subscriber.php', {  
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

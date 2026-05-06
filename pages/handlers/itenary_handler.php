@@ -93,6 +93,66 @@ function getItenaryData($country = 'rwanda', $type = null, $category = null) {
     return $data;
 }
 
+/**
+ * Fetches tours that have pricing in the pricing_tiers table
+ */
+function getToursWithPricing($limit = 3) {
+    global $pdo;
+    try {
+        $query = "SELECT t.* FROM tours t 
+                  INNER JOIN pricing_tiers pt ON t.tour_id = pt.tour_id 
+                  GROUP BY t.tour_id 
+                  ORDER BY t.created_at DESC 
+                  LIMIT :limit";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        error_log("Error in getToursWithPricing: " . $e->getMessage());
+        return [];
+    }
+}
+
+/**
+ * Fetches the newest tours that do NOT have pricing in the pricing_tiers table
+ */
+function getNewestToursWithoutPricing($limit = 9) {
+    global $pdo;
+    try {
+        $query = "SELECT t.* FROM tours t 
+                  LEFT JOIN pricing_tiers pt ON t.tour_id = pt.tour_id 
+                  WHERE pt.tour_id IS NULL 
+                  ORDER BY t.created_at DESC 
+                  LIMIT :limit";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        error_log("Error in getNewestToursWithoutPricing: " . $e->getMessage());
+        return [];
+    }
+}
+
+/**
+ * Fetches tours by a keyword in the title
+ */
+function getToursByTitleKeyword($keyword, $limit = 9) {
+    global $pdo;
+    try {
+        $query = "SELECT * FROM tours WHERE title LIKE :keyword ORDER BY created_at DESC LIMIT :limit";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch(PDOException $e) {
+        error_log("Error in getToursByTitleKeyword: " . $e->getMessage());
+        return [];
+    }
+}
+
 // If this file is accessed directly, return the data as JSON
 if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     header('Content-Type: application/json');

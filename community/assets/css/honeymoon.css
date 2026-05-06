@@ -91,11 +91,11 @@ body {
 }
 
 .hero-subtitle {
-    color: #ffffff;
+   color: #e0e7df;
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 1.5rem;
-    color: var(--accent-terracotta);
+   
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 

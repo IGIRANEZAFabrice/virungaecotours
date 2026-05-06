@@ -1,19 +1,20 @@
 :root {
-  --primary-green: #2a4858;
-  --primary-brown: #8b7355;
+  --primary-green: #016905;
+  --primary-brown: #a04e1b;
 
-  --accent-sage: #2a4858ac;
-  --accent-terracotta: #967259;
+  --accent-sage: #019106;
+  --accent-terracotta: #b04e12;
   --accent-light-brown: #a68c69;
 
   --neutral-cream: #f2e8dc;
   --neutral-beige: #d8c3a5;
   --neutral-light: #f6f4f0;
-  --neutral-dark: #3a3026;
+  --neutral-dark: #000000;
 
-  --text-dark: #3a3026;
-  --text-medium: #5d4e41;
-  --text-light: #f6f4f0;
+  --text-dark: #000000;
+  --text-medium: #000000;
+  --text-light: #ffffff;
+  --white: #ffffff;
   
   /* Additional variables for consistency */
   --success-color: #4caf50;
@@ -44,6 +45,7 @@
 
 html {
   scroll-behavior: smooth;
+  user-select: none;
 }
 
 ::-webkit-scrollbar {
@@ -63,10 +65,28 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-sage);
 }
+@font-face {
+  font-family: "comm";
+  src: url(./fonts/Commissioner-VariableFont_wght.ttf) format("truetype");
+}
+
+/* @font-face {
+  font-family: "Vacat";
+  src: url(./fonts/Vacation.otf) format("OpenType");
+  line-height: 1.6;
+} */
+@font-face {
+  font-family: "Vacat";
+  src: url(./fonts/CaviarDreams_Bold.ttf) format("truetype");
+  line-height: 1.6;
+}
+h1,h2,h3,h4,h5,h6 { 
+  font-family: 'comm', Tahoma, Geneva, Verdana, sans-serif;
+}
 
 /* Global styles */
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'vacat', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -76,4 +96,6 @@ html {
 
 body {
   background-color: var(--neutral-light);
+  user-select: none;
 }
+

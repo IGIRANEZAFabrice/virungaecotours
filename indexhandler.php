@@ -26,15 +26,20 @@ function cleanImagePath($path) {
     return preg_replace('/^\.\.\/\.\.\//', '', $path);
 }
 
-// Only try to fetch data if connection exists
 if ($conn) {
-    // Fetch all hero slides data dynamically
-    $hero_stmt = $conn->prepare("SELECT id, title, description, image_url FROM home_hero ORDER BY id ASC");
+    // Fetch hero slides from the database
+    $hero_stmt = $conn->prepare("SELECT id, title, description, image_url FROM home_hero ORDER BY created_at ASC");
     if ($hero_stmt && $hero_stmt->execute()) {
-        $hero_result = $hero_stmt->get_result();
-        while ($row = $hero_result->fetch_assoc()) {
-            $row['image_url'] = cleanImagePath($row['image_url']);
-            $hero_slides[] = $row;
+        $hero_stmt->store_result();
+        $hero_stmt->bind_result($id, $title, $description, $image_url);
+        while ($hero_stmt->fetch()) {
+            $image_url = cleanImagePath($image_url);
+            $hero_slides[] = [
+                'id' => $id,
+                'title' => $title,
+                'description' => $description,
+                'image_url' => $image_url
+            ];
         }
         $hero_stmt->close();
     }
@@ -86,10 +91,11 @@ if ($conn) {
     // Fetch attractions
     $attractions_stmt = $conn->prepare("SELECT id, title, image_url FROM home_attractions ORDER BY id ASC LIMIT 8");
     if ($attractions_stmt && $attractions_stmt->execute()) {
-        $attractions_result = $attractions_stmt->get_result();
-        while ($row = $attractions_result->fetch_assoc()) {
-            $row['image_url'] = cleanImagePath($row['image_url']);
-            $attractions[] = $row;
+        $attractions_stmt->store_result();
+        $attractions_stmt->bind_result($id, $title, $image_url);
+        while ($attractions_stmt->fetch()) {
+            $image_url = cleanImagePath($image_url);
+            $attractions[] = ['id' => $id, 'title' => $title, 'image_url' => $image_url];
         }
         $attractions_stmt->close();
     }
@@ -97,9 +103,17 @@ if ($conn) {
     // Fetch community tours
     $tours_stmt = $conn->prepare("SELECT tour_id, title, category, days_count, cover_image_path, short_description FROM tours WHERE category = 'adventure' ORDER BY created_at DESC LIMIT 3");
     if ($tours_stmt && $tours_stmt->execute()) {
-        $tours_result = $tours_stmt->get_result();
-        while ($row = $tours_result->fetch_assoc()) {
-            $tours[] = $row;
+        $tours_stmt->store_result();
+        $tours_stmt->bind_result($tour_id, $title, $category, $days_count, $cover_image_path, $short_description);
+        while ($tours_stmt->fetch()) {
+            $tours[] = [
+                'tour_id' => $tour_id,
+                'title' => $title,
+                'category' => $category,
+                'days_count' => $days_count,
+                'cover_image_path' => $cover_image_path,
+                'short_description' => $short_description
+            ];
         }
         $tours_stmt->close();
     }
@@ -119,10 +133,18 @@ if ($conn) {
     ");
 
     if ($random_tours_stmt && $random_tours_stmt->execute()) {
-        $random_tours_result = $random_tours_stmt->get_result();
+        $random_tours_stmt->store_result();
         $random_tours = [];
-        while ($row = $random_tours_result->fetch_assoc()) {
-            $random_tours[] = $row;
+        $random_tours_stmt->bind_result($tour_id, $title, $days_count, $cover_image_path, $short_description, $category);
+        while ($random_tours_stmt->fetch()) {
+            $random_tours[] = [
+                'tour_id' => $tour_id,
+                'title' => $title,
+                'days_count' => $days_count,
+                'cover_image_path' => $cover_image_path,
+                'short_description' => $short_description,
+                'category' => $category
+            ];
         }
         $random_tours_stmt->close();
     }
@@ -130,10 +152,11 @@ if ($conn) {
     // Fetch partners
     $partners_stmt = $conn->prepare("SELECT web_url, logo_url FROM home_partners ORDER BY id ASC");
     if ($partners_stmt && $partners_stmt->execute()) {
-        $partners_result = $partners_stmt->get_result();
-        while ($row = $partners_result->fetch_assoc()) {
-            $row['logo_url'] = cleanImagePath($row['logo_url']);
-            $partners[] = $row;
+        $partners_stmt->store_result();
+        $partners_stmt->bind_result($web_url, $logo_url);
+        while ($partners_stmt->fetch()) {
+            $logo_url = cleanImagePath($logo_url);
+            $partners[] = ['web_url' => $web_url, 'logo_url' => $logo_url];
         }
         $partners_stmt->close();
     }
@@ -141,31 +164,41 @@ if ($conn) {
     // Fetch blogs for the blog section - Updated Query
     $blogs_stmt = $conn->prepare("
         SELECT 
-            p.blog_id,      -- Changed from post_id
+            p.blog_id,
             p.title,
             p.cover_image,
             p.author,
-            p.read_minutes, -- Changed from read_time
-            p.main_headline,-- Changed from headline
+            p.read_minutes,
+            p.main_headline,
             p.introduction,
             p.created_at,
-            bc.category_name -- Fetch category name from joined table
+            bc.category_name
         FROM blog_posts p
-        JOIN blog_categories bc ON p.category_id = bc.category_id -- Join with categories table
-        WHERE p.status = 'published' -- Only fetch published posts
+        JOIN blog_categories bc ON p.category_id = bc.category_id
+        WHERE p.status = 'published'
         ORDER BY p.created_at DESC 
         LIMIT 3
     ");
     
     if ($blogs_stmt && $blogs_stmt->execute()) {
-        $blogs_result = $blogs_stmt->get_result();
+        $blogs_stmt->store_result();
         $blogs = []; // Re-initialize blogs array here
-        while ($row = $blogs_result->fetch_assoc()) {
-            $row['cover_image'] = cleanImagePath($row['cover_image']);
-            // Use main_headline if needed, or keep introduction for short intro
-            $row['short_intro'] = substr(strip_tags($row['introduction']), 0, 200) . '...'; 
-            // The category is now available as $row['category_name']
-            $blogs[] = $row;
+        $blogs_stmt->bind_result($blog_id, $title, $cover_image, $author, $read_minutes, $main_headline, $introduction, $created_at, $category_name);
+        while ($blogs_stmt->fetch()) {
+            $cover_image = cleanImagePath($cover_image);
+            $short_intro = substr(strip_tags($introduction), 0, 200) . '...';
+            $blogs[] = [
+                'blog_id' => $blog_id,
+                'title' => $title,
+                'cover_image' => $cover_image,
+                'author' => $author,
+                'read_minutes' => $read_minutes,
+                'main_headline' => $main_headline,
+                'introduction' => $introduction,
+                'created_at' => $created_at,
+                'category_name' => $category_name,
+                'short_intro' => $short_intro
+            ];
         }
         $blogs_stmt->close();
     } else {
@@ -176,9 +209,24 @@ if ($conn) {
     // Fetch home about section data
     $about_stmt = $conn->prepare("SELECT title, slide_description, youtube_url FROM home_about WHERE id = 1 LIMIT 1");
     if ($about_stmt && $about_stmt->execute()) {
-        $about_result = $about_stmt->get_result();
-        $about_data = $about_result->fetch_assoc();
+        $about_stmt->store_result();
+        $about_stmt->bind_result($title, $slide_description, $youtube_url);
+        $about_data = null;
+        if ($about_stmt->fetch()) {
+            $about_data = [
+                'title' => $title,
+                'slide_description' => $slide_description,
+                'youtube_url' => $youtube_url
+            ];
+        }
         $about_stmt->close();
+        if (!$about_data) {
+            $about_data = [
+                'title' => 'Transforming Ideas Into Reality',
+                'slide_description' => 'Virunga Ecotours is a leader in sustainable travel...',
+                'youtube_url' => ''
+            ];
+        }
     } else {
         // Default values if query fails
         $about_data = [
@@ -190,3 +238,4 @@ if ($conn) {
 } else {
     error_log("Database connection failed - using default values");
 }
+?>

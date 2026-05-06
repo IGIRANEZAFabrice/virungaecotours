@@ -15,9 +15,33 @@ $query = "SELECT bp.*, bc.category_name
           WHERE bp.blog_id = ? AND bp.status = 'published'"; // Use blog_id and check status
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $blog_id);
+
 $stmt->execute();
-$result = $stmt->get_result();
-$post = $result->fetch_assoc();
+$stmt->store_result();
+$stmt->bind_result(
+    $bp_blog_id, $bp_title, $bp_slug, $bp_author, $bp_read_minutes, $bp_category_id, $bp_cover_image, $bp_main_headline, $bp_introduction, $bp_status, $bp_views, $bp_created_by, $bp_created_at, $bp_updated_at, $bp_published_at, $bc_category_name
+);
+$post = null;
+if ($stmt->fetch()) {
+    $post = [
+        'blog_id' => $bp_blog_id,
+        'title' => $bp_title,
+        'slug' => $bp_slug,
+        'author' => $bp_author,
+        'read_minutes' => $bp_read_minutes,
+        'category_id' => $bp_category_id,
+        'cover_image' => $bp_cover_image,
+        'main_headline' => $bp_main_headline,
+        'introduction' => $bp_introduction,
+        'status' => $bp_status,
+        'views' => $bp_views,
+        'created_by' => $bp_created_by,
+        'created_at' => $bp_created_at,
+        'updated_at' => $bp_updated_at,
+        'published_at' => $bp_published_at,
+        'category_name' => $bc_category_name
+    ];
+}
 
 if (!$post) {
     header("Location: blog.php"); // Redirect if post not found or not published
@@ -30,8 +54,15 @@ $blocks_query = "SELECT block_id, block_type FROM blog_content_blocks WHERE blog
 $blocks_stmt = $conn->prepare($blocks_query);
 $blocks_stmt->bind_param("i", $blog_id);
 $blocks_stmt->execute();
-$blocks_result = $blocks_stmt->get_result();
-$content_blocks_info = $blocks_result->fetch_all(MYSQLI_ASSOC); // Fetch all block info
+$blocks_stmt->store_result();
+$blocks_stmt->bind_result($block_id, $block_type);
+$content_blocks_info = [];
+while ($blocks_stmt->fetch()) {
+    $content_blocks_info[] = [
+        'block_id' => $block_id,
+        'block_type' => $block_type
+    ];
+}
 $blocks_stmt->close();
 
 // Get related posts based on category_id
@@ -41,9 +72,20 @@ $related_query = "SELECT blog_id, title, cover_image, created_at, published_at
                   ORDER BY published_at DESC, created_at DESC LIMIT 3"; 
 $related_stmt = $conn->prepare($related_query);
 $related_stmt->bind_param("ii", $blog_id, $post['category_id']); 
+
 $related_stmt->execute();
-$related_result = $related_stmt->get_result();
-$related_posts_data = $related_result->fetch_all(MYSQLI_ASSOC); 
+$related_stmt->store_result();
+$related_stmt->bind_result($r_blog_id, $r_title, $r_cover_image, $r_created_at, $r_published_at);
+$related_posts_data = [];
+while ($related_stmt->fetch()) {
+    $related_posts_data[] = [
+        'blog_id' => $r_blog_id,
+        'title' => $r_title,
+        'cover_image' => $r_cover_image,
+        'created_at' => $r_created_at,
+        'published_at' => $r_published_at
+    ];
+}
 
 
 $exclude_ids = [$blog_id]; 
@@ -61,8 +103,17 @@ $suggestion_stmt = $conn->prepare($suggestion_query);
 
 $suggestion_stmt->bind_param($exclude_types, ...$exclude_ids); 
 $suggestion_stmt->execute();
-$suggestion_result = $suggestion_stmt->get_result();
-$suggested_posts = $suggestion_result->fetch_all(MYSQLI_ASSOC);
+$suggestion_stmt->store_result();
+$suggestion_stmt->bind_result($s_blog_id, $s_title, $s_cover_image, $s_slug);
+$suggested_posts = [];
+while ($suggestion_stmt->fetch()) {
+    $suggested_posts[] = [
+        'blog_id' => $s_blog_id,
+        'title' => $s_title,
+        'cover_image' => $s_cover_image,
+        'slug' => $s_slug
+    ];
+}
 $suggestion_stmt->close();
 
 ?>
@@ -83,13 +134,12 @@ $suggestion_stmt->close();
     />
     <script src="../js/header.js"></script>
     <style>
-        .content-paragraph div {
+        .content-paragraph {
             font-family: 'Arial', sans-serif;
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
             color: #333;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
             word-spacing: 0.05em; /* Add proper word spacing */
             letter-spacing: 0.01em; /* Slight letter spacing for readability */
             text-align: justify; /* Optional: for clean alignment */
@@ -98,8 +148,16 @@ $suggestion_stmt->close();
             hyphens: auto; /* Optional: adds hyphens for very long words */
         }
 
-        p {
-            text-align: justify;
+        .main-content a {
+            color: #2a7a39; /* A professional green color */
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .main-content a:hover {
+            color: #1e5a28; /* Darker green on hover */
+            text-decoration: none;
         }
     </style>
 </head>
@@ -118,6 +176,14 @@ $suggestion_stmt->close();
     <article class="article-container">
         <div class="article-hero">
             <div class="article-hero-image" style="background-image: url('../admin/images/blog/covers/<?= htmlspecialchars($post['cover_image']) ?>')"></div> 
+                <?php
+                // Fallback for hero image if not set or file missing
+                $hero_image_path = '../admin/images/blog/covers/' . htmlspecialchars($post['cover_image']);
+                if (empty($post['cover_image']) || !file_exists($hero_image_path)) {
+                    $hero_image_path = '../images/logos/icon.png'; // fallback image
+                }
+                ?>
+                <div class="article-hero-image" style="background-image: url('<?= $hero_image_path ?>')"></div>
             <div class="article-hero-overlay">
                 <div class="container">
                     <span class="article-category"><?= htmlspecialchars(ucfirst($post['category_name'])) ?></span> 
@@ -139,11 +205,11 @@ $suggestion_stmt->close();
         <div class="article-content">
             <div class="main-content">
                 <p class="article-lead">
-                    <?= htmlspecialchars(stripslashes($post['main_headline'])) ?> 
+                    <?= stripslashes($post['main_headline']) ?> 
                 </p>
-                <p class="content-paragraph">
-                    <?= nl2br(strip_tags(stripslashes($post['introduction']))) ?> 
-                </p>
+                <div class="content-paragraph">
+                    <?= nl2br(stripslashes($post['introduction'])) ?> 
+                </div>
 
                 <?php 
                 // Loop through fetched block info and query specific content
@@ -157,15 +223,27 @@ $suggestion_stmt->close();
                         $content_stmt = $conn->prepare("SELECT section_title, content FROM blog_text_blocks WHERE block_id = ?");
                         $content_stmt->bind_param("i", $block_id);
                         $content_stmt->execute();
-                        $content_result = $content_stmt->get_result();
-                        $content_data = $content_result->fetch_assoc();
+                        $content_stmt->store_result();
+                        $content_stmt->bind_result($section_title, $content);
+                        if ($content_stmt->fetch()) {
+                            $content_data = [
+                                'section_title' => $section_title,
+                                'content' => $content
+                            ];
+                        }
                         $content_stmt->close();
                     } elseif ($block_type == 'image') {
                         $content_stmt = $conn->prepare("SELECT image_path, caption FROM blog_image_blocks WHERE block_id = ?");
                         $content_stmt->bind_param("i", $block_id);
                         $content_stmt->execute();
-                        $content_result = $content_stmt->get_result();
-                        $content_data = $content_result->fetch_assoc();
+                        $content_stmt->store_result();
+                        $content_stmt->bind_result($image_path, $caption);
+                        if ($content_stmt->fetch()) {
+                            $content_data = [
+                                'image_path' => $image_path,
+                                'caption' => $caption
+                            ];
+                        }
                         $content_stmt->close();
                     }
 
@@ -175,9 +253,9 @@ $suggestion_stmt->close();
                             <?php if(!empty($content_data['section_title']) && $content_data['section_title'] != ".") {?>
                                 <h2 class="content-subheading"><?= nl2br(htmlspecialchars(stripslashes($content_data['section_title']))) ?></h2>
                             <?php } ?>
-                            <p class="content-paragraph">
-                                <?= nl2br(strip_tags(stripslashes($content_data['content']))); ?>
-                        </p>
+                            <div class="content-paragraph">
+                                <?= nl2br(stripslashes($content_data['content'])); ?>
+                        </div>
                         <?php elseif ($block_type == 'image'): ?>
                             <div class="content-image-container">
                                 <img src="../admin/images/blog/content/<?= htmlspecialchars(stripslashes($content_data['image_path'])) ?>" 
@@ -196,21 +274,31 @@ $suggestion_stmt->close();
                 <div class="asidebar-widget">
                     <h3 class="widget-title">Related Posts</h3>
                     <ul class="related-posts-list">
-                        <?php foreach ($related_posts_data as $related): // Iterate over the fetched array ?>
-                        <li class="related-post-item">
-                            <img src="../admin/images/blog/covers/<?= htmlspecialchars(stripslashes($related['cover_image'])) ?>" 
-                                 alt="<?= htmlspecialchars(stripslashes($related['title'])) ?>" 
-                                 class="related-post-img">
-                            <div class="related-post-content">
-                                <h4 class="related-post-title">
-                                    <a href="blogopen.php?id=<?= $related['blog_id'] ?>"><?= htmlspecialchars(stripslashes($related['title'])) ?></a> 
-                                </h4>
-                                <span class="related-post-date"><?= date('F j, Y', strtotime($related['published_at'] ?? $related['created_at'])) ?></span> 
-                            </div>
-                        </li>
-                        <?php endforeach; 
-                        // Removed the redundant $related_stmt->close(); call here
-                        ?>
+                            <?php
+                            if (count($related_posts_data) > 0) {
+                                foreach ($related_posts_data as $related) {
+                                    $related_img_path = '../admin/images/blog/covers/' . htmlspecialchars(stripslashes($related['cover_image']));
+                                    if (empty($related['cover_image']) || !file_exists($related_img_path)) {
+                                        $related_img_path = '../images/logos/icon.png'; // fallback image
+                                    }
+                                    ?>
+                                    <li class="related-post-item">
+                                        <img src="<?= $related_img_path ?>" 
+                                             alt="<?= htmlspecialchars(stripslashes($related['title'])) ?>" 
+                                             class="related-post-img">
+                                        <div class="related-post-content">
+                                            <h4 class="related-post-title">
+                                                <a href="blogopen.php?id=<?= $related['blog_id'] ?>"><?= htmlspecialchars(stripslashes($related['title'])) ?></a> 
+                                            </h4>
+                                            <span class="related-post-date"><?= date('F j, Y', strtotime($related['published_at'] ?? $related['created_at'])) ?></span> 
+                                        </div>
+                                    </li>
+                                    <?php
+                                }
+                            } else {
+                                echo '<li style="color:#666;font-style:italic;">No related posts found.</li>';
+                            }
+                            ?>
                     </ul>
                 </div>
             </aside>
@@ -223,16 +311,17 @@ $suggestion_stmt->close();
     $gallery_query = "SELECT image_path FROM blog_gallery_images WHERE blog_id = ? ORDER BY image_order"; 
     $gallery_stmt = $conn->prepare($gallery_query);
     $gallery_stmt->bind_param("i", $blog_id); // Use blog_id
+
     $gallery_stmt->execute();
-    $gallery_result = $gallery_stmt->get_result();
-    
-    if ($gallery_result->num_rows > 0): ?>
+    $gallery_stmt->store_result();
+    $gallery_stmt->bind_result($gallery_image_path);
+    if ($gallery_stmt->num_rows > 0): ?>
     <div class="photo-gallery">
         <h2 class="gallery-title">Photo Gallery</h2>
         <div class="gallery-grid">
-            <?php while ($gallery = $gallery_result->fetch_assoc()): ?>
+            <?php while ($gallery_stmt->fetch()): ?>
             <div class="gallery-item">
-                <img src="../admin/images/blog/gallery/<?= htmlspecialchars($gallery['image_path']) ?>"
+                <img src="../admin/images/blog/gallery/<?= htmlspecialchars($gallery_image_path) ?>"
                      alt="Gallery image for <?= htmlspecialchars(stripslashes($post['title'])) ?>"
                      class="gallery-image">
                 <div class="gallery-overlay">
@@ -280,58 +369,80 @@ $suggestion_stmt->close();
             $comments_query = "SELECT * FROM blog_comments WHERE blog_id = ? AND is_approved = 1 ORDER BY created_at DESC";
             $comments_stmt = $conn->prepare($comments_query);
             $comments_stmt->bind_param("i", $blog_id);
+
             $comments_stmt->execute();
-            $comments_result = $comments_stmt->get_result();
+            $comments_stmt->store_result();
+            $meta = $comments_stmt->result_metadata();
+            $fields = [];
+            while ($field = $meta->fetch_field()) {
+                $fields[] = $field->name;
+            }
+            $row = [];
+            $comments_stmt->bind_result(
+                $comment_id, $comment_blog_id, $parent_comment_id, $commenter_name, $commenter_email, $comment_text, $is_approved, $created_at
+            );
+            $comments = [];
+            while ($comments_stmt->fetch()) {
+                $comments[] = [
+                    'comment_id' => $comment_id,
+                    'blog_id' => $comment_blog_id,
+                    'commenter_name' => $commenter_name,
+                    'commenter_email' => $commenter_email,
+                    'comment_text' => $comment_text,
+                    'is_approved' => $is_approved,
+                    'created_at' => $created_at
+                ];
+            }
             ?>
 
             <div class="comments-list" style="margin-top: 20px;">
-                <?php if ($comments_result->num_rows > 0): ?>
-                    <?php while ($comment = $comments_result->fetch_assoc()): ?>
-                        <?php
-                            // Generate initials for avatar
-                            $name_parts = explode(' ', trim($comment['commenter_name']));
-                            $initials = '';
-                            if (count($name_parts) >= 2) {
-                                $initials = strtoupper(substr($name_parts[0], 0, 1) . substr(end($name_parts), 0, 1));
-                            } elseif (count($name_parts) == 1 && !empty($name_parts[0])) {
-                                $initials = strtoupper(substr($name_parts[0], 0, 1));
-                            } else {
-                                $initials = '?'; // Fallback if name is empty or unusual
-                            }
-                            // Simple hash function for consistent background color based on name
-                            $hash = crc32($comment['commenter_name']);
-                            $hue = $hash % 360;
-                            $avatar_bg_color = "hsl($hue, 50%, 75%)"; // Generate a pastel color
-                            $avatar_text_color = "hsl($hue, 50%, 25%)"; // Darker shade for text
-                        ?>
-                        <div class="comment-item" style="display: flex; align-items: flex-start; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
-                            <div class="comment-avatar" style="
-                                width: 45px;
-                                height: 45px;
-                                border-radius: 50%;
-                                background-color: <?= $avatar_bg_color ?>;
-                                color: <?= $avatar_text_color ?>;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                font-weight: bold;
-                                font-size: 1.1em;
-                                margin-right: 15px;
-                                flex-shrink: 0; /* Prevent avatar from shrinking */
-                            ">
-                                <?= htmlspecialchars($initials) ?>
-                            </div>
-                            <div class="comment-content" style="flex-grow: 1;">
-                                <div class="comment-author" style="font-weight: bold; color: var(--primary-green, #2a4858); margin-bottom: 3px;"><?= htmlspecialchars($comment['commenter_name']) ?></div>
-                                <div class="comment-date" style="font-size: 0.85em; color: #888; margin-bottom: 8px;"><?= date('F j, Y \a\t g:i a', strtotime($comment['created_at'])) ?></div>
-                                <div class="comment-text" style="line-height: 1.6; color: var(--text-medium, #5d4e41);"><?= nl2br($comment['comment_text']) ?></div>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p style="color: #666; font-style: italic;">Be the first to comment!</p>
-                <?php endif; ?>
-                <?php $comments_stmt->close(); ?>
+                            <?php if (count($comments) > 0): ?>
+                                <?php foreach ($comments as $comment): ?>
+                                    <?php
+                                        // Generate initials for avatar
+                                        $name_parts = explode(' ', trim($comment['commenter_name']));
+                                        $initials = '';
+                                        if (count($name_parts) >= 2) {
+                                            $initials = strtoupper(substr($name_parts[0], 0, 1) . substr(end($name_parts), 0, 1));
+                                        } elseif (count($name_parts) == 1 && !empty($name_parts[0])) {
+                                            $initials = strtoupper(substr($name_parts[0], 0, 1));
+                                        } else {
+                                            $initials = '?'; // Fallback if name is empty or unusual
+                                        }
+                                        // Simple hash function for consistent background color based on name
+                                        $hash = crc32($comment['commenter_name']);
+                                        $hue = $hash % 360;
+                                        $avatar_bg_color = "hsl($hue, 50%, 75%)"; // Generate a pastel color
+                                        $avatar_text_color = "hsl($hue, 50%, 25%)"; // Darker shade for text
+                                    ?>
+                                    <div class="comment-item" style="display: flex; align-items: flex-start; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                                        <div class="comment-avatar" style="
+                                            width: 45px;
+                                            height: 45px;
+                                            border-radius: 50%;
+                                            background-color: <?= $avatar_bg_color ?>;
+                                            color: <?= $avatar_text_color ?>;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            font-weight: bold;
+                                            font-size: 1.1em;
+                                            margin-right: 15px;
+                                            flex-shrink: 0; /* Prevent avatar from shrinking */
+                                        ">
+                                            <?= htmlspecialchars($initials) ?>
+                                        </div>
+                                        <div class="comment-content" style="flex-grow: 1;">
+                                            <div class="comment-author" style="font-weight: bold; color: var(--primary-green, #2a4858); margin-bottom: 3px;"><?= htmlspecialchars($comment['commenter_name']) ?></div>
+                                            <div class="comment-date" style="font-size: 0.85em; color: #888; margin-bottom: 8px;"><?= date('F j, Y \a\t g:i a', strtotime($comment['created_at'])) ?></div>
+                                            <div class="comment-text" style="line-height: 1.6; color: var(--text-medium, #5d4e41);"><?= nl2br($comment['comment_text']) ?></div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p style="color: #666; font-style: italic;">Be the first to comment!</p>
+                            <?php endif; ?>
+                            <?php $comments_stmt->close(); ?>
             </div>
 
             <!-- Comment Form -->
